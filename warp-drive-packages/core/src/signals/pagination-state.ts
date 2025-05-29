@@ -7,7 +7,9 @@ import type { StableDocumentIdentifier } from '@warp-drive/core-types/identifier
 import type { Future } from '../../../request.ts';
 import type { StableDocumentIdentifier } from '../../../types/identifier';
 import type { StructuredErrorDocument } from '../../../types/request.ts';
+import type { ResourceErrorDocument } from '../../../types/spec/document.ts';
 import type { ReactiveDocument } from '../document';
+import { defineNonEnumerableSignal, defineSignal } from './reactivity/signal';
 import type { RequestCacheRequestState } from './request-state';
 import { getRequestState } from './request-state';
 
@@ -34,11 +36,13 @@ type PlaceholderLink<T, RT> = {
   isVirtual: true;
 };
 
-class PaginationState<T = unknown, RT extends Document<T[]> = Document<T[]>> {
-  #pageList!: FirstLink<T>;
-
-  @tracked pages: Document<T[]>[] = [];
-  @tracked data: T[] = [];
+class PaginationState<T = unknown, RT extends ReactiveDocument<T[]> = ReactiveDocument<T[]>, E = unknown> {
+  #pageList!: FirstLink<T, RT, E>;
+  declare pages: ReactiveDocument<T[]>[];
+  declare data: T[];
+  declare _isLoading: boolean;
+  declare _isSuccess: boolean;
+  declare _isError: boolean;
 
   constructor(request: Future<RT>) {
     this.#pageList = {
@@ -49,18 +53,17 @@ class PaginationState<T = unknown, RT extends Document<T[]> = Document<T[]>> {
     };
   }
 
-  @cached
-  get isLoading() {
+  // TODO: pagination-utils Add loading state tracking to the ReactiveDocument interface
+  get isLoading(): boolean {
     return this.pages.some((page) => page.isLoading);
   }
 
-  @cached
-  get isSuccess() {
+  get isSuccess(): boolean {
     return !this.isError;
   }
 
-  @cached
-  get isError() {
+// TODO: pagination-utils Add error state tracking to the ReactiveDocument interface
+  get isError(): boolean {
     return this.pages.some((page) => page.isError);
   }
 
@@ -77,6 +80,12 @@ class PaginationState<T = unknown, RT extends Document<T[]> = Document<T[]>> {
     }
   }
 }
+
+defineSignal(PaginationState.prototype, 'pages', []);
+defineSignal(PaginationState.prototype, 'data', []);
+defineNonEnumerableSignal(PaginationState.prototype, '_isLoading', false);
+defineNonEnumerableSignal(PaginationState.prototype, '_isSuccess', true);
+defineNonEnumerableSignal(PaginationState.prototype, '_isError', false);
 
 /**
  * Get the pagination state for a given request, this will return the same
@@ -96,7 +105,7 @@ class PaginationState<T = unknown, RT extends Document<T[]> = Document<T[]>> {
  * @param future
  * @return {PaginationState}
  */
-export function getPaginationState<T, RT extends ReactiveDocument<T[]>, E = unknown>(
+export function getPaginationState<T, RT extends ReactiveDocument<T[]>, E = ResourceErrorDocument>(
   future: Future<RT>
 ): PaginationState<T, RT, E> {
   const lid = future.lid;
