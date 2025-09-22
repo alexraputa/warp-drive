@@ -15,31 +15,48 @@ import { ACCEPT_HEADER_VALUE } from './-utils.ts';
  * Builds request options to fetch a single resource by a known id or identifier
  * configured for the url and header expectations of most JSON:API APIs.
  *
- * **Basic Usage**
+ * :::tabs
+ *
+ * == Basic Usage
  *
  * ```ts
  * import { findRecord } from '@warp-drive/utilities/json-api';
+ * import type { Person } from '#/data/types';
  *
- * const data = await store.request(findRecord('person', '1'));
+ * const result = await store.request(
+ *   findRecord<Person>('person', '1')
+ * );
  * ```
  *
- * **With Options**
+ * == With Options
  *
  * ```ts
  * import { findRecord } from '@warp-drive/utilities/json-api';
+ * import type { Person } from '#/data/types';
  *
- * const options = findRecord('person', '1', { include: ['pets', 'friends'] });
- * const data = await store.request(options);
+ * const data = await store.request(
+ *   findRecord<Person>(
+ *     'person', '1',
+ *     { include: ['pets', 'friends'] }
+ *   )
+ * );
  * ```
  *
- * **With an Identifier**
+ * == With an Identifier
  *
  * ```ts
  * import { findRecord } from '@warp-drive/utilities/json-api';
+ * import type { Person } from '#/data/types';
  *
- * const options = findRecord({ type: 'person', id: '1' }, { include: ['pets', 'friends'] });
- * const data = await store.request(options);
+ * const data = await store.request(
+ *   findRecord<Person>(
+ *     { type: 'person', id: '1' },
+ *     { include: ['pets', 'friends'] }
+ *   )
+ * );
  * ```
+ *
+ * :::
  *
  * **Supplying Options to Modify the Request Behavior**
  *
@@ -58,8 +75,13 @@ import { ACCEPT_HEADER_VALUE } from './-utils.ts';
  * ```ts
  * import { findRecord } from '@warp-drive/utilities/json-api';
  *
- * const options = findRecord('person', '1', { include: ['pets', 'friends'] }, { namespace: 'api/v2' });
- * const data = await store.request(options);
+ * const data = await store.request(
+ *   findRecord(
+ *     'person', '1',
+ *     { include: ['pets', 'friends'] },
+ *     { namespace: 'api/v2' }
+ *   )
+ * );
  * ```
  *
  * @public
