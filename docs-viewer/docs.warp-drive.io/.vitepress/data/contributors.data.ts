@@ -1,27 +1,34 @@
 // @ts-expect-error for now
 import fs from 'node:fs';
 
-async function getFromCache(key: string): Promise<any | null> {
+export interface Contributor {
+  name: string;
+  username: string;
+  avatar: string;
+  githubLink: string;
+}
+
+export async function getFromCache(key: string): Promise<any | null> {
   const CacheDir = './docs.warp-drive.io/.vitepress/cache/github-api';
   const filePath = `${CacheDir}/${key}.json`;
   try {
     const data = fs.readFileSync(filePath, 'utf-8');
     return JSON.parse(data);
   } catch (error) {
-    console.error(`Error reading cache file ${filePath}:`, error.message);
+    console.error(`Error reading cache file ${filePath}:`, (error as Error).message);
   }
 
   return null;
 }
 
-async function saveToCache(key: string, data: any): Promise<void> {
+export async function saveToCache(key: string, data: any): Promise<void> {
   const CacheDir = './docs.warp-drive.io/.vitepress/cache/github-api';
   const filePath = `${CacheDir}/${key}.json`;
   try {
     fs.mkdirSync(CacheDir, { recursive: true });
     fs.writeFileSync(filePath, JSON.stringify(data), 'utf-8');
   } catch (error) {
-    console.error(`Error writing cache file ${filePath}:`, error.message);
+    console.error(`Error writing cache file ${filePath}:`, (error as Error).message);
   }
 }
 
@@ -62,6 +69,7 @@ async function load() {
     })
     .map((contributor) => ({
       name: `${contributor.login}`,
+      username: contributor.login,
       avatar: contributor.avatar_url,
       githubLink: contributor.html_url,
     }));

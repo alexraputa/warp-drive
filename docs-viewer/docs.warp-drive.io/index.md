@@ -43,7 +43,9 @@ features:
 import { VPTeamPage, VPTeamPageTitle, VPTeamMembers } from 'vitepress/theme'
 import { data as members } from '.vitepress/data/contributors.data.ts'
 import { data as coreTeam } from '.vitepress/data/core.data.ts'
+import { data as top12 } from '.vitepress/data/all-time.data.ts'
 import ContributorList from '.vitepress/theme/ContributorList.vue';
+
 </script>
 
 <VPTeamPage>
@@ -54,6 +56,13 @@ import ContributorList from '.vitepress/theme/ContributorList.vue';
   <VPTeamMembers size="small" :members="coreTeam" />
 </VPTeamPage>
 
+<VPTeamPage>
+  <VPTeamPageTitle>
+    <template #title>The Hall Of Fame</template>
+    <template #lead>The Top 12 All Time Contributors / Excluding The Core Team</template>
+  </VPTeamPageTitle>
+  <VPTeamMembers size="small" :members="top12.decoratedTop12" />
+</VPTeamPage>
 
 <VPTeamPage>
   <VPTeamPageTitle>
