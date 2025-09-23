@@ -46,6 +46,7 @@ import { data as coreTeam } from '.vitepress/data/core.data.ts'
 import { data as top12 } from '.vitepress/data/all-time.data.ts'
 import ContributorList from '.vitepress/theme/ContributorList.vue';
 
+console.log(top12);
 </script>
 
 <VPTeamPage>

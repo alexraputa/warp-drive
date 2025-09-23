@@ -49,8 +49,11 @@ export interface TopContributor {
   name: string;
   username: string;
   title: string;
+  desc?: string;
   avatar: string;
-  sponsor?: string;
+  // sponsor?: string;
+  // org?: string;
+  // orgLink?: string;
   links: { icon: string; link: string }[];
 }
 
@@ -58,7 +61,8 @@ function decoratePerson(local: Contributor, github: any): TopContributor {
   return {
     name: github.name || local.name,
     username: local.username || github.login,
-    title: github.bio || `Contributor${github.company ? ' / ' + github.company : ''}`,
+    title: `@${github.login}${github.company ? ' | ' + github.company : ''}`,
+    desc: github.bio,
     avatar: local.avatar || github.avatar_url,
     links: [{ icon: 'github', link: local.githubLink ?? github.html_url }],
   };
