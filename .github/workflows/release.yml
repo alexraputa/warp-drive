@@ -7,9 +7,11 @@ concurrency:
 on:
   workflow_dispatch:
     inputs:
-      channel:
+      # we are only allowed to use 10 inputs
+      # so a few are overloaded
+      channel: #1
         name: Channel
-        description: 'Release Channel'
+        description: 'The Release Channel / NPM Distribution Tag'
         required: true
         default: 'canary'
         type: choice
@@ -17,9 +19,10 @@ on:
         - canary
         - beta
         - stable
-        - lts
-        - promote-lts
-      train:
+        - lts # current LTS
+        - lts-prev # prior LTS, e.g. `lts-4-8`
+        - promote-lts # promote an existing version to an LTS tag
+      train: #2
         name: Train
         description: 'If not the current primary release train, the prior major version for which to perform a new release'
         required: false
@@ -28,9 +31,9 @@ on:
         options:
         - ''
         - v4
-      canary_increment:
+      increment: #3
         name: Increment
-        description: 'Type of Version Bump To Perform'
+        description: 'Type of Version Bump To Perform. Only used by the canary and stable release jobs. When used for stable, this determines the type of version bump to perform when upversioning or downversioning'
         required: true
         default: 'patch'
         type: choice
@@ -48,7 +51,7 @@ on:
       # each time. This is useful when the changes in canary are relatively minor or safe to release
       # and
       # and then publishing a beta release. A mirror is a direct copy of the canary release.
-      beta_kind:
+      beta_kind: #4
         description: 'Whether to start/continue a beta-cycle vs mirror from canary'
         required: true
         default: 'mirror'
@@ -56,13 +59,13 @@ on:
         options:
         - beta-cycle  # start or continue a beta-cycle.
         - mirror      # mirror code from canary. This is the default.
-      # At cycle start we must always reset the beta branch to main.
-      beta_is-cycle-start:
-        description: 'Whether this is the start of a new release cycle (either kind)'
+      # At cycle start we must always reset the release branch to beta for stable, or main for beta.
+      is-cycle-start: #5
+        description: 'Whether this is the start of a new release cycle (only used by beta and stable release jobs)'
         required: true
         default: false
         type: boolean
-      stable_source-branch:
+      stable_source-branch: #6
         description: 'If starting a new cycle, or reversioning, the source branch to update the release branch from'
         required: false
         default: 'beta'
@@ -71,12 +74,6 @@ on:
         - beta      # promotes beta to stable
         - main      # promotes canary to stable
         - release   # re-releases a stable version
-      # At cycle start we must always reset the release branch to beta.
-      stable_is-cycle-start:
-        description: 'Whether this is the start of a new release cycle'
-        required: true
-        default: false
-        type: boolean
       # downversion e.g. 5.4.1-alpha.1 => 5.3.1 happens when we use a canary, beta or later release to hotfix a stable
       # upversion e.g. 5.3.1 => 5.4.0 happens when we re-release an existing stable as a new minor/major
       # examples:
@@ -86,41 +83,19 @@ on:
       #   Downversion: 5.4.1-alpha.1 => 5.3.1
       #     from-version: 5.3.0
       #     increment: patch
-      stable_from-version:
-        description: 'When upversioning or downversioning, the version from which to increment to get the version number for the release'
+      from-version: #7
+        description: 'For stable: When upversioning or downversioning, the version from which to increment to get the version number for the release. For When Promoting LTS: the existing version to promote (e.g. `4.0.0`)'
         type: string
-      stable_increment:
-        description: 'Type of Version Bump To Perform (only used when upversioning or downversioning)'
+      lts_branch_or_promote_channel: #8
+        description: 'lts: The branch to publish from, e.g. `lts-4-12`. Do not use just "lts" for lts mode. For lts-promote: The NPM Distribution Tag to promote to (e.g. `lts` or `lts-4-8`)'
         required: true
-        default: 'patch'
-        type: choice
-        options:
-        - patch
-        - minor
-        - major
-      lts_branch:
-        description: 'The branch to publish from, e.g. `lts-4-12`'
-        required: true
+        default: lts
         type: string
-      lts_channel:
-        description: 'The NPM Distribution Tag. `lts` for current lts. `lts-prev` for e.g. `lts-4-8`'
-        type: option
-        default: 'lts'
-        required: true
-        options:
-          - lts
-          - lts-prev
-      promote_version:
-        description: 'The existing version to promote (e.g. `4.0.0`)'
-        type: string
-      promote_channel:
-        description: 'The NPM Distribution Tag (e.g. `lts` or `lts-4-8`)'
-        type: string
-      promote_update-branch:
+      promote_update-branch: #9
         description: 'Whether to update the associated LTS branch to the same commit as the tag'
         default: true
         type: boolean
-      dryRun:
+      dryRun: #10
         name: Dry Run
         description: 'Whether to perform a dry run'
         required: true
@@ -181,7 +156,7 @@ jobs:
           git config --local user.email ${{ secrets.GH_DEPLOY_EMAIL }}
           git config --local user.name ${{ secrets.GH_DEPLOY_NAME }}
       - name: Publish with script
-        run: bun release exec canary --train=${{ github.event.inputs.train }} --increment=${{ github.event.inputs.canary_increment }} --dry-run=${{ github.event.inputs.dryRun }}
+        run: bun release exec canary --train=${{ github.event.inputs.train }} --increment=${{ github.event.inputs.increment }} --dry-run=${{ github.event.inputs.dryRun }}
         env:
           FORCE_COLOR: 2
           CI: true
@@ -228,7 +203,7 @@ jobs:
           git config --local user.email ${{ secrets.GH_DEPLOY_EMAIL }}
           git config --local user.name ${{ secrets.GH_DEPLOY_NAME }}
       - name: Reset the Beta Branch
-        if: github.event.inputs.beta_kind == 'mirror' || github.event.inputs.beta_is-cycle-start == 'true'
+        if: github.event.inputs.beta_kind == 'mirror' || github.event.inputs.is-cycle-start == 'true'
         run: git reset --hard origin/main && git push origin beta -f
       - uses: ./.github/actions/setup
         with:
@@ -241,7 +216,7 @@ jobs:
       - name: Publish New Release
         # For beta-cycle we always increment from the branch state
         # For mirror we increment from the last beta version, unless it's start of a new cycle.
-        if: github.event.inputs.beta_kind == 'beta-cycle' || github.event.inputs.beta_is-cycle-start == 'true'
+        if: github.event.inputs.beta_kind == 'beta-cycle' || github.event.inputs.is-cycle-start == 'true'
         run: bun release exec publish beta --train=${{ github.event.inputs.train }} --dry-run=${{ github.event.inputs.dryRun }}
         env:
           FORCE_COLOR: 2
@@ -297,7 +272,7 @@ jobs:
           git config --local user.email ${{ secrets.GH_DEPLOY_EMAIL }}
           git config --local user.name ${{ secrets.GH_DEPLOY_NAME }}
       - name: Reset the Release Branch
-        if: github.event.inputs.stable_source-branch != 'release' && (github.event.inputs.stable_is-cycle-start == 'true' || github.event.inputs.stable_from-version != null)
+        if: github.event.inputs.stable_source-branch != 'release' && (github.event.inputs.is-cycle-start == 'true' || github.event.inputs.from-version != null)
         run: git reset --hard origin/${{ github.event.inputs.stable_source-branch }} && git push origin release -f
       - uses: ./.github/actions/setup
         with:
@@ -307,7 +282,7 @@ jobs:
         # If we are not reversioning
         # Then we do the default patch increment from the current branch state.
         # This handles both start-of-cycle and bugfix releases.
-        if: github.event.inputs.stable_from-version == null
+        if: github.event.inputs.from-version == null
         run: bun release publish release --train=${{ github.event.inputs.train }} --dry-run=${{ github.event.inputs.dryRun }}
         env:
           FORCE_COLOR: 2
@@ -318,8 +293,8 @@ jobs:
         # If we are reversioning
         # Then we increment from the branch with the supplied increment
         # This handles both upversioning and downversioning
-        if: github.event.inputs.stable_from-version != null
-        run: bun release publish release --train=${{ github.event.inputs.train }} --from=${{ github.event.inputs.stable_from-version }} --increment=${{ github.event.inputs.stable_increment }} --dry-run=${{ github.event.inputs.dryRun }}
+        if: github.event.inputs.from-version != null
+        run: bun release publish release --train=${{ github.event.inputs.train }} --from=${{ github.event.inputs.from-version }} --increment=${{ github.event.inputs.increment }} --dry-run=${{ github.event.inputs.dryRun }}
         env:
           FORCE_COLOR: 2
           CI: true
@@ -327,8 +302,8 @@ jobs:
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
 
   lts:
-    if: github.event.inputs.channel == 'lts'
-    name: Publish LTS ${{ github.event.inputs.train }}
+    if: github.event.inputs.channel == 'lts' || github.event.inputs.channel == 'lts-prev'
+    name: Publish ${{ github.event.inputs.channel }} ${{ github.event.inputs.train }}
     runs-on: ubuntu-latest
     environment: deployment
     steps:
@@ -345,7 +320,7 @@ jobs:
           show-progress: false
           token: ${{ secrets.GH_DEPLOY_TOKEN }}
           fetch-depth: 25
-          ref: ${{ github.event.inputs.lts_source-branch }}
+          ref: ${{ github.event.inputs.lts_branch_or_promote_channel }}
       - run: git fetch origin --tags --depth=1
       - name: Make sure git user is setup
         run: |
@@ -357,7 +332,7 @@ jobs:
           repo-token: ${{ secrets.GH_DEPLOY_TOKEN }}
       - name: Publish New LTS Release
         # We always increment from the branch state
-        run: bun release publish ${{ github.event.inputs.lts_channel }} --dry-run=${{ github.event.inputs.dryRun }}
+        run: bun release publish ${{ github.event.inputs.channel }} --dry-run=${{ github.event.inputs.dryRun }}
         env:
           FORCE_COLOR: 2
           CI: true
@@ -397,7 +372,7 @@ jobs:
           git config --local user.email ${{ secrets.GH_DEPLOY_EMAIL }}
           git config --local user.name ${{ secrets.GH_DEPLOY_NAME }}
       - name: Publish with script
-        run: bun release exec promote --v=${{ github.event.inputs.promote_version }} --t=${{ github.event.inputs.promote_channel }} --u=${{ github.event.inputs.promote_update-branch }} --dry-run=${{ github.event.inputs.dryRun }}
+        run: bun release exec promote --v=${{ github.event.inputs.from-version }} --t=${{ github.event.inputs.lts_branch_or_promote_channel }} --u=${{ github.event.inputs.promote_update-branch }} --dry-run=${{ github.event.inputs.dryRun }}
         env:
           FORCE_COLOR: 2
           CI: true
