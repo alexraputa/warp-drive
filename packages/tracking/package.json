@@ -31,7 +31,8 @@
     "addon-main.cjs",
     "dist",
     "README.md",
-    "LICENSE.md"
+    "LICENSE.md",
+    "logos"
   ],
   "exports": {
     ".": {

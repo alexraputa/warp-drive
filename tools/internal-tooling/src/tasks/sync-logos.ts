@@ -1,13 +1,14 @@
 /**
  * Sync logos from the monorepo root to each public package
- * for use in README files etc. in published artifacts.
+ * for use in README files etc. in published artifacts
+ *
+ * As well as into docs for use by the docs.
  */
 import path from 'path';
 import fs from 'fs';
 import debug from 'debug';
 import chalk from 'chalk';
-import type { BunFile } from 'bun';
-import { getMonorepoRoot, getPackageJson, walkPackages, type ProjectPackage } from './-utils';
+import { getMonorepoRoot, walkPackages, type ProjectPackage } from './-utils';
 
 const log = debug('wd:sync-logos');
 
@@ -20,19 +21,26 @@ async function copyFiles({
   logosDir: string;
   hasExistingCopy: boolean;
 }) {
-  // if we are in copy mode, remove any existing symlink and copy the files
   if (hasExistingCopy) {
     fs.rmSync(packageLogosDir, { recursive: true, force: true });
     log(`\t\t\t🗑️ Deleted existing copy of ${logosDir}`);
   }
   fs.mkdirSync(packageLogosDir, { recursive: true });
-  log(`\t\t\t📁 Created ${logosDir}`);
+  log(`\t\t\t📁 Created ${packageLogosDir}`);
 
   for (const logo of fs.readdirSync(logosDir, { recursive: true, encoding: 'utf-8' })) {
     const logoPath = path.join(logosDir, logo);
     const destPath = path.join(packageLogosDir, logo);
+
+    // only copy files (not directories)
+    if (fs.lstatSync(logoPath).isDirectory()) {
+      // create the directory in the destination
+      fs.mkdirSync(destPath, { recursive: true });
+      log(`\t\t\t📁 Created directory ${destPath}`);
+      continue;
+    }
     fs.copyFileSync(logoPath, destPath);
-    log(`\t\t\t📁 Copied ${logo} to ${logosDir}`);
+    log(`\t\t\t🌇 Copied ${destPath}`);
   }
 }
 
@@ -50,6 +58,20 @@ async function updatePackageJson(project: ProjectPackage) {
   }
 }
 
+async function syncLogosForDocs(monorepoRoot: string) {
+  log(`\t\t🔁 Syncing logos to Documentation Site`);
+
+  const logosDir = path.join(monorepoRoot, 'logos');
+  const packageLogosDir = path.join(monorepoRoot, 'docs-viewer/docs.warp-drive.io/public/logos');
+  const hasExistingCopy = fs.existsSync(packageLogosDir);
+
+  await copyFiles({
+    packageLogosDir,
+    logosDir,
+    hasExistingCopy,
+  });
+}
+
 export async function main() {
   log(
     `\n\t${chalk.gray('=').repeat(60)}\n\t\t${chalk.magentaBright('@warp-drive/')}${chalk.greenBright('internal-tooling')} Sync Logos\n\t${chalk.gray('=').repeat(60)}\n\n\t\t${chalk.gray(`Syncing logo files from monorepo root to each public package`)}\n\n`
@@ -59,10 +81,10 @@ export async function main() {
   // sync the logos from the monorepo root to each
   // package directory that has a logos directory
 
-  const logosDir = path.join(monorepoRoot, 'logos');
+  const logosDir = path.join(monorepoRoot, 'logos/synced');
 
   await walkPackages(async (project: ProjectPackage, projects: Map<string, ProjectPackage>) => {
-    if (project.isPrivate) {
+    if (project.isPrivate && project.pkg.name !== '@warp-drive/diagnostic') {
       log(`\t\t🔒 Skipping private package ${project.pkg.name}`);
       return;
     }
@@ -80,4 +102,6 @@ export async function main() {
 
     await updatePackageJson(project);
   });
+
+  await syncLogosForDocs(monorepoRoot);
 }

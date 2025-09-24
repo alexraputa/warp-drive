@@ -7,6 +7,10 @@
   "files": [
     "src"
   ],
+  "scripts": {
+    "build:pkg": "bun run src/sync-logos.ts",
+    "prepack": "pnpm run build:pkg"
+  },
   "bin": {
     "sync-logos": "src/sync-logos.ts",
     "sync-license": "src/sync-license.ts",

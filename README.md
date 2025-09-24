@@ -1,13 +1,7 @@
 <h1 align="center">
   <img
     class="project-logo"
-    src="./logos/github-header.svg#gh-light-mode-only"
-    alt="WarpDrive | Boldly go where no app has gone before"
-    title="WarpDrive | Boldly go where no app has gone before"
-    />
-  <img
-    class="project-logo"
-    src="./logos/github-header.svg#gh-dark-mode-only"
+    src="./logos/synced/"
     alt="WarpDrive | Boldly go where no app has gone before"
     title="WarpDrive | Boldly go where no app has gone before"
     />
@@ -24,7 +18,7 @@
 
 <p align="center">
   <br>
-  <a href="https://warp-drive.io">WarpDrive</a> is a lightweight data library for web apps &mdash;
+  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
   <br>
   universal, typed, reactive, and ready to scale.
   <br/><br/>
@@ -44,7 +38,7 @@ rich application &mdash; letting you ship better experiences more quickly withou
 <br>
 <br>
 
-*Get Started* → [Guides](https://docs.warp-drive.io/guides/)
+*Get Started* → [Guides](https://warp-drive.io/guides/)
 
 <br>
 
