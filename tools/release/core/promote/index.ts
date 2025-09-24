@@ -53,8 +53,8 @@ export async function updateTags(
   let token: string | undefined;
 
   // allow OTP token usage locally
-  if (!NODE_AUTH_TOKEN) {
-    if (CI) {
+  if (!CI) {
+    if (!NODE_AUTH_TOKEN) {
       console.log(
         chalk.red(
           '🚫 NODE_AUTH_TOKEN not found in ENV. NODE_AUTH_TOKEN is required in ENV to publish from CI. Exiting...'
@@ -62,20 +62,19 @@ export async function updateTags(
       );
       process.exit(1);
     }
-    token = await getOTPToken(distTag);
-  } else {
-    if (!CI) {
-      const result = await question(
-        `\n${chalk.cyan('NODE_AUTH_TOKEN')} found in ENV.\nPublish ${config.get('increment')} release in ${config.get(
-          'channel'
-        )} channel to the ${config.get('tag')} tag on the npm registry? ${chalk.yellow('[y/n]')}:`
-      );
-      const input = result.trim().toLowerCase();
-      if (input !== 'y' && input !== 'yes') {
-        console.log(chalk.red('🚫 Publishing not confirmed. Exiting...'));
-        process.exit(1);
-      }
+
+    const result = await question(
+      `\n${chalk.cyan('NODE_AUTH_TOKEN')} found in ENV.\nPublish ${config.get('increment')} release in ${config.get(
+        'channel'
+      )} channel to the ${config.get('tag')} tag on the npm registry? ${chalk.yellow('[y/n]')}:`
+    );
+    const input = result.trim().toLowerCase();
+    if (input !== 'y' && input !== 'yes') {
+      console.log(chalk.red('🚫 Publishing not confirmed. Exiting...'));
+      process.exit(1);
     }
+
+    token = await getOTPToken(distTag);
   }
 
   const dryRun = config.get('dry_run') as boolean;

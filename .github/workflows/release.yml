@@ -4,6 +4,10 @@ concurrency:
   group: ci-release
   # only one job at a time, job must complete before another can run
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: read
+
 on:
   workflow_dispatch:
     inputs:
@@ -160,7 +164,6 @@ jobs:
         env:
           FORCE_COLOR: 2
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       - uses: actions/upload-artifact@v4
         with:
           name: tarballs
@@ -221,14 +224,12 @@ jobs:
         env:
           FORCE_COLOR: 2
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       - name: Publish New Mirror Release
         if: github.event.inputs.beta_kind == 'mirror'
         run: bun release exec publish beta --train=${{ github.event.inputs.train }} --from=${{ steps.version.outputs.value }} --dry-run=${{ github.event.inputs.dryRun }}
         env:
           FORCE_COLOR: 2
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
       - uses: actions/upload-artifact@v4
         with:
           name: tarballs
@@ -287,7 +288,6 @@ jobs:
         env:
           FORCE_COLOR: 2
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish New Release (Reversion)
         # If we are reversioning
@@ -298,7 +298,6 @@ jobs:
         env:
           FORCE_COLOR: 2
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
           GITHUB_AUTH: ${{ secrets.GITHUB_TOKEN }}
 
   lts:
@@ -336,7 +335,6 @@ jobs:
         env:
           FORCE_COLOR: 2
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
           GITHUB_AUTH: ${{ secrets.GH_DEPLOY_TOKEN }}
       - uses: actions/upload-artifact@v4
         with:
@@ -376,4 +374,3 @@ jobs:
         env:
           FORCE_COLOR: 2
           CI: true
-          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
