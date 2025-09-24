@@ -1,30 +1,30 @@
-<h1 align="center">
+<p align="center">
   <img
     class="project-logo"
-    src="./logos/synced/"
-    alt="WarpDrive | Boldly go where no app has gone before"
-    title="WarpDrive | Boldly go where no app has gone before"
+    src="./logos/synced/logo-yellow-slab.svg"
+    alt="WarpDrive"
+    width="120px"
+    title="WarpDrive"
     />
-</h1>
+</p>
 
-![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=FFC474)
-![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=FFC474)
-![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=FFC474)
-[![Docs](./logos/docs-badge.svg)](https://api.emberjs.com/ember-data/release)
-[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=FFC474)](https://discord.gg/zT3asNS
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
 )
-[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=FFC474)](https://discord.gg/PHBbnWJx5S
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
 )
 
 <p align="center">
   <br>
-  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
+  <a href="https://warp-drive.io">WarpDrive</a>  (formerly EmberData) is the lightweight data library for web apps &mdash;
   <br>
   universal, typed, reactive, and ready to scale.
   <br/><br/>
-<p>
+</p>
 
-WarpDrive provides features that make it easy to build scalable, fast, feature
+***Warp*Drive** provides features that make it easy to build scalable, fast, feature
 rich application &mdash; letting you ship better experiences more quickly without re-architecting your app or API. WarpDrive is:
 
 - 🌌 Seamless Reactivity in any Framework
@@ -42,16 +42,12 @@ rich application &mdash; letting you ship better experiences more quickly withou
 
 <br>
 
----
-
-<br>
 
 ## Quick Links
 
-- [Installation](https://docs.warp-drive.io/guides/1-configuration/1-overview#installation)
-- [API Docs](https://docs.warp-drive.io/guides/api/)
-- [Guides](https://docs.warp-drive.io/guides/)
-- [Build Config](./warp-drive-packages/build-config/README.md)
+- [Installation](https://warp-drive.io/guides/installation/)
+- [API Docs](https://warp-drive.io/api/)
+- [Guides](https://warp-drive.io/guides/)
 - [Ember Compatibility](#ember-compatibility)
 - [The Big List of Versions](#the-big-list-of-versions)
 - [Contributing](./CONTRIBUTING.md)
@@ -59,6 +55,10 @@ rich application &mdash; letting you ship better experiences more quickly withou
 - [RFCs](https://github.com/emberjs/rfcs/labels/T-ember-data)
 - [Team](https://emberjs.com/team)
 - [Blog](https://emberjs.com/blog)
+
+<br>
+
+---
 
 <br>
 
