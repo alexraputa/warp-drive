@@ -8,6 +8,7 @@ import chalk from 'chalk';
 import { colorName } from '../publish/steps/print-strategy';
 import { exec } from '../../utils/cmd';
 import { question } from '../publish/steps/confirm-strategy';
+import { RETRY_TRUSTED_PUBLISHING } from '../publish/steps/publish-packages';
 
 export async function promoteToLTS(args: string[]) {
   // get user supplied config
@@ -110,7 +111,7 @@ export async function updateDistTag(
 ): Promise<[string | undefined, Error | null]> {
   let cmd = `npm dist-tag add ${pkg}@${version} ${distTag}`;
 
-  if (otp) {
+  if (otp && otp !== RETRY_TRUSTED_PUBLISHING) {
     cmd += ` --otp=${otp}`;
   }
 
@@ -122,14 +123,16 @@ export async function updateDistTag(
     await exec({ cmd, condense: true });
   } catch (e) {
     const error = !(e instanceof Error) ? new Error(e as string) : e;
-    if (otp) {
+    if (otp && otp !== RETRY_TRUSTED_PUBLISHING) {
       if (error.message.includes('E401') || error.message.includes('EOTP')) {
         otp = await getOTPToken(distTag, true);
         return updateDistTag(pkg, version, distTag, dryRun, otp);
       }
+    } else if (!otp) {
+      return updateDistTag(pkg, version, distTag, dryRun, RETRY_TRUSTED_PUBLISHING);
     }
-    return [otp, error];
+    return [otp === RETRY_TRUSTED_PUBLISHING ? '' : otp, error];
   }
 
-  return [otp, null];
+  return [otp === RETRY_TRUSTED_PUBLISHING ? '' : otp, null];
 }

@@ -2,7 +2,7 @@ import chalk from 'chalk';
 import { APPLIED_STRATEGY, Package } from '../../../utils/package';
 import { question } from './confirm-strategy';
 import { exec } from '../../../utils/cmd';
-import { updateDistTag } from '../../promote';
+// import { updateDistTag } from '../../promote';
 
 export async function publishPackages(
   config: Map<string, string | number | boolean | null>,
@@ -55,21 +55,23 @@ export async function publishPackages(
     }
     publishCount++;
 
-    if (strat.stage === 'alpha' || strat.stage === 'beta') {
-      [token, error] = await updateDistTag(
-        strat.name,
-        pkg.pkgData.version,
-        'latest',
-        config.get('dry_run') as boolean,
-        token
-      );
-      if (error) {
-        console.log(
-          chalk.red(`\t🚫 Error updating dist-tag for ${chalk.cyan(pkg.pkgData.name)} to latest: ${error.message}`)
-        );
-        errors.push(error);
-      }
-    }
+    // TODO - only do this if its a stable release
+    // TODO - moving to OIDC breaks this, bring it back once npm adds the feature
+    // if (strat.stage === 'alpha' || strat.stage === 'beta') {
+    //   [token, error] = await updateDistTag(
+    //     strat.name,
+    //     pkg.pkgData.version,
+    //     'latest',
+    //     config.get('dry_run') as boolean,
+    //     token
+    //   );
+    //   if (error) {
+    //     console.log(
+    //       chalk.red(`\t🚫 Error updating dist-tag for ${chalk.cyan(pkg.pkgData.name)} to latest: ${error.message}`)
+    //     );
+    //     errors.push(error);
+    //   }
+    // }
 
     if (strat.mirrorPublish) {
       [token, error] = await publishPackage(
@@ -88,23 +90,25 @@ export async function publishPackages(
       }
       publishCount++;
 
-      if (strat.stage === 'alpha' || strat.stage === 'beta') {
-        [token, error] = await updateDistTag(
-          strat.mirrorPublishTo,
-          pkg.pkgData.version,
-          'latest',
-          config.get('dry_run') as boolean,
-          token
-        );
-        if (error) {
-          console.log(
-            chalk.red(
-              `\t🚫 Error updating dist-tag for ${chalk.cyan(pkg.pkgData.name)} <Mirror Package> to latest: ${error.message}`
-            )
-          );
-          errors.push(error);
-        }
-      }
+      // TODO - only do this if its a stable release
+      // TODO - moving to OIDC breaks this, bring it back once npm adds the feature
+      // if (strat.stage === 'alpha' || strat.stage === 'beta') {
+      //   [token, error] = await updateDistTag(
+      //     strat.mirrorPublishTo,
+      //     pkg.pkgData.version,
+      //     'latest',
+      //     config.get('dry_run') as boolean,
+      //     token
+      //   );
+      //   if (error) {
+      //     console.log(
+      //       chalk.red(
+      //         `\t🚫 Error updating dist-tag for ${chalk.cyan(pkg.pkgData.name)} <Mirror Package> to latest: ${error.message}`
+      //       )
+      //     );
+      //     errors.push(error);
+      //   }
+      // }
     }
     if (strat.typesPublish) {
       [token, error] = await publishPackage(
@@ -123,21 +127,23 @@ export async function publishPackages(
       }
       publishCount++;
 
-      if (strat.stage === 'alpha' || strat.stage === 'beta') {
-        [token, error] = await updateDistTag(
-          strat.typesPublishTo,
-          pkg.pkgData.version,
-          'latest',
-          config.get('dry_run') as boolean,
-          token
-        );
-        if (error) {
-          console.log(
-            chalk.red(`\t🚫 Error updating dist-tag for ${chalk.cyan(pkg.pkgData.name)} to latest: ${error.message}`)
-          );
-          errors.push(error);
-        }
-      }
+      // TODO - only do this if its a stable release
+      // TODO - moving to OIDC breaks this, bring it back once npm adds the feature
+      // if (strat.stage === 'alpha' || strat.stage === 'beta') {
+      //   [token, error] = await updateDistTag(
+      //     strat.typesPublishTo,
+      //     pkg.pkgData.version,
+      //     'latest',
+      //     config.get('dry_run') as boolean,
+      //     token
+      //   );
+      //   if (error) {
+      //     console.log(
+      //       chalk.red(`\t🚫 Error updating dist-tag for ${chalk.cyan(pkg.pkgData.name)} to latest: ${error.message}`)
+      //     );
+      //     errors.push(error);
+      //   }
+      // }
     }
   }
 
@@ -167,7 +173,7 @@ export async function getOTPToken(config: Map<string, string | number | boolean 
   return token.trim();
 }
 
-const RETRY_TRUSTED_PUBLISHING = 'RETRY DUE TO STALE OIDC TOKEN';
+export const RETRY_TRUSTED_PUBLISHING = 'RETRY DUE TO STALE OIDC TOKEN';
 
 async function publishPackage(
   config: Map<string, string | number | boolean | null>,
