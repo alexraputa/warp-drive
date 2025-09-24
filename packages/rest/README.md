@@ -1,18 +1,16 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/ember-data-logo-dark.svg#gh-dark-mode-only"
-    alt="EmberData REST"
-    width="240px"
-    title="EmberData REST"
-    />
+    src="./logos/warp-drive-logo-dark.svg#gh-light-mode-only"
+    alt="WarpDrive"
+    width="200px"
+    title="WarpDrive" />
   <img
     class="project-logo"
-    src="./logos/ember-data-logo-light.svg#gh-light-mode-only"
-    alt="EmberData REST"
-    width="240px"
-    title="EmberData REST"
-    />
+    src="./logos/warp-drive-logo-gold.svg#gh-dark-mode-only"
+    alt="WarpDrive"
+    width="200px"
+    title="WarpDrive" />
 </p>
 
 <p align="center">Elegantly composable. Made for <strong>REST</strong>ful APIs</p>
