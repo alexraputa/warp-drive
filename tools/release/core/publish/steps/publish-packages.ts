@@ -188,14 +188,16 @@ async function publishPackage(
     await exec({ cmd, condense: true });
   } catch (e: unknown) {
     const error = !(e instanceof Error) ? new Error(e as string) : e;
-    if (otp) {
+    if (otp && otp !== 'RETRY') {
       if (error.message.includes('E401') || error.message.includes('EOTP')) {
         otp = await getOTPToken(config, true);
         return publishPackage(config, distTag, tarball, dryRun, otp);
       }
+    } else if (error.message.includes('E401') && process.env.CI && otp !== 'RETRY') {
+      return publishPackage(config, distTag, tarball, dryRun, 'RETRY');
     }
-    return [otp, error];
+    return [process.env.CI ? undefined : otp, error];
   }
 
-  return [otp, null];
+  return [process.env.CI ? undefined : otp, null];
 }
