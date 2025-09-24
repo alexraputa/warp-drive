@@ -24,8 +24,8 @@
   <br/><br/>
 </p>
 
-***Warp*Drive** provides features that make it easy to build scalable, fast, feature
-rich application &mdash; letting you ship better experiences more quickly without re-architecting your app or API. WarpDrive is:
+***Warp*Drive** makes it easy to build scalable, fast, feature
+rich applications &mdash; letting you ship better experiences more quickly without re-architecting your app or API. ***Warp*Drive** is:
 
 - 🌌 Seamless Reactivity in any Framework
 - ⚡️ Committed to Best-In-Class Performance
@@ -42,8 +42,10 @@ rich application &mdash; letting you ship better experiences more quickly withou
 
 <br>
 
-
 ---
+
+<br>
+
 **Tagged Releases**
 
 - ![NPM Canary Version](https://img.shields.io/npm/v/ember-data/canary?label=%40canary&color=FFBF00)

@@ -1,26 +1,54 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/warp-drive-logo-dark.svg#gh-light-mode-only"
+    src="./logos/logo-yellow-slab.svg"
     alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
-  <img
-    class="project-logo"
-    src="./logos/warp-drive-logo-gold.svg#gh-dark-mode-only"
-    alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
+    width="120px"
+    title="WarpDrive"
+    />
 </p>
 
-<h3 align="center">The Data Framework for Ambitious Web Applications</h3>
-<p align="center">⚡️ Build Faster Apps Faster</p>
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
 
-## Get Started
+<p align="center">
+  <br>
+  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
+  <br>
+  universal, typed, reactive, and ready to scale.
+  <br/><br/>
+</p>
 
-```ts
-npx warp-drive
-```
+***Warp*Drive** makes it easy to build scalable, fast, feature
+rich applications &mdash; letting you ship better experiences more quickly without re-architecting your app or API. ***Warp*Drive** is:
+
+- 🌌 Seamless Reactivity in any Framework
+- ⚡️ Committed to Best-In-Class Performance
+- 💚 Typed
+- ⚛️ Works with any API
+- 🌲 Focused on being as tiny as possible
+- 🚀 SSR Ready
+- 🐹 Built with ♥️ by [Ember](https://emberjs.com)
+
+<br>
+<br>
+
+*Get Started* → [Guides](https://warp-drive.io/guides/)
+
+<br>
+
+---
+
+# warp-drive
+
+This package provides commandline utilities for use with WarpDrive.
+
+<br>
 
 ## Available Commands
 
