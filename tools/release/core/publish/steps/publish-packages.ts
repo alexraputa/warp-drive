@@ -167,6 +167,8 @@ export async function getOTPToken(config: Map<string, string | number | boolean 
   return token.trim();
 }
 
+const RETRY_TRUSTED_PUBLISHING = 'RETRY DUE TO STALE OIDC TOKEN';
+
 async function publishPackage(
   config: Map<string, string | number | boolean | null>,
   distTag: string,
@@ -176,7 +178,7 @@ async function publishPackage(
 ): Promise<[string | undefined, Error | null]> {
   let cmd = `npm publish ${tarball} --tag=${distTag} --access=public`;
 
-  if (otp) {
+  if (otp && otp !== RETRY_TRUSTED_PUBLISHING) {
     cmd += ` --otp=${otp}`;
   }
 
@@ -188,13 +190,13 @@ async function publishPackage(
     await exec({ cmd, condense: true });
   } catch (e: unknown) {
     const error = !(e instanceof Error) ? new Error(e as string) : e;
-    if (otp && otp !== 'RETRY') {
+    if (otp && otp !== RETRY_TRUSTED_PUBLISHING) {
       if (error.message.includes('E401') || error.message.includes('EOTP')) {
         otp = await getOTPToken(config, true);
         return publishPackage(config, distTag, tarball, dryRun, otp);
       }
-    } else if (error.message.includes('E401') && process.env.CI && otp !== 'RETRY') {
-      return publishPackage(config, distTag, tarball, dryRun, 'RETRY');
+    } else if (error.message.includes('E401') && process.env.CI && otp !== RETRY_TRUSTED_PUBLISHING) {
+      return publishPackage(config, distTag, tarball, dryRun, RETRY_TRUSTED_PUBLISHING);
     }
     return [process.env.CI ? undefined : otp, error];
   }
