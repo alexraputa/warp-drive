@@ -7,8 +7,8 @@ hero:
   text: Boldly Read What No Dev Has Read Before
   tagline: "Comprehensive Documentation for Engineers Aiming for the Stars 💫"
   image:
-    light: /logos/logo-chrome-slab@2x.png
-    dark: /logos/logo-yellow-slab.svg
+    light: /logos/warp-drive/logo-chrome-slab@2x.png
+    dark: /logos/warp-drive/logo-yellow-slab.svg
     alt: WarpDrive
   actions:
     - theme: brand

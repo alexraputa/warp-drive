@@ -51,7 +51,7 @@ export default defineConfig({
   head: [
     ['link', { rel: 'manifest', href: '/site.webmanifest' }],
     ['link', { rel: 'icon', href: '/favicon.ico', sizes: '32x32' }],
-    ['link', { rel: 'icon', href: '/logos/prefers-color-w.svg', type: 'image/svg+xml' }],
+    ['link', { rel: 'icon', href: '/logos/warp-drive/prefers-color-w.svg', type: 'image/svg+xml' }],
     ['link', { rel: 'apple-touch-icon', href: '/logos/favicon/logo-yellow-square-180x180.png', type: 'image/png' }],
     [
       'meta',
@@ -97,7 +97,7 @@ export default defineConfig({
       },
     ],
     ['meta', { property: 'og:url', content: 'https://warp-drive.io' }],
-    ['meta', { property: 'og:image', content: '/logos/github-header.png' }],
+    ['meta', { property: 'og:image', content: '/logos/warp-drive/github-header.png' }],
     // ['meta', { property: 'og:image', content: '/logos/social1.png' }],
     // ['meta', { property: 'og:image', content: '/logos/social2.png' }],
     // [
@@ -128,8 +128,8 @@ export default defineConfig({
   themeConfig: {
     siteTitle: false,
     logo: {
-      dark: '/logos/word-mark-white.svg',
-      light: '/logos/warp-drive-logo-dark.svg',
+      dark: '/logos/warp-drive/word-mark-white.svg',
+      light: '/logos/warp-drive/warp-drive-logo-dark.svg',
       alt: 'WarpDrive',
     },
 
