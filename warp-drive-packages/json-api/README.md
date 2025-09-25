@@ -1,41 +1,28 @@
-<h1 align="center">
-  <img
-    class="project-logo"
-    src="./logos/github-header.svg#gh-light-mode-only"
-    alt="WarpDrive | Boldly go where no app has gone before"
-    title="WarpDrive | Boldly go where no app has gone before"
-    />
-  <img
-    class="project-logo"
-    src="./logos/github-header.svg#gh-dark-mode-only"
-    alt="WarpDrive | Boldly go where no app has gone before"
-    title="WarpDrive | Boldly go where no app has gone before"
-    />
-</h1>
-
-![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=FFC474)
-![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=FFC474)
-![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=FFC474)
-[![Docs](./logos/docs-badge.svg)](https://docs.warp-drive.io)
-[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=FFC474)](https://discord.gg/zT3asNS
-)
-[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=FFC474)](https://discord.gg/PHBbnWJx5S
-)
-
-
-<br>
-
 <p align="center">
-A {json:api} Cache Implementation for <em>Warp</em><strong>Drive</strong>.
+  <img
+    class="project-logo"
+    src="./logos/logo-yellow-slab.svg"
+    alt="WarpDrive"
+    width="120px"
+    title="WarpDrive"
+    />
 </p>
 
-<br>
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
 
-## Installation
+# @warp-drive/json-api
 
-```sh
-pnpm add -E @warp-drive/json-api
-```
+A {json:api} Cache Implementation for ***Warp*Drive**.
+
+`{json:api}` excels at simplifying common complex problems around cache consistency and information density, especially in regards to relational or polymorphic data.
+
+Because most API responses can be quickly transformed into the `{json:api}` format without losing any information, ***Warp*Drive** recommends that most-if-not-all apps should use this Cache implementation.
 
 <br>
 

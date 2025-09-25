@@ -1,26 +1,36 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/warp-drive-logo-dark.svg#gh-light-mode-only"
+    src="./logos/logo-yellow-slab.svg"
     alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
-  <img
-    class="project-logo"
-    src="./logos/warp-drive-logo-gold.svg#gh-dark-mode-only"
-    alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
+    width="120px"
+    title="WarpDrive"
+    />
 </p>
+
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
+
+<p align="center">
+  <br>
+  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
+  <br>
+  universal, typed, reactive, and ready to scale.
+  <br/><br/>
+</p>
+
+---
+
 
 <h3 align="center">🛠️ @warp-drive/build-config</h3>
 <p align="center">Enables providing a build config to optimize application assets</p>
 
-## Installation
-
-```sh
-pnpm install @warp-drive/build-config
-```
+Note - you do not need to install or use this package if using @warp-drive/core.
 
 **Tagged Releases**
 

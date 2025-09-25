@@ -1,17 +1,32 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/github-header.svg#gh-light-mode-only"
-    alt="WarpDrive | Boldly go where no app has gone before"
-    title="WarpDrive | Boldly go where no app has gone before"
-    />
-  <img
-    class="project-logo"
-    src="./logos/github-header.svg#gh-dark-mode-only"
-    alt="WarpDrive | Boldly go where no app has gone before"
-    title="WarpDrive | Boldly go where no app has gone before"
+    src="./logos/logo-yellow-slab.svg"
+    alt="WarpDrive"
+    width="120px"
+    title="WarpDrive"
     />
 </p>
+
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
+
+<p align="center">
+  <br>
+  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
+  <br>
+  universal, typed, reactive, and ready to scale.
+  <br/><br/>
+</p>
+
+---
+
+# @warp-drive/schema-record
 
 <h3 align="center">Your Data, Managed.</h3>
 <p align="center">🌲 Get back to Nature 🐿️ Or shipping 💚</p>
@@ -26,15 +41,6 @@
 SchemaRecord is a reactive object that transforms raw data from an [associated cache](https://github.com/warp-drive-data/warp-drive/blob/main/packages/core-types/src/cache.ts) into reactive data backed by Signals. The shape of the object and the transformation of raw cache data into its reactive form is controlled by a resource schema. Resource schemas are simple JSON, allowing them to be defined and delivered from anywhere.
 
 The capabilities that SchemaRecord brings to [*Warp***Drive**](https://github.com/warp-drive-data/warp-drive/) will simplify even the most complex parts of your app's state management.
-
-## Installation
-
-Install using your javascript package manager of choice. For instance
-with [pnpm](https://pnpm.io/)
-
-```sh
-pnpm add @warp-drive/schema-record
-```
 
 **Tagged Releases**
 

@@ -1,25 +1,46 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/warp-drive-logo-dark.svg#gh-light-mode-only"
+    src="./logos/logo-yellow-slab.svg"
     alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
-  <img
-    class="project-logo"
-    src="./logos/warp-drive-logo-gold.svg#gh-dark-mode-only"
-    alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
+    width="120px"
+    title="WarpDrive"
+    />
 </p>
 
-<h3 align="center">:electron: Components, Hooks and Utilities for using <em style="color: lightgreen">Warp</em><strong style="color: magenta">Drive</strong> with <strong style="color: lightblue">React</strong></h3>
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
+
+<h3 align="center">Signals Integration and Component API for using <em>Warp</em><strong>Drive</strong> with <strong style="color: lightblue">React</strong></h3>
+
+***Warp*Drive** makes it easy to build scalable, fast, feature
+rich applications &mdash; letting you ship better experiences more quickly without re-architecting your app or API. ***Warp*Drive** is:
+
+- 🌌 Seamless Reactivity in any Framework
+- ⚡️ Committed to Best-In-Class Performance
+- 💚 Typed
+- ⚛️ Works with any API
+- 🌲 Focused on being as tiny as possible
+- 🚀 SSR Ready
+- 🐹 Built with ♥️ by [Ember](https://emberjs.com)
+
+<br>
+<br>
+
+*Get Started* → [Guides](https://warp-drive.io/guides/)
+
+<br>
 
 ---
 
-```sh
-pnpm install @warp-drive/react
-```
+<br>
+
+# @warp-drive/react
 
 **Tagged Releases**
 

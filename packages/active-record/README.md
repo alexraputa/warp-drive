@@ -24,24 +24,6 @@
   <br/><br/>
 </p>
 
-***Warp*Drive** makes it easy to build scalable, fast, feature
-rich applications &mdash; letting you ship better experiences more quickly without re-architecting your app or API. ***Warp*Drive** is:
-
-- 🌌 Seamless Reactivity in any Framework
-- ⚡️ Committed to Best-In-Class Performance
-- 💚 Typed
-- ⚛️ Works with any API
-- 🌲 Focused on being as tiny as possible
-- 🚀 SSR Ready
-- 🐹 Built with ♥️ by [Ember](https://emberjs.com)
-
-<br>
-<br>
-
-*Get Started* → [Guides](https://warp-drive.io/guides/)
-
-<br>
-
 ---
 
 # @ember-data/active-record

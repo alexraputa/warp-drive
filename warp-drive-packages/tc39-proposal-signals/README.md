@@ -16,7 +16,7 @@
 [![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
 )
 
-<h3 align="center">Signals Integration and Component API for using <em>Warp</em><strong>Drive</strong> with ⚡️ <em style="color: orange">Vue</em></h3>
+<h3 align="center">Signals Integration for using <em>Warp</em><strong>Drive</strong> with 🚦 <strong style="color: orange">TC39 Proposal Signals</strong></h3>
 
 ***Warp*Drive** makes it easy to build scalable, fast, feature
 rich applications &mdash; letting you ship better experiences more quickly without re-architecting your app or API. ***Warp*Drive** is:
@@ -32,7 +32,7 @@ rich applications &mdash; letting you ship better experiences more quickly witho
 <br>
 <br>
 
-*Get Started* → [Guides](https://warp-drive.io/guides/)
+**Get Started* → [Guides](https://warp-drive.io/guides/)
 
 <br>
 
@@ -40,40 +40,7 @@ rich applications &mdash; letting you ship better experiences more quickly witho
 
 <br>
 
-# @warp-drive/vue
-
----
-
-```cli
-pnpm install -E @warp-drive/vue@latest
-```
-
-**Tagged Releases**
-
-- ![NPM Canary Version](https://img.shields.io/npm/v/%40warp-drive%2Fvue/canary?label=@canary&color=FFBF00)
-- ![NPM Beta Version](https://img.shields.io/npm/v/%40warp-drive%2Fvue/bet?label=@beta&color=ff00ff)
-- ![NPM Stable Version](https://img.shields.io/npm/v/%40warp-drive%2Fvue/latest?label=@latest&color=90EE90)
-- ![NPM LTS Version](https://img.shields.io/npm/v/%40warp-drive%2Fvue/lts?label=@lts&color=0096FF)
-- ![NPM LTS-4-12 Version](https://img.shields.io/npm/v/%40warp-drive%2Fvue/lts-4-12?label=@lts-4-12&color=bbbbbb)
-
-## About
-
-This library provides reactive utilities that enable you to build robust performant apps with elegant control flow.
-
-```ts
-<script>
-  import { Request } from '@warp-drive/vue';
-  import { store } from './app/store';
-</script>
-
-<Request>
-  
-</Request>
-
-
-```
-
-
+# @warp-drive/tc39-proposal-signals
 
 ---
 

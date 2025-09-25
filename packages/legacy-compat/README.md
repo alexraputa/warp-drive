@@ -1,29 +1,32 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/ember-data-logo-dark.svg#gh-dark-mode-only"
-    alt="EmberData LegacyCompat"
-    width="240px"
-    title="EmberData LegacyCompat"
-    />
-  <img
-    class="project-logo"
-    src="./logos/ember-data-logo-light.svg#gh-light-mode-only"
-    alt="EmberData LegacyCompat"
-    width="240px"
-    title="EmberData LegacyCompat"
+    src="./logos/logo-yellow-slab.svg"
+    alt="WarpDrive"
+    width="120px"
+    title="WarpDrive"
     />
 </p>
 
-<p align="center">Utils For Compatibility with Legacy EmberData</p>
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
 
-## Installation
+<p align="center">
+  <br>
+  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
+  <br>
+  universal, typed, reactive, and ready to scale.
+  <br/><br/>
+</p>
 
-Install using your javascript package manager of choice. For instance with [pnpm](https://pnpm.io/)
+---
 
-```sh
-pnpm add @ember-data/legacy-compat
-```
+# @ember-data/legacy-compat
 
 **Tagged Releases**
 

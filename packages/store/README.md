@@ -1,19 +1,32 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/ember-data-logo-dark.svg#gh-dark-mode-only"
-    alt="EmberData Store"
-    width="240px"
-    title="EmberData Store"
-    />
-  <img
-    class="project-logo"
-    src="./logos/ember-data-logo-light.svg#gh-light-mode-only"
-    alt="EmberData Store"
-    width="240px"
-    title="EmberData Store"
+    src="./logos/logo-yellow-slab.svg"
+    alt="WarpDrive"
+    width="120px"
+    title="WarpDrive"
     />
 </p>
+
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
+
+<p align="center">
+  <br>
+  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
+  <br>
+  universal, typed, reactive, and ready to scale.
+  <br/><br/>
+</p>
+
+---
+
+# @ember-data/store
 
 <p align="center">⚡️ The lightweight reactive data library for JavaScript applications</p>
 

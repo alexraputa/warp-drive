@@ -1,30 +1,27 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/warp-drive-logo-dark.svg#gh-light-mode-only"
+    src="./logos/logo-yellow-slab.svg"
     alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
-  <img
-    class="project-logo"
-    src="./logos/warp-drive-logo-gold.svg#gh-dark-mode-only"
-    alt="WarpDrive"
-    width="200px"
-    title="WarpDrive" />
+    width="120px"
+    title="WarpDrive"
+    />
 </p>
 
-<h3 align="center">Experiments that may or may not make it into the project core</h3>
-<p align="center">Ideal for Having Fun</p>
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
+
+# @warp-drive/experiments
 
 > ⚠️ ***Experimental*** ⚠️
 
-## Installation
+<p align="center">Experiments that may or may not make it into the project core, ideal for having fun</p>
 
-Install using your javascript package manager of choice. For instance with [pnpm](https://pnpm.io/)
-
-```sh
-pnpm add @warp-drive/experiments
-```
 
 ## Current Experiments
 

@@ -1,31 +1,42 @@
 <p align="center">
   <img
     class="project-logo"
-    src="./logos/ember-data-logo-dark.svg#gh-dark-mode-only"
-    alt="EmberData JSON:API Cache"
-    width="240px"
-    title="EmberData JSON:API Cache"
-    />
-  <img
-    class="project-logo"
-    src="./logos/ember-data-logo-light.svg#gh-light-mode-only"
-    alt="EmberData JSON:API Cache"
-    width="240px"
-    title="EmberData JSON:API Cache"
+    src="./logos/logo-yellow-slab.svg"
+    alt="WarpDrive"
+    width="120px"
+    title="WarpDrive"
     />
 </p>
 
+![NPM Stable Version](https://img.shields.io/npm/v/ember-data/latest?label=version&style=flat&color=fdb155)
+![NPM Downloads](https://img.shields.io/npm/dm/ember-data.svg?style=flat&color=fdb155)
+![License](https://img.shields.io/github/license/warp-drive-data/warp-drive.svg?style=flat&color=fdb155)
+[![EmberJS Discord Community Server](https://img.shields.io/badge/EmberJS-grey?logo=discord&logoColor=fdb155)](https://discord.gg/zT3asNS
+)
+[![WarpDrive Discord Server](https://img.shields.io/badge/WarpDrive-grey?logo=discord&logoColor=fdb155)](https://discord.gg/PHBbnWJx5S
+)
+
+<p align="center">
+  <br>
+  <a href="https://warp-drive.io">WarpDrive</a> is the lightweight data library for web apps &mdash;
+  <br>
+  universal, typed, reactive, and ready to scale.
+  <br/><br/>
+</p>
+
+---
+
+# @ember-data/json-api
+
 <p align="center">Elegantly composable. Made for <strong>JSON:</strong>API</p>
 
-This package provides an in-memory document and resource [Cache](https://github.com/warp-drive-data/warp-drive/blob/main/ember-data-types/cache/cache.ts) and associated utilities for use with [*Ember***Data**](https://github.com/warp-drive-data/warp-drive/) and [JSON:API](https://jsonapi.org/).
+This package provides an in-memory document and resource [Cache](https://warp-drive.io/api/@warp-drive/core/types/cache/interfaces/Cache) and associated utilities for use with [***Warp*Drive**](https://warp-rive.io) and [{json:api}](https://jsonapi.org/).
 
-## Installation
+This package is intended for use with the older EmberData package setup, for use with more recent versions of WarpDrive see [@warp-drive/json-api](https://www.npmjs.com/package/@warp-drive/json-api) for the Cache and  [@warp-drive/utilities](https://www.npmjs.com/package/@warp-drive/utilities) for the builders.
 
-Install using your javascript package manager of choice. For instance with [pnpm](https://pnpm.io/)
+`{json:api}` excels at simplifying common complex problems around cache consistency and information density, especially in regards to relational or polymorphic data.
 
-```sh
-pnpm add @ember-data/json-api
-```
+Because most API responses can be quickly transformed into the `{json:api}` format without losing any information, ***Warp*Drive** recommends that most-if-not-all apps should use this Cache implementation.
 
 **Tagged Releases**
 
@@ -34,113 +45,3 @@ pnpm add @ember-data/json-api
 - ![NPM Stable Version](https://img.shields.io/npm/v/%40ember-data/json-api/latest?label=%40latest&color=90EE90)
 - ![NPM LTS Version](https://img.shields.io/npm/v/%40ember-data/json-api/lts?label=%40lts&color=0096FF)
 - ![NPM LTS 4.12 Version](https://img.shields.io/npm/v/%40ember-data/json-api/lts-4-12?label=%40lts-4-12&color=bbbbbb)
-
-
-## Getting Started
-
-If this package is how you are first learning about EmberData, we recommend starting with learning about the [Store](https://github.com/warp-drive-data/warp-drive/blob/main/packages/store/README.md) and [Requests](https://github.com/warp-drive-data/warp-drive/blob/main/packages/request/README.md)
-
-## 🚀 Setup
-
-> **Note**
-> When using [ember-data](https://github.com/warp-drive-data/warp-drive/blob/main/packages/-ember-data) the below
-> configuration is handled for you automatically.
-
-```ts
-import Store from '@ember-data/store';
-import Cache from '@ember-data/json-api';
-
-export default class extends Store {
-  createCache(wrapper) {
-    return new Cache(wrapper);
-  }
-}
-```
-
-## Usage
-
-Usually you will directly interact with the cache only if implementing a presentation class. Below we
-give an example of a read-only record (mutations never written back to the cache). More typically cache
-interactions are something that the `Store` coordinates as part of the `request/response` lifecycle.
-
-```ts
-import Store, { recordIdentifierFor } from '@ember-data/store';
-import Cache from '@ember-data/json-api';
-import { TrackedObject } from 'tracked-built-ins';
-
-class extends Store {
-  createCache(wrapper) {
-    return new Cache(wrapper);
-  }
-
-  instantiateRecord(identifier) {
-    const { cache, notifications } = this;
-    const { type, id } = identifier;
-
-    // create a TrackedObject with our attributes, id and type
-    const attrs = cache.peek(identifier).attributes;
-    const data = Object.assign({}, attrs, { type, id });
-    const record = new TrackedObject(data);
-
-    // update the TrackedObject whenever attributes change
-    const token = notifications.subscribe(identifier, (_, change) => {
-      if (change === 'attributes') {
-        Object.assign(record, cache.peek(identifier).attributes);
-      }
-    });
-
-    // setup the ability to teardown the subscription when the
-    // record is no longer needed
-    record.destroy = () => {
-      this.notifications.unsubscribe(token);
-    };
-
-    return record;
-  }
-
-  teardownRecord(record: FakeRecord) {
-    record.destroy();
-  }
-}
-```
-
-For the full list of APIs available read the code documentation for [*Ember***Data** Cache](https://github.com/warp-drive-data/warp-drive/blob/main/ember-data-types/cache/cache.ts)
-
-## Request Builders
-
-Request builders are functions that produce [Fetch Options](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API). They take a few contextual inputs about the request you want to make, abstracting away the gnarlier details.
-
-For instance, to fetch a resource from your API
-
-```ts
-import { findRecord } from '@ember-data/json-api/request';
-
-const options = findRecord('ember-developer', '1', { include: ['pets', 'friends'] });
-
-/*
-  => {
-    url: 'https://api.example.com/v1/ember-developers/1?include=friends,pets',
-    method: 'GET',
-    headers: <Headers>,
-      // => 'Accept': 'application/vnd.api+json'
-      // => 'Content-Type': 'application/vnd.api+json'
-    op: 'findRecord';
-    records: [{ type: 'ember-developer', id: '1' }]
-  }
-*/
-```
-
-Request builder output may be used with either `requestManager.request` or `store.request`.
-
-URLs are stable. The same query will produce the same URL every time, even if the order of keys in
-the query or values in an array changes.
-
-URLs follow the most common JSON:API format (dasherized pluralized resource types).
-
-### Available Builders
-
-- [createRecord]()
-- [deleteRecord]()
-- [findRecord]()
-- [query]()
-- [updateRecord]()
