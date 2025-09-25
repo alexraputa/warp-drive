@@ -395,7 +395,7 @@ export default useLegacyStore({
   - [withRestoredDeprecatedModelRequestBehaviors](/api/@warp-drive/legacy/model/migration-support/functions/withRestoredDeprecatedModelRequestBehaviors)
   - [EmberObject Extension](/api/@warp-drive/legacy/compat/extensions/variables/EmberObjectExtension)
   - [EmberObject Extension for Arrays](/api/@warp-drive/legacy/compat/extensions/variables/EmberObjectArrayExtension)
-  - [EmberArrayLike Extension](/@warp-drive/legacy/compat/extensions/variables/EmberArrayLikeExtension)
+  - [EmberArrayLike Extension](/api/@warp-drive/legacy/compat/extensions/variables/EmberArrayLikeExtension)
 - [Legacy Store Methods](/api/@warp-drive/legacy/store/functions/restoreDeprecatedStoreBehaviors)
 
 ### Step 5 - Convert + Profit
