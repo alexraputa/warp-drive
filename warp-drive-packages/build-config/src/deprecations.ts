@@ -515,9 +515,10 @@ export const DEPRECATE_TRACKING_PACKAGE: boolean = true;
 /**
  * <Badge type="warning" text="warp-drive:deprecate-legacy-request-methods" />
  *
- * Deprecates all the non request-manager mechanisms of making requests.
+ * Deprecates all the methods that lead to making requests that don't directly
+ * use `store.request()` or `manager.request()`.
  *
- * FIXME link the big guide
+ * A cheatsheat for moving from various methods to using requests is [available here](https://request-service-cheat-sheet.netlify.app/)
  *
  * @since 5.6
  * @until 6.0
