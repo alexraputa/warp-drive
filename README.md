@@ -3,7 +3,7 @@
     class="project-logo"
     src="./logos/synced/logo-yellow-slab.svg"
     alt="WarpDrive"
-    width="120px"
+    width="180px"
     title="WarpDrive"
     />
 </p>
