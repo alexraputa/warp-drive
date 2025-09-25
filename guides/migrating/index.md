@@ -10,9 +10,19 @@ categoryOrder: 4
 
 This guide will *likely* work for apps on 3.28 that have resolved EmberData deprecations from the 3.x series.
 
+This guide is primarily intended for apps that got ***"stuck"*** on either 4.6 (due to ModelFragments) or 4.12 (typically due to the ArrayLike deprecation)
+
+Note - it is not actually a requirement of 5.x to replace Models with Schemas (nor to replace adapters/serializers with requests). These things are deprecated *in* 5.x, but they still work.
+
+The reason to take the approach outlined in this guide is
+because we have used capabilities provided by the [@warp-drive/legacy package](/api/@warp-drive/legacy/) and by [LegacyMode](/guides/the-manual/misc/reactivity/legacy/overview) schemas together with [Extensions](/api/@warp-drive/core/reactive/interfaces/CAUTION_MEGA_DANGER_ZONE_Extension) to mimic much of the removed API surface to allow apps to bridge the gap to 5.x more easily. 
+
 ## Pre-Migration (update to Native Types)
 
-If you use Typescript, before migrating, you should update your types to WarpDrive's native types.
+If you use Typescript, before migrating, you should update your types to use the native types provided by both `ember-source` and WarpDrive.
+
+You can do this even if you are on an older version (pre-5.x) that
+didn't ship it's own types by using the "types" packages we specially publish for this purpose.
 
 ### Step 1 - delete all the ember/ember-data DT type packages
 
@@ -48,7 +58,26 @@ If you use Typescript, before migrating, you should update your types to WarpDri
 }
 ```
 
-### Step 2 - install the `@ember-data-types/*` `@warp-drive-types/*` and  `ember-data-types` packages as necessary using the latest versions.
+### Step 2 - install the official packages using the latest versions.
+
+Each package that we publish has a corresponding types-only package that you can use to gain access to official types while still using an older version of the library that doesn't have its own types yet.
+
+<div style="width: fit-content; margin: 0 auto;">
+
+| Package | Types Package |
+| ------- | ------------- |
+| `ember-data` | `ember-data-types` |
+| `@ember-data/*` | `@ember-data-types/*` |
+| `@warp-drive/*` | `@warp-drive-types/*` |
+
+</div>
+
+:::tip 💡 Why are there non-types packages below?
+Starting in 5.7, due to package unification these
+types also require the installation of the new
+"package unification" packages since the actual source code (and types)
+originates from there.
+:::
 
 ::: code-group
 
@@ -188,9 +217,40 @@ export default class User extends Model {
 ### Step 5 - replace registry usage with branded model usages
 
 ```ts
-store.findRecord('user', '1');
-store.findRecord<User>('user', '1');
+// find
+store.findRecord('user', '1'); // [!code --]
+store.findRecord<User>('user', '1');  // [!code ++]
+
+store.findAll('user'); // [!code --]
+store.findAll<User>('user');  // [!code ++]
+
+store.query('user', {}); // [!code --]
+store.query<User>('user');  // [!code ++]
+
+store.queryRecord('user', {}); // [!code --]
+store.queryRecord<User>('user');  // [!code ++]
+
+// peek
+store.peekRecord('user', '1'); // [!code --]
+store.peekRecord<User>('user', '1');  // [!code ++]
+
+// push
+const user = store.push({ // [!code --]
+const user = store.push<User>({ // [!code ++]
+  data: {
+    type: 'user',
+    id: '1',
+    attributes: { name: 'Chris' }
+  }
+}) as User;  // [!code --]
+});  // [!code ++]
 ```
+
+**Additional Resources**
+
+- [Typing Requests](/guides/the-manual/requests/typing-requests)
+- [Typing Models](/guides/the-manual/misc/typescript/typing-models)
+- [Why Brands](/guides/the-manual/misc/typescript/why-brands)
 
 ### Step 6 - fix other type issues that arise
 
@@ -283,6 +343,8 @@ import '@warp-drive-mirror/ember/install';
 
 ### Step 4 - Configure the Store
 
+We use `useLegacyStore` to create a store service preconfigured with maximal support for legacy APIs.
+
 :::tabs
 
 == Coming from 4.12
@@ -294,7 +356,6 @@ import { JSONAPICache } from '@warp-drive/json-api';
 export default useLegacyStore({
   linksMode: false,
   legacyRequests: true,
-  modelFragments: true,
   cache: JSONAPICache,
   schemas: [
      // -- your schemas here
@@ -320,6 +381,22 @@ export default useLegacyStore({
 ```
 
 :::
+
+**Additional Reading** (for when you have questions later)
+
+- [useLegacyStore](/api/@warp-drive/legacy/functions/useLegacyStore)
+  - [LinksMode setting](/api/@warp-drive/legacy/interfaces/LegacyModelAndNetworkAndRequestStoreSetupOptions#linksmode)
+  - [legacyRequests setting](/api/@warp-drive/legacy/interfaces/LegacyModelAndNetworkAndRequestStoreSetupOptions#legacyrequests)
+  - [modelFragments setting](/api/@warp-drive/legacy/interfaces/LegacyModelAndNetworkAndRequestStoreSetupOptions#modelfragments)
+  - About the [LinksMode feature](/guides/the-manual/misc/links-mode)
+- [Model Migration Support](/api/@warp-drive/legacy/model/migration-support/)
+  - the legacy store uses the [DelegatingSchemaService](/api/@warp-drive/legacy/model/migration-support/classes/DelegatingSchemaService)
+  - [withDefaults](/api/@warp-drive/legacy/model/migration-support/functions/withDefaults)
+  - [withRestoredDeprecatedModelRequestBehaviors](/api/@warp-drive/legacy/model/migration-support/functions/withRestoredDeprecatedModelRequestBehaviors)
+  - [EmberObject Extension](/api/@warp-drive/legacy/compat/extensions/variables/EmberObjectExtension)
+  - [EmberObject Extension for Arrays](/api/@warp-drive/legacy/compat/extensions/variables/EmberObjectArrayExtension)
+  - [EmberArrayLike Extension](/@warp-drive/legacy/compat/extensions/variables/EmberArrayLikeExtension)
+- [Legacy Store Methods](/api/@warp-drive/legacy/store/functions/restoreDeprecatedStoreBehaviors)
 
 ### Step 5 - Convert + Profit
 

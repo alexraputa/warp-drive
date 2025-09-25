@@ -1,13 +1,13 @@
 /**
- * This module provides support for migrating away from @ember-data/model
- * to @warp-drive/schema-record.
+ * This module provides support for migrating away from @warp-drive/legacy/model
+ * to ReactiveResource from @warp-drive/core/reactive.
  *
  * It includes:
  *
  * - A `withDefaults` function to assist in creating a schema in LegacyMode
  * - A `registerDerivations` function to register the derivations necessary to support LegacyMode
  * - A `DelegatingSchemaService` that can be used to provide a schema service that works with both
- *   @ember-data/model and @warp-drive/schema-record simultaneously for migration purposes.
+ *   @warp-drive/legacy/model and @warp-drive/core/reactive simultaneously for migration purposes.
  * - A `WithLegacy` type util that can be used to create a type that includes the legacy
  *   properties and methods of a record.
  *
@@ -151,14 +151,14 @@ const LegacyFields = [
 
 /**
  * A Type utility that enables quickly adding type information for the fields
- * defined by `import { withDefaults } from '@ember-data/model/migration-support'`.
+ * defined by `import { withDefaults } from '@warp-drive/legacy/model/migration-support'`.
  *
  * Example:
  *
  * ```ts
- * import { withDefaults, WithLegacy } from '@ember-data/model/migration-support';
- * import { Type } from '@warp-drive/core-types/symbols';
- * import type { HasMany } from '@ember-data/model';
+ * import { withDefaults, WithLegacy } from '@warp-drive/legacy/model/migration-support';
+ * import { Type } from '@warp-drive/core/types/symbols';
+ * import type { HasMany } from '@@warp-drive/legacy/model';
  *
  * export const UserSchema = withDefaults({
  *   type: 'user',
@@ -272,14 +272,14 @@ legacySupport[Type] = '@legacy';
 /**
  * A function which adds the necessary fields to a schema and marks it as
  * being in LegacyMode. This is used to support the legacy features of
- * @ember-data/model while migrating to WarpDrive.
+ * @warp-drive/legacy/model while migrating to WarpDrive.
  *
  * Example:
  *
  * ```ts
- * import { withDefaults, WithLegacy } from '@ember-data/model/migration-support';
- * import { Type } from '@warp-drive/core-types/symbols';
- * import type { HasMany } from '@ember-data/model';
+ * import { withDefaults, WithLegacy } from '@warp-drive/legacy/model/migration-support';
+ * import { Type } from '@warp-drive/core/types/symbols';
+ * import type { HasMany } from '@warp-drive/legacy/model';
  *
  * export const UserSchema = withDefaults({
  *   type: 'user',
@@ -314,13 +314,13 @@ legacySupport[Type] = '@legacy';
  * it requires with the schema service.
  *
  * ```ts
- * import { registerDerivations } from '@ember-data/model/migration-support';
+ * import { registerDerivations } from '@warp-drive/legacy/model/migration-support';
  *
  * registerDerivations(schema);
  * ```
  *
- * @param {LegacyResourceSchema} schema The schema to add legacy support to.
- * @return {LegacyResourceSchema} The schema with legacy support added.
+ * @param schema The schema to add legacy support to.
+ * @return The schema with legacy support added.
  * @public
  */
 export function withDefaults(schema: WithPartial<LegacyResourceSchema, 'legacy' | 'identity'>): LegacyResourceSchema {
@@ -357,6 +357,25 @@ export function withDefaults(schema: WithPartial<LegacyResourceSchema, 'legacy' 
   return schema as LegacyResourceSchema;
 }
 
+/**
+ * Adds the necessasary fields to the schema for supporting
+ * the deprecated request methods on LegacyMode schemas.
+ *
+ * Use this instead of `withDefaults` to add the fields
+ * and behaviors necessary to support Model-Like capabilities.
+ *
+ * ```ts
+ * import { withRestoredDeprecatedModelRequestBehaviors } from '@warp-drive/legacy/model/migration-support';
+ *
+ * export const UserSchema = withRestoredDeprecatedModelRequestBehaviors({
+ *   type: 'user',
+ *   fields: [
+ *     { name: 'firstName', kind: 'attribute' },
+ *     { name: 'lastName', kind: 'attribute' },
+ *   ]
+ * });
+ * ```
+ */
 export function withRestoredDeprecatedModelRequestBehaviors(
   schema: WithPartial<LegacyResourceSchema, 'legacy' | 'identity'>
 ): LegacyResourceSchema {
@@ -394,13 +413,10 @@ export function withRestoredDeprecatedModelRequestBehaviors(
 
 /**
  * A function which registers the necessary derivations to support
- * the LegacyMode features of @ember-data/model while migrating to WarpDrive.
+ * the LegacyMode features of @warp-drive/legacy/model while migrating to WarpDrive.
  *
- * This must be called in order to use the fields added by:
- *
- * ```ts
- * import { withDefaults } from '@ember-data/model/migration-support';
- * ```
+ * This must be called in order to use the fields added by {@link withDefaults} or
+ * {@link withRestoredDeprecatedModelRequestBehaviors}.
  *
  * @param schema The schema service to register the derivations with.
  * @public
@@ -509,8 +525,8 @@ export function registerDerivations(schema: SchemaService): void {
  * provide their own schema information to the application.
  *
  * ```ts
- * import { DelegatingSchemaService } from '@ember-data/model/migration-support';
- * import { SchemaService } from '@warp-drive/schema-record';
+ * import { DelegatingSchemaService } from '@warp-drive/legacy/model/migration-support';
+ * import { SchemaService } from '@warp-drive/core/reactive';
  *
  * class AppStore extends Store {
  *   createSchemaService() {

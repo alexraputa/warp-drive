@@ -3,7 +3,6 @@
   and more consistent use of IDs and types.
 
   @module
-  @deprecated
 */
 import { assert } from '@warp-drive/core/build-config/macros';
 import { dasherize, singularize } from '@warp-drive/utilities/string';
