@@ -1,6 +1,6 @@
 ---
 title: Writing Documentation
-order: 5
+order: 6
 ---
 
 # Writing Documentation

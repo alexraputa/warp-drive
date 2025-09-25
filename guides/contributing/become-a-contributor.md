@@ -13,6 +13,7 @@ In addition to holding discussions on individual [issues](https://github.com/war
 - [Reporting Issues](./issues.md)
 - [Setting Up The Project](./setting-up-the-project.md)
 - [Project Architecture](./project-architecture.md)
+- [Writing Guides](./writing-guides.md)
 - [Writing API Docs](./writing-api-docs.md)
 - [Key Concepts](./key-concepts.md)
 - [RFC Process](./rfc-process.md)
