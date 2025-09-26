@@ -1,14 +1,16 @@
-import { module, test } from 'qunit';
-
-import { setupRenderingTest } from 'ember-qunit';
-
-import type Store from '@ember-data/store';
-import { recordIdentifierFor } from '@ember-data/store';
+import { recordIdentifierFor, useRecommendedStore } from '@warp-drive/core';
 import type { ReactiveResource } from '@warp-drive/core/reactive';
-import type { ObjectValue } from '@warp-drive/core-types/json/raw';
-import type { ObjectSchema } from '@warp-drive/core-types/schema/fields';
-import { Type } from '@warp-drive/core-types/symbols';
-import { Checkout, registerDerivations, withDefaults } from '@warp-drive/schema-record';
+import { checkout, withDefaults } from '@warp-drive/core/reactive';
+import type { SchemaService } from '@warp-drive/core/types';
+import type { ObjectValue } from '@warp-drive/core/types/json/raw';
+import type { ObjectSchema } from '@warp-drive/core/types/schema/fields';
+import { Type } from '@warp-drive/core/types/symbols';
+import { module, setupRenderingTest, test } from '@warp-drive/diagnostic/ember';
+import { JSONAPICache } from '@warp-drive/json-api';
+
+const Store = useRecommendedStore({
+  cache: JSONAPICache,
+});
 
 interface City {
   name: string;
@@ -146,20 +148,18 @@ const UserSchema = withDefaults({
   ],
 });
 
-function registerUserSchemas(store: Store) {
-  store.schema.registerHashFn(hashName);
-  store.schema.registerHashFn(hashAddress);
-  store.schema.registerResources([CitySchema, ParkSchema, AddressSchema, WaypointSchema, TrailSchema, UserSchema]);
+function registerUserSchemas(schema: SchemaService) {
+  schema.registerHashFn(hashName);
+  schema.registerHashFn(hashAddress);
+  schema.registerResources([CitySchema, ParkSchema, AddressSchema, WaypointSchema, TrailSchema, UserSchema]);
 }
 
 module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
   setupRenderingTest(hooks);
 
   test('We can perform and rollback deep mutations on an embedded path at the leaf', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
-    const { schema } = store;
-    registerDerivations(schema);
-    registerUserSchemas(store);
+    const store = new Store();
+    registerUserSchemas(store.schema);
 
     const readable = store.push({
       data: {
@@ -176,12 +176,12 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
         },
       },
     }) as User & ReactiveResource;
-    const user = await readable[Checkout]<User>();
+    const user = await checkout<User>(readable);
     const identifier = recordIdentifierFor(user);
 
-    assert.strictEqual(user.id, '1', 'id is accessible');
-    assert.strictEqual(user.$type, 'user', '$type is accessible');
-    assert.propEqual(
+    assert.equal(user.id, '1', 'id is accessible');
+    assert.equal(user.$type, 'user', '$type is accessible');
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -197,8 +197,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate a simple embedded path field at the leaf
     user.address.city.nickname = 'Oaktown';
-    assert.strictEqual(UserCity, user.address.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(UserCity, user.address.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -208,7 +208,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -220,8 +220,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     );
 
     store.cache.rollbackAttrs(identifier);
-    assert.strictEqual(UserCity, user.address.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(UserCity, user.address.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -231,7 +231,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -244,8 +244,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate an embedded path at the leaf, changing its identity
     user.address.city.name = 'Oakland';
-    assert.notStrictEqual(UserCity, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UserCity, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -255,7 +255,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -268,9 +268,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const UpdatedCityInstance = user.address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(UserCity, user.address.city, 'the city should change identity');
-    assert.notStrictEqual(UpdatedCityInstance, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UserCity, user.address.city, 'the city should change identity');
+    assert.notEqual(UpdatedCityInstance, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -280,7 +280,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -294,8 +294,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate an embedded path entirely
     user.address.city = { name: 'Oaktown', nickname: 'The Town' };
-    assert.notStrictEqual(UpdatedCityInstance2, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UpdatedCityInstance2, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -305,7 +305,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -318,9 +318,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const UpdatedCityInstance3 = user.address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(UpdatedCityInstance2, user.address.city, 'the city should change identity');
-    assert.notStrictEqual(UpdatedCityInstance3, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UpdatedCityInstance2, user.address.city, 'the city should change identity');
+    assert.notEqual(UpdatedCityInstance3, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -330,7 +330,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -343,10 +343,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
   });
 
   test('We can perform and rollback deep mutations on an embedded path in the middle of the segment', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
+    const store = new Store();
     const { schema } = store;
-    registerDerivations(schema);
-    registerUserSchemas(store);
+    registerUserSchemas(schema);
 
     const readable = store.push({
       data: {
@@ -371,12 +370,12 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
         },
       },
     }) as User & ReactiveResource;
-    const user = await readable[Checkout]<User>();
+    const user = await checkout<User>(readable);
     const identifier = recordIdentifierFor(user);
 
-    assert.strictEqual(user.id, '1', 'id is accessible');
-    assert.strictEqual(user.$type, 'user', '$type is accessible');
-    assert.propEqual(
+    assert.equal(user.id, '1', 'id is accessible');
+    assert.equal(user.$type, 'user', '$type is accessible');
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'French',
@@ -399,8 +398,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate a simple embedded path field on the mid segment
     user.favoriteTrail.park!.address.state = 'California';
-    assert.strictEqual(City1, user.favoriteTrail.park?.address.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(City1, user.favoriteTrail.park?.address.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'French',
@@ -418,7 +417,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'French',
@@ -438,8 +437,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     );
 
     store.cache.rollbackAttrs(identifier);
-    assert.strictEqual(City1, user.favoriteTrail.park?.address.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(City1, user.favoriteTrail.park?.address.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'French',
@@ -457,7 +456,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'French',
@@ -478,8 +477,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate an embedded path at the middle segment, changing its identity
     user.favoriteTrail.park!.address.street = '12 Evergreen';
-    assert.notStrictEqual(City1, user.favoriteTrail.park?.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City1, user.favoriteTrail.park?.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'French',
@@ -497,7 +496,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'French',
@@ -518,9 +517,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const City2 = user.favoriteTrail.park!.address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(City1, user.favoriteTrail.park?.address.city, 'the city should change identity');
-    assert.notStrictEqual(City2, user.favoriteTrail.park?.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City1, user.favoriteTrail.park?.address.city, 'the city should change identity');
+    assert.notEqual(City2, user.favoriteTrail.park?.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'French',
@@ -538,7 +537,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'French',
@@ -565,8 +564,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       state: 'CA',
       zip: '94611',
     };
-    assert.notStrictEqual(City3, user.favoriteTrail.park?.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City3, user.favoriteTrail.park?.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'French',
@@ -584,7 +583,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'French',
@@ -605,9 +604,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const City4 = user.favoriteTrail.park!.address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(City3, user.favoriteTrail.park?.address.city, 'the city should change identity');
-    assert.notStrictEqual(City4, user.favoriteTrail.park?.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City3, user.favoriteTrail.park?.address.city, 'the city should change identity');
+    assert.notEqual(City4, user.favoriteTrail.park?.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'French',
@@ -625,7 +624,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'French',
@@ -646,10 +645,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
   });
 
   test('We can perform and rollback deep mutations on an embedded path at the root', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
+    const store = new Store();
     const { schema } = store;
-    registerDerivations(schema);
-    registerUserSchemas(store);
+    registerUserSchemas(schema);
 
     const readable = store.push({
       data: {
@@ -666,12 +664,12 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
         },
       },
     }) as User & ReactiveResource;
-    const user = await readable[Checkout]<User>();
+    const user = await checkout<User>(readable);
     const identifier = recordIdentifierFor(user);
 
-    assert.strictEqual(user.id, '1', 'id is accessible');
-    assert.strictEqual(user.$type, 'user', '$type is accessible');
-    assert.propEqual(
+    assert.equal(user.id, '1', 'id is accessible');
+    assert.equal(user.$type, 'user', '$type is accessible');
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -687,8 +685,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate a simple embedded path field at the root
     user.address.state = 'CA';
-    assert.strictEqual(UserCity, user.address.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(UserCity, user.address.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -698,7 +696,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -710,8 +708,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     );
 
     store.cache.rollbackAttrs(identifier);
-    assert.strictEqual(UserCity, user.address.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(UserCity, user.address.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -721,7 +719,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -734,8 +732,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate an embedded path at the root, changing its identity
     user.address.street = '47 Arrowhead';
-    assert.notStrictEqual(UserCity, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UserCity, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -745,7 +743,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '47 Arrowhead',
@@ -758,9 +756,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const UpdatedCityInstance = user.address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(UserCity, user.address.city, 'the city should change identity');
-    assert.notStrictEqual(UpdatedCityInstance, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UserCity, user.address.city, 'the city should change identity');
+    assert.notEqual(UpdatedCityInstance, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -770,7 +768,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -789,8 +787,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       state: 'CA',
       zip: '94610',
     };
-    assert.notStrictEqual(UpdatedCityInstance2, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UpdatedCityInstance2, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -800,7 +798,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '47 Arrowhead',
@@ -813,8 +811,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const UpdatedCityInstance3 = user.address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(UpdatedCityInstance3, user.address.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(UpdatedCityInstance3, user.address.city, 'the city should change identity');
+    assert.satisfies(
       readable.address,
       {
         street: '123 Main St',
@@ -824,7 +822,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable address is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.address,
       {
         street: '123 Main St',
@@ -837,10 +835,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
   });
 
   test('We can perform and rollback deep mutations on an embedded path with an array index in it', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
+    const store = new Store();
     const { schema } = store;
-    registerDerivations(schema);
-    registerUserSchemas(store);
+    registerUserSchemas(schema);
 
     const readable = store.push({
       data: {
@@ -872,12 +869,12 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
         },
       },
     }) as User & ReactiveResource;
-    const user = await readable[Checkout]<User>();
+    const user = await checkout<User>(readable);
     const identifier = recordIdentifierFor(user);
 
-    assert.strictEqual(user.id, '1', 'id is accessible');
-    assert.strictEqual(user.$type, 'user', '$type is accessible');
-    assert.propEqual(
+    assert.equal(user.id, '1', 'id is accessible');
+    assert.equal(user.$type, 'user', '$type is accessible');
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'Side-O',
@@ -907,8 +904,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate a simple embedded path field on the mid segment
     user.favoriteTrail.waypoints[1].address!.state = 'California';
-    assert.strictEqual(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'Side-O',
@@ -933,7 +930,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'Side-O',
@@ -960,8 +957,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     );
 
     store.cache.rollbackAttrs(identifier);
-    assert.strictEqual(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'Side-O',
@@ -986,7 +983,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'Side-O',
@@ -1014,8 +1011,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate an embedded path at the middle segment, changing its identity
     user.favoriteTrail.waypoints[1].address!.street = '12 Evergreen';
-    assert.notStrictEqual(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'Side-O',
@@ -1040,7 +1037,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'Side-O',
@@ -1068,9 +1065,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const City2 = user.favoriteTrail.waypoints[1].address!.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
-    assert.notStrictEqual(City2, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City1, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
+    assert.notEqual(City2, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'Side-O',
@@ -1095,7 +1092,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'Side-O',
@@ -1129,8 +1126,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       state: 'CA',
       zip: '94611',
     };
-    assert.notStrictEqual(City3, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City3, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'Side-O',
@@ -1155,7 +1152,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'Side-O',
@@ -1183,9 +1180,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const City4 = user.favoriteTrail.waypoints[1].address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(City3, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
-    assert.notStrictEqual(City4, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City3, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
+    assert.notEqual(City4, user.favoriteTrail.waypoints[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteTrail,
       {
         name: 'Side-O',
@@ -1210,7 +1207,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       },
       'the readable favoriteTrail is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteTrail,
       {
         name: 'Side-O',
@@ -1238,10 +1235,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
   });
 
   test('We can perform and rollback deep mutations on an embedded path with an array index at its root', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
+    const store = new Store();
     const { schema } = store;
-    registerDerivations(schema);
-    registerUserSchemas(store);
+    registerUserSchemas(schema);
 
     const readable = store.push({
       data: {
@@ -1274,12 +1270,12 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
         },
       },
     }) as User & ReactiveResource;
-    const user = await readable[Checkout]<User>();
+    const user = await checkout<User>(readable);
     const identifier = recordIdentifierFor(user);
 
-    assert.strictEqual(user.id, '1', 'id is accessible');
-    assert.strictEqual(user.$type, 'user', '$type is accessible');
-    assert.propEqual(
+    assert.equal(user.id, '1', 'id is accessible');
+    assert.equal(user.$type, 'user', '$type is accessible');
+    assert.satisfies(
       user.favoriteParks,
       [
         {
@@ -1310,8 +1306,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate a simple embedded path field on the mid segment
     user.favoriteParks[1].address.state = 'California';
-    assert.strictEqual(City1, user.favoriteParks[1]?.address?.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(City1, user.favoriteParks[1]?.address?.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.favoriteParks,
       [
         {
@@ -1337,7 +1333,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       ],
       'the readable favoriteParks is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteParks,
       [
         {
@@ -1365,8 +1361,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     );
 
     store.cache.rollbackAttrs(identifier);
-    assert.strictEqual(City1, user.favoriteParks[1]?.address?.city, 'the city instance is still the same');
-    assert.propEqual(
+    assert.equal(City1, user.favoriteParks[1]?.address?.city, 'the city instance is still the same');
+    assert.satisfies(
       readable.favoriteParks,
       [
         {
@@ -1392,7 +1388,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       ],
       'the readable favoriteParks is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteParks,
       [
         {
@@ -1421,8 +1417,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
 
     // mutate an embedded path at the middle segment, changing its identity
     user.favoriteParks[1].address.street = '12 Evergreen';
-    assert.notStrictEqual(City1, user.favoriteParks[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City1, user.favoriteParks[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteParks,
       [
         {
@@ -1448,7 +1444,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       ],
       'the readable favoriteParks is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteParks,
       [
         {
@@ -1477,9 +1473,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const City2 = user.favoriteParks[1].address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(City1, user.favoriteParks[1]?.address?.city, 'the city should change identity');
-    assert.notStrictEqual(City2, user.favoriteParks[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City1, user.favoriteParks[1]?.address?.city, 'the city should change identity');
+    assert.notEqual(City2, user.favoriteParks[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteParks,
       [
         {
@@ -1505,7 +1501,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       ],
       'the readable favoriteParks is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteParks,
       [
         {
@@ -1540,8 +1536,8 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       state: 'CA',
       zip: '94611',
     };
-    assert.notStrictEqual(City3, user.favoriteParks[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City3, user.favoriteParks[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteParks,
       [
         {
@@ -1567,7 +1563,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       ],
       'the readable favoriteParks is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteParks,
       [
         {
@@ -1596,9 +1592,9 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
     const City4 = user.favoriteParks[1].address.city;
 
     store.cache.rollbackAttrs(identifier);
-    assert.notStrictEqual(City3, user.favoriteParks[1]?.address?.city, 'the city should change identity');
-    assert.notStrictEqual(City4, user.favoriteParks[1]?.address?.city, 'the city should change identity');
-    assert.propEqual(
+    assert.notEqual(City3, user.favoriteParks[1]?.address?.city, 'the city should change identity');
+    assert.notEqual(City4, user.favoriteParks[1]?.address?.city, 'the city should change identity');
+    assert.satisfies(
       readable.favoriteParks,
       [
         {
@@ -1624,7 +1620,7 @@ module('Kind | schema-object | Reactivity | deep changes', function (hooks) {
       ],
       'the readable favoriteParks is unchanged'
     );
-    assert.propEqual(
+    assert.satisfies(
       user.favoriteParks,
       [
         {

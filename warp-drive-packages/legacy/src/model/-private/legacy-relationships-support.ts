@@ -1,7 +1,8 @@
-import type { Document, Store } from '@warp-drive/core';
+import type { Store } from '@warp-drive/core';
 import { DEBUG } from '@warp-drive/core/build-config/env';
 import { assert } from '@warp-drive/core/build-config/macros';
 import type { CollectionEdge, Graph, GraphEdge, ResourceEdge, UpgradedMeta } from '@warp-drive/core/graph/-private';
+import type { ReactiveDocument } from '@warp-drive/core/reactive';
 import { Context } from '@warp-drive/core/reactive/-private';
 import type { LegacyManyArray, PrivateReactiveResourceArray, PrivateStore } from '@warp-drive/core/store/-private';
 import {
@@ -617,7 +618,7 @@ export class LegacySupport {
       const future = this.store.request<ResourceKey | null>(req);
       this._pending[name] = future
         .then((doc) =>
-          field.options.linksMode ? (doc.content as unknown as Document<ResourceKey | null>).data! : doc.content
+          field.options.linksMode ? (doc.content as unknown as ReactiveDocument<ResourceKey | null>).data! : doc.content
         )
         .finally(() => {
           this._pending[name] = undefined;

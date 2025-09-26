@@ -1,42 +1,15 @@
-import { settled } from '@ember/test-helpers';
+import { recordIdentifierFor } from '@warp-drive/core';
+import { checkout } from '@warp-drive/core/reactive';
+import { module, setupTest, test } from '@warp-drive/diagnostic/ember';
 
-import type Store from 'core-tests/services/store';
-import { module, test } from 'qunit';
-
-import { setupTest } from 'ember-qunit';
-
-import { recordIdentifierFor } from '@ember-data/store';
-import type { Type } from '@warp-drive/core-types/symbols';
-import { Checkout, registerDerivations, withDefaults } from '@warp-drive/schema-record';
-
-interface User {
-  id: string | null;
-  $type: 'user';
-  name: string;
-  [Type]: 'user';
-  [Checkout](): Promise<User>;
-  isDeleted: boolean;
-}
+import type { EditableUser, User } from '../-utils/store';
+import { createStore } from '../-utils/store';
 
 module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
   setupTest(hooks);
 
   test('deleteRecord marks a record as deleted', function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
-    const { schema } = store;
-    registerDerivations(schema);
-
-    schema.registerResource(
-      withDefaults({
-        type: 'user',
-        fields: [
-          {
-            name: 'name',
-            kind: 'field',
-          },
-        ],
-      })
-    );
+    const store = createStore(this.owner);
 
     const record = store.push<User>({
       data: {
@@ -56,21 +29,7 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
   });
 
   test('deleteRecord on an editable record marks both versions as deleted', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
-    const { schema } = store;
-    registerDerivations(schema);
-
-    schema.registerResource(
-      withDefaults({
-        type: 'user',
-        fields: [
-          {
-            name: 'name',
-            kind: 'field',
-          },
-        ],
-      })
-    );
+    const store = createStore(this.owner);
 
     const immutableRecord = store.push<User>({
       data: {
@@ -80,34 +39,20 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
       },
     });
 
-    const editableRecord = await immutableRecord[Checkout]();
+    const editableRecord = await checkout<EditableUser>(immutableRecord);
 
     assert.ok(store.peekRecord('user', '1'), 'record exists initially');
 
     store.deleteRecord(editableRecord);
-    await settled();
+    await this.h.settled();
 
-    const fetchedRecord = store.peekRecord('user', '1') as User;
+    const fetchedRecord = store.peekRecord<User>('user', '1');
     assert.ok(fetchedRecord, 'record still exists in store');
     assert.true(store.cache.isDeleted(recordIdentifierFor(fetchedRecord)), 'immutable record is marked as deleted');
   });
 
   test('destroyRecord removes a record from the store', function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
-    const { schema } = store;
-    registerDerivations(schema);
-
-    schema.registerResource(
-      withDefaults({
-        type: 'user',
-        fields: [
-          {
-            name: 'name',
-            kind: 'field',
-          },
-        ],
-      })
-    );
+    const store = createStore(this.owner);
 
     const record = store.push<User>({
       data: {
@@ -124,25 +69,11 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
     store.unloadRecord(record);
 
     const fetchedRecord = store.peekRecord('user', '1');
-    assert.strictEqual(fetchedRecord, null, 'record is removed from the store after destroyRecord');
+    assert.equal(fetchedRecord, null, 'record is removed from the store after destroyRecord');
   });
 
   test('destroyRecord on an editable record cleans up both versions', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
-    const { schema } = store;
-    registerDerivations(schema);
-
-    schema.registerResource(
-      withDefaults({
-        type: 'user',
-        fields: [
-          {
-            name: 'name',
-            kind: 'field',
-          },
-        ],
-      })
-    );
+    const store = createStore(this.owner);
 
     const immutableRecord = store.push<User>({
       data: {
@@ -152,7 +83,7 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
       },
     });
 
-    const editableRecord = await immutableRecord[Checkout]();
+    const editableRecord = await checkout<EditableUser>(immutableRecord);
 
     assert.ok(store.peekRecord('user', '1'), 'record exists initially');
 
@@ -161,7 +92,7 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
     store.unloadRecord(editableRecord);
 
     const fetchedImmutableRecord = store.peekRecord('user', '1');
-    assert.strictEqual(
+    assert.equal(
       fetchedImmutableRecord,
       null,
       'immutable record is removed from the store after editable destroyRecord'
@@ -169,21 +100,7 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
   });
 
   test('unloadRecord removes a record from the store', function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
-    const { schema } = store;
-    registerDerivations(schema);
-
-    schema.registerResource(
-      withDefaults({
-        type: 'user',
-        fields: [
-          {
-            name: 'name',
-            kind: 'field',
-          },
-        ],
-      })
-    );
+    const store = createStore(this.owner);
 
     store.push<User>({
       data: {
@@ -200,25 +117,11 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
     store.unloadRecord(user);
 
     const fetchedRecord = store.peekRecord('user', '1');
-    assert.strictEqual(fetchedRecord, null, 'record is removed from the store after unloadRecord');
+    assert.equal(fetchedRecord, null, 'record is removed from the store after unloadRecord');
   });
 
   test('unloadRecord on an editable record cleans up both versions', async function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
-    const { schema } = store;
-    registerDerivations(schema);
-
-    schema.registerResource(
-      withDefaults({
-        type: 'user',
-        fields: [
-          {
-            name: 'name',
-            kind: 'field',
-          },
-        ],
-      })
-    );
+    const store = createStore(this.owner);
 
     const immutableRecord = store.push<User>({
       data: {
@@ -228,7 +131,7 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
       },
     });
 
-    const editableRecord = await immutableRecord[Checkout]();
+    const editableRecord = await checkout<EditableUser>(immutableRecord);
 
     assert.ok(store.peekRecord('user', '1'), 'record exists initially');
 
@@ -237,7 +140,7 @@ module('SchemaRecord | Polaris | Delete Operations', function (hooks) {
     store.unloadRecord(editableRecord);
 
     const fetchedImmutableRecord = store.peekRecord('user', '1');
-    assert.strictEqual(
+    assert.equal(
       fetchedImmutableRecord,
       null,
       'immutable record is removed from the store after editable unloadRecord'

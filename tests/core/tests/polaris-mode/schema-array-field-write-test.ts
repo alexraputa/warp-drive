@@ -1,13 +1,13 @@
-import { module, test } from 'qunit';
+import { recordIdentifierFor, useRecommendedStore } from '@warp-drive/core';
+import { DEBUG } from '@warp-drive/core/build-config/env';
+import { withDefaults } from '@warp-drive/core/reactive';
+import type { Type } from '@warp-drive/core/types/symbols';
+import { module, setupTest, test } from '@warp-drive/diagnostic/ember';
+import { JSONAPICache } from '@warp-drive/json-api';
 
-import { setupTest } from 'ember-qunit';
-
-import type Store from '@ember-data/store';
-import { recordIdentifierFor } from '@ember-data/store';
-import type { ResourceObject } from '@warp-drive/core-types/spec/json-api-raw';
-import type { Type } from '@warp-drive/core-types/symbols';
-import { Checkout, registerDerivations, withDefaults } from '@warp-drive/schema-record';
-
+const Store = useRecommendedStore({
+  cache: JSONAPICache,
+});
 interface address {
   street: string;
   city: string;
@@ -29,25 +29,15 @@ type User = Readonly<{
   name: string | null;
   addresses: Array<address | null> | null;
   [Type]: 'user';
-  [Checkout](): Promise<EditableUser>;
 }>;
-
-type EditableUser = {
-  readonly id: string | null;
-  readonly $type: 'user';
-  name: string | null;
-  addresses: Array<address | null> | null;
-  readonly [Type]: 'user';
-};
 
 module('Writes | schema-array fields', function (hooks) {
   setupTest(hooks);
 
   module('Immutability', function () {
     test('we cannot update to a new array', function (assert) {
-      const store = this.owner.lookup('service:store') as Store;
+      const store = new Store();
       const { schema } = store;
-      registerDerivations(schema);
       schema.registerResource({
         identity: null,
         type: 'address',
@@ -113,11 +103,11 @@ module('Writes | schema-array fields', function (hooks) {
         },
       });
 
-      assert.strictEqual(record.id, '1', 'id is accessible');
-      assert.strictEqual(record.$type, 'user', '$type is accessible');
-      assert.strictEqual(record.name, 'Rey Skybarker', 'name is accessible');
+      assert.equal(record.id, '1', 'id is accessible');
+      assert.equal(record.$type, 'user', '$type is accessible');
+      assert.equal(record.name, 'Rey Skybarker', 'name is accessible');
       assert.true(Array.isArray(record.addresses), 'we can access favoriteNumber array');
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -135,25 +125,30 @@ module('Writes | schema-array fields', function (hooks) {
         ],
         'We have the correct array members'
       );
-      assert.throws(() => {
-        // @ts-expect-error we're testing the immutability of the array
-        record.addresses = [
-          {
-            street: '789 Maple St',
-            city: 'Thistown',
-            state: 'TX',
-            zip: '67890',
-          },
-          {
-            street: '012 Oak St',
-            city: 'ThatTown',
-            state: 'FL',
-            zip: '09876',
-          },
-        ];
-      }, /Error: Cannot set addresses on user because the record is not editable/);
+      assert.throws(
+        () => {
+          // @ts-expect-error we're testing the immutability of the array
+          record.addresses = [
+            {
+              street: '789 Maple St',
+              city: 'Thistown',
+              state: 'TX',
+              zip: '67890',
+            },
+            {
+              street: '012 Oak St',
+              city: 'ThatTown',
+              state: 'FL',
+              zip: '09876',
+            },
+          ];
+        },
+        DEBUG
+          ? /Error: Cannot set addresses on user because the ReactiveResource is not editable/
+          : /'set' on proxy: trap returned falsish for property 'addresses'/
+      );
 
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -174,9 +169,8 @@ module('Writes | schema-array fields', function (hooks) {
     });
 
     test('we cannot update individual objects in the array to new objects', function (assert) {
-      const store = this.owner.lookup('service:store') as Store;
+      const store = new Store();
       const { schema } = store;
-      registerDerivations(schema);
       schema.registerResource({
         identity: null,
         type: 'address',
@@ -242,11 +236,11 @@ module('Writes | schema-array fields', function (hooks) {
         },
       });
 
-      assert.strictEqual(record.id, '1', 'id is accessible');
-      assert.strictEqual(record.$type, 'user', '$type is accessible');
-      assert.strictEqual(record.name, 'Rey Skybarker', 'name is accessible');
+      assert.equal(record.id, '1', 'id is accessible');
+      assert.equal(record.$type, 'user', '$type is accessible');
+      assert.equal(record.name, 'Rey Skybarker', 'name is accessible');
       assert.true(Array.isArray(record.addresses), 'we can access favoriteNumber array');
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -264,16 +258,21 @@ module('Writes | schema-array fields', function (hooks) {
         ],
         'We have the correct array members'
       );
-      assert.throws(() => {
-        record.addresses![0] = {
-          street: '789 Maple St',
-          city: 'Thistown',
-          state: 'TX',
-          zip: '67890',
-        };
-      }, /Error: Cannot set 0 on addresses because the record is not editable/);
+      assert.throws(
+        () => {
+          record.addresses![0] = {
+            street: '789 Maple St',
+            city: 'Thistown',
+            state: 'TX',
+            zip: '67890',
+          };
+        },
+        DEBUG
+          ? /Error: Cannot set 0 on addresses because the ReactiveResource is not editable/
+          : /'set' on proxy: trap returned falsish for property '0'/
+      );
 
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -294,9 +293,8 @@ module('Writes | schema-array fields', function (hooks) {
     });
 
     test('we cannot update individual objects in the array to null', function (assert) {
-      const store = this.owner.lookup('service:store') as Store;
+      const store = new Store();
       const { schema } = store;
-      registerDerivations(schema);
       schema.registerResource({
         identity: null,
         type: 'address',
@@ -361,11 +359,11 @@ module('Writes | schema-array fields', function (hooks) {
           },
         },
       });
-      assert.strictEqual(record.id, '1', 'id is accessible');
-      assert.strictEqual(record.$type, 'user', '$type is accessible');
-      assert.strictEqual(record.name, 'Rey Skybarker', 'name is accessible');
+      assert.equal(record.id, '1', 'id is accessible');
+      assert.equal(record.$type, 'user', '$type is accessible');
+      assert.equal(record.name, 'Rey Skybarker', 'name is accessible');
       assert.true(Array.isArray(record.addresses), 'we can access favoriteNumber array');
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -383,11 +381,16 @@ module('Writes | schema-array fields', function (hooks) {
         ],
         'We have the correct array members'
       );
-      assert.throws(() => {
-        record.addresses![0] = null;
-      }, /Error: Cannot set 0 on addresses because the record is not editable/);
+      assert.throws(
+        () => {
+          record.addresses![0] = null;
+        },
+        DEBUG
+          ? /Error: Cannot set 0 on addresses because the ReactiveResource is not editable/
+          : /'set' on proxy: trap returned falsish for property '0'/
+      );
 
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -408,9 +411,8 @@ module('Writes | schema-array fields', function (hooks) {
     });
 
     test('we cannot update individual fields in objects in the array to new values', function (assert) {
-      const store = this.owner.lookup('service:store') as Store;
+      const store = new Store();
       const { schema } = store;
-      registerDerivations(schema);
       schema.registerResource({
         identity: null,
         type: 'address',
@@ -476,11 +478,11 @@ module('Writes | schema-array fields', function (hooks) {
         },
       });
 
-      assert.strictEqual(record.id, '1', 'id is accessible');
-      assert.strictEqual(record.$type, 'user', '$type is accessible');
-      assert.strictEqual(record.name, 'Rey Skybarker', 'name is accessible');
+      assert.equal(record.id, '1', 'id is accessible');
+      assert.equal(record.$type, 'user', '$type is accessible');
+      assert.equal(record.name, 'Rey Skybarker', 'name is accessible');
       assert.true(Array.isArray(record.addresses), 'we can access favoriteNumber array');
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -498,11 +500,16 @@ module('Writes | schema-array fields', function (hooks) {
         ],
         'We have the correct array members'
       );
-      assert.throws(() => {
-        record.addresses![0]!.street = '789 Maple St';
-      }, /Error: Cannot set street on address because the record is not editable/);
+      assert.throws(
+        () => {
+          record.addresses![0]!.street = '789 Maple St';
+        },
+        DEBUG
+          ? /Error: Cannot set street on address because the ReactiveResource is not editable/
+          : /'set' on proxy: trap returned falsish for property 'street'/
+      );
 
-      assert.propContains(
+      assert.satisfies(
         record.addresses?.slice(),
         [
           {
@@ -523,9 +530,8 @@ module('Writes | schema-array fields', function (hooks) {
     });
   });
   test('we can update to a new array', function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
+    const store = new Store();
     const { schema } = store;
-    registerDerivations(schema);
     schema.registerResource({
       identity: null,
       type: 'address',
@@ -584,11 +590,11 @@ module('Writes | schema-array fields', function (hooks) {
       addresses: sourceArray,
     });
 
-    assert.strictEqual(record.id, null, 'id is accessible');
-    assert.strictEqual(record.$type, 'user', '$type is accessible');
-    assert.strictEqual(record.name, 'Rey Skybarker', 'name is accessible');
+    assert.equal(record.id, null, 'id is accessible');
+    assert.equal(record.$type, 'user', '$type is accessible');
+    assert.equal(record.name, 'Rey Skybarker', 'name is accessible');
     assert.true(Array.isArray(record.addresses), 'we can access favoriteNumber array');
-    assert.propContains(
+    assert.satisfies(
       record.addresses?.slice(),
       [
         {
@@ -620,7 +626,7 @@ module('Writes | schema-array fields', function (hooks) {
         zip: '09876',
       },
     ];
-    assert.propContains(
+    assert.satisfies(
       record.addresses?.slice(),
       [
         {
@@ -638,20 +644,20 @@ module('Writes | schema-array fields', function (hooks) {
       ],
       'We have the correct array members'
     );
-    assert.strictEqual(record.addresses, record.addresses, 'We have a stable array reference');
-    assert.notStrictEqual(record.addresses, sourceArray);
+    assert.equal(record.addresses, record.addresses, 'We have a stable array reference');
+    assert.notEqual(record.addresses, sourceArray);
 
     // test that the data entered the cache properly
     const identifier = recordIdentifierFor(record);
-    const cachedResourceData = store.cache.peek<ResourceObject>(identifier);
+    const cachedResourceData = store.cache.peek(identifier);
 
-    assert.notStrictEqual(
+    assert.notEqual(
       cachedResourceData?.attributes?.favoriteNumbers,
       sourceArray,
       'with no transform we will still divorce the array reference'
     );
-    assert.deepEqual(
-      cachedResourceData?.attributes?.addresses,
+    assert.satisfies(
+      cachedResourceData?.attributes?.addresses as Array<address | null>,
       [
         {
           street: '789 Maple St',
@@ -671,9 +677,8 @@ module('Writes | schema-array fields', function (hooks) {
   });
 
   test('we can update individual objects in the array to new objects', function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
+    const store = new Store();
     const { schema } = store;
-    registerDerivations(schema);
     schema.registerResource({
       identity: null,
       type: 'address',
@@ -732,11 +737,11 @@ module('Writes | schema-array fields', function (hooks) {
       addresses: sourceArray,
     });
 
-    assert.strictEqual(record.id, null, 'id is accessible');
-    assert.strictEqual(record.$type, 'user', '$type is accessible');
-    assert.strictEqual(record.name, 'Rey Skybarker', 'name is accessible');
+    assert.equal(record.id, null, 'id is accessible');
+    assert.equal(record.$type, 'user', '$type is accessible');
+    assert.equal(record.name, 'Rey Skybarker', 'name is accessible');
     assert.true(Array.isArray(record.addresses), 'we can access favoriteNumber array');
-    assert.propContains(
+    assert.satisfies(
       record.addresses?.slice(),
       [
         {
@@ -760,7 +765,7 @@ module('Writes | schema-array fields', function (hooks) {
       state: 'TX',
       zip: '67890',
     };
-    assert.propContains(
+    assert.satisfies(
       record.addresses?.slice(),
       [
         {
@@ -778,20 +783,20 @@ module('Writes | schema-array fields', function (hooks) {
       ],
       'We have the correct array members'
     );
-    assert.strictEqual(record.addresses, record.addresses, 'We have a stable array reference');
-    assert.notStrictEqual(record.addresses, sourceArray);
+    assert.equal(record.addresses, record.addresses, 'We have a stable array reference');
+    assert.notEqual(record.addresses, sourceArray);
 
     // test that the data entered the cache properly
     const identifier = recordIdentifierFor(record);
-    const cachedResourceData = store.cache.peek<ResourceObject>(identifier);
+    const cachedResourceData = store.cache.peek(identifier);
 
-    assert.notStrictEqual(
+    assert.notEqual(
       cachedResourceData?.attributes?.favoriteNumbers,
       sourceArray,
       'with no transform we will still divorce the array reference'
     );
-    assert.deepEqual(
-      cachedResourceData?.attributes?.addresses,
+    assert.satisfies(
+      cachedResourceData?.attributes?.addresses as Array<address | null>,
       [
         {
           street: '789 Maple St',
@@ -811,9 +816,8 @@ module('Writes | schema-array fields', function (hooks) {
   });
 
   test('we can update individual fields in objects in the array to new values', function (assert) {
-    const store = this.owner.lookup('service:store') as Store;
+    const store = new Store();
     const { schema } = store;
-    registerDerivations(schema);
     schema.registerResource({
       identity: null,
       type: 'address',
@@ -872,11 +876,11 @@ module('Writes | schema-array fields', function (hooks) {
       addresses: sourceArray,
     });
 
-    assert.strictEqual(record.id, null, 'id is accessible');
-    assert.strictEqual(record.$type, 'user', '$type is accessible');
-    assert.strictEqual(record.name, 'Rey Skybarker', 'name is accessible');
+    assert.equal(record.id, null, 'id is accessible');
+    assert.equal(record.$type, 'user', '$type is accessible');
+    assert.equal(record.name, 'Rey Skybarker', 'name is accessible');
     assert.true(Array.isArray(record.addresses), 'we can access favoriteNumber array');
-    assert.propContains(
+    assert.satisfies(
       record.addresses?.slice(),
       [
         {
@@ -896,7 +900,7 @@ module('Writes | schema-array fields', function (hooks) {
     );
     record.addresses![0]!.street = '789 Maple St';
 
-    assert.propContains(
+    assert.satisfies(
       record.addresses?.slice(),
       [
         {
@@ -914,20 +918,20 @@ module('Writes | schema-array fields', function (hooks) {
       ],
       'We have the correct array members'
     );
-    assert.strictEqual(record.addresses, record.addresses, 'We have a stable array reference');
-    assert.notStrictEqual(record.addresses, sourceArray);
+    assert.equal(record.addresses, record.addresses, 'We have a stable array reference');
+    assert.notEqual(record.addresses, sourceArray);
 
     // test that the data entered the cache properly
     const identifier = recordIdentifierFor(record);
-    const cachedResourceData = store.cache.peek<ResourceObject>(identifier);
+    const cachedResourceData = store.cache.peek(identifier);
 
-    assert.notStrictEqual(
+    assert.notEqual(
       cachedResourceData?.attributes?.favoriteNumbers,
       sourceArray,
       'with no transform we will still divorce the array reference'
     );
-    assert.deepEqual(
-      cachedResourceData?.attributes?.addresses,
+    assert.satisfies(
+      cachedResourceData?.attributes?.addresses as Array<address | null>,
       [
         {
           street: '789 Maple St',
