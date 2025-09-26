@@ -26,52 +26,79 @@ function addUnpkgExportConditions(pkg: Package) {
       }
     }
    */
-  const original = { ...existing };
-  const exports = (pkg.pkgData.exports.unpkg = {
+  /**
+   * ".": {
+   *     "unpkg": {
+   *      "development": {},
+   * "default": {
+   * }}
+        "types": "./declarations/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "./*.cjs": {
+        "default": "./cjs-dist/*.cjs"
+      },
+      "./*": {
+        "types": "./declarations/*.d.ts",
+        "default": "./dist/*.js"
+      }
+   */
+  const exportsTemplate = {
     development: {
       deprecations: {} as Record<string, string>,
     },
     deprecations: {},
-  }) as any;
+  } as any;
 
-  for (const key of Object.keys(original)) {
+  for (const key of Object.keys(existing)) {
     // ignore .cjs
     if (key.endsWith('.cjs')) {
       continue;
     }
 
-    // copy over the original entry for default for the group
-    const value = original[key];
+    // copy over the existing entry for default for the group
+    const value = existing[key];
     if (typeof value !== 'object' || value === null || !('default' in value) || typeof value.default !== 'string') {
       throw new Error(`Unexpected export format for key ${key} in package ${pkg.pkgData.name}`);
     }
 
-    const newValue = extractValuePath(value.default);
+    const newPathValue = extractValuePath(value.default);
     // key order matters here so do not change this without great care.
 
     /*
       exports = {
-        unpkg: {
-            // ?dev
-            development: {
-              // ?conditions=development,deprecations
-              deprecations: './dist/esm/index.js',
-              default: './dist/esm/index.js',
-            },
+        "./": {
+          unpkg: {
+              // ?dev
+              development: {
+                // ?conditions=development,deprecations
+                deprecations: './dist/esm/index.js',
+                default: './dist/esm/index.js',
+              },
 
-            // ?prod (default)
-            deprecations: {
-              // ?conditions=production,deprecations
+              // ?prod (default)
+              deprecations: {
+                // ?conditions=production,deprecations
+                default: './dist/esm/index.js',
+              },
               default: './dist/esm/index.js',
             },
-            default: './dist/esm/index.js',
-          },
-        };
+          };
+          types: "./declarations/index.d.ts",
+          default: "./dist/index.js",
+        },
      */
-    exports.development[key] = `./dist/unpkg/dev/${newValue}`;
-    exports.development.deprecations[key] = `./dist/unpkg/dev-deprecated/${newValue}`;
-    exports.deprecations[key] = `./dist/unpkg/prod-deprecated/${newValue}`;
-    exports[key] = `./dist/unpkg/prod/${newValue}`;
+    const exports = structuredClone(exportsTemplate);
+    exports.development[key] = `./dist/unpkg/dev/${newPathValue}`;
+    exports.development.deprecations[key] = `./dist/unpkg/dev-deprecated/${newPathValue}`;
+    exports.deprecations[key] = `./dist/unpkg/prod-deprecated/${newPathValue}`;
+    exports[key] = `./dist/unpkg/prod/${newPathValue}`;
+
+    const newValue = {
+      unpkg: exports,
+      ...value,
+    };
+    existing[key] = newValue;
   }
 }
 
