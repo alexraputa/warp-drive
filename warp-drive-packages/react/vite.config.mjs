@@ -8,6 +8,7 @@ export default createConfig(
     entryPoints,
     externals,
     plugins: [],
+    compileTypes: process.env.IS_UNPKG_BUILD !== 'true',
   },
   import.meta.resolve
 );

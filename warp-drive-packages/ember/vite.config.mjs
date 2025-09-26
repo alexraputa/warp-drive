@@ -24,6 +24,7 @@ export default createConfig(
     externals,
     plugins: [gjs()],
     useGlint: true,
+    compileTypes: process.env.IS_UNPKG_BUILD !== 'true',
   },
   import.meta.resolve
 );

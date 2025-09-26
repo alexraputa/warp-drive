@@ -9,6 +9,7 @@ export default createConfig(
     externals,
     plugins: [],
     useGlint: true,
+    compileTypes: process.env.IS_UNPKG_BUILD !== 'true',
   },
   import.meta.resolve
 );

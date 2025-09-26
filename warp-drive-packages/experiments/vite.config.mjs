@@ -14,6 +14,7 @@ export default createConfig(
   {
     entryPoints,
     externals,
+    compileTypes: process.env.IS_UNPKG_BUILD !== 'true',
   },
   import.meta.resolve
 );
