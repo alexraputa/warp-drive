@@ -108,7 +108,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
   try {
     await exec({
       cwd: pkg.projectPath,
-      cmd: `vite build --outDir dist/unpkg/prod`,
+      cmd: `pnpm exec vite build --outDir dist/unpkg/prod`,
       env: {
         NODE_ENV: 'production',
         EMBER_DATA_FULL_COMPAT: 'true',
@@ -123,7 +123,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
   try {
     await exec({
       cwd: pkg.projectPath,
-      cmd: `vite build --outDir dist/unpkg/prod-deprecated`,
+      cmd: `pnpm exec vite build --outDir dist/unpkg/prod-deprecated`,
       env: {
         NODE_ENV: 'production',
         EMBER_DATA_FULL_COMPAT: 'false',
@@ -138,7 +138,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
   try {
     await exec({
       cwd: pkg.projectPath,
-      cmd: `vite build --outDir dist/unpkg/dev`,
+      cmd: `pnpm exec vite build --outDir dist/unpkg/dev`,
       env: {
         NODE_ENV: 'development',
         EMBER_DATA_FULL_COMPAT: 'true',
@@ -153,7 +153,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
   try {
     await exec({
       cwd: pkg.projectPath,
-      cmd: `vite build --outDir dist/unpkg/dev-deprecated`,
+      cmd: `pnpm exec vite build --outDir dist/unpkg/dev-deprecated`,
       env: {
         NODE_ENV: 'development',
         EMBER_DATA_FULL_COMPAT: 'false',
