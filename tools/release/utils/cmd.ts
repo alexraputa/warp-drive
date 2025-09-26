@@ -166,7 +166,7 @@ export async function exec(cmd: string[] | string | CMD, dryRun: boolean = false
       return result;
     } else {
       const proc = Bun.spawn(args, {
-        env: process.env,
+        env: isCmdWithConfig ? cmd.env || process.env : process.env,
         cwd,
         stderr: 'pipe',
         stdout: 'pipe',
