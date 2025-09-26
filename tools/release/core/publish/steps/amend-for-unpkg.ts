@@ -93,6 +93,7 @@ function addUnpkgExportConditions(pkg: Package) {
 export async function amendFilesForUnpkg(pkg: Package) {
   // add "unpkg" export conditions to package.json
   addUnpkgExportConditions(pkg);
+  await pkg.file.write();
   // run a build with the various build-config settings
   // production, no-deprecations
   // production, all-deprecations
