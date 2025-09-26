@@ -1,6 +1,6 @@
 ---
 title: Performing A Release
-order: 9
+order: 8
 ---
 
 # Release

@@ -1,13 +1,13 @@
 ---
-title: Writing Documentation
-order: 6
+title: Documenting APIs
+order: 1
 ---
 
 # Writing Documentation
 
 There are two sources of documentation in this repository:
 
-- [Guides](../index.md) - markdown files that are compiled into the manual for the website
+- [Guides](../../index.md) - markdown files that are compiled into the manual for the website
 - inline code comments and types - from which the API Docs are compiled
 
 Both are previewable by following the instructions in the [Docs Viewer](https://github.com/warp-drive-data/warp-drive/blob/main/docs-viewer/README.md)

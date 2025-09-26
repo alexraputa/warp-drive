@@ -1,6 +1,6 @@
 ---
 title: The RFC Process
-order: 8
+order: 7
 ---
 
 ### Requesting Features or Deprecations
