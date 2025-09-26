@@ -459,7 +459,7 @@ module('integration/relationships/one_to_one_test - OneToOne relationships', fun
 
     assert.expectAssertion(function () {
       stanley.bestFriend = Promise.resolve(igor);
-    }, '[object Promise] is not a record instantiated by @ember-data/store');
+    }, '[object Promise] is not a ReactiveResource or Model known to WarpDrive');
   });
 
   test('Setting a OneToOne relationship to null reflects correctly on the other side - async', async function (assert) {
