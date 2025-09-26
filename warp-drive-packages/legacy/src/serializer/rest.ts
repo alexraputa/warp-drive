@@ -446,7 +446,7 @@ const RESTSerializer: any = (JSONSerializer as typeof EmberObject).extend({
     and an example payload:
 
     ```js [app/models/post.js]
-    import Model from '@ember-data/model';
+    import Model from '@warp-drive/legacy/model';
 
     export default class Post extends Model {}
     ```
@@ -508,7 +508,7 @@ const RESTSerializer: any = (JSONSerializer as typeof EmberObject).extend({
     For example, consider this model:
 
     ```js [app/models/comment.js]
-    import Model, { attr, belongsTo } from '@ember-data/model';
+    import Model, { attr, belongsTo } from '@warp-drive/legacy/model';
 
     export default class Comment extends Model {
       @attr title

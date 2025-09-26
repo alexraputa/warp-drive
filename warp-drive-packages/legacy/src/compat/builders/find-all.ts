@@ -23,16 +23,16 @@ type FindAllBuilderOptions = FindAllOptions;
   When passed to `store.request`, this config will result in the same behavior as a `store.findAll` request.
   Additionally, it takes the same options as `store.findAll`.
 
-  All `@ember-data/legacy-compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
+  All `@warp-drive/legacy/compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
   This is useful for quickly upgrading an entire app to a unified syntax while a longer incremental migration is made to shift off of adapters and serializers.
-  To that end, these builders are deprecated and will be removed in a future version of Ember Data.
+  To that end, these builders are deprecated and will be removed in a future version of WarpDrive.
 
   @deprecated
   @public
-  @param {String} type the name of the resource
-  @param {Object} query a query to be used by the adapter
-  @param {FindAllBuilderOptions} [options] optional, may include `adapterOptions` hash which will be passed to adapter.findAll
-  @return {FindAllRequestInput} request config
+  @param type the name of the resource
+  @param query a query to be used by the adapter
+  @param options optional, may include `adapterOptions` hash which will be passed to adapter.findAll
+  @return request config
 */
 export function findAllBuilder<T extends TypedRecordInstance>(
   type: TypeFromInstance<T>,

@@ -24,16 +24,16 @@ type QueryBuilderOptions = QueryOptions;
   When passed to `store.request`, this config will result in the same behavior as a `store.query` request.
   Additionally, it takes the same options as `store.query`.
 
-  All `@ember-data/legacy-compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
+  All `@warp-drive/legacy/compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
   This is useful for quickly upgrading an entire app to a unified syntax while a longer incremental migration is made to shift off of adapters and serializers.
-  To that end, these builders are deprecated and will be removed in a future version of Ember Data.
+  To that end, these builders are deprecated and will be removed in a future version of WarpDrive.
 
   @deprecated
   @public
-  @param {String} type the name of the resource
-  @param {Object} query a query to be used by the adapter
-  @param {QueryBuilderOptions} [options] optional, may include `adapterOptions` hash which will be passed to adapter.query
-  @return {QueryRequestInput} request config
+  @param type the name of the resource
+  @param query a query to be used by the adapter
+  @param options optional, may include `adapterOptions` hash which will be passed to adapter.query
+  @return request config
 */
 export function queryBuilder<T extends TypedRecordInstance>(
   type: TypeFromInstance<T>,
@@ -83,16 +83,16 @@ type QueryRecordRequestInput<T extends string = string, RT = unknown> = StoreReq
   When passed to `store.request`, this config will result in the same behavior as a `store.queryRecord` request.
   Additionally, it takes the same options as `store.queryRecord`.
 
-  All `@ember-data/legacy-compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
+  All `@warp-drive/legacy/compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
   This is useful for quickly upgrading an entire app to a unified syntax while a longer incremental migration is made to shift off of adapters and serializers.
-  To that end, these builders are deprecated and will be removed in a future version of Ember Data.
+  To that end, these builders are deprecated and will be removed in a future version of WarpDrive.
 
   @deprecated
   @public
-  @param {String} type the name of the resource
-  @param {Object} query a query to be used by the adapter
-  @param {QueryBuilderOptions} [options] optional, may include `adapterOptions` hash which will be passed to adapter.query
-  @return {QueryRecordRequestInput} request config
+  @param type the name of the resource
+  @param query a query to be used by the adapter
+  @param options optional, may include `adapterOptions` hash which will be passed to adapter.query
+  @return request config
 */
 export function queryRecordBuilder<T extends TypedRecordInstance>(
   type: TypeFromInstance<T>,

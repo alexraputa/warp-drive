@@ -28,7 +28,7 @@ type FindRecordBuilderOptions = Omit<FindRecordOptions, 'preload'>;
   **Example 1**
 
   ```ts
-  import { findRecord } from '@ember-data/legacy-compat/builders';
+  import { findRecord } from '@warp-drive/legacy/compat/builders';
   const { content: post } = await store.request<Post>(findRecord<Post>('post', '1'));
   ```
 
@@ -39,20 +39,20 @@ type FindRecordBuilderOptions = Omit<FindRecordOptions, 'preload'>;
   the typical pairing from [JSON:API](https://jsonapi.org/format/#document-resource-object-identification)
 
   ```ts
-  import { findRecord } from '@ember-data/legacy-compat/builders';
+  import { findRecord } from '@warp-drive/legacy/compat/builders';
   const { content: post } = await store.request<Post>(findRecord<Post>({ type: 'post', id }));
   ```
 
-  All `@ember-data/legacy-compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
+  All `@warp-drive/legacy/compat` builders exist to enable you to migrate your codebase to using the correct syntax for `store.request` while temporarily preserving legacy behaviors.
   This is useful for quickly upgrading an entire app to a unified syntax while a longer incremental migration is made to shift off of adapters and serializers.
-  To that end, these builders are deprecated and will be removed in a future version of Ember Data.
+  To that end, these builders are deprecated and will be removed in a future version of Warp Drive.
 
   @deprecated
   @public
-  @param {string|object} resource - either a string representing the name of the resource or a ResourceIdentifier object containing both the type (a string) and the id (a string) for the record or an lid (a string) of an existing record
-  @param {string|number|object} id - optional object with options for the request only if the first param is a ResourceIdentifier, else the string id of the record to be retrieved
-  @param {FindRecordBuilderOptions} [options] - if the first param is a string this will be the optional options for the request. See examples for available options.
-  @return {FindRecordRequestInput} request config
+  @param resource - either a string representing the name of the resource or a ResourceIdentifier object containing both the type (a string) and the id (a string) for the record or an lid (a string) of an existing record
+  @param id - optional object with options for the request only if the first param is a ResourceIdentifier, else the string id of the record to be retrieved
+  @param options - if the first param is a string this will be the optional options for the request. See examples for available options.
+  @return request config
 */
 export function findRecordBuilder<T extends TypedRecordInstance>(
   type: TypeFromInstance<T>,

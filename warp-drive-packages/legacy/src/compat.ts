@@ -232,7 +232,7 @@ export function normalize(this: Store, modelName: string, payload: ObjectValue):
     serializer.
 
     ```js [app/serializers/application.js]
-    import RESTSerializer from '@ember-data/serializer/rest';
+    import RESTSerializer from '@warp-drive/legacy/serializer/rest';
 
     export default class ApplicationSerializer extends RESTSerializer;
     ```
@@ -257,13 +257,13 @@ export function normalize(this: Store, modelName: string, payload: ObjectValue):
     will determine which serializer will process the payload.
 
     ```js [app/serializers/application.js]
-    import RESTSerializer from '@ember-data/serializer/rest';
+    import RESTSerializer from '@warp-drive/legacy/serializer/rest';
 
      export default class ApplicationSerializer extends RESTSerializer;
     ```
 
     ```js [app/serializers/post.js]
-    import JSONSerializer from '@ember-data/serializer/json';
+    import JSONSerializer from '@warp-drive/legacy/serializer/json';
 
     export default JSONSerializer;
     ```

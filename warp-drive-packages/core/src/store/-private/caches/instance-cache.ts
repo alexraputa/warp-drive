@@ -38,7 +38,7 @@ export function peekResourceKey(record: OpaqueRecordInstance): ResourceKey | und
   assigned to the given record instance.
 
   ```js
-  import { recordIdentifierFor } from "@ember-data/store";
+  import { recordIdentifierFor } from "@warp-drive/core";
   // ... gain access to a record, for instance with peekRecord or findRecord
   const record = store.peekRecord("user", "1");
   // get the identifier for the record (see docs for ResourceKey)
@@ -53,7 +53,7 @@ export function peekResourceKey(record: OpaqueRecordInstance): ResourceKey | und
 export function recordIdentifierFor<T extends TypedRecordInstance>(record: T): ResourceKey<TypeFromInstance<T>>;
 export function recordIdentifierFor(record: OpaqueRecordInstance): ResourceKey;
 export function recordIdentifierFor<T>(record: T): ResourceKey<TypeFromInstanceOrString<T>> {
-  assert(`${String(record)} is not a record instantiated by @ember-data/store`, RecordCache.has(record));
+  assert(`${String(record)} is not a ReactiveResource or Model known to WarpDrive`, RecordCache.has(record));
   return RecordCache.get(record)! as ResourceKey<TypeFromInstanceOrString<T>>;
 }
 

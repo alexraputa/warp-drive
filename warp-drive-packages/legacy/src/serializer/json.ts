@@ -48,7 +48,7 @@ const PRIMARY_ATTRIBUTE_KEY = 'base';
   For example, given the following `User` model and JSON payload:
 
   ```js [app/models/user.js]
-  import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
+  import Model, { attr, belongsTo, hasMany } from '@warp-drive/legacy/model';
 
   export default class UserModel extends Model {
     @hasMany('user') friends;
@@ -138,7 +138,7 @@ const JSONSerializer: any = Serializer.extend({
     Example
 
     ```js [app/models/person.js]
-    import Model, { attr } from '@ember-data/model';
+    import Model, { attr } from '@warp-drive/legacy/model';
 
     export default class PersonModel extends Model {
       @attr('string') firstName;
@@ -991,7 +991,7 @@ const JSONSerializer: any = Serializer.extend({
     For example, consider this model:
 
     ```js [app/models/comment.js]
-    import Model, { attr, belongsTo } from '@ember-data/model';
+    import Model, { attr, belongsTo } from '@warp-drive/legacy/model';
 
     export default class CommentModel extends Model {
       @attr title;
@@ -1167,7 +1167,7 @@ const JSONSerializer: any = Serializer.extend({
     For example, your server may expect underscored root objects.
 
     ```js [app/serializers/application.js]
-    import RESTSerializer from '@ember-data/serializer/rest';
+    import RESTSerializer from '@warp-drive/legacy/serializer/rest';
     import { underscoren} from '<app-name>/utils/string-utils';
 
     export default class ApplicationSerializer extends RESTSerializer {

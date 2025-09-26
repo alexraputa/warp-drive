@@ -132,7 +132,7 @@ export type KeyOrString<T> = keyof T & string extends never ? string : keyof T &
  * "model" class.
  *
  * Only used when using the legacy schema-service implementation
- * for @ember-data/model or when wrapping schema for legacy
+ * for @warp-drive/legacy/model or when wrapping schema for legacy
  * Adapters/Serializers.
  *
  */
@@ -406,7 +406,7 @@ export function getShimClass<T>(
   return shim;
 }
 
-// Mimics the static apis of @ember-data/model
+// Mimics the static apis of @warp-drive/legacy/model
 export class ShimModelClass<T = unknown> implements ModelSchema<T> {
   declare __store: Store;
   declare modelName: T extends TypedRecordInstance ? TypeFromInstance<T> : string;

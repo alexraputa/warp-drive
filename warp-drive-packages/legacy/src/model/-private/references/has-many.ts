@@ -42,11 +42,11 @@ function isResourceIdentiferWithRelatedLinks(
  and manipulation of a hasMany relationship.
 
  It is especially useful when you're dealing with `async` relationships
- from `@ember-data/model` as it allows synchronous access to
+ from `@warp-drive/legacy/model` as it allows synchronous access to
  the relationship data if loaded, as well as APIs for loading, reloading
  the data or accessing available information without triggering a load.
 
- It may also be useful when using `sync` relationships with `@ember-data/model`
+ It may also be useful when using `sync` relationships with `@warp-drive/legacy/model`
  that need to be loaded/reloaded with more precise timing than marking the
  relationship as `async` and relying on autofetch would have allowed.
 

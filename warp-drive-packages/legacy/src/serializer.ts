@@ -91,7 +91,7 @@
   ### Default Serializers
 
   For applications whose APIs are *very close to* or *exactly* the **REST** format or **JSON:API**
-  format the `@ember-data/serializer` package contains implementations these applications can
+  format the `@warp-drive/legacy/serializer` package contains implementations these applications can
   extend. It also contains a simple `JSONSerializer` for serializing to/from very basic JSON objects.
 
   Many applications will find writing their own serializer to be more performant and less

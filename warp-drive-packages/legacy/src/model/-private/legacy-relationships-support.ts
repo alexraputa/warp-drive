@@ -293,7 +293,7 @@ export class LegacySupport {
 
       return manyArray;
     }
-    assert('hasMany only works with the @ember-data/json-api package');
+    assert('hasMany only works with the JSONAPICache');
   }
 
   fetchAsyncHasMany(
@@ -325,7 +325,7 @@ export class LegacySupport {
       this._relationshipPromisesCache[name] = loadingPromise;
       return loadingPromise;
     }
-    assert('hasMany only works with the @ember-data/json-api package');
+    assert('hasMany only works with the JSONAPICache');
   }
 
   reloadHasMany<T>(key: string, options?: BaseFinderOptions): Promise<LegacyManyArray<T>> | PromiseManyArray<T> {
@@ -350,7 +350,7 @@ export class LegacySupport {
 
       return promise as Promise<LegacyManyArray<T>>;
     }
-    assert(`hasMany only works with the @ember-data/json-api package`);
+    assert(`hasMany only works with the JSONAPICache`);
   }
 
   getHasMany(key: string, options?: BaseFinderOptions): PromiseManyArray | LegacyManyArray {
@@ -380,7 +380,7 @@ export class LegacySupport {
         return manyArray;
       }
     }
-    assert(`hasMany only works with the @ember-data/json-api package`);
+    assert(`hasMany only works with the JSONAPICache`);
   }
 
   _updatePromiseProxyFor(kind: 'hasMany', key: string, args: HasManyProxyCreateArgs): PromiseManyArray;
@@ -434,7 +434,7 @@ export class LegacySupport {
         // TODO @runspired while this feels odd, it is not a regression in capability because we do
         // not today support references pulling from RecordDatas other than our own
         // because of the intimate API access involved. This is something we will need to redesign.
-        assert(`snapshot.belongsTo only supported for @ember-data/json-api`);
+        assert(`snapshot.belongsTo only supported when using the JSONAPICache`);
       }
       const { graph, identifier } = this;
       const relationship = graph.get(identifier, name);
@@ -551,7 +551,7 @@ export class LegacySupport {
       //   TODO if the relationshipIsStale, should we hit the adapter anyway?
       return;
     }
-    assert(`hasMany only works with the @ember-data/json-api package`);
+    assert(`hasMany only works with the JSONAPICache`);
   }
 
   _findBelongsToByJsonApiResource(

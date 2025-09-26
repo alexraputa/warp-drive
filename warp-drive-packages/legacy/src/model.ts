@@ -1,7 +1,7 @@
 /**
  * This package provides a Presentation Model for resource data in an WarpDrive Cache.
  *
- * Models are defined as classes extending from `import Model from '@ember-data/model';` and the
+ * Models are defined as classes extending from `import Model from '@warp-drive/legacy/model';` and the
  * attributes and relationships on these classes are parsed at runtime to supply static "schema"
  * to WarpDrive's SchemaService.
  *
@@ -17,7 +17,7 @@
   ### Defining a Model
 
   ```js [app/models/person.js]
-  import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
+  import Model, { attr, belongsTo, hasMany } from '@warp-drive/legacy/model';
 
   export default class PersonModel extends Model {
     @attr name;

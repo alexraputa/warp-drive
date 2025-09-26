@@ -61,21 +61,21 @@ export class ModelSchemaProvider implements SchemaService {
   }
 
   hasTrait(type: string): boolean {
-    assert(`hasTrait is not available with @ember-data/model's SchemaService`);
+    assert(`hasTrait is not available with @warp-drive/legacy/model's SchemaService`);
     return false;
   }
   resourceHasTrait(resource: ResourceKey | { type: string }, trait: string): boolean {
-    assert(`resourceHasTrait is not available with @ember-data/model's SchemaService`);
+    assert(`resourceHasTrait is not available with @warp-drive/legacy/model's SchemaService`);
     return false;
   }
   transformation(field: GenericField | ObjectField | ArrayField | { type: string }): Transformation {
-    assert(`transformation is not available with @ember-data/model's SchemaService`);
+    assert(`transformation is not available with @warp-drive/legacy/model's SchemaService`);
   }
   derivation(field: DerivedField | { type: string }): Derivation {
-    assert(`derivation is not available with @ember-data/model's SchemaService`);
+    assert(`derivation is not available with @warp-drive/legacy/model's SchemaService`);
   }
   hashFn(field: HashField | { type: string }): HashFn {
-    assert(`hashFn is not available with @ember-data/model's SchemaService`);
+    assert(`hashFn is not available with @warp-drive/legacy/model's SchemaService`);
   }
   resource(resource: ResourceKey | { type: string }): ResourceSchema | ObjectSchema {
     const type = normalizeModelName(resource.type);
@@ -87,19 +87,19 @@ export class ModelSchemaProvider implements SchemaService {
     return this._schemas.get(type)!.schema;
   }
   registerResources(schemas: Array<ResourceSchema | ObjectSchema>): void {
-    assert(`registerResources is not available with @ember-data/model's SchemaService`);
+    assert(`registerResources is not available with @warp-drive/legacy/model's SchemaService`);
   }
   registerResource(schema: ResourceSchema | ObjectSchema): void {
-    assert(`registerResource is not available with @ember-data/model's SchemaService`);
+    assert(`registerResource is not available with @warp-drive/legacy/model's SchemaService`);
   }
   registerTransformation(transform: Transformation): void {
-    assert(`registerTransformation is not available with @ember-data/model's SchemaService`);
+    assert(`registerTransformation is not available with @warp-drive/legacy/model's SchemaService`);
   }
   registerDerivation<R, T, FM extends ObjectValue | null>(derivation: Derivation<R, T, FM>): void {
-    assert(`registerDerivation is not available with @ember-data/model's SchemaService`);
+    assert(`registerDerivation is not available with @warp-drive/legacy/model's SchemaService`);
   }
   registerHashFn(hashFn: HashFn): void {
-    assert(`registerHashFn is not available with @ember-data/model's SchemaService`);
+    assert(`registerHashFn is not available with @warp-drive/legacy/model's SchemaService`);
   }
   /** @internal */
   private _loadModelSchema(type: string): InternalSchema {

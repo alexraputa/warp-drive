@@ -23,7 +23,7 @@ import { camelize } from '@warp-drive/utilities/string';
   Below is an example of a per-type serializer (`post` type).
 
   ```js [app/serializers/post.js]
-  import RESTSerializer, { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
+  import RESTSerializer, { EmbeddedRecordsMixin } from '@warp-drive/legacy/serializer/rest';
 
   export default class PostSerializer extends RESTSerializer.extend(EmbeddedRecordsMixin) {
     attrs = {
@@ -147,7 +147,7 @@ export const EmbeddedRecordsMixin: Mixin = Mixin.create({
     This example of an author model belongs to a post model:
 
     ```js
-    import Model, { attr, belongsTo } from '@ember-data/model';
+    import Model, { attr, belongsTo } from '@warp-drive/legacy/model';
 
     Post = Model.extend({
       title:    attr('string'),
@@ -164,7 +164,7 @@ export const EmbeddedRecordsMixin: Mixin = Mixin.create({
     Use a custom (type) serializer for the post model to configure embedded author
 
     ```js [app/serializers/post.js]
-    import RESTSerializer, { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
+    import RESTSerializer, { EmbeddedRecordsMixin } from '@warp-drive/legacy/serializer/rest';
 
     export default class PostSerializer extends RESTSerializer.extend(EmbeddedRecordsMixin) {
       attrs = {
@@ -250,7 +250,7 @@ export const EmbeddedRecordsMixin: Mixin = Mixin.create({
     This example of a post model has many comments:
 
     ```js
-    import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
+    import Model, { attr, belongsTo, hasMany } from '@warp-drive/legacy/model';
 
     Post = Model.extend({
       title:    attr('string'),
@@ -267,7 +267,7 @@ export const EmbeddedRecordsMixin: Mixin = Mixin.create({
     Use a custom (type) serializer for the post model to configure embedded comments
 
     ```js [app/serializers/post.js]
-    import RESTSerializer, { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
+    import RESTSerializer, { EmbeddedRecordsMixin } from '@warp-drive/legacy/serializer/rest';
 
     export default class PostSerializer extends RESTSerializer.extend(EmbeddedRecordsMixin) {
       attrs = {
@@ -306,7 +306,7 @@ export const EmbeddedRecordsMixin: Mixin = Mixin.create({
     To embed the `ids` for a related object (using a hasMany relationship):
 
     ```js [app/serializers/post.js]
-    import RESTSerializer, { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
+    import RESTSerializer, { EmbeddedRecordsMixin } from '@warp-drive/legacy/serializer/rest';
 
     export default class PostSerializer extends RESTSerializer.extend(EmbeddedRecordsMixin) {
       attrs = {
@@ -354,7 +354,7 @@ export const EmbeddedRecordsMixin: Mixin = Mixin.create({
     ```
 
     ```js [app/serializers/user.js]
-    import RESTSerializer, { EmbeddedRecordsMixin } from '@ember-data/serializer/rest';
+    import RESTSerializer, { EmbeddedRecordsMixin } from '@warp-drive/legacy/serializer/rest';
 
     export default class UserSerializer extends RESTSerializer.extend(EmbeddedRecordsMixin) {
       attrs = {

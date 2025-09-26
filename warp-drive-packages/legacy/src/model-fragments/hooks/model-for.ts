@@ -31,7 +31,7 @@ export function getShimClass<T>(
 
 const AttributeKinds = ['field', 'attribute', 'object', 'array', 'schema-object', 'schema-array'] as const;
 
-// Mimics the static apis of @ember-data/model
+// Mimics the static apis of @warp-drive/legacy/model
 export class ShimModelClass<T = unknown> implements ModelSchema<T> {
   declare __store: Store;
   declare modelName: T extends TypedRecordInstance ? TypeFromInstance<T> : string;

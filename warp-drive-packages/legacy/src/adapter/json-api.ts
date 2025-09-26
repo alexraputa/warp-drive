@@ -125,7 +125,7 @@ import { RESTAdapter } from './rest.ts';
   namespace property on the adapter:
 
   ```js [app/adapters/application.js]
-  import JSONAPIAdapter from '@ember-data/adapter/json-api';
+  import JSONAPIAdapter from '@warp-drive/legacy/adapter/json-api';
 
   export default class ApplicationAdapter extends JSONAPIAdapter {
     namespace = 'api/1';
@@ -138,7 +138,7 @@ import { RESTAdapter } from './rest.ts';
   An adapter can target other hosts by setting the `host` property.
 
   ```js [app/adapters/application.js]
-  import JSONAPIAdapter from '@ember-data/adapter/json-api';
+  import JSONAPIAdapter from '@warp-drive/legacy/adapter/json-api';
 
   export default class ApplicationAdapter extends JSONAPIAdapter {
     host = 'https://api.example.com';

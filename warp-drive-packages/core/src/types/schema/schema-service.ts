@@ -36,7 +36,7 @@ interface ObjectWithStringTypeProperty {
  * The primary requirement is merely that any information the service needs to correctly
  * respond to an inquest is available by the time it is asked.
  *
- * The `@ember-data/model` package provides an implementation of this service which
+ * The `@warp-drive/legacy/model` package provides an implementation of this service which
  * makes use of your model classes as the source of information to respond to queries
  * about resource schema. While this is useful, this may not be ideal for your application.
  * For instance, Schema information could be sideloaded or pre-flighted for API calls,
@@ -47,7 +47,7 @@ interface ObjectWithStringTypeProperty {
  * hook to return an instance of your service.
  *
  * ```ts
- * import Store from '@ember-data/store';
+ * import { Store } from '@warp-drive/core';
  * import CustomSchemas from './custom-schemas';
  *
  * export default class extends Store {
@@ -258,7 +258,7 @@ export interface SchemaService {
    * be a string reference to a `transform`, and `options` which
    * should be dictionary in which any key:value pairs are permissable.
    *
-   * For instance, when using `@ember-data/model`, the following attribute
+   * For instance, when using `@warp-drive/legacy/model`, the following attribute
    * definition:
    *
    * ```ts
@@ -313,7 +313,7 @@ export interface SchemaService {
    * - `options.as` a string representing the abstract type that the concrete side of
    *    a relationship must specify when fulfilling a polymorphic inverse.
    *
-   * For example, the following Model using @ember-data/model would generate this relationships
+   * For example, the following Model using @warp-drive/legacy/model would generate this relationships
    * definition by default:
    *
    * ```js
