@@ -4,6 +4,7 @@ import { APPLIED_STRATEGY, Package } from '../../../utils/package';
 import path from 'path';
 import fs from 'fs';
 import { Glob } from 'bun';
+import { amendFilesForUnpkg } from './amend-for-unpkg';
 
 export const PROJECT_ROOT = process.cwd();
 export const TARBALL_DIR = path.join(PROJECT_ROOT, 'tmp/tarballs');
@@ -119,6 +120,17 @@ export async function generatePackageTarballs(
     } catch (e) {
       console.log(`🔴 ${chalk.redBright('failed to amend files to pack for')} ${chalk.yellow(pkg.pkgData.name)}`);
       throw e;
+    }
+
+    if (pkgStrategy.unpkgPublish) {
+      try {
+        await amendFilesForUnpkg(pkg);
+      } catch (e) {
+        console.log(
+          `🔴 ${chalk.redBright('failed to modify package for unpkgPublish for')} ${chalk.yellow(pkg.pkgData.name)}`
+        );
+        throw e;
+      }
     }
 
     try {

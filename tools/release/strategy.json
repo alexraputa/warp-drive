@@ -26,7 +26,8 @@
     "stage": "stable",
     "types": "alpha",
     "mirrorPublish": true,
-    "typesPublish": true
+    "typesPublish": true,
+    "unpkgPublish": false
   },
   "rules": {
     "@ember-data/codemods": {
@@ -92,49 +93,57 @@
       "stage": "stable",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     },
     "@warp-drive/json-api": {
       "stage": "stable",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     },
     "@warp-drive/experiments": {
       "stage": "beta",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     },
     "@warp-drive/core": {
       "stage": "stable",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     },
     "@warp-drive/utilities": {
       "stage": "stable",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     },
     "@warp-drive/legacy": {
       "stage": "stable",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     },
     "@warp-drive/react": {
       "stage": "stable",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     },
     "@warp-drive/tc39-proposal-signals": {
       "stage": "stable",
       "types": "stable",
       "typesPublish": false,
-      "mirrorPublish": true
+      "mirrorPublish": true,
+      "unpkgPublish": true
     }
   }
 }

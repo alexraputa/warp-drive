@@ -3,6 +3,7 @@ import { NPM_DIST_TAG, SEMVER_VERSION, STRATEGY_TYPE, TYPE_STRATEGY } from './ch
 import { Glob } from 'bun';
 import path from 'path';
 export class Package {
+  declare projectPath: string;
   declare filePath: string;
   declare file: JSONFile<PACKAGEJSON>;
   declare pkgData: PACKAGEJSON;
@@ -11,6 +12,7 @@ export class Package {
   declare typesTarballPath: string;
 
   constructor(filePath: string, file: JSONFile<PACKAGEJSON>, pkgData: PACKAGEJSON) {
+    this.projectPath = path.dirname(filePath);
     this.filePath = filePath;
     this.file = file;
     this.pkgData = pkgData;
@@ -27,7 +29,7 @@ export class Package {
 
 /**
  * A valid package.json file can go up to 3 levels deep
- * when defining the exports field.
+ * when defining the exports field. 4 levels for unpkg
  *
  * ```
  * {
@@ -47,7 +49,7 @@ export class Package {
  *
  * @internal
  */
-type ExportConfig = Record<string, string | Record<string, string | Record<string, string>>>;
+type ExportConfig = Record<string, string | Record<string, string | Record<string, string | Record<string, string>>>>;
 
 export type PACKAGEJSON = {
   name: string;
@@ -83,6 +85,7 @@ export type APPLIED_STRATEGY = {
   mirrorPublish: boolean;
   mirrorPublishTo: string;
   typesPublish: boolean;
+  unpkgPublish: boolean;
   typesPublishTo: string;
   fromVersion: SEMVER_VERSION;
   toVersion: SEMVER_VERSION;
@@ -109,6 +112,7 @@ export interface STRATEGY {
     types: TYPE_STRATEGY;
     mirrorPublish?: boolean;
     typesPublish?: boolean;
+    unpkgPublish?: boolean;
   };
   rules: Record<
     string,
@@ -117,6 +121,7 @@ export interface STRATEGY {
       types: TYPE_STRATEGY;
       mirrorPublish?: boolean;
       typesPublish?: boolean;
+      unpkgPublish?: boolean;
     }
   >;
 }

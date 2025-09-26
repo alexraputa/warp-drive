@@ -51,7 +51,8 @@
       ],
       "dependsOn": ["^build:pkg"],
       // https://turbo.build/repo/docs/reference/configuration#outputLogs
-      "outputLogs": "new-only"
+      "outputLogs": "new-only",
+      "env": ["NODE_ENV", "EMBER_DATA_FULL_COMPAT", "IS_UNPKG_BUILD"]
     },
 
     /////////////////////////////////////////////////
@@ -117,13 +118,14 @@
       "env": [
         "WARP_DRIVE_FEATURE_OVERRIDE",
         "NODE_ENV",
+        "EMBER_DATA_FULL_COMPAT",
+        "IS_UNPKG_BUILD",
         "CI",
         "EMBER_ENV",
         "IS_TESTING",
         "EMBER_CLI_TEST_COMMAND",
         "IS_RECORDING",
-        "ASSERT_ALL_DEPRECATIONS",
-        "EMBER_DATA_FULL_COMPAT"
+        "ASSERT_ALL_DEPRECATIONS"
       ]
     },
     "build:production": {

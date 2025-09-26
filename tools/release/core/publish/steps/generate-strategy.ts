@@ -102,6 +102,8 @@ export async function applyStrategy(
     applied_strategy.pkgDir = getPkgDir(pkg.filePath);
     applied_strategy.fromVersion = fromPkg ? fromPkg.pkgData.version : pkg.pkgData.version;
     applied_strategy.new = !fromPkg;
+    applied_strategy.unpkgPublish =
+      !applied_strategy.private && (rule.unpkgPublish ?? strategy.defaults.unpkgPublish ?? false);
     applied_strategy.mirrorPublish =
       !applied_strategy.private && (rule.mirrorPublish ?? strategy.defaults.mirrorPublish ?? false);
     applied_strategy.typesPublish =
