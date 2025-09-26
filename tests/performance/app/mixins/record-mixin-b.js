@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import Mixin from '@ember/object/mixin';
 
-import { attr, belongsTo, hasMany } from '@ember-data/model';
+import { attr, belongsTo, hasMany } from '@warp-drive/legacy/model';
 
 export default Mixin.create({
   prop_trait_b_1: attr(),

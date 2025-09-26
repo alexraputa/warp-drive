@@ -3281,27 +3281,6 @@ importers:
       '@babel/runtime':
         specifier: ^7.28.3
         version: 7.28.3
-      '@ember-data/graph':
-        specifier: workspace:*
-        version: file:packages/graph(@babel/core@7.28.3)
-      '@ember-data/json-api':
-        specifier: workspace:*
-        version: file:packages/json-api(@babel/core@7.28.3)
-      '@ember-data/legacy-compat':
-        specifier: workspace:*
-        version: file:packages/legacy-compat(@babel/core@7.28.3)
-      '@ember-data/model':
-        specifier: workspace:*
-        version: file:packages/model(@babel/core@7.28.3)
-      '@ember-data/request':
-        specifier: workspace:*
-        version: file:packages/request(@babel/core@7.28.3)
-      '@ember-data/request-utils':
-        specifier: workspace:*
-        version: file:packages/request-utils(@babel/core@7.28.3)
-      '@ember-data/store':
-        specifier: workspace:*
-        version: file:packages/store(1adf99e055abba96ff2ddb1d049f661d)
       '@ember/optional-features':
         specifier: ^2.2.0
         version: 2.2.0
@@ -3329,21 +3308,24 @@ importers:
       '@rollup/plugin-babel':
         specifier: ^6.0.4
         version: 6.0.4(@babel/core@7.28.3)
-      '@warp-drive/build-config':
-        specifier: workspace:*
-        version: file:warp-drive-packages/build-config(@babel/core@7.28.3)
       '@warp-drive/core':
         specifier: workspace:*
         version: file:warp-drive-packages/core(@babel/core@7.28.3)
-      '@warp-drive/core-types':
-        specifier: workspace:*
-        version: file:packages/core-types(@babel/core@7.28.3)
       '@warp-drive/ember':
         specifier: workspace:*
         version: file:warp-drive-packages/ember(1adf99e055abba96ff2ddb1d049f661d)
       '@warp-drive/internal-config':
         specifier: workspace:*
         version: file:tools/internal-config(terser@5.43.1)
+      '@warp-drive/json-api':
+        specifier: workspace:*
+        version: file:warp-drive-packages/json-api(ac1631a7da983377f84b100525d730a6)
+      '@warp-drive/legacy':
+        specifier: workspace:*
+        version: file:warp-drive-packages/legacy(da2d8626017c763d07445c649af78d55)
+      '@warp-drive/utilities':
+        specifier: workspace:*
+        version: file:warp-drive-packages/utilities(ac1631a7da983377f84b100525d730a6)
       babel-plugin-ember-template-compilation:
         specifier: ^2.4.1
         version: 2.4.1

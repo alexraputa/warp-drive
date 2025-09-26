@@ -1,7 +1,7 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 
-import { query } from '@ember-data/json-api/request';
+import { query } from '@warp-drive/utilities/json-api';
 
 export default Route.extend({
   store: service(),

@@ -1,4 +1,4 @@
-import Model, { belongsTo, hasMany } from '@ember-data/model';
+import Model, { belongsTo, hasMany } from '@warp-drive/legacy/model';
 
 export default Model.extend({
   make: belongsTo('make', { async: false, inverse: 'cars' }),

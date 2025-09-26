@@ -1,4 +1,4 @@
-import Model, { attr, hasMany } from '@ember-data/model';
+import Model, { attr, hasMany } from '@warp-drive/legacy/model';
 
 import recordMixinA from '../mixins/record-mixin-a';
 import recordMixinB from '../mixins/record-mixin-b';
