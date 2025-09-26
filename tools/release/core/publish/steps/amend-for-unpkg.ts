@@ -44,10 +44,7 @@ function addUnpkgExportConditions(pkg: Package) {
       }
    */
   const exportsTemplate = {
-    development: {
-      deprecations: {} as Record<string, string>,
-    },
-    deprecations: {},
+    development: {},
   } as any;
 
   for (const key of Object.keys(existing)) {
@@ -76,11 +73,10 @@ function addUnpkgExportConditions(pkg: Package) {
                 default: './dist/esm/index.js',
               },
 
+              // ?conditions=production,deprecations
+              deprecations: './dist/esm/index.js',
+
               // ?prod (default)
-              deprecations: {
-                // ?conditions=production,deprecations
-                default: './dist/esm/index.js',
-              },
               default: './dist/esm/index.js',
             },
           };
@@ -89,10 +85,10 @@ function addUnpkgExportConditions(pkg: Package) {
         },
      */
     const exports = structuredClone(exportsTemplate);
-    exports.development[key] = `./dist/unpkg/dev/${newPathValue}`;
-    exports.development.deprecations[key] = `./dist/unpkg/dev-deprecated/${newPathValue}`;
-    exports.deprecations[key] = `./dist/unpkg/prod-deprecated/${newPathValue}`;
-    exports[key] = `./dist/unpkg/prod/${newPathValue}`;
+    exports.development.deprecations = `./dist/unpkg/dev-deprecated/${newPathValue}`;
+    exports.development.default = `./dist/unpkg/dev/${newPathValue}`;
+    exports.deprecations = `./dist/unpkg/prod-deprecated/${newPathValue}`;
+    exports.default = `./dist/unpkg/prod/${newPathValue}`;
 
     const newValue = {
       unpkg: exports,
