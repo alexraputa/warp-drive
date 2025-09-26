@@ -19,7 +19,7 @@ module.exports = async function (defaults) {
   });
 
   setConfig(app, __dirname, {
-    compatWith: process.env.EMBER_DATA_FULL_COMPAT ? '99.0' : null,
+    compatWith: process.env.EMBER_DATA_FULL_COMPAT === 'true' ? '99.0' : null,
     deprecations: {
       DEPRECATE_STORE_EXTENDS_EMBER_OBJECT: false,
     },

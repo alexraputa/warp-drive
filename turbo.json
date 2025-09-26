@@ -9,7 +9,8 @@
     ".pnpmfile.cjs",
     ".pnpm-workspace.yaml",
     "patches/*",
-    ".github/*"
+    ".github/*",
+    "./tools/release/**"
   ],
 
   "envMode": "loose",
@@ -52,7 +53,7 @@
       "dependsOn": ["^build:pkg"],
       // https://turbo.build/repo/docs/reference/configuration#outputLogs
       "outputLogs": "new-only",
-      "env": ["NODE_ENV", "EMBER_DATA_FULL_COMPAT", "IS_UNPKG_BUILD"]
+      "env": ["NODE_ENV", "EMBER_DATA_FULL_COMPAT", "IS_UNPKG_BUILD", "BABEL_DISABLE_CACHE"]
     },
 
     /////////////////////////////////////////////////

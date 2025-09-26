@@ -6,7 +6,7 @@ let Macros = { js: [] };
 
 if (IS_UNPKG_BUILD) {
   Macros = babelPlugin({
-    compatWith: process.env.EMBER_DATA_FULL_COMPAT ? '99.0' : null,
+    compatWith: process.env.EMBER_DATA_FULL_COMPAT === 'true' ? '99.0' : null,
     forceMode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   });
 }

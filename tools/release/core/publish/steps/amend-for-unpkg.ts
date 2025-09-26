@@ -137,6 +137,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
         NODE_ENV: 'production',
         EMBER_DATA_FULL_COMPAT: 'true',
         IS_UNPKG_BUILD: 'true',
+        BABEL_DISABLE_CACHE: '1',
       },
     });
   } catch (e) {
@@ -152,6 +153,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
         NODE_ENV: 'production',
         EMBER_DATA_FULL_COMPAT: 'false',
         IS_UNPKG_BUILD: 'true',
+        BABEL_DISABLE_CACHE: '1',
       },
     });
   } catch (e) {
@@ -167,6 +169,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
         NODE_ENV: 'development',
         EMBER_DATA_FULL_COMPAT: 'true',
         IS_UNPKG_BUILD: 'true',
+        BABEL_DISABLE_CACHE: '1',
       },
     });
   } catch (e) {
@@ -182,6 +185,7 @@ export async function amendFilesForUnpkg(pkg: Package) {
         NODE_ENV: 'development',
         EMBER_DATA_FULL_COMPAT: 'false',
         IS_UNPKG_BUILD: 'true',
+        BABEL_DISABLE_CACHE: '1',
       },
     });
   } catch (e) {

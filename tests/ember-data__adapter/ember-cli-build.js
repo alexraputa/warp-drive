@@ -19,7 +19,7 @@ module.exports = async function (defaults) {
   });
 
   setConfig(app, __dirname, {
-    compatWith: process.env.EMBER_DATA_FULL_COMPAT ? '99.0' : null,
+    compatWith: process.env.EMBER_DATA_FULL_COMPAT === 'true' ? '99.0' : null,
   });
 
   app.import('node_modules/@warp-drive/diagnostic/dist/styles/dom-reporter.css');

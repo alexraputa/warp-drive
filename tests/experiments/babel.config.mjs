@@ -5,7 +5,7 @@ import { macros } from '@warp-drive/core/build-config/babel-macros';
 const Macros = buildMacros({
   configure: (config) => {
     setConfig(config, {
-      compatWith: process.env.EMBER_DATA_FULL_COMPAT ? '99.0' : null,
+      compatWith: process.env.EMBER_DATA_FULL_COMPAT === 'true' ? '99.0' : null,
       deprecations: {
         DEPRECATE_TRACKING_PACKAGE: false,
       },
