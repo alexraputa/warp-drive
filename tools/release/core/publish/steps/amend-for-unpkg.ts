@@ -26,27 +26,6 @@ function addUnpkgExportConditions(pkg: Package) {
       }
     }
    */
-  /**
-   * ".": {
-   *     "unpkg": {
-   *      "development": {},
-   * "default": {
-   * }}
-        "types": "./declarations/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "./*.cjs": {
-        "default": "./cjs-dist/*.cjs"
-      },
-      "./*": {
-        "types": "./declarations/*.d.ts",
-        "default": "./dist/*.js"
-      }
-   */
-  const exportsTemplate = {
-    development: {},
-  } as any;
-
   for (const key of Object.keys(existing)) {
     // ignore .cjs
     if (key.endsWith('.cjs')) {
@@ -65,33 +44,22 @@ function addUnpkgExportConditions(pkg: Package) {
     /*
       exports = {
         "./": {
-          unpkg: {
-              // ?dev
-              development: {
-                // ?conditions=development,deprecations
-                deprecations: './dist/esm/index.js',
-                default: './dist/esm/index.js',
-              },
-
-              // ?conditions=production,deprecations
-              deprecations: './dist/esm/index.js',
-
-              // ?prod (default)
-              default: './dist/esm/index.js',
-            },
-          };
+          "unpkg-dev-deprecated": "", // dev with deprecations
+          "unpkg-dev": "", // dev no deprecations
+          "unpkg-deprecated": "", // prod with deprecations
+          unpkg: "", // prod no deprecations
           types: "./declarations/index.d.ts",
           default: "./dist/index.js",
         },
      */
-    const exports = structuredClone(exportsTemplate);
-    exports.development.deprecations = `./dist/unpkg/dev-deprecated/${newPathValue}`;
-    exports.development.default = `./dist/unpkg/dev/${newPathValue}`;
-    exports.deprecations = `./dist/unpkg/prod-deprecated/${newPathValue}`;
-    exports.default = `./dist/unpkg/prod/${newPathValue}`;
+    const exports = {} as Record<string, string>;
+    exports['unpkg-dev-deprecated'] = `./dist/unpkg/dev-deprecated/${newPathValue}`;
+    exports['unpkg-dev'] = `./dist/unpkg/dev/${newPathValue}`;
+    exports['unpkg-deprecated'] = `./dist/unpkg/prod-deprecated/${newPathValue}`;
+    exports['unpkg'] = `./dist/unpkg/prod/${newPathValue}`;
 
     const newValue = {
-      unpkg: exports,
+      ...exports,
       ...value,
     };
     existing[key] = newValue;
