@@ -40,11 +40,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('@ember-data/model')) return 'warp-drive-legacy';
-          if (id.includes('@ember-data/legacy-compat')) return 'warp-drive-legacy';
-          if (id.includes('@ember-data')) return 'warp-drive-legacy';
           if (id.includes('@warp-drive/legacy')) return 'warp-drive-legacy';
-          if (id.includes('@warp-drive')) return 'warp-drive';
+          if (id.includes('@warp-drive/utilities')) return 'warp-drive-utilities';
+          if (id.includes('@warp-drive/')) return 'warp-drive-ember';
           if (id.includes('@ember')) return 'ember';
           if (id.includes('ember-source')) return 'ember';
           if (id.includes('@glimmer')) return 'ember';
