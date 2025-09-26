@@ -67,11 +67,14 @@ import { RequestPromise, RequestStateService } from './network/request-cache.ts'
 import type { LegacyLiveArray } from './record-arrays/legacy-live-array.ts';
 import { coerceId, ensureStringId } from './utils/coerce-id.ts';
 import { normalizeModelName } from './utils/normalize-model-name.ts';
-// @ts-expect-error adding to globalThis
-globalThis.setWarpDriveLogging = setLogging;
 
-// @ts-expect-error adding to globalThis
-globalThis.getWarpDriveRuntimeConfig = getRuntimeConfig;
+if (DEBUG) {
+  // @ts-expect-error adding to globalThis
+  globalThis.setWarpDriveLogging = setLogging;
+
+  // @ts-expect-error adding to globalThis
+  globalThis.getWarpDriveRuntimeConfig = getRuntimeConfig;
+}
 
 if (LOG_METRIC_COUNTS) {
   // @ts-expect-error adding to globalThis

@@ -3,6 +3,8 @@
  * @mergeModuleWith <project>
  */
 
+import { DEBUG } from '@warp-drive/build-config/env';
+
 import type { CAUTION_MEGA_DANGER_ZONE_Extension } from './reactive.ts';
 import { instantiateRecord, registerDerivations, SchemaService, teardownRecord } from './reactive.ts';
 import type { ReactiveDocument } from './reactive/-private/document.ts';
@@ -22,12 +24,13 @@ export { recordIdentifierFor, recordIdentifierFor as cacheKeyFor };
 
 export { Fetch, RequestManager };
 
-// @ts-expect-error adding to globalThis
-globalThis.setWarpDriveLogging = setLogging;
+if (DEBUG) {
+  // @ts-expect-error adding to globalThis
+  globalThis.setWarpDriveLogging = setLogging;
 
-// @ts-expect-error adding to globalThis
-globalThis.getWarpDriveRuntimeConfig = getRuntimeConfig;
-
+  // @ts-expect-error adding to globalThis
+  globalThis.getWarpDriveRuntimeConfig = getRuntimeConfig;
+}
 export { Store, CacheHandler, type CachePolicy };
 
 export { type StoreRequestContext, type StoreRequestInput, storeFor } from './store/-private.ts';
