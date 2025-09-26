@@ -150,10 +150,10 @@ export async function amendFilesForUnpkg(pkg: Package) {
 
   try {
     await exec({
-      ...process.env,
       cwd: pkg.projectPath,
       cmd: `pnpm exec vite build --outDir dist/unpkg/dev-deprecated`,
       env: {
+        ...process.env,
         NODE_ENV: 'development',
         EMBER_DATA_FULL_COMPAT: 'false',
         IS_UNPKG_BUILD: 'true',
