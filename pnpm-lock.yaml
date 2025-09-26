@@ -4098,6 +4098,9 @@ importers:
 
   warp-drive-packages/tc39-proposal-signals:
     dependencies:
+      '@embroider/macros':
+        specifier: ^1.18.1
+        version: 1.18.1(@babel/core@7.28.3)
       '@warp-drive/core':
         specifier: workspace:*
         version: file:warp-drive-packages/core(@babel/core@7.28.3)
@@ -19114,6 +19117,7 @@ snapshots:
 
   '@warp-drive/tc39-proposal-signals@file:warp-drive-packages/tc39-proposal-signals(@babel/core@7.28.3)':
     dependencies:
+      '@embroider/macros': 1.18.1(@babel/core@7.28.3)
       '@warp-drive/core': file:warp-drive-packages/core(@babel/core@7.28.3)
       signal-polyfill: 0.2.2
     transitivePeerDependencies:

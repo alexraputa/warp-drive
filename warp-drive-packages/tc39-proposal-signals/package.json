@@ -36,7 +36,8 @@
   "peerDependencies": {},
   "dependencies": {
     "signal-polyfill": "0.2.2",
-    "@warp-drive/core": "workspace:*"
+    "@warp-drive/core": "workspace:*",
+    "@embroider/macros": "^1.18.1"
   },
   "peerDependenciesMeta": {},
   "devDependencies": {
