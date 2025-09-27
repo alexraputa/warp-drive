@@ -39,28 +39,18 @@
       "default": "./dist/*.js"
     }
   },
-  "peerDependencies": {
-    "@ember-data/store": "workspace:*",
-    "@ember-data/model": "workspace:*",
-    "@ember-data/request-utils": "workspace:*",
-    "@warp-drive/core-types": "workspace:*"
-  },
+  "peerDependencies": {},
   "dependencies": {
     "@ember/edition-utils": "^1.2.0",
     "@embroider/macros": "^1.18.1",
-    "@warp-drive/core": "workspace:*"
+    "@warp-drive/core": "workspace:*",
+    "@warp-drive/utilities": "workspace:*"
   },
   "devDependencies": {
     "@babel/core": "^7.28.3",
     "@babel/plugin-transform-typescript": "^7.28.0",
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-typescript": "^7.27.1",
-    "@ember-data/request": "workspace:*",
-    "@ember-data/legacy-compat": "workspace:*",
-    "@ember-data/request-utils": "workspace:*",
-    "@ember-data/store": "workspace:*",
-    "@ember-data/model": "workspace:*",
-    "@warp-drive/core-types": "workspace:*",
     "@warp-drive/internal-config": "workspace:*",
     "ember-source": "~6.6.0",
     "decorator-transforms": "^2.3.0",

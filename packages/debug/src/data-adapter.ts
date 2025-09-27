@@ -6,13 +6,21 @@ import * as s from '@ember/service';
 
 import { getGlobalConfig, macroCondition } from '@embroider/macros';
 
-import type Model from '@ember-data/model';
-import { capitalize, underscore } from '@ember-data/request-utils/string';
-import type Store from '@ember-data/store';
-import { recordIdentifierFor } from '@ember-data/store';
-import type { ModelSchema } from '@ember-data/store/types';
+import type { Store } from '@warp-drive/core';
+import { recordIdentifierFor } from '@warp-drive/core';
 import { assert } from '@warp-drive/core/build-config/macros';
 import { assertPrivateStore } from '@warp-drive/core/store/-private';
+import type { ModelSchema } from '@warp-drive/core/types';
+import { capitalize, underscore } from '@warp-drive/utilities/string';
+
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type
+interface Model extends ModelSchema {}
+declare class Model {
+  id: string | null;
+  isNew: boolean;
+  hasDirtyAttributes: boolean;
+  store: Store;
+}
 
 const service = s.service ?? s.inject;
 const StoreTypesMap = new WeakMap<Store, Map<string, boolean>>();
@@ -217,7 +225,7 @@ class InspectorDataAdapter extends DataAdapter<Model> {
   ): void {
     if (discoveredTypes.get(type) !== true) {
       const klass = store.modelFor(type);
-      installDebugInfo(klass as typeof Model);
+      installDebugInfo(klass as unknown as typeof Model);
       const wrapped = this.wrapModelType(klass, type);
       releaseMethods.push(this.observeModelType(type, typesUpdated));
       typesAdded([wrapped]);
