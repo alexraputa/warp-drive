@@ -241,50 +241,53 @@ class ASTAnalyzer {
     }
     console.log();
 
-    // Top 25 longest string literals
-    console.log('TOP 25 LONGEST STRING LITERALS:');
+    const TOP_COUNT = 100;
+    // Top N longest string literals
+    console.log(`TOP ${TOP_COUNT} LONGEST STRING LITERALS:`);
     console.log('-'.repeat(40));
     const longestStrings = Array.from(this.stringLiterals.entries())
       .sort((a, b) => b[0].length - a[0].length)
-      .slice(0, 25);
+      .slice(0, TOP_COUNT);
 
-    let totalBytesTop25 = 0;
+    let totalBytesTopN = 0;
     longestStrings.forEach(([str, count], index) => {
       const displayStr = str.length > 60 ? str.substring(0, 57) + '...' : str;
       const bytesForThisString = str.length * count;
-      totalBytesTop25 += bytesForThisString;
+      totalBytesTopN += bytesForThisString;
       console.log(
         `${(index + 1).toString().padStart(2)}: (${str.length.toString().padStart(3)} chars) "${displayStr}" (${count}x) = ${bytesForThisString} bytes`
       );
     });
 
     console.log('-'.repeat(40));
-    console.log(`Total bytes for top 25 longest strings: ${totalBytesTop25.toLocaleString()} bytes`);
+    console.log(`Total bytes for top ${TOP_COUNT} longest strings: ${totalBytesTopN.toLocaleString()} bytes`);
     console.log(
-      `Percentage of total file size: ${((totalBytesTop25 / (this.stats.totalFileSize || 1)) * 100).toFixed(2)}%`
+      `Percentage of total file size: ${((totalBytesTopN / (this.stats.totalFileSize || 1)) * 100).toFixed(2)}%`
     );
     console.log();
 
-    // Top 25 longest identifier names
-    console.log('TOP 25 LONGEST IDENTIFIER NAMES:');
+    // Top N longest identifier names
+    console.log(`TOP ${TOP_COUNT} LONGEST IDENTIFIER NAMES:`);
     console.log('-'.repeat(40));
     const longestIdentifiers = Array.from(this.identifiers.entries())
       .sort((a, b) => b[0].length - a[0].length)
-      .slice(0, 25);
+      .slice(0, TOP_COUNT);
 
-    let totalBytesTop25Identifiers = 0;
+    let totalBytesTopNIdentifiers = 0;
     longestIdentifiers.forEach(([name, count], index) => {
       const bytesForThisIdentifier = name.length * count;
-      totalBytesTop25Identifiers += bytesForThisIdentifier;
+      totalBytesTopNIdentifiers += bytesForThisIdentifier;
       console.log(
         `${(index + 1).toString().padStart(2)}: (${name.length.toString().padStart(3)} chars) ${name} (${count}x) = ${bytesForThisIdentifier} bytes`
       );
     });
 
     console.log('-'.repeat(40));
-    console.log(`Total bytes for top 25 longest identifiers: ${totalBytesTop25Identifiers.toLocaleString()} bytes`);
     console.log(
-      `Percentage of total file size: ${((totalBytesTop25Identifiers / (this.stats.totalFileSize || 1)) * 100).toFixed(2)}%`
+      `Total bytes for top ${TOP_COUNT} longest identifiers: ${totalBytesTopNIdentifiers.toLocaleString()} bytes`
+    );
+    console.log(
+      `Percentage of total file size: ${((totalBytesTopNIdentifiers / (this.stats.totalFileSize || 1)) * 100).toFixed(2)}%`
     );
     console.log();
 
@@ -301,7 +304,7 @@ class ASTAnalyzer {
     );
 
     if (singleCharCount > this.stats.uniqueIdentifiers * 0.1) {
-      console.log('⚠️  High ratio of single-character identifiers suggests minified code');
+      console.log('✅  High ratio of single-character identifiers suggests minified code');
     }
 
     if (this.stats.totalNodes > 10000) {
