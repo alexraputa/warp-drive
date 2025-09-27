@@ -3,7 +3,7 @@
  * @mergeModuleWith <project>
  */
 
-import { DEBUG } from '@warp-drive/build-config/env';
+import { DEBUG, TESTING } from '@warp-drive/build-config/env';
 
 import type { CAUTION_MEGA_DANGER_ZONE_Extension } from './reactive.ts';
 import { instantiateRecord, registerDerivations, SchemaService, teardownRecord } from './reactive.ts';
@@ -24,7 +24,7 @@ export { recordIdentifierFor, recordIdentifierFor as cacheKeyFor };
 
 export { Fetch, RequestManager };
 
-if (DEBUG) {
+if (TESTING) {
   // @ts-expect-error adding to globalThis
   globalThis.setWarpDriveLogging = setLogging;
 

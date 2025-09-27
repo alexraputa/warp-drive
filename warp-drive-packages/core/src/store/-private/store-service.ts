@@ -68,7 +68,7 @@ import type { LegacyLiveArray } from './record-arrays/legacy-live-array.ts';
 import { coerceId, ensureStringId } from './utils/coerce-id.ts';
 import { normalizeModelName } from './utils/normalize-model-name.ts';
 
-if (DEBUG) {
+if (TESTING) {
   // @ts-expect-error adding to globalThis
   globalThis.setWarpDriveLogging = setLogging;
 
