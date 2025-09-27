@@ -172,7 +172,7 @@ export { Store as default };
 export {
   type StoreRequestContext,
   CacheHandler,
-  type ReactiveDocument as Document,
+  type Document,
   type CachePolicy,
   type StoreRequestInput,
   recordIdentifierFor,
