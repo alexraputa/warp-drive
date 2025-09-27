@@ -72,7 +72,7 @@ are marked with ⚠️. Those we'd love to see more polishing work on are also m
 - **Context-preserving cacheable network requests*
   - ✅ Replacement of Adapter/Serializer with RequestManager
   - ✅ Replacement of buildURL mixin and example Adapters with request-utils
-  - ⚠️ Caching of non-resource documents
+  - ✅ Caching of non-resource documents
 - ****
   - 
 - ✅ 🩵 **Improved change tracking and transactional saves**
@@ -89,6 +89,17 @@ Our stretch goals for Polaris are:
 - ✅ 🩵 **A Fully Typed Experience**
 - ✅ 🩵 WarpDrive independent of ember-cli/embroider
 - Something to support REST/ActiveRecord out-of-the box a bit better (either a Cache implementation or normalization utils)
+- ✅ A Coherence cleanup
+  - Identifier => CacheKey
+  - ResourceKey => ResourceKey
+  - StableDocumentIdentifier => RequestKey
+  - IdentifierCache => CacheKeyManager
+  - RecordArray => ReactiveResourceArray
+  - Record/Model => ReactiveResource
+  - Document => ReactiveDocument
+
+We would rename the types/classes/properties/methods of much of the library as well as reorganize the properties
+on the RequestOptions interface to improve coherence. Roughly the high level shift is:
 
 ### 🌠 Beyond Polaris
 
@@ -158,32 +169,27 @@ const MyRoute = <template>
 </template>
 ```
 
-7) A Coherence cleanup
+7) Primitives for Reactively managing Mutation Flows
 
-We would rename the types/classes/properties/methods of much of the library as well as reorganize the properties
-on the RequestOptions interface to improve coherence. Roughly the high level shift is:
+8) Virtual Resources (Materialized Views)
 
-- Identifier => CacheKey
-- ResourceKey => ResourceKey
-- StableDocumentIdentifier => RequestKey
-- IdentifierCache => CacheKeyManager
-- RecordArray => ReactiveResourceArray
-- Record/Model => ReactiveResource
-- Document => ReactiveDocument
+9) Primitives for Reactively managing state from LocalStorage and SessionStorage
 
-etc.
+10) Primitives for Reactively Managing URL state
 
-8) A Schema DSL
+11) RequestSchema
 
-9) A Query DSL and Endpoint Spec
+12) A Schema DSL
 
-10) OpenAPI => Schema converter
+13) A Query DSL and Endpoint Spec
 
-11) Synchronous Relationship Spec to simplify payloads that don't require links and meta
+14) OpenAPI => Schema converter
 
-12) A Store forking implementation within the JSON:API Cache
+15) Synchronous Relationship Spec to simplify payloads that don't require links and meta
 
-13) RPC and Operations utilities
+16) ~~A Store forking implementation within the JSON:API Cache~~
+
+17) Utilities for working with RPC and Operations
 
 --------------
 
