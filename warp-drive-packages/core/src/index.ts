@@ -3,7 +3,7 @@
  * @mergeModuleWith <project>
  */
 
-import { DEBUG, TESTING } from '@warp-drive/build-config/env';
+import { TESTING } from '@warp-drive/build-config/env';
 
 import type { CAUTION_MEGA_DANGER_ZONE_Extension } from './reactive.ts';
 import { instantiateRecord, registerDerivations, SchemaService, teardownRecord } from './reactive.ts';
