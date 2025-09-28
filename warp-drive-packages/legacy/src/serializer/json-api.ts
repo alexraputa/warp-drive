@@ -28,8 +28,9 @@ import { JSONSerializer } from './json';
   This process involves normalizing property names, transforming
   attribute values and serializing relationships.
 
-  `JSONAPISerializer` supports the http://jsonapi.org/ spec and is the
-  serializer recommended by Ember Data.
+  `JSONAPISerializer` supports the http://jsonapi.org/ spec, though
+  even compliant {json:api} servers may find writing an application
+  specific serializer better suited to their needs and more performant.
 
   This serializer normalizes a JSON API payload that looks like:
 
@@ -98,7 +99,7 @@ import { JSONSerializer } from './json';
     }
   ```
 
-  to the format that the Ember Data store expects.
+  to the format that the JSONAPICache expects.
 
   ### Customizing meta
 
@@ -332,7 +333,7 @@ const JSONAPISerializer: any = (JSONSerializer as typeof EmberObject).extend({
 
   /**
     Dasherizes and singularizes the model name in the payload to match
-    the format Ember Data uses internally for the model name.
+    the common convention for model names.
 
     For example the key `posts` would be converted to `post` and the
     key `studentAssesments` would be converted to `student-assesment`.

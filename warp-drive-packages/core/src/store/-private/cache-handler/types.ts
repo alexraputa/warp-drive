@@ -13,7 +13,6 @@ import type { Store } from '../store-service';
  * Implementing this service allows you to programatically define
  * when a request should be considered expired.
  *
- * @class (Interface) CachePolicy
  * @public
  */
 export interface CachePolicy {
@@ -28,9 +27,7 @@ export interface CachePolicy {
    * and the cache will be updated before returning the response.
    *
    * @public
-   * @param {RequestKey} identifier
-   * @param {Store} store
-   * @return {Boolean} true if the request is considered hard expired
+   * @return true if the request is considered hard expired
    */
   isHardExpired(identifier: RequestKey, store: Store): boolean;
   /**
@@ -43,9 +40,7 @@ export interface CachePolicy {
    * request is made to update the cache via the configured request handlers.
    *
    * @public
-   * @param {RequestKey} identifier
-   * @param {Store} store
-   * @return {Boolean} true if the request is considered soft expired
+   * @return true if the request is considered soft expired
    */
   isSoftExpired(identifier: RequestKey, store: Store): boolean;
 
@@ -56,10 +51,6 @@ export interface CachePolicy {
    * Note, this is invoked regardless of whether the request has a cache-key.
    *
    * @public
-   * @param {ImmutableRequestInfo} request
-   * @param {RequestKey | null} identifier
-   * @param {Store} store
-   * @return {void}
    */
   willRequest?(request: ImmutableRequestInfo, identifier: RequestKey | null, store: Store): void;
 
@@ -91,11 +82,6 @@ export interface CachePolicy {
    *
    *
    * @public
-   * @param {ImmutableRequestInfo} request
-   * @param {ImmutableResponse} response
-   * @param {RequestKey | null} identifier
-   * @param {Store} store
-   * @return {void}
    */
   didRequest?(
     request: ImmutableRequestInfo,

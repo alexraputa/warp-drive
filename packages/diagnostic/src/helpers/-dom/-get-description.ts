@@ -7,8 +7,7 @@ import type { Target } from './-target';
   target for debug/error messaging.
 
   @private
-  @param {Target} target the target
-  @returns {string} a description of the target
+  @returns a description of the target
 */
 export default function getDescription(target: Target): string {
   const data = isDescriptor(target) ? lookupDescriptorData(target) : null;

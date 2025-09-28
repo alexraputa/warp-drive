@@ -9,8 +9,8 @@ export type ComponentLike = object;
  * We should ultimately get a new API from @glimmer/runtime that provides this functionality
  * (see https://github.com/emberjs/rfcs/pull/785 for more info).
  * @private
- * @param {Object} maybeComponent The thing you think might be a component
- * @return {Boolean} True if it's a component, false if not
+ * @param maybeComponent The thing you think might be a component
+ * @return true if it's a component, false if not
  */
 function isComponent(maybeComponent: object): maybeComponent is ComponentLike {
   return !!(getComponentManager as (c: object, v: boolean) => object)(maybeComponent, true);

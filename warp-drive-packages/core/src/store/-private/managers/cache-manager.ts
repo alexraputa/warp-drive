@@ -63,8 +63,6 @@ export class CacheManager implements Cache {
    * a `content` member and therefor must not assume the existence
    * of `request` and `response` on the document.
    *
-   * @param {StructuredDocument} doc
-   * @return {ResourceDocument}
    * @public
    */
   put<T>(doc: StructuredDocument<T> | { content: T }): ResourceDocument {
@@ -76,7 +74,6 @@ export class CacheManager implements Cache {
    *
    * @public
    * @param op the operation to perform
-   * @return {void}
    */
   patch(op: Operation | Operation[]): void {
     this.___cache.patch(op);
@@ -87,7 +84,6 @@ export class CacheManager implements Cache {
    * on relationships only.
    *
    * @public
-   * @param mutation
    */
   mutate(mutation: LocalRelationshipOperation): void {
     this.___cache.mutate(mutation);
@@ -121,8 +117,7 @@ export class CacheManager implements Cache {
    * notifications for relational data.
    *
    * @public
-   * @param {ResourceKey | RequestKey} cacheKey
-   * @return {ResourceDocument | ResourceBlob | null} the known resource data
+   * @return the known resource data
    */
   peek(cacheKey: ResourceKey): unknown;
   peek(cacheKey: RequestKey): ResourceDocument | null;
@@ -139,8 +134,6 @@ export class CacheManager implements Cache {
    * Peek the Cache for the existing request data associated with
    * a cacheable request
    *
-   * @param {RequestKey}
-   * @return {RequestKey | null}
    * @public
    */
   peekRequest(key: RequestKey): StructuredDocument<ResourceDocument> | null {
@@ -168,7 +161,6 @@ export class CacheManager implements Cache {
    * utilize this method to fork the cache.
    *
    * @public
-   * @return {Promise<Cache>}
    */
   fork(): Promise<Cache> {
     return this.___cache.fork();
@@ -181,9 +173,7 @@ export class CacheManager implements Cache {
    * preferring instead to merge at the Store level, which will
    * utilize this method to merge the caches.
    *
-   * @param {Cache} cache
    * @public
-   * @return {Promise<void>}
    */
   merge(cache: Cache): Promise<void> {
     return this.___cache.merge(cache);
@@ -233,7 +223,6 @@ export class CacheManager implements Cache {
    * which may be fed back into a new instance of the same Cache
    * via `cache.hydrate`.
    *
-   * @return {Promise<ReadableStream>}
    * @public
    */
   dump(): Promise<ReadableStream<unknown>> {
@@ -252,8 +241,6 @@ export class CacheManager implements Cache {
    * behavior supports optimizing pre/fetching of data for route transitions
    * via data-only SSR modes.
    *
-   * @param {ReadableStream} stream
-   * @return {Promise<void>}
    * @public
    */
   hydrate(stream: ReadableStream<unknown>): Promise<void> {

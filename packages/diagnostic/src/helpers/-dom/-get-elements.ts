@@ -7,8 +7,8 @@ function getElements(target: string | IDOMElementDescriptor, rootElement: HTMLEl
   Used internally by the DOM interaction helpers to find multiple elements.
 
   @private
-  @param {string} target the selector to retrieve
-  @returns {NodeList} the matched elements
+  @param target the selector to retrieve
+  @returns the matched elements
 */
 function getElements(
   target: string | IDOMElementDescriptor,
