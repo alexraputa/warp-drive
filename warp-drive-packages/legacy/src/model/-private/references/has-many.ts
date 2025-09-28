@@ -230,7 +230,7 @@ export default class HasManyReference<
    ```
 
    @public
-   @return {String} The name of the remote type. This should either be `link` or `ids`
+   @return The name of the remote type. This should either be `link` or `ids`
    */
   remoteType(): 'link' | 'ids' {
     const value = this._resource();
@@ -273,14 +273,14 @@ export default class HasManyReference<
    ```
 
     @public
-   @return {Array} The ids in this has-many relationship
+   @return The ids in this has-many relationship
    */
   ids(): Array<string | null> {
     return this.identifiers.map((identifier) => identifier.id);
   }
 
   /**
-   The link Ember Data will use to fetch or reload this belongs-to
+   The link WarpDrive will use to fetch or reload this belongs-to
    relationship. By default it uses only the "related" resource linkage.
 
    Example
@@ -314,7 +314,7 @@ export default class HasManyReference<
    ```
 
    @public
-   @return {String} The link Ember Data will use to fetch or reload this belongs-to relationship.
+   @return The link WarpDrive will use to fetch or reload this belongs-to relationship.
    */
   link(): string | null {
     const resource = this._resource();
@@ -377,7 +377,7 @@ export default class HasManyReference<
    ```
 
   @public
-  @return {Object|null} The meta information for the belongs-to relationship.
+  @return The meta information for the belongs-to relationship.
   */
   meta(): Meta | null {
     let meta: Meta | null = null;
@@ -481,9 +481,8 @@ export default class HasManyReference<
    forcing the load of all of the associated records.
 
    @public
-   @param {Array|Object} doc a JSONAPI document object describing the new value of this relationship.
-   @param {Boolean} [skipFetch] if `true`, do not attempt to fetch unloaded records
-   @return {Promise<ManyArray | void>}
+   @param doc a JSONAPI document object describing the new value of this relationship.
+   @param skipFetch [optional] if `true`, do not attempt to fetch unloaded records
   */
   async push(
     doc: ExistingResourceObject[] | CollectionResourceDocument,
@@ -592,7 +591,6 @@ export default class HasManyReference<
    ```
 
     @public
-   @return {ManyArray}
    */
   value(): ManyArray<Related> | null {
     const support: LegacySupport = (LEGACY_SUPPORT as Map<ResourceKey, LegacySupport>).get(this.___identifier)!;
@@ -665,8 +663,8 @@ export default class HasManyReference<
    ```
 
    @public
-   @param {Object} options the options to pass in.
-   @return {Promise} a promise that resolves with the ManyArray in
+   @param options the options to pass in.
+   @return a promise that resolves with the ManyArray in
    this has-many relationship.
    */
   async load(options?: BaseFinderOptions): Promise<ManyArray<Related>> {
@@ -725,9 +723,9 @@ export default class HasManyReference<
    commentsRef.reload({ adapterOptions: { isPrivate: true } })
    ```
 
-    @public
-   @param {Object} options the options to pass in.
-   @return {Promise} a promise that resolves with the ManyArray in this has-many relationship.
+   @public
+   @param options the options to pass in.
+   @return a promise that resolves with the ManyArray in this has-many relationship.
    */
   reload(options?: BaseFinderOptions): Promise<ManyArray<Related>> {
     const support: LegacySupport = (LEGACY_SUPPORT as Map<ResourceKey, LegacySupport>).get(this.___identifier)!;

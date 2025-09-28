@@ -208,10 +208,10 @@ function ensureRelationshipIsSetToParent(
         const relationshipFetched = `${expectedModel}.${parentRelationship.kind}("${parentRelationship.name}")`;
         const includedRecord = `<${type}:${id}>`;
         const message = [
-          `Encountered mismatched relationship: Ember Data expected ${path} in the payload from ${relationshipFetched} to include ${expected} but got ${got} instead.\n`,
+          `Encountered mismatched relationship: WarpDrive expected ${path} in the payload from ${relationshipFetched} to include ${expected} but got ${got} instead.\n`,
           `The ${includedRecord} record loaded at ${prefix} in the payload specified ${other} as its ${quotedInverse}, but should have specified ${expectedModel} (the record the relationship is being loaded from) as its ${quotedInverse} instead.`,
           `This could mean that the response for ${relationshipFetched} may have accidentally returned ${quotedType} records that aren't related to ${expectedModel} and could be related to a different ${parentIdentifier.type} record instead.`,
-          `Ember Data has corrected the ${includedRecord} record's ${quotedInverse} relationship to ${expectedModel} so that ${relationshipFetched} will include ${includedRecord}.`,
+          `WarpDrive has corrected the ${includedRecord} record's ${quotedInverse} relationship to ${expectedModel} so that ${relationshipFetched} will include ${includedRecord}.`,
           `Please update the response from the server or change your serializer to either ensure that the response for only includes ${quotedType} records that specify ${expectedModel} as their ${quotedInverse}, or omit the ${quotedInverse} relationship from the response.`,
         ].join('\n');
 
