@@ -28,6 +28,11 @@
 
 # @ember-data/active-record
 
+> [!WARNING]
+> **⚠️ This package only exists for backwards compatibility**
+> Newer apps should use [@warp-drive/utilities](https://warp-drive.io/api/@warp-drive/utilities/)
+
+
 This package provides utilities for working with **Active**Record APIs with [***Warp*Drive**](https://warp-drive.io/) when using the older package configuration.
 
 For for modern usage of these utilities, see [@warp-drive/utilities](https://www.npmjs.com/package/@warp-drive/utilities).
