@@ -154,7 +154,7 @@ const AdapterWithBuildURLMixin: Readonly<typeof Adapter> & (new (owner?: Owner) 
   Note that the object root can be pluralized for both a single-object response
   and an array response: the REST adapter is not strict on this. Further, if the
   HTTP server responds to a `GET` request to `/posts/1` (e.g. the response to a
-  `findRecord` query) with more than one object in the array, Ember Data will
+  `findRecord` query) with more than one object in the array, WarpDrive will
   only display the object with the matching ID.
 
   ### Conventional Names
@@ -215,7 +215,7 @@ const AdapterWithBuildURLMixin: Readonly<typeof Adapter> & (new (owner?: Owner) 
 
   If the records in the relationship are not known when the response
   is serialized it's also possible to represent the relationship as a
-  URL using the `links` key in the response. Ember Data will fetch
+  URL using the `links` key in the response. WarpDrive will fetch
   this URL to resolve the relationship when it is accessed for the
   first time.
 
@@ -298,10 +298,7 @@ const AdapterWithBuildURLMixin: Readonly<typeof Adapter> & (new (owner?: Owner) 
   }
   ```
 
-  @class RESTAdapter
   @public
-  @constructor
-  @uses BuildURLMixin
 */
 class RESTAdapter extends AdapterWithBuildURLMixin {
   declare _fastboot: FastBoot;
@@ -312,8 +309,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
   /**
     This property allows ajax to still be used instead when `false`.
 
-    @property useFetch
-    @type {Boolean}
     @default true
     @public
   */
@@ -374,8 +369,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     }
     ```
 
-    @param {Object} obj
-    @return {Object}
     @public
   */
   sortQueryParams(obj: Record<string, unknown>): Record<string, unknown> {
@@ -437,9 +430,7 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     Note: Requests coalescing rely on URL building strategy. So if you override `buildURL` in your app
     `groupRecordsForFindMany` more likely should be overridden as well in order for coalescing to work.
 
-    @property coalesceFindRequests
     @public
-    @type {Boolean}
   */
   get coalesceFindRequests() {
     const coalesceFindRequests = this._coalesceFindRequests;
@@ -467,9 +458,7 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     Requests for the `Post` model would now target `/api/1/post/`.
 
-    @property namespace
     @public
-    @type {String}
   */
 
   /**
@@ -485,15 +474,13 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     Requests for the `Post` model would now target `https://api.example.com/post/`.
 
-    @property host
     @public
-    @type {String}
   */
 
   /**
     Some APIs require HTTP headers, e.g. to provide an API
     key. Arbitrary headers can be set as key/value pairs on the
-    `RESTAdapter`'s `headers` object and Ember Data will send them
+    `RESTAdapter`'s `headers` object and WarpDrive will send them
     along with each ajax request..
 
     ```js [app/adapters/application.js]
@@ -509,9 +496,7 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     }
     ```
 
-    @property headers
     @public
-    @type {Object}
    */
   declare headers: Record<string, unknown> | undefined;
 
@@ -526,11 +511,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     @since 1.13.0
     @public
-    @param {Store} store
-    @param {Model} type
-    @param {String} id
-    @param {Snapshot} snapshot
-    @return {Promise} promise
   */
   findRecord(store: Store, type: ModelSchema, id: string, snapshot: Snapshot): Promise<AdapterPayload> {
     const url = this.buildURL(type.modelName, id, snapshot, 'findRecord');
@@ -547,24 +527,15 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     promise for the resulting payload.
 
     @public
-    @param {Store} store
-    @param {Model} type
-    @param {undefined} neverSet a value is never provided to this argument
-    @param {SnapshotRecordArray} snapshotRecordArray
-    @return {Promise} promise
   */
   findAll(
     store: Store,
     type: ModelSchema,
-    sinceToken: null,
+    neverUsed: null,
     snapshotRecordArray: SnapshotRecordArray
   ): Promise<AdapterPayload> {
     const query: QueryState = this.buildQuery(snapshotRecordArray);
     const url = this.buildURL(type.modelName, null, snapshotRecordArray, 'findAll');
-
-    if (sinceToken) {
-      query.since = sinceToken;
-    }
 
     return this.ajax(url, 'GET', { data: query });
   }
@@ -581,12 +552,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     to the server as parameters.
 
     @public
-    @param {Store} store
-    @param {Model} type
-    @param {Object} query
-    @param {Collection} recordArray
-    @param {Object} adapterOptions
-    @return {Promise} promise
   */
   query(store: Store, type: ModelSchema, query: Record<string, unknown>): Promise<AdapterPayload> {
     const url = this.buildURL(type.modelName, null, null, 'query', query);
@@ -611,11 +576,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     @since 1.13.0
     @public
-    @param {Store} store
-    @param {Model} type
-    @param {Object} query
-    @param {Object} adapterOptions
-    @return {Promise} promise
   */
   queryRecord(
     store: Store,
@@ -659,11 +619,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     promise for the resulting payload.
 
     @public
-    @param {Store} store
-    @param {Model} type
-    @param {Array} ids
-    @param {Array} snapshots
-    @return {Promise} promise
   */
   findMany(store: Store, type: ModelSchema, ids: string[], snapshots: Snapshot[]): Promise<AdapterPayload> {
     const url = this.buildURL(type.modelName, ids, snapshots, 'findMany');
@@ -700,11 +655,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     * Links with no beginning `/` will have a parentURL prepended to it, via the current adapter's `buildURL`.
 
     @public
-    @param {Store} store
-    @param {Snapshot} snapshot
-    @param {String} url
-    @param {Object} relationship meta object describing the relationship
-    @return {Promise} promise
   */
   findHasMany(
     store: Store,
@@ -778,10 +728,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     of a record.
 
     @public
-    @param {Store} store
-    @param {Model} type
-    @param {Snapshot} snapshot
-    @return {Promise} promise
   */
   createRecord(store: Store, type: ModelSchema, snapshot: Snapshot): Promise<AdapterPayload> {
     const url = this.buildURL(type.modelName, null, snapshot, 'createRecord');
@@ -802,10 +748,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     of a record.
 
     @public
-    @param {Store} store
-    @param {Model} schema
-    @param {Snapshot} snapshot
-    @return {Promise} promise
   */
   updateRecord(store: Store, schema: ModelSchema, snapshot: Snapshot): Promise<AdapterPayload> {
     const data = serializeIntoHash(store, schema, snapshot, {});
@@ -823,10 +765,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     The `deleteRecord` method  makes an Ajax (HTTP DELETE) request to a URL computed by `buildURL`.
 
     @public
-    @param {Store} store
-    @param {Model} type
-    @param {Snapshot} snapshot
-    @return {Promise} promise
   */
   deleteRecord(store: Store, schema: ModelSchema, snapshot: Snapshot): Promise<AdapterPayload> {
     const type = snapshot.modelName;
@@ -836,6 +774,9 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     return this.ajax(this.buildURL(type, id, snapshot, 'deleteRecord'), 'DELETE');
   }
 
+  /**
+    @private
+  */
   _stripIDFromURL(store: Store, snapshot: Snapshot): string {
     const type = snapshot.modelName;
     const id = snapshot.id;
@@ -883,10 +824,8 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     and `/posts/2/comments/3`
 
     @public
-    @param {Store} store
-    @param {Array} snapshots
-    @return {Array}  an array of arrays of records, each of which is to be
-                      loaded separately by `findMany`.
+    @return an array of arrays of records, each of which is to be
+      loaded separately by `findMany`.
   */
   groupRecordsForFindMany(store: Store, snapshots: Snapshot[]): Snapshot[][] {
     const groups: Map<string, Snapshot[]> = new Map();
@@ -935,11 +874,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     @since 1.13.0
     @public
-    @param  {Number} status
-    @param  {Object} headers
-    @param  {Object} payload
-    @param  {Object} requestData - the original request information
-    @return {Object | AdapterError} response
   */
   handleResponse(
     status: number,
@@ -981,10 +915,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     @since 1.13.0
     @public
-    @param  {Number} status
-    @param  {Object} headers
-    @param  {Object} payload
-    @return {Boolean}
   */
   isSuccess(status: number, _headers: Record<string, unknown>, _payload: Payload): boolean {
     return (status >= 200 && status < 300) || status === 304;
@@ -996,10 +926,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     @since 1.13.0
     @public
-    @param  {Number} status
-    @param  {Object} headers
-    @param  {Object} payload
-    @return {Boolean}
   */
   isInvalid(status: number, _headers: Record<string, unknown>, _payload: Payload): boolean {
     return status === 422;
@@ -1009,7 +935,7 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     Takes a URL, an HTTP method and a hash of data, and makes an
     HTTP request.
 
-    When the server responds with a payload, Ember Data will call into `extractSingle`
+    When the server responds with a payload, WarpDrive will call into `extractSingle`
     or `extractArray` (depending on whether the original query was for one record or
     many records).
 
@@ -1023,10 +949,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     * Registers success and failure handlers.
 
     @private
-    @param {String} url
-    @param {String} type The request type GET, POST, PUT, DELETE etc.
-    @param {Object} options
-    @return {Promise} promise
   */
   async ajax(url: string, type: HTTPMethod, options: JQueryAjaxSettings | RequestInit = {}): Promise<AdapterPayload> {
     const requestData: RequestData = {
@@ -1053,19 +975,23 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
   /**
     @private
-    @param {Object} options jQuery ajax options to be used for the ajax request
+    @param options jQuery ajax options to be used for the ajax request
   */
   _ajaxRequest(options: JQueryRequestInit): void {
     assert('You must install jQuery globally when `useFetch` is false', typeof jQuery !== 'undefined');
     void jQuery.ajax(options);
   }
-
+  /**
+    @private
+  */
   _fetchRequest(options: FetchRequestInit): Promise<Response> {
     const fetchFunction = fetch();
 
     return fetchFunction(options.url, options);
   }
-
+  /**
+    @private
+  */
   _ajax(options: FetchRequestInit | JQueryRequestInit): void {
     if (this.useFetch) {
       void this._fetchRequest(options as FetchRequestInit);
@@ -1076,10 +1002,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
   /**
     @private
-    @param {String} url
-    @param {String} type The request type GET, POST, PUT, DELETE etc.
-    @param {Object} options
-    @return {Object}
   */
   ajaxOptions(
     url: string,
@@ -1130,6 +1052,9 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     return reqOptions;
   }
 
+  /**
+   * @private
+   */
   _ajaxURL(url: string): string {
     if (this.fastboot?.isFastBoot) {
       const httpRegex = /^https?:\/\//;
@@ -1144,7 +1069,7 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
           return `${protocol}//${host}${url}`;
         } catch (fbError) {
           throw new Error(
-            'You are using Ember Data with no host defined in your adapter. This will attempt to use the host of the FastBoot request, which is not configured for the current host of this request. Please set the hostWhitelist property for in your environment.js. FastBoot Error: ' +
+            'You are using WarpDrive with no host defined in your adapter. This will attempt to use the host of the FastBoot request, which is not configured for the current host of this request. Please set the hostWhitelist property for in your environment.js. FastBoot Error: ' +
               (fbError as Error).message
           );
         }
@@ -1156,8 +1081,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
   /**
     @private
-    @param {String} responseText
-    @return {Object}
   */
   parseErrorResponse(responseText: string): Record<string, unknown> | string {
     let json: string = responseText;
@@ -1173,10 +1096,7 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
   /**
     @private
-    @param  {Number} status
-    @param  {Object} headers
-    @param  {Object} payload
-    @return {Array} errors payload
+    @return errors payload
   */
   normalizeErrorResponse(
     status: number,
@@ -1205,11 +1125,7 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
     of information for debugging (good luck!)
 
     @private
-    @param  {Number} status
-    @param  {Object} headers
-    @param  {Object} payload
-    @param  {Object} requestData
-    @return {String} detailed error message
+    @return detailed error message
   */
   generatedDetailedMessage(
     status: number,
@@ -1244,8 +1160,6 @@ class RESTAdapter extends AdapterWithBuildURLMixin {
 
     @since 2.5.0
     @public
-    @param  {Snapshot} snapshot
-    @return {Object}
   */
   buildQuery(snapshot: Snapshot | SnapshotRecordArray): QueryState {
     const query: QueryState = {};
@@ -1430,10 +1344,7 @@ function headersToObject(headers: Headers): Record<string, string> {
 /**
  * Helper function that translates the options passed to `jQuery.ajax` into a format that `fetch` expects.
  *
- * @param {Object} _options
- * @param {Adapter} adapter
  * @private
- * @return {Object}
  */
 export function fetchOptions(
   options: JQueryRequestInit & Partial<FetchRequestInit>,
@@ -1444,7 +1355,7 @@ export function fetchOptions(
   if (options.data) {
     // GET and HEAD requests can't have a `body`
     if (options.method === 'GET' || options.method === 'HEAD') {
-      // If no options are passed, Ember Data sets `data` to an empty object, which we test for.
+      // If no options are passed, WarpDrive sets `data` to an empty object, which we test for.
       if (Object.keys(options.data).length && options.url) {
         // Test if there are already query params in the url (mimics jQuey.ajax).
         const queryParamDelimiter = options.url.includes('?') ? '&' : '?';
