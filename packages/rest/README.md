@@ -30,6 +30,12 @@
 
 <p align="center">Elegantly composable. Made for <strong>REST</strong>ful APIs</p>
 
+> [!WARNING]
+> **⚠️ This package only exists for backwards compatibility**
+>
+> Newer apps should use [@warp-drive/utilities](https://warp-drive.io/api/@warp-drive/utilities/)
+
+
 This package provides utilities for working with **REST**ful APIs with [*Ember***Data**](https://github.com/warp-drive-data/warp-drive/).
 
 ## Installation

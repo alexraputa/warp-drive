@@ -30,6 +30,13 @@
 
 <p align="center">Elegantly composable. Made for <strong>JSON:</strong>API</p>
 
+> [!WARNING]
+> **⚠️ This package only exists for backwards compatibility**
+>
+> Newer apps should use [@warp-drive/json-api](https://warp-drive.io/api/@warp-drive/json-api/) for the cache and [@warp-drive/utilities](https://warp-drive.io/api/@warp-drive/utilities/)
+> for the builders it provided.
+
+
 This package provides an in-memory document and resource [Cache](https://warp-drive.io/api/@warp-drive/core/types/cache/interfaces/Cache) and associated utilities for use with [***Warp*Drive**](https://warp-rive.io) and [{json:api}](https://jsonapi.org/).
 
 This package is intended for use with the older EmberData package setup, for use with more recent versions of WarpDrive see [@warp-drive/json-api](https://www.npmjs.com/package/@warp-drive/json-api) for the Cache and  [@warp-drive/utilities](https://www.npmjs.com/package/@warp-drive/utilities) for the builders.
