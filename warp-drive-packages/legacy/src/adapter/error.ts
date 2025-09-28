@@ -148,8 +148,8 @@ function extend<Final extends AdapterRequestError>(
   transition to the `invalid` state and the errors will be set to the
   `errors` property on the record.
 
-  For Ember Data to correctly map errors to their corresponding
-  properties on the model, Ember Data expects each error to be
+  For WarpDrive to correctly map errors to their corresponding
+  properties on the model, WarpDrive expects each error to be
   a valid JSON-API error object with a `source/pointer` that matches
   the property name. For example, if you had a Post model that
   looked like this.

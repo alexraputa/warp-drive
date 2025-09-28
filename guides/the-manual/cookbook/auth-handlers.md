@@ -26,7 +26,7 @@ Authorization: Bearer <token>
 
 #### Basic example
 
-In Ember Data we can create our own custom handler to add authentication header to all requests
+In WarpDrive we can create our own custom handler to add authentication header to all requests
 
 ```ts
 import type { Handler, NextFn, RequestContext } from '@ember-data/request';

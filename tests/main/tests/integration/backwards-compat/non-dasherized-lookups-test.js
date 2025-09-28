@@ -45,14 +45,14 @@ module(
             type: 'post-notes',
             id: '1',
             attributes: {
-              name: 'Ember Data',
+              name: 'WarpDrive',
             },
           },
         });
 
         const postNote = await store.findRecord('postNote', '1');
 
-        assert.strictEqual(postNote.name, 'Ember Data', 'record found');
+        assert.strictEqual(postNote.name, 'WarpDrive', 'record found');
       }
     );
 
@@ -73,14 +73,14 @@ module(
             type: 'post-notes',
             id: '1',
             attributes: {
-              name: 'Ember Data',
+              name: 'WarpDrive',
             },
           },
         });
 
         const postNote = await store.findRecord('post_note', '1');
 
-        assert.strictEqual(postNote.name, 'Ember Data', 'record found');
+        assert.strictEqual(postNote.name, 'WarpDrive', 'record found');
       }
     );
   }
@@ -136,7 +136,7 @@ module(
             type: 'post-notes',
             id: '1',
             attributes: {
-              name: 'Ember Data',
+              name: 'WarpDrive',
             },
             relationships: {
               'note-post': {
@@ -190,7 +190,7 @@ module(
             type: 'post-notes',
             id: '1',
             attributes: {
-              name: 'Ember Data',
+              name: 'WarpDrive',
             },
           },
         });

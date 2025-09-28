@@ -30,7 +30,7 @@ import { createReactiveResourceArray, destroy, type ReactiveResourceArray } from
 
   ### Inverses
 
-  Often, the relationships in Ember Data applications will have
+  Often, the relationships in WarpDrive applications will have
   an inverse. For example, imagine the following models are
   defined:
 

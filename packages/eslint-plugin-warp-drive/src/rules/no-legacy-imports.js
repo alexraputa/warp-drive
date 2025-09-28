@@ -127,7 +127,7 @@ module.exports = {
     schema: false,
     docs: {
       description:
-        'Rewrites legacy Ember Data import module specifiers to their modern replacements using an embedded mapping.',
+        'Rewrites legacy WarpDrive import module specifiers to their modern replacements using an embedded mapping.',
       recommended: false,
       url: 'https://github.com/warp-drive-data/warp-drive/tree/main/packages/eslint-plugin-warp-drive/docs/no-legacy-imports.md',
     },

@@ -273,7 +273,7 @@ export class RecordReference {
     normalized hash of data and the object represented by the reference
     will update.
 
-    If you pass a promise to `push`, Ember Data will not ask the adapter
+    If you pass a promise to `push`, WarpDrive will not ask the adapter
     for the data if another attempt to fetch it is made in the
     interim. When the promise resolves, the underlying object is updated
     with the new data, and the promise returned by *this function* is resolved
