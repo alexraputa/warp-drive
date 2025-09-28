@@ -1,4 +1,4 @@
-import { useRecommendedStore } from '@warp-drive/core';
+import { recordIdentifierFor, useRecommendedStore } from '@warp-drive/core';
 import { withDefaults } from '@warp-drive/core/reactive';
 import type { Context } from '@warp-drive/core/request';
 import type { RelatedCollection } from '@warp-drive/core/store/-private';
@@ -176,6 +176,30 @@ module('Reads | hasMany in linksMode', function (hooks) {
     assert.equal(record.friends?.[0]?.id, '2', 'friends[0].id is accessible');
     assert.equal(record.friends?.[0]?.name, 'Benedikt', 'friends[0].name is accessible');
 
+    // ensure cache is still accurate
+    const serialized = store.cache.peek(recordIdentifierFor(record));
+    assert.deepEqual(
+      serialized,
+      {
+        type: 'user',
+        id: '1',
+        lid: '@lid:user-1',
+        attributes: {
+          name: 'Leo',
+        },
+        relationships: {
+          friends: {
+            links: { related: '/user/1/friends' },
+            data: [
+              { type: 'user', id: '2', lid: '@lid:user-2' },
+              { type: 'user', id: '3', lid: '@lid:user-3' },
+            ],
+          },
+        },
+      },
+      'cache is accurate'
+    );
+
     store.push<User>({
       data: {
         type: 'user',
@@ -218,6 +242,27 @@ module('Reads | hasMany in linksMode', function (hooks) {
     assert.equal(record.friends?.[0]?.friends?.length, 2, 'friends[0].friends.length is accessible');
     assert.equal(record.friends?.[0]?.friends?.[0].id, '1', 'friends[0].friends[0].id is accessible');
     assert.equal(record.friends?.[0]?.friends?.[0].name, 'Leo', 'friends[0].friends[0].name is accessible');
+
+    // ensure cache is still accurate
+    const serialized2 = store.cache.peek(recordIdentifierFor(record));
+    assert.deepEqual(
+      serialized2,
+      {
+        type: 'user',
+        id: '1',
+        lid: '@lid:user-1',
+        attributes: {
+          name: 'Leo',
+        },
+        relationships: {
+          friends: {
+            links: { related: '/user/1/friends' },
+            data: [{ type: 'user', id: '3', lid: '@lid:user-3' }],
+          },
+        },
+      },
+      'cache is accurate'
+    );
   });
 
   test('we can update sync hasMany in linksMode with the same data in a different order', function (assert) {
