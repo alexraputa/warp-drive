@@ -572,9 +572,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     client. A record can also enter the empty state if the adapter is
     unable to locate the record.
 
-    @property isEmpty
     @public
-    @readonly
   */
   @memoized
   get isEmpty(): boolean {
@@ -587,9 +585,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     data. It remains in this state until the adapter provides the
     requested data.
 
-    @property isLoading
     @public
-    @readonly
   */
   @memoized
   get isLoading(): boolean {
@@ -612,9 +608,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     model.isLoaded;
     ```
 
-    @property isLoaded
     @public
-    @readonly
   */
   @memoized
   get isLoaded(): boolean {
@@ -641,9 +635,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     ```
 
     @since 1.13.0
-    @property hasDirtyAttributes
     @public
-    @readonly
   */
   @memoized
   get hasDirtyAttributes(): boolean {
@@ -668,9 +660,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     });
     ```
 
-    @property isSaving
     @public
-    @readonly
   */
   @memoized
   get isSaving(): boolean {
@@ -710,9 +700,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     });
     ```
 
-    @property isDeleted
     @public
-    @readonly
   */
   @memoized
   get isDeleted(): boolean {
@@ -736,9 +724,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     });
     ```
 
-    @property isNew
     @public
-    @readonly
   */
   @memoized
   get isNew(): boolean {
@@ -751,9 +737,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     A record will be in the `valid` state when the adapter did not report any
     server-side validation failures.
 
-    @property isValid
     @public
-    @readonly
   */
   @memoized
   get isValid(): boolean {
@@ -776,9 +760,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     record.dirtyType; // 'created'
     ```
 
-    @property dirtyType
     @public
-    @readonly
   */
   @memoized
   get dirtyType(): 'created' | 'updated' | 'deleted' | '' {
@@ -800,9 +782,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     });
     ```
 
-    @property isError
     @public
-    @readonly
   */
   @memoized
   get isError(): boolean {
@@ -825,9 +805,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     record.isReloading; // true
     ```
 
-    @property isReloading
     @public
-    @readonly
   */
   declare isReloading: boolean;
 
@@ -846,7 +824,6 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     model.id; // '1'
     ```
 
-    @property id
     @public
   */
   @gate
@@ -884,7 +861,6 @@ class Model extends EmberObject implements MinimalLegacyRecord {
   }
 
   /**
-    @property currentState
     @private
   */
   // TODO we can probably make this a computeOnce
@@ -909,9 +885,9 @@ class Model extends EmberObject implements MinimalLegacyRecord {
   /**
     The store service instance which created this record instance
 
-   @property store
     @public
    */
+  declare store: Store;
 
   /**
     When the record is in the `invalid` state this object will contain
@@ -961,7 +937,6 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     {{/each}}
     ```
 
-    @property errors
     @public
   */
   @computeOnce
@@ -975,7 +950,6 @@ class Model extends EmberObject implements MinimalLegacyRecord {
     This property holds the `AdapterError` object with which
     last adapter operation was rejected.
 
-    @property adapterError
     @public
   */
   @memoized
@@ -1117,9 +1091,8 @@ class Model extends EmberObject implements MinimalLegacyRecord {
      }
    });
    ```
-   @property modelName
+
     @public
-   @readonly
   */
   static modelName: string = null as unknown as string;
 
@@ -1303,11 +1276,8 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    //=> [ { name: 'posts', kind: 'hasMany' } ]
    ```
 
-   @property relationships
     @public
-   @readonly
    */
-
   @computeOnce
   static get relationships(): Map<string, LegacyRelationshipField[]> {
     assert(
@@ -1360,9 +1330,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    //=> ['owner']
    ```
 
-   @property relationshipNames
     @public
-   @readonly
    */
   @computeOnce
   static get relationshipNames(): {
@@ -1414,9 +1382,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    //=> ['user', 'post']
    ```
 
-   @property relatedTypes
    @public
-   @readonly
    */
   @computeOnce
   static get relatedTypes(): string[] {
@@ -1475,9 +1441,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    //=> { name: 'owner', kind: 'belongsTo', type: 'user', options: Object }
    ```
 
-   @property relationshipsByName
     @public
-   @readonly
    */
   @computeOnce
   static get relationshipsByName(): Map<string, LegacyRelationshipField> {
@@ -1561,9 +1525,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    // title, attribute
    ```
 
-   @property fields
     @public
-   @readonly
    */
   @computeOnce
   static get fields(): Map<string, 'attribute' | 'belongsTo' | 'hasMany'> {
@@ -1590,8 +1552,8 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    descriptor.
 
     @public
-   @param {Function} callback the callback to invoke
-   @param {any} binding the value to which the callback's `this` should be bound
+   @param callback the callback to invoke
+   @param binding the value to which the callback's `this` should be bound
    */
   static eachRelationship<T, Schema extends Model>(
     callback: (
@@ -1618,8 +1580,8 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    with a model.
 
     @public
-   @param {Function} callback the callback to invoke
-   @param {any} binding the value to which the callback's `this` should be bound
+   @param callback the callback to invoke
+   @param binding the value to which the callback's `this` should be bound
    */
   static eachRelatedType<T>(callback: (this: T | undefined, type: string) => void, binding?: T): void {
     assert(
@@ -1700,9 +1662,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    // birthday {type: "date", kind: 'attribute', options: Object, parentType: function, name: "birthday"}
    ```
 
-   @property attributes
     @public
-   @readonly
    */
   @computeOnce
   static get attributes(): Map<string, LegacyAttributeField> {
@@ -1763,9 +1723,7 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    // birthday date
    ```
 
-   @property transformedAttributes
     @public
-   @readonly
    */
   @computeOnce
   static get transformedAttributes(): Map<string, string> {
@@ -1824,8 +1782,8 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    ```
 
     @public
-   @param {Function} callback The callback to execute
-   @param {Object} [binding] the value to which the callback's `this` should be bound
+   @param callback The callback to execute
+   @param binding [optional] the value to which the callback's `this` should be bound
    */
   static eachAttribute<T, Schema extends Model>(
     callback: (this: T | undefined, key: MaybeAttrFields<Schema>, attribute: LegacyAttributeField) => void,
@@ -1881,8 +1839,8 @@ class Model extends EmberObject implements MinimalLegacyRecord {
    ```
 
     @public
-   @param {Function} callback The callback to execute
-   @param {Object} [binding] the value to which the callback's `this` should be bound
+   @param callback The callback to execute
+   @param binding [optional] the value to which the callback's `this` should be bound
    */
   static eachTransformedAttribute<T, Schema extends Model>(
     callback: (this: T | undefined, key: Exclude<keyof Schema & string, keyof Model & string>, type: string) => void,
