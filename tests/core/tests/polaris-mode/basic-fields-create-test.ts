@@ -61,9 +61,9 @@ module('Polaris | Create | basic fields', function (hooks) {
       })
     );
 
-    const record = store.createRecord<User>('user', { id: '1' });
+    const record = store.createRecord<User>('user', { id: 'my-unique-id-1' });
 
-    assert.equal(record.id, '1', 'id is accessible');
+    assert.equal(record.id, 'my-unique-id-1', 'id is accessible');
     assert.equal(record.name, undefined, 'name is accessible');
   });
 
@@ -107,8 +107,8 @@ module('Polaris | Create | basic fields', function (hooks) {
 
     const record = store.createRecord<User>('user', {});
     assert.equal(record.id, null, 'id is accessible');
-    record.id = '1';
-    assert.equal(record.id, '1', 'id is accessible');
+    record.id = 'my-unique-id-2';
+    assert.equal(record.id, 'my-unique-id-2', 'id is accessible');
   });
 
   test('we can create a new record with a pre-set lid', function (assert) {
