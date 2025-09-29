@@ -3,6 +3,7 @@
 # generated files
 pnpm-lock.yaml
 dist
+dist-test
 unstable-preview-types
 preview-types
 warp-drive-packages/core/types
@@ -25,5 +26,7 @@ vendor/
 *.yml
 
 # we don't really care about these
-main/public/
-tests/fastboot/public/
+public/
+tmp/
+docs-viewer/docs.warp-drive.io/api/
+docs-viewer/docs.warp-drive.io/guides/
