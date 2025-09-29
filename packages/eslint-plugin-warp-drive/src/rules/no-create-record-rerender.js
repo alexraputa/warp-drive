@@ -1,3 +1,7 @@
+/**
+ * {@include ./no-create-record-rerender.md}
+ * @module
+ */
 // @ts-check
 
 const messageId = 'noCreateRecordRerender';

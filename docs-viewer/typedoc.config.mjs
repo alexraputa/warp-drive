@@ -23,6 +23,7 @@ const config = {
     '../packages/serializer',
     '../packages/store',
     '../packages/tracking',
+    '../packages/eslint-plugin-warp-drive',
     '../warp-drive-packages/core',
     '../warp-drive-packages/legacy',
     '../warp-drive-packages/utilities',

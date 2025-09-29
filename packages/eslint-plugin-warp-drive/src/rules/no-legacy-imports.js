@@ -1,3 +1,7 @@
+/**
+ * {@include ./no-legacy-imports.md}
+ * @module
+ */
 'use strict';
 
 const path = require('path');

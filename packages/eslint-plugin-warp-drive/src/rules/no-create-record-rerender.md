@@ -1,10 +1,8 @@
-# eslint-plugin-warp-drive
-
 | Rule | 🏷️ | ✨ |
 | ---- | -- | -- |
 | `no-create-record-rerender` | 🐞⚡️ | ✅ |
 
-> [!Note]
+> [!TIP]
 > This rule helps applications avoid patterns that often lead to excess or broken renders.
 
 `store.createRecord` creates a record available to

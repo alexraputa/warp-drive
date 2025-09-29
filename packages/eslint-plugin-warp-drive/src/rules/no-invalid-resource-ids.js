@@ -1,3 +1,7 @@
+/**
+ * {@include ./no-invalid-resource-ids.md}
+ * @module
+ */
 'use strict';
 
 const STORE_METHOD_NAMES = new Set(['findRecord', 'peekRecord']);

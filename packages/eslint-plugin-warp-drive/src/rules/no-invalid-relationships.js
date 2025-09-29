@@ -1,3 +1,7 @@
+/**
+ * {@include ./no-invalid-relationships.md}
+ * @module
+ */
 /** @type {import('eslint').Rule.RuleModule} */
 module.exports = {
   meta: {

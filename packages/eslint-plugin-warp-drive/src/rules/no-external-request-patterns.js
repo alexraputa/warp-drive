@@ -1,3 +1,7 @@
+/**
+ * {@include ./no-external-request-patterns.md}
+ * @module
+ */
 'use strict';
 
 const AJAX_SERVICE_NAMES = new Set(['apiAjax', 'ajax', 'najax']);

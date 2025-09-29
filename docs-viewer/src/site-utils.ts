@@ -314,6 +314,7 @@ const CORE_PACKAGES = [
   '@warp-drive/utilities',
   '@warp-drive/legacy',
   '@warp-drive/holodeck',
+  'eslint-plugin-warp-drive',
 ];
 
 function isFrameworkPackage(name: string) {

@@ -1,3 +1,7 @@
+/**
+ * {@include ./no-invalid-resource-types.md}
+ * @module
+ */
 'use strict';
 
 const { dasherize, singularize } = require('@warp-drive/utilities/string.cjs');

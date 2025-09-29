@@ -1,3 +1,7 @@
+/**
+ * {@include ./no-legacy-request-patterns.md}
+ * @module
+ */
 'use strict';
 
 const STORE_METHOD_NAMES = new Set([

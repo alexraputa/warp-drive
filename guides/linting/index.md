@@ -28,6 +28,9 @@ bun add --exact eslint-plugin-warp-drive@latest
 
 :::
 
+## Rules
+
+See the API docs for [eslint-plugin-warp-drive](/api/eslint-plugin-warp-drive/)
 
 ## Usage
 

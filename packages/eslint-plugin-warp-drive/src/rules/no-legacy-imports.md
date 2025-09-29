@@ -1,5 +1,3 @@
-# eslint-plugin-warp-drive
-
 | Rule | 🏷️ | ✨ |
 | ---- | -- | -- |
 | `no-legacy-imports` | 🏆 | ✅ |

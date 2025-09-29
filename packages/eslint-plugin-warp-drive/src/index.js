@@ -1,3 +1,7 @@
+/**
+ * @module
+ * @mergeModuleWith <project>
+ */
 'use strict';
 
 const requireIndex = require('requireindex');
