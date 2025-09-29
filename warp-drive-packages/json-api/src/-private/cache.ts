@@ -479,6 +479,15 @@ export class JSONAPICache implements Cache {
    * of the Graph handling necessary entanglements and
    * notifications for relational data.
    *
+   * :::warning
+   * It is not recommended to use the return value as
+   * a serialized representation of the resource both
+   * due to it containing local mutations and because
+   * it may contain additional fields not recognized
+   * by the {json:api} API implementation such as `lid` and
+   * the various internal WarpDrive bookkeeping fields.
+   * :::
+   *
    * @category Cache Management
    * @public
    */
@@ -505,7 +514,7 @@ export class JSONAPICache implements Cache {
           if (rel.definition.isImplicit) {
             return;
           } else {
-            relationships[key] = structuredClone(this.__graph.getData(identifier, key));
+            relationships[key] = this.__graph.getData(identifier, key);
           }
         });
       }

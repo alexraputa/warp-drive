@@ -65,6 +65,8 @@ export function createCollectionEdge(definition: UpgradedMeta, identifier: Resou
   };
 }
 
+const cp = structuredClone;
+
 export function legacyGetCollectionRelationshipData(
   source: CollectionEdge,
   getRemoteState: boolean
@@ -77,11 +79,11 @@ export function legacyGetCollectionRelationshipData(
   }
 
   if (source.links) {
-    payload.links = source.links;
+    payload.links = cp(source.links);
   }
 
   if (source.meta) {
-    payload.meta = source.meta;
+    payload.meta = cp(source.meta);
   }
 
   return payload;

@@ -1,7 +1,9 @@
 import { recordIdentifierFor, useRecommendedStore } from '@warp-drive/core';
+import { DEBUG } from '@warp-drive/core/build-config/env';
 import { withDefaults } from '@warp-drive/core/reactive';
 import type { Context } from '@warp-drive/core/request';
 import type { RelatedCollection } from '@warp-drive/core/store/-private';
+import { CACHE_OWNER } from '@warp-drive/core/types/identifier';
 import type { Type } from '@warp-drive/core/types/symbols';
 import { module, setupTest, skip, test } from '@warp-drive/diagnostic/ember';
 import { JSONAPICache } from '@warp-drive/json-api';
@@ -178,7 +180,7 @@ module('Reads | hasMany in linksMode', function (hooks) {
 
     // ensure cache is still accurate
     const serialized = store.cache.peek(recordIdentifierFor(record));
-    assert.deepEqual(
+    assert.satisfies(
       serialized,
       {
         type: 'user',
@@ -245,7 +247,7 @@ module('Reads | hasMany in linksMode', function (hooks) {
 
     // ensure cache is still accurate
     const serialized2 = store.cache.peek(recordIdentifierFor(record));
-    assert.deepEqual(
+    assert.satisfies(
       serialized2,
       {
         type: 'user',
