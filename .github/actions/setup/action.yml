@@ -149,7 +149,7 @@ runs:
         path: |
           ${{ github.workspace }}/.broccoli-cache
           node_modules/.cache
-          tests/main/node_modules/.cache
+          tests/dont-write-new-tests-here/node_modules/.cache
         key: broccoli${{inputs.use-production-caches == 'true' && '-production-' || '-'}}${{ github.head_ref }}-${{inputs.ref }}
         restore-keys: |
           broccoli${{inputs.use-production-caches == 'true' && '-production-' || '-'}}${{ github.head_ref }}

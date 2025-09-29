@@ -137,7 +137,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: client-testem-logs
-          path: './tests/main/testem.log'
+          path: './tests/dont-write-new-tests-here/testem.log'
           retention-days: 1
 
       - name: Maybe Cache Failures
@@ -152,7 +152,7 @@ jobs:
         if: (success() || failure()) && steps.retry-test-failures.outputs.cache-hit != 'true'
         with:
           name: tests-execution-file-partition
-          path: 'tests/main/test-execution-*.json'
+          path: 'tests/dont-write-new-tests-here/test-execution-*.json'
           retention-days: 1
 
   lts:
@@ -175,7 +175,7 @@ jobs:
         env:
           CI: true
         run: |
-          cd tests/main;
+          cd tests/dont-write-new-tests-here;
           pnpm exec ember try:one  ${{ matrix.scenario }} --skip-cleanup;
           pnpm build:tests;
           pnpm run test;
@@ -206,7 +206,7 @@ jobs:
         env:
           CI: true
         run: |
-          cd tests/main;
+          cd tests/dont-write-new-tests-here;
           pnpm exec ember try:one ${{ matrix.release }} --skip-cleanup;
           pnpm build:tests;
           pnpm run test;
