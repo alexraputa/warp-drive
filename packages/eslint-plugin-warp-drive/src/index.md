@@ -21,13 +21,13 @@ For security and backwards compatibility, this Package is also available as `esl
 
 | Rule | Description | 🏷️ | ✨ |
 | ---- | ----------- | -- | -- |
-| [no-create-record-rerender](./rules/no-create-record-rerender.md) | Helps avoid patterns that often lead to excess or broken renders | 🐞⚡️ | ✅ |
-| [no-invalid-relationships](./rules/no-invalid-relationships.md) | Ensures the basic part of relationship configuration is setup appropriately | 🏆 | ✅ |
-| [no-legacy-request-patterns](./rules/no-legacy-request-patterns.md) | Restricts usage of deprecated or discouraged request patterns | 🏆 | ✅ |
-| [no-external-request-patterns](./rules/no-external-request-patterns.md) | Restricts usage of discouraged non-warp-drive request patterns | 🏆 | ✅ |
-| [no-invalid-resource-types](./rules/no-invalid-resource-types.md) | Ensures resource types follow a conventional pattern when used in common APIs | 🏆 | ✅🛠️ |
-| [no-invalid-resource-ids](./rules/no-invalid-resource-ids.md) | Ensures resource ids are strings when used in common APIs | 🏆 | ✅🛠️ |
-| [no-legacy-imports](./rules/no-legacy-imports.md) | Ensures imports use paths specified by the Package Unification RFC | 🏆 | ✅🛠️ |
+| {@link eslint-plugin-warp-drive!rules/no-create-record-rerender | no-create-record-rerender} | Helps avoid patterns that often lead to excess or broken renders | 🐞⚡️ | ✅ |
+| {@link eslint-plugin-warp-drive!rules/no-invalid-relationships | no-invalid-relationships} | Ensures the basic part of relationship configuration is setup appropriately | 🏆 | ✅ |
+| {@link eslint-plugin-warp-drive!rules/no-legacy-request-patterns | no-legacy-request-patterns} | Restricts usage of deprecated or discouraged request patterns | 🏆 | ✅ |
+| {@link eslint-plugin-warp-drive!rules/no-external-request-patterns | no-external-request-patterns} | Restricts usage of discouraged non-warp-drive request patterns | 🏆 | ✅ |
+| {@link eslint-plugin-warp-drive!rules/no-invalid-resource-types | no-invalid-resource-types} | Ensures resource types follow a conventional pattern when used in common APIs | 🏆 | ✅🛠️ |
+| {@link eslint-plugin-warp-drive!rules/no-invalid-resource-ids | no-invalid-resource-ids} | Ensures resource ids are strings when used in common APIs | 🏆 | ✅🛠️ |
+| {@link eslint-plugin-warp-drive!rules/no-legacy-imports | no-legacy-imports} | Ensures imports use paths specified by the Package Unification RFC | 🏆 | ✅🛠️ |
 
 ## Usage
 
