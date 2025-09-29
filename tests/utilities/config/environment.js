@@ -2,7 +2,7 @@
 
 module.exports = function (environment) {
   const ENV = {
-    modulePrefix: 'builders-test-app',
+    modulePrefix: 'utilities-tests',
     environment,
     rootURL: '/',
     locationType: 'history',
