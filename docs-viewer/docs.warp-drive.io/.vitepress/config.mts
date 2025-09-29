@@ -6,6 +6,7 @@ import { footnote } from '@mdit/plugin-footnote';
 const TypeDocSidebar = await postProcessApiDocs();
 
 import llmstxt from 'vitepress-plugin-llms';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
 import { groupIconMdPlugin, groupIconVitePlugin } from 'vitepress-plugin-group-icons';
 
 const GuidesStructure = await getGuidesStructure();
@@ -38,7 +39,28 @@ export default defineConfig({
     },
   },
   vite: {
-    plugins: [llmstxt(), plugin],
+    plugins: [
+      llmstxt(),
+      plugin,
+      ViteImageOptimizer({
+        // // Configure optimization options for different image formats
+        // png: {
+        //   quality: 80,
+        // },
+        // jpeg: {
+        //   quality: 75,
+        // },
+        // webp: {
+        //   quality: 80,
+        // },
+        // avif: {
+        //   quality: 70,
+        // },
+        // svg: {
+        //   plugins: [{ name: 'removeViewBox', active: false }, { name: 'sortAttrs' }],
+        // },
+      }) as unknown as Plugin[],
+    ],
   },
 
   // just until we have the guides and docs in a better state

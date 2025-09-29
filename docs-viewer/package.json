@@ -26,6 +26,8 @@
     "@pnpm/find-workspace-dir": "1000.1.2",
     "@types/debug": "4.1.12",
     "front-matter": "^4.0.2",
+    "sharp": "^0.34.4",
+    "svgo": "^4.0.0",
     "typedoc": "^0.28.10",
     "typedoc-plugin-markdown": "^4.8.1",
     "typedoc-plugin-no-inherit": "^1.6.1",
@@ -34,6 +36,7 @@
     "vitepress-plugin-llms": "^1.7.3",
     "vitepress-plugin-group-icons": "^1.6.3",
     "vitepress-plugin-tabs": "^0.7.1",
+    "vite-plugin-image-optimizer": "^2.0.2",
     "vue": "^3.5.19",
     "vite": "^7.1.3"
   },
