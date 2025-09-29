@@ -632,7 +632,7 @@ export interface SchemaObjectField {
      * Configures which extensions this object should use.
      *
      * Extensions are registered with the store's schema service
-     * via {@link SchemaService.registerDangerousObjectExtension}
+     * via {@link SchemaService.CAUTION_MEGA_DANGER_ZONE_registerExtension}
      *
      * Extensions should only be used for temporary enhancements
      * to objects to support migrating away from deprecated patterns
@@ -875,7 +875,7 @@ export interface SchemaArrayField {
      * Configures which extensions this object should use.
      *
      * Extensions are registered with the store's schema service
-     * via {@link SchemaService.registerDangerousObjectExtension}
+     * via {@link SchemaService.CAUTION_MEGA_DANGER_ZONE_registerExtension}
      *
      * Extensions should only be used for temporary enhancements
      * to objects to support migrating away from deprecated patterns
@@ -2281,7 +2281,7 @@ export interface LegacyResourceSchema {
    * Configures which extensions this resource should use.
    *
    * Extensions are registered with the store's schema service
-   * via {@link SchemaService.registerDangerousObjectExtension}
+   * via {@link SchemaService.CAUTION_MEGA_DANGER_ZONE_registerExtension}
    *
    * Extensions should only be used for temporary enhancements
    * to objects to support migrating away from deprecated patterns
@@ -2354,7 +2354,7 @@ export interface ObjectSchema {
    * Configures which extensions this object should use.
    *
    * Extensions are registered with the store's schema service
-   * via {@link SchemaService.registerDangerousObjectExtension}
+   * via {@link SchemaService.CAUTION_MEGA_DANGER_ZONE_registerExtension}
    *
    * Extensions should only be used for temporary enhancements
    * to objects to support migrating away from deprecated patterns
