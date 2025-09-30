@@ -119,11 +119,10 @@ with recommended defaults](/api/@warp-drive/core/functions/useRecommendedStore).
 
 :::tabs
 
-== 🚧 PolarisMode
+== 🚧 PolarisMode (preview)
 
-:::caution **Pardon Our Stardust!**
-This section is still in spacedock for construction.
-:::
+>[!WARNING]
+> [PolarisMode](/guides/the-manual/schemas/resources/polaris-mode.md) Isn't quite ready!
 
 ```ts
 import { useRecommendedStore } from '@warp-drive/core';
@@ -137,7 +136,11 @@ export default useRecommendedStore({
 });
 ```
 
-== Legacy Mode (Ember Only)
+== LegacyMode (recommended, Ember Only)
+
+>[!TIP]
+> While [LegacyMode](/guides/the-manual/schemas/resources/legacy-mode.md) can work with
+> Non-Ember apps, we recommend waiting for [PolarisMode](/guides/the-manual/schemas/resources/polaris-mode.md) to become recommended in V6, or limit usage to experimental exploration.
 
 ```ts
 import { useLegacyStore } from '@warp-drive/legacy';
