@@ -499,14 +499,15 @@ import { cached } from '@glimmer/tracking';
 import { computed } from '@ember/object';
 import { User } from './type.ts';
 
+export interface UserExtension extends User {}
 export class UserExtension {
   @cached
-  get fullName(this: User) {
+  get fullName() {
     return this.firstName + ' ' + this.lastName;
   }
 
   @computed('firstName')
-  get greeting(this: User) {
+  get greeting() {
     return 'Hello ' + this.firstName + '!';
   }
 
