@@ -82,100 +82,100 @@ originates from there.
 ::: code-group
 
 ```sh [pnpm]
-pnpm add -E ember-data-types@canary \
-  @ember-data-types/adapter@canary \
-  @ember-data-types/graph@canary \
-  @ember-data-types/json-api@canary \
-  @ember-data-types/legacy-compat@canary \
-  @ember-data-types/model@canary \
-  @ember-data-types/request@canary \
-  @ember-data-types/request-utils@canary \
-  @ember-data-types/serializer@canary \
-  @ember-data-types/store@canary \
-  @warp-drive-types/core-types@canary \
-  @warp-drive/core@canary \
-  @warp-drive/json-api@canary \
-  @warp-drive/legacy@canary \
-  @warp-drive/utilities@canary
+pnpm add -E ember-data-types@latest \
+  @ember-data-types/adapter@latest \
+  @ember-data-types/graph@latest \
+  @ember-data-types/json-api@latest \
+  @ember-data-types/legacy-compat@latest \
+  @ember-data-types/model@latest \
+  @ember-data-types/request@latest \
+  @ember-data-types/request-utils@latest \
+  @ember-data-types/serializer@latest \
+  @ember-data-types/store@latest \
+  @warp-drive-types/core-types@latest \
+  @warp-drive/core@latest \
+  @warp-drive/json-api@latest \
+  @warp-drive/legacy@latest \
+  @warp-drive/utilities@latest
 ```
 
 ```sh [npm]
-npm add -E ember-data-types@canary \
-  @ember-data-types/adapter@canary \
-  @ember-data-types/graph@canary \
-  @ember-data-types/json-api@canary \
-  @ember-data-types/legacy-compat@canary \
-  @ember-data-types/model@canary \
-  @ember-data-types/request@canary \
-  @ember-data-types/request-utils@canary \
-  @ember-data-types/serializer@canary \
-  @ember-data-types/store@canary \
-  @warp-drive-types/core-types@canary
-  @warp-drive/core@canary \
-  @warp-drive/json-api@canary \
-  @warp-drive/legacy@canary \
-  @warp-drive/utilities@canary
+npm add -E ember-data-types@latest \
+  @ember-data-types/adapter@latest \
+  @ember-data-types/graph@latest \
+  @ember-data-types/json-api@latest \
+  @ember-data-types/legacy-compat@latest \
+  @ember-data-types/model@latest \
+  @ember-data-types/request@latest \
+  @ember-data-types/request-utils@latest \
+  @ember-data-types/serializer@latest \
+  @ember-data-types/store@latest \
+  @warp-drive-types/core-types@latest
+  @warp-drive/core@latest \
+  @warp-drive/json-api@latest \
+  @warp-drive/legacy@latest \
+  @warp-drive/utilities@latest
 ```
 
 ```sh [yarn]
-yarn add -E ember-data-types@canary \
-  @ember-data-types/adapter@canary \
-  @ember-data-types/graph@canary \
-  @ember-data-types/json-api@canary \
-  @ember-data-types/legacy-compat@canary \
-  @ember-data-types/model@canary \
-  @ember-data-types/request@canary \
-  @ember-data-types/request-utils@canary \
-  @ember-data-types/serializer@canary \
-  @ember-data-types/store@canary \
-  @warp-drive-types/core-types@canary
-  @warp-drive/core@canary \
-  @warp-drive/json-api@canary \
-  @warp-drive/legacy@canary \
-  @warp-drive/utilities@canary
+yarn add -E ember-data-types@latest \
+  @ember-data-types/adapter@latest \
+  @ember-data-types/graph@latest \
+  @ember-data-types/json-api@latest \
+  @ember-data-types/legacy-compat@latest \
+  @ember-data-types/model@latest \
+  @ember-data-types/request@latest \
+  @ember-data-types/request-utils@latest \
+  @ember-data-types/serializer@latest \
+  @ember-data-types/store@latest \
+  @warp-drive-types/core-types@latest
+  @warp-drive/core@latest \
+  @warp-drive/json-api@latest \
+  @warp-drive/legacy@latest \
+  @warp-drive/utilities@latest
 ```
 
 ```sh [bun]
-bun add --exact ember-data-types@canary \
-  @ember-data-types/adapter@canary \
-  @ember-data-types/graph@canary \
-  @ember-data-types/json-api@canary \
-  @ember-data-types/legacy-compat@canary \
-  @ember-data-types/model@canary \
-  @ember-data-types/request@canary \
-  @ember-data-types/request-utils@canary \
-  @ember-data-types/serializer@canary \
-  @ember-data-types/store@canary \
-  @warp-drive-types/core-types@canary
-  @warp-drive/core@canary \
-  @warp-drive/json-api@canary \
-  @warp-drive/legacy@canary \
-  @warp-drive/utilities@canary
+bun add --exact ember-data-types@latest \
+  @ember-data-types/adapter@latest \
+  @ember-data-types/graph@latest \
+  @ember-data-types/json-api@latest \
+  @ember-data-types/legacy-compat@latest \
+  @ember-data-types/model@latest \
+  @ember-data-types/request@latest \
+  @ember-data-types/request-utils@latest \
+  @ember-data-types/serializer@latest \
+  @ember-data-types/store@latest \
+  @warp-drive-types/core-types@latest
+  @warp-drive/core@latest \
+  @warp-drive/json-api@latest \
+  @warp-drive/legacy@latest \
+  @warp-drive/utilities@latest
 ```
 
 :::
 
-This will install the following at the latest canary
+This will install the following at the latest release
 
 
 ```package.json
 {
   "dependencies": { 
-    "ember-data-types": "alpha", // [!code ++:15]
-    "@ember-data-types/adapter": "alpha",
-    "@ember-data-types/graph": "alpha",
-    "@ember-data-types/json-api": "alpha",
-    "@ember-data-types/legacy-compat": "alpha",
-    "@ember-data-types/model": "alpha",
-    "@ember-data-types/request-utils": "alpha",
-    "@ember-data-types/request": "alpha",
-    "@ember-data-types/serializer": "alpha",
-    "@ember-data-types/store": "alpha",
-    "@warp-drive-types/core-types": "alpha",
-    "@warp-drive/core": "alpha",
-    "@warp-drive/json-api": "alpha"
-    "@warp-drive/legacy": "alpha",
-    "@warp-drive/utilities": "alpha",
+    "ember-data-types": "latest", // [!code ++:15]
+    "@ember-data-types/adapter": "latest",
+    "@ember-data-types/graph": "latest",
+    "@ember-data-types/json-api": "latest",
+    "@ember-data-types/legacy-compat": "latest",
+    "@ember-data-types/model": "latest",
+    "@ember-data-types/request-utils": "latest",
+    "@ember-data-types/request": "latest",
+    "@ember-data-types/serializer": "latest",
+    "@ember-data-types/store": "latest",
+    "@warp-drive-types/core-types": "latest",
+    "@warp-drive/core": "latest",
+    "@warp-drive/json-api": "latest"
+    "@warp-drive/legacy": "latest",
+    "@warp-drive/utilities": "latest",
   }
 }
 ```
@@ -263,34 +263,34 @@ ArrayLike API usage is likely to give you the most issues here, if anything does
 ::: code-group
 
 ```sh [pnpm]
-pnpm add -E @warp-drive-mirror/core@canary @warp-drive-mirror/json-api@canary @warp-drive-mirror/ember@canary @warp-drive-mirror/legacy@canary @warp-drive-mirror/utilities@canary
+pnpm add -E @warp-drive-mirror/core@latest @warp-drive-mirror/json-api@latest @warp-drive-mirror/ember@latest @warp-drive-mirror/legacy@latest @warp-drive-mirror/utilities@latest
 ```
 
 ```sh [npm]
-npm add -E @warp-drive-mirror/core@canary @warp-drive-mirror/json-api@canary @warp-drive-mirror/ember@canary @warp-drive-mirror/legacy@canary @warp-drive-mirror/utilities@canary
+npm add -E @warp-drive-mirror/core@latest @warp-drive-mirror/json-api@latest @warp-drive-mirror/ember@latest @warp-drive-mirror/legacy@latest @warp-drive-mirror/utilities@latest
 ```
 
 ```sh [yarn]
-yarn add -E @warp-drive-mirror/core@canary @warp-drive-mirror/json-api@canary @warp-drive-mirror/ember@canary @warp-drive-mirror/legacy@canary @warp-drive-mirror/utilities@canary
+yarn add -E @warp-drive-mirror/core@latest @warp-drive-mirror/json-api@latest @warp-drive-mirror/ember@latest @warp-drive-mirror/legacy@latest @warp-drive-mirror/utilities@latest
 ```
 
 ```sh [bun]
-bun add --exact @warp-drive-mirror/core@canary @warp-drive-mirror/json-api@canary @warp-drive-mirror/ember@canary @warp-drive-mirror/legacy@canary @warp-drive-mirror/utilities@canary
+bun add --exact @warp-drive-mirror/core@latest @warp-drive-mirror/json-api@latest @warp-drive-mirror/ember@latest @warp-drive-mirror/legacy@latest @warp-drive-mirror/utilities@latest
 ```
 
 :::
 
-This will install the following at the latest canary
+This will install the following at the latest release
 
 
 ```package.json
 {
   "dependencies": {
-    "@warp-drive-mirror/core": "alpha",  // [!code ++:5]
-    "@warp-drive-mirror/ember": "alpha",
-    "@warp-drive-mirror/json-api": "alpha"
-    "@warp-drive-mirror/legacy": "alpha",
-    "@warp-drive-mirror/utilities": "alpha",
+    "@warp-drive-mirror/core": "latest",  // [!code ++:5]
+    "@warp-drive-mirror/ember": "latest",
+    "@warp-drive-mirror/json-api": "latest"
+    "@warp-drive-mirror/legacy": "latest",
+    "@warp-drive-mirror/utilities": "latest",
   }
 }
 ```
