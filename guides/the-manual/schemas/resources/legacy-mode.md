@@ -8,7 +8,7 @@ order: 1
 In the upcoming V6 our recommendation will change to [PolarisMode (preview)](./polaris-mode.md)
 :::
 
-**LegacyMode** can be used to emulate the behaviors and capabilities of The `Model` class from `@ewarp-drive/legacy/model` that was the default way to define reactive objects with schemas for much of WarpDrive's history.
+**LegacyMode** can be used to emulate the behaviors and capabilities of The `Model` class from `@warp-drive/legacy/model` that was the default way to define reactive objects with schemas for much of WarpDrive's history.
 
 The advantage of using ReactiveResource in LegacyMode is that it allows adopting many newer schema-driven features before fully refactoring away from behaviors of Model that won't be supported by PolarisMode.
 
