@@ -115,9 +115,7 @@ export async function printDirtyFiles(label: string) {
   }
 }
 
-const CjsModulePattern = `Object.defineProperty(exports, Symbol.toStringTag, {
-  value: 'Module'
-});`;
+const CjsModulePattern = `Object.defineProperty(exports, Symbol.toStringTag, {`;
 
 function isCjsModule(fileContents: string): boolean {
   return fileContents.includes(CjsModulePattern);
