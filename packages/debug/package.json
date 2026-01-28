@@ -42,7 +42,7 @@
   "peerDependencies": {},
   "dependencies": {
     "@ember/edition-utils": "^1.2.0",
-    "@embroider/macros": "^1.18.1",
+    "@embroider/macros": "^1.19.6",
     "@warp-drive/core": "workspace:*",
     "@warp-drive/utilities": "workspace:*"
   },
@@ -52,10 +52,10 @@
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-typescript": "^7.27.1",
     "@warp-drive/internal-config": "workspace:*",
-    "ember-source": "~6.6.0",
+    "ember-source": "~6.10.0",
     "decorator-transforms": "^2.3.0",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.3"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
   },
   "ember-addon": {
     "main": "addon-main.cjs",
@@ -68,5 +68,5 @@
   "volta": {
     "extends": "../../package.json"
   },
-  "packageManager": "pnpm@10.15.0"
+  "packageManager": "pnpm@10.28.2"
 }

@@ -42,7 +42,7 @@
     "@warp-drive/core": "workspace:*"
   },
   "dependencies": {
-    "@embroider/macros": "^1.18.1",
+    "@embroider/macros": "^1.19.6",
     "json-to-ast": "2.1.0",
     "fuse.js": "7.1.0"
   },
@@ -55,13 +55,13 @@
     "@warp-drive/core": "workspace:*",
     "decorator-transforms": "^2.3.0",
     "expect-type": "^1.2.2",
-    "typescript": "^5.9.2",
-    "vite": "^7.1.3"
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
   },
   "volta": {
     "extends": "../../package.json"
   },
-  "packageManager": "pnpm@10.15.0",
+  "packageManager": "pnpm@10.28.2",
   "ember-addon": {
     "main": "addon-main.cjs",
     "type": "addon",
