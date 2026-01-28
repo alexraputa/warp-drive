@@ -11,23 +11,10 @@ export const COLORS_BY_STRATEGY: Record<TYPE_STRATEGY, 'red' | 'yellow' | 'green
 };
 
 export function colorName(name: string) {
-  if (name.startsWith('@warp-drive-types/')) {
-    return chalk.greenBright('@warp-drive-types/') + chalk.magentaBright(name.substring(18));
-  } else if (name.startsWith('@warp-drive-mirror/')) {
-    return chalk.greenBright('@warp-drive-mirror/') + chalk.magentaBright(name.substring(19));
-  } else if (name.startsWith('@warp-drive/')) {
-    return chalk.greenBright('@warp-drive/') + chalk.magentaBright(name.substring(12));
-  } else if (name.startsWith('@ember-data-types/')) {
-    return chalk.cyanBright('@ember-data-types/') + chalk.yellow(name.substring(18));
-  } else if (name.startsWith('@ember-data-mirror/')) {
-    return chalk.cyanBright('@ember-data-mirror/') + chalk.yellow(name.substring(19));
-  } else if (name.startsWith('@ember-data/')) {
-    return chalk.cyanBright('@ember-data/') + chalk.yellow(name.substring(12));
-  } else if (name === 'N/A') {
+  if (name === 'N/A') {
     return chalk.grey(name);
-  } else {
-    return chalk.cyan(name);
   }
+  return '✅';
 }
 
 function getPaddedString(str: string, targetWidth: number) {
