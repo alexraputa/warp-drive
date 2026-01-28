@@ -108,6 +108,7 @@ export async function printDirtyFiles(label: string) {
   const fullPath = `${process.cwd()}/${filePath}`;
   const fileContents = readFileSync(fullPath, 'utf-8');
 
+  console.log(`\n\n\nChecking file: ${fullPath}\n\n\n`);
   if (!fileContents) {
     throw new Error(`File ${filePath} is empty after ${label}.`);
   }
@@ -115,6 +116,8 @@ export async function printDirtyFiles(label: string) {
   // check if we are accidentally in cjs format
   if (isCjsModule(fileContents)) {
     throw new Error(`Detected CommonJS module format in ${filePath} after ${label}. Expected ES Module format.`);
+  } else {
+    console.log(`File ${filePath} is in correct ES Module format after ${label}.`);
   }
 }
 
