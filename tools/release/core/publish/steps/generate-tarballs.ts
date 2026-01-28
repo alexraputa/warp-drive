@@ -74,11 +74,11 @@ export async function verifyTarballs(
   }
 }
 
-export async function printDirtyFiles(label: string) {
+export async function printDirtyFiles(label: string, pkg: string) {
   const { execSync } = await import('node:child_process');
   const dirtyFiles = execSync('git ls-files -m').toString().trim();
-  if (dirtyFiles) {
-    console.log(`The following files were modified in ${label}:`);
+  if (dirtyFiles && dirtyFiles.length > 0) {
+    console.log(`The following files were modified in ${label}: \n${dirtyFiles}`);
   } else {
     console.log('No files were modified.');
   }
@@ -99,6 +99,10 @@ export async function printDirtyFiles(label: string) {
     throw new Error(`Detected CommonJS module format in ${filePath} after ${label}. Expected ES Module format.`);
   } else {
     console.log(`File ${filePath} is in correct ES Module format after ${label}.`);
+  }
+
+  if (pkg === '@warp-drive/utilities') {
+    console.log(`File contents:\n\n=============\n\n${fileContents}\n\n=============\n\nEnd of file contents.\n\n`);
   }
 }
 
@@ -135,12 +139,12 @@ export async function generatePackageTarballs(
       throw new Error(`Unexpected attempt to publish package ${pkg.pkgData.name} with no files`);
     }
 
-    await printDirtyFiles(`Initial: ${pkg.pkgData.name}`);
+    await printDirtyFiles(`Initial: ${pkg.pkgData.name}`, pkg.pkgData.name);
 
     try {
       if (pkg.pkgData.scripts?.['prepack']) {
         await exec({ cwd: path.join(PROJECT_ROOT, path.dirname(pkg.filePath)), cmd: `bun run prepack` });
-        await printDirtyFiles(`After Prepack: ${pkg.pkgData.name}`);
+        await printDirtyFiles(`After Prepack: ${pkg.pkgData.name}`, pkg.pkgData.name);
       }
     } catch (e) {
       console.log(`🔴 ${chalk.redBright('failed to execute prepack script for')} ${chalk.yellow(pkg.pkgData.name)}`);
@@ -154,9 +158,9 @@ export async function generatePackageTarballs(
 
     try {
       await fixVersionsInPackageJson(pkg);
-      await printDirtyFiles(`After Fixing Versions: ${pkg.pkgData.name}`);
+      await printDirtyFiles(`After Fixing Versions: ${pkg.pkgData.name}`, pkg.pkgData.name);
       await amendFilesForTypesStrategy(pkg, pkgStrategy);
-      await printDirtyFiles(`After Types Strategy Amend: ${pkg.pkgData.name}`);
+      await printDirtyFiles(`After Types Strategy Amend: ${pkg.pkgData.name}`, pkg.pkgData.name);
     } catch (e) {
       console.log(`🔴 ${chalk.redBright('failed to amend files to pack for')} ${chalk.yellow(pkg.pkgData.name)}`);
       throw e;
@@ -165,7 +169,7 @@ export async function generatePackageTarballs(
     if (pkgStrategy.unpkgPublish) {
       try {
         await amendFilesForUnpkg(pkg);
-        await printDirtyFiles(`After Unpkg Amend: ${pkg.pkgData.name}`);
+        await printDirtyFiles(`After Unpkg Amend: ${pkg.pkgData.name}`, pkg.pkgData.name);
       } catch (e) {
         console.log(
           `🔴 ${chalk.redBright('failed to modify package for unpkgPublish for')} ${chalk.yellow(pkg.pkgData.name)}`
@@ -174,7 +178,7 @@ export async function generatePackageTarballs(
       }
     }
 
-    await printDirtyFiles(`Befor Pack: ${pkg.pkgData.name}`);
+    await printDirtyFiles(`Before Pack: ${pkg.pkgData.name}`, pkg.pkgData.name);
 
     try {
       const pkgDir = path.join(PROJECT_ROOT, path.dirname(pkg.filePath));
