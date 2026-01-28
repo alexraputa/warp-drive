@@ -76,11 +76,8 @@ export async function executePublish(args: string[]) {
   // ========================
   if (config.full.get('pack')) {
     await generatePackageTarballs(config.full, packages, applied.public_pks);
-    await printDirtyFiles('Primary Packages');
     await generateMirrorTarballs(config.full, packages, applied.public_pks);
-    await printDirtyFiles('Mirror Packages');
     await generateTypesTarballs(config.full, packages, applied.public_pks);
-    await printDirtyFiles('Types Packages');
   } else {
     console.log(`Skipped Pack`);
   }
@@ -91,38 +88,4 @@ export async function executePublish(args: string[]) {
   // ========================
   if (config.full.get('publish')) await publishPackages(config.full, packages, applied.public_pks);
   else console.log(`Skipped Publish`);
-}
-
-export async function printDirtyFiles(label: string) {
-  const { execSync } = await import('node:child_process');
-  const dirtyFiles = execSync('git ls-files -m').toString().trim();
-  if (dirtyFiles) {
-    console.log(`The following files were modified in ${label}:`);
-  } else {
-    console.log('No files were modified.');
-  }
-
-  // check the specific dist file we are having issues with
-  // warp-drive-packages/utilities/dist/index.js
-  const filePath = 'warp-drive-packages/utilities/dist/index.js';
-  const fullPath = `${process.cwd()}/${filePath}`;
-  const fileContents = readFileSync(fullPath, 'utf-8');
-
-  console.log(`\n\n\nChecking file: ${fullPath}\n\n\n`);
-  if (!fileContents) {
-    throw new Error(`File ${filePath} is empty after ${label}.`);
-  }
-
-  // check if we are accidentally in cjs format
-  if (isCjsModule(fileContents)) {
-    throw new Error(`Detected CommonJS module format in ${filePath} after ${label}. Expected ES Module format.`);
-  } else {
-    console.log(`File ${filePath} is in correct ES Module format after ${label}.`);
-  }
-}
-
-const CjsModulePattern = `Object.defineProperty(exports, Symbol.toStringTag, {`;
-
-function isCjsModule(fileContents: string): boolean {
-  return fileContents.includes(CjsModulePattern);
 }
