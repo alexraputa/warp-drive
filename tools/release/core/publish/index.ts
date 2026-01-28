@@ -1,20 +1,21 @@
-import { publish_flags_config } from '../../utils/flags-config';
-import { parseRawFlags, printConfig } from '../../utils/parse-args';
-import { GIT_TAG, getAllPackagesForGitTag, getGitState } from '../../utils/git';
-import { printHelpDocs } from '../../help/docs';
-import { bumpAllPackages, restorePackagesForDryRun } from './steps/bump-versions';
-import { generatePackageTarballs, verifyTarballs } from './steps/generate-tarballs';
-import { generateMirrorTarballs } from './steps/generate-mirror-tarballs';
-import { printStrategy } from './steps/print-strategy';
-import { AppliedStrategy, applyStrategy } from './steps/generate-strategy';
-import { confirmStrategy } from './steps/confirm-strategy';
-import { publishPackages } from './steps/publish-packages';
-import { gatherPackages, loadStrategy } from '../../utils/package';
-import { CHANNEL, SEMVER_VERSION } from '../../utils/channel';
-import { confirmCommitChangelogs } from '../release-notes/steps/confirm-changelogs';
-import { updateChangelogs } from '../release-notes/steps/update-changelogs';
-import { getChanges } from '../release-notes/steps/get-changes';
-import { generateTypesTarballs } from './steps/generate-types-tarballs';
+import { publish_flags_config } from '../../utils/flags-config.ts';
+import { parseRawFlags, printConfig } from '../../utils/parse-args.ts';
+import { GIT_TAG, getAllPackagesForGitTag, getGitState } from '../../utils/git.ts';
+import { printHelpDocs } from '../../help/docs.ts';
+import { bumpAllPackages, restorePackagesForDryRun } from './steps/bump-versions.ts';
+import { generatePackageTarballs, verifyTarballs } from './steps/generate-tarballs.ts';
+import { generateMirrorTarballs } from './steps/generate-mirror-tarballs.ts';
+import { printStrategy } from './steps/print-strategy.ts';
+import { AppliedStrategy, applyStrategy } from './steps/generate-strategy.ts';
+import { confirmStrategy } from './steps/confirm-strategy.ts';
+import { publishPackages } from './steps/publish-packages.ts';
+import { gatherPackages, loadStrategy } from '../../utils/package.ts';
+import { CHANNEL, SEMVER_VERSION } from '../../utils/channel.ts';
+import { confirmCommitChangelogs } from '../release-notes/steps/confirm-changelogs.ts';
+import { updateChangelogs } from '../release-notes/steps/update-changelogs.ts';
+import { getChanges } from '../release-notes/steps/get-changes.ts';
+import { generateTypesTarballs } from './steps/generate-types-tarballs.ts';
+import { readFileSync } from 'node:fs';
 
 export async function executePublish(args: string[]) {
   // get user supplied config
@@ -75,8 +76,11 @@ export async function executePublish(args: string[]) {
   // ========================
   if (config.full.get('pack')) {
     await generatePackageTarballs(config.full, packages, applied.public_pks);
+    await printDirtyFiles('Primary Packages');
     await generateMirrorTarballs(config.full, packages, applied.public_pks);
+    await printDirtyFiles('Mirror Packages');
     await generateTypesTarballs(config.full, packages, applied.public_pks);
+    await printDirtyFiles('Types Packages');
   } else {
     console.log(`Skipped Pack`);
   }
@@ -87,4 +91,34 @@ export async function executePublish(args: string[]) {
   // ========================
   if (config.full.get('publish')) await publishPackages(config.full, packages, applied.public_pks);
   else console.log(`Skipped Publish`);
+}
+
+export async function printDirtyFiles(label: string) {
+  const { execSync } = await import('node:child_process');
+  const dirtyFiles = execSync('git ls-files -m').toString().trim();
+  if (dirtyFiles) {
+    console.log(`The following files were modified in ${label}:`);
+    console.log(dirtyFiles);
+  } else {
+    console.log('No files were modified.');
+  }
+
+  // check the specific dist file we are having issues with
+  // warp-drive-packages/utilities/dist/index.js
+  const filePath = 'warp-drive-packages/utilities/dist/index.js';
+  const fullPath = `${process.cwd()}/${filePath}`;
+  const fileContents = readFileSync(fullPath, 'utf-8');
+
+  // check if we are accidentally in cjs format
+  if (isCjsModule(fileContents)) {
+    throw new Error(`Detected CommonJS module format in ${filePath} after ${label}. Expected ES Module format.`);
+  }
+}
+
+const CjsModulePattern = `Object.defineProperty(exports, Symbol.toStringTag, {
+  value: 'Module'
+});`;
+
+function isCjsModule(fileContents: string): boolean {
+  return fileContents.includes(CjsModulePattern);
 }
