@@ -21,6 +21,7 @@
   },
   "files": [
     "dist",
+    "cjs-dist",
     "declarations",
     "addon-main.cjs",
     "CHANGELOG.md",
@@ -35,7 +36,7 @@
     },
     "./*.cjs": {
       "types": "./declarations/*.d.ts",
-      "default": "./dist/*.cjs"
+      "default": "./cjs-dist/*.cjs"
     },
     "./*": {
       "types": "./declarations/*.d.ts",
