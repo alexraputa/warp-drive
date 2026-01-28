@@ -98,7 +98,6 @@ export async function printDirtyFiles(label: string) {
   const dirtyFiles = execSync('git ls-files -m').toString().trim();
   if (dirtyFiles) {
     console.log(`The following files were modified in ${label}:`);
-    console.log(dirtyFiles);
   } else {
     console.log('No files were modified.');
   }
@@ -108,6 +107,10 @@ export async function printDirtyFiles(label: string) {
   const filePath = 'warp-drive-packages/utilities/dist/index.js';
   const fullPath = `${process.cwd()}/${filePath}`;
   const fileContents = readFileSync(fullPath, 'utf-8');
+
+  if (!fileContents) {
+    throw new Error(`File ${filePath} is empty after ${label}.`);
+  }
 
   // check if we are accidentally in cjs format
   if (isCjsModule(fileContents)) {
