@@ -68,7 +68,7 @@
   "scripts": {
     "lint": "eslint . --quiet --cache --cache-strategy=content",
     "build:tests": "rm -rf dist-test && cp -R test dist-test && mkdir -p dist-test/@warp-drive && cp -R dist dist-test/@warp-drive/diagnostic",
-    "build:pkg": "vite build;",
+    "build:pkg": "vite build",
     "prepack": "pnpm run build:pkg",
     "sync": "echo \"syncing\"",
     "start": "vite"
@@ -124,7 +124,6 @@
   "volta": {
     "extends": "../../package.json"
   },
-  "packageManager": "pnpm@10.28.2",
   "ember-addon": {
     "main": "addon-main.cjs",
     "type": "addon",

@@ -37,7 +37,7 @@
     "test": "tests"
   },
   "scripts": {
-    "build:pkg": "vite build;",
+    "build:pkg": "vite build",
     "prepack": "pnpm run build:pkg",
     "sync": "echo \"syncing\""
   },
@@ -92,6 +92,5 @@
   },
   "volta": {
     "extends": "../../package.json"
-  },
-  "packageManager": "pnpm@10.28.2"
+  }
 }
