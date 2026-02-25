@@ -2,6 +2,7 @@ import { existsSync } from 'fs';
 import { join } from 'path';
 
 import { logger } from '../../../utils/logger.js';
+import type { TransformerResult } from '../codemod.js';
 import type { TransformOptions } from '../config.js';
 import type { PropertyInfo, SchemaField, TransformArtifact } from '../utils/ast-utils.js';
 import {
@@ -75,12 +76,12 @@ export interface ${typeName} {
  * This does not modify the original source. The CLI can use this to write
  * files to the requested output directories.
  */
-export function toArtifacts(parsedFile: ParsedFile, options: TransformOptions): TransformArtifact[] {
+export function toArtifacts(parsedFile: ParsedFile, options: TransformOptions): TransformerResult {
   const { path: filePath, source, baseName, camelName: mixinName } = parsedFile;
 
   if (parsedFile.fileType !== 'mixin') {
     log.debug('Not a mixin file, returning empty artifacts');
-    return [];
+    return { artifacts: [], skipReason: 'not-mixin-file-type' };
   }
 
   const traitFields = parsedFile.fields.map((f) => ({
@@ -107,19 +108,21 @@ export function toArtifacts(parsedFile: ParsedFile, options: TransformOptions): 
 
   if (!isConnectedToModel) {
     log.debug(`Skipping ${mixinName}: not connected to any models`);
-    return [];
+    return { artifacts: [], skipReason: 'mixin-not-connected' };
   }
 
-  return generateMixinArtifacts(
-    filePath,
-    source,
-    baseName,
-    mixinName,
-    traitFields,
-    extensionProperties,
-    extendedTraits,
-    options
-  );
+  return {
+    artifacts: generateMixinArtifacts(
+      filePath,
+      source,
+      baseName,
+      mixinName,
+      traitFields,
+      extensionProperties,
+      extendedTraits,
+      options
+    ),
+  };
 }
 
 /**
@@ -177,7 +180,7 @@ function generateMixinArtifacts(
 
   collectTraitImports(extendedTraits, imports, options);
 
-  const traitSchemaName = traitInterfaceName;
+  const traitSchemaName = `${toPascalCase(baseName)}Schema`;
   const traitInternalName = pascalToKebab(mixinName);
   const traitSchemaObject = buildTraitSchemaObject(traitFields as SchemaField[], extendedTraits, {
     name: traitInternalName,
@@ -210,7 +213,7 @@ function generateMixinArtifacts(
       filePath,
       source,
       baseName,
-      `${mixinName}Extension`,
+      `${toPascalCase(mixinName)}Extension`,
       extensionProperties,
       options,
       traitInterfaceName,

@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-call, @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-unsafe-return */
 import { describe, expect, it } from 'vitest';
 
 import transform, { toArtifacts } from '../../../../../packages/codemods/src/schema-migration/processors/model.js';
@@ -26,7 +25,10 @@ export default class User extends Model {
 	}
 }`;
 
-      const artifacts = toArtifacts(parseFile('app/models/user.js', input, DEFAULT_TEST_OPTIONS), DEFAULT_TEST_OPTIONS);
+      const { artifacts } = toArtifacts(
+        parseFile('app/models/user.js', input, DEFAULT_TEST_OPTIONS),
+        DEFAULT_TEST_OPTIONS
+      );
       // Schema now includes merged types, so we have: schema (with types) + extension
       expect(artifacts).toHaveLength(2);
 
@@ -50,7 +52,7 @@ export default class SimpleModel extends Model {
 	@attr('number') count;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/simple-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -58,6 +60,33 @@ export default class SimpleModel extends Model {
       expect(artifacts).toHaveLength(1);
       expect(artifacts[0]?.type).toBe('schema');
       expect(artifacts[0]?.name).toBe('SimpleModelSchema');
+    });
+
+    it('handles Typescript model with mixins', () => {
+      const input = `import Model, { attr } from '@ember-data/model';
+import FileableMixin from 'app/mixins/fileable';
+import TimestampableMixin from 'app/mixins/timestampable';
+
+export default class Document extends Model.extend(FileableMixin, TimestampableMixin) {
+	@attr('string') title;
+	@attr('string') content;
+
+	get wordCount() {
+		return (this.content || '').split(' ').length;
+	}
+}`;
+
+      const { artifacts } = toArtifacts(
+        parseFile('app/models/document.ts', input, DEFAULT_TEST_OPTIONS),
+        DEFAULT_TEST_OPTIONS
+      );
+      // Schema now includes merged types, so we have: schema (with types) + extension
+      expect(artifacts).toHaveLength(2);
+
+      const schema = artifacts.find((a) => a.type === 'schema');
+      expect(schema?.code).toContain('Fileable');
+      expect(schema?.code).toContain('Timestampable');
+      expect(schema?.code).toMatchSnapshot('schema with mixins');
     });
 
     it('handles model with mixins', () => {
@@ -74,7 +103,7 @@ export default class Document extends Model.extend(FileableMixin, TimestampableM
 	}
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/document.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -98,7 +127,7 @@ export default class CustomModel extends Model {
       const opts = createTestOptions({
         emberDataImportSource: '@auditboard/warp-drive/v1/model',
       });
-      const artifacts = toArtifacts(parseFile('app/models/custom-model.js', input, opts), opts);
+      const { artifacts } = toArtifacts(parseFile('app/models/custom-model.js', input, opts), opts);
       // Schema now includes merged types, so we only have 1 artifact for data-only models
       expect(artifacts).toHaveLength(1);
       expect(artifacts[0]?.type).toBe('schema');
@@ -115,7 +144,7 @@ export default class ComplexModel extends Model {
 	@hasMany('file', { async: false, inverse: null, as: 'fileable' }) attachments;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/complex-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -143,7 +172,7 @@ export default class TypedModel extends Model {
 	}
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/typed-model.ts', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -161,7 +190,7 @@ export default class ProjectPlan extends Model {
 	@attr('string') title;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/project-plan.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -186,7 +215,7 @@ export default class FragmentModel extends Model {
   @fragment('address') address;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/fragment-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -216,7 +245,7 @@ export default class Address extends Fragment {
   @attr('string') zip;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/address.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -253,7 +282,7 @@ export default class Address extends BaseFragment {
       const opts = createTestOptions({
         intermediateFragmentPaths: ['./base-fragment', 'base-fragment'],
       });
-      const artifacts = toArtifacts(parseFile('app/models/address.js', input, opts), opts);
+      const { artifacts } = toArtifacts(parseFile('app/models/address.js', input, opts), opts);
 
       // Schema now includes merged types, so we only have 1 artifact for data-only models
       expect(artifacts).toHaveLength(1);
@@ -281,7 +310,7 @@ export default class Address extends BaseFragment {
       const opts = createTestOptions({
         intermediateFragmentPaths: ['codemod/models/base-fragment'],
       });
-      const artifacts = toArtifacts(parseFile('/Users/test/codemod/models/address.js', input, opts), opts);
+      const { artifacts } = toArtifacts(parseFile('/Users/test/codemod/models/address.js', input, opts), opts);
 
       // Schema now includes merged types, so we only have 1 artifact for data-only models
       expect(artifacts).toHaveLength(1);
@@ -311,7 +340,7 @@ export default class FragmentArrayModel extends Model {
   @fragmentArray('address') addresses;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/fragment-array-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -342,7 +371,7 @@ export default class ArrayModel extends Model {
   @array() tags;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/array-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -374,7 +403,7 @@ export default class NotAModel extends Component {
 	@attr('string') name;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/components/not-a-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -389,7 +418,7 @@ export default class NotExtendingModel extends EmberObject {
 	@attr('string') name;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/not-extending-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -402,7 +431,7 @@ export default class NotExtendingModel extends EmberObject {
 export default class EmptyModel extends Model {
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/empty-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -420,7 +449,7 @@ export default class AliasedModel extends Model {
 	@manyRelation('item') items;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/aliased-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -438,7 +467,7 @@ export default class MixedSourceModel extends Model {
 	@customDecorator items; // Should be ignored and moved to extension
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/mixed-source-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -470,7 +499,7 @@ export default class AuditBoardModel extends BaseModel.extend(BaseModelMixin) {
 	@attr('number') id;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/auditboard-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -490,7 +519,7 @@ export default class ComplexOptionsModel extends Model {
 	}) owner;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/complex-options-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -509,7 +538,7 @@ export default class Document extends Model.extend(FileableMixin) {
 	@attr('string') title;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/document.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -530,7 +559,7 @@ export default class ComplexDocument extends Model.extend(FileableMixin, Timesta
 	@attr('string') title;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/complex-document.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -553,7 +582,10 @@ export default class User extends Model {
 	@hasMany('project', { async: true }) projects;
 }`;
 
-      const artifacts = toArtifacts(parseFile('app/models/user.js', input, DEFAULT_TEST_OPTIONS), DEFAULT_TEST_OPTIONS);
+      const { artifacts } = toArtifacts(
+        parseFile('app/models/user.js', input, DEFAULT_TEST_OPTIONS),
+        DEFAULT_TEST_OPTIONS
+      );
 
       // Types are now merged into schema, so we only have 1 artifact for data-only models
       expect(artifacts).toHaveLength(1);
@@ -581,7 +613,7 @@ export default class ProcessedModel extends Model {
 	}
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/processed-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -615,7 +647,7 @@ export default class TypedModel extends Model {
       };
 
       const opts = createTestOptions({ typeMapping: customTypeMappings });
-      const artifacts = toArtifacts(parseFile('app/models/typed-model.js', input, opts), opts);
+      const { artifacts } = toArtifacts(parseFile('app/models/typed-model.js', input, opts), opts);
       // Types are now merged into schema
       const schema = artifacts.find((a) => a.type === 'schema');
 
@@ -633,7 +665,7 @@ export default class RelationshipModel extends Model {
 	@hasMany('tag', { async: true }) tags;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/relationship-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -652,7 +684,7 @@ export default class UnknownTypesModel extends Model {
 	@attr('string') knownField;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/unknown-types-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -681,7 +713,7 @@ export default class CustomTypesModel extends Model {
       };
 
       const opts = createTestOptions({ typeMapping: customTypeMappings });
-      const artifacts = toArtifacts(parseFile('app/models/custom-types-model.js', input, opts), opts);
+      const { artifacts } = toArtifacts(parseFile('app/models/custom-types-model.js', input, opts), opts);
       // Types are now merged into schema
       const schema = artifacts.find((a) => a.type === 'schema');
 
@@ -696,7 +728,7 @@ export default class UnmappedTypesModel extends Model {
 	@attr('another-unknown') field2;
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/unmapped-types-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -722,7 +754,7 @@ export default class RelationshipModel extends Model {
       const opts = createTestOptions({
         emberDataImportSource: '@auditboard/warp-drive/v1/model',
       });
-      const artifacts = toArtifacts(parseFile('app/models/relationship-model.js', input, opts), opts);
+      const { artifacts } = toArtifacts(parseFile('app/models/relationship-model.js', input, opts), opts);
 
       // Types are now merged into schema
       const schema = artifacts.find((a) => a.type === 'schema');
@@ -820,7 +852,7 @@ export default class TestModel extends Model.extend(WorkstreamableMixin) {
         // Mark workstreamable as a connected mixin so it imports from traits
         modelConnectedMixins: new Set(['app/mixins/workstreamable.js']),
       });
-      const artifacts = toArtifacts(parseFile('app/models/test-model.js', input, opts), opts);
+      const { artifacts } = toArtifacts(parseFile('app/models/test-model.js', input, opts), opts);
 
       const schemaType = artifacts.find((a) => a.type === 'schema');
 
@@ -880,7 +912,10 @@ export default class User extends Model {
   }
 }`;
 
-      const artifacts = toArtifacts(parseFile('app/models/user.js', input, DEFAULT_TEST_OPTIONS), DEFAULT_TEST_OPTIONS);
+      const { artifacts } = toArtifacts(
+        parseFile('app/models/user.js', input, DEFAULT_TEST_OPTIONS),
+        DEFAULT_TEST_OPTIONS
+      );
       const schema = artifacts.find((a) => a.type === 'schema');
 
       // Schema should not contain utility functions
@@ -908,7 +943,7 @@ export default class Product extends Model {
   }
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/product.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -939,7 +974,7 @@ export default class Product extends Model {
   }
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/product.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -978,7 +1013,7 @@ export default class Translatable extends Model {
         },
       });
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('client-core/models/translatable.js', input, optionsWithMapping),
         optionsWithMapping
       );
@@ -1014,7 +1049,7 @@ export default class Translatable extends Model {
         },
       });
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('client-core/package/src/models/translatable.js', input, optionsWithMapping),
         optionsWithMapping
       );
@@ -1063,7 +1098,7 @@ export default class Translatable extends Model {
         }
       `;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/test-model.js', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -1151,7 +1186,7 @@ export default class Amendment extends Model {
   }
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/amendment.ts', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -1170,17 +1205,15 @@ export default class Amendment extends Model {
 
         const INTERNAL_HELPER = 'helper';
 
-        import type { Amendment } from 'test-app/data/resources/amendment.schema';
+        import type { AmendmentTrait } from 'test-app/data/resources/amendment.schema';
 
-        export interface AmendmentExtension extends Amendment {}
+        export interface AmendmentExtension extends AmendmentTrait {}
 
         export class AmendmentExtension {
           get changes(): DisplayableChange[] {
               return [];
             }
-        }
-
-        export type AmendmentExtensionSignature = typeof AmendmentExtension;"
+        }"
       `);
     });
 
@@ -1204,7 +1237,7 @@ export default class Amendment extends Model {
   }
 }`;
 
-      const artifacts = toArtifacts(
+      const { artifacts } = toArtifacts(
         parseFile('app/models/amendment.ts', input, DEFAULT_TEST_OPTIONS),
         DEFAULT_TEST_OPTIONS
       );
@@ -1238,7 +1271,10 @@ export default class Task extends Model {
   }
 }`;
 
-      const artifacts = toArtifacts(parseFile('app/models/task.ts', input, DEFAULT_TEST_OPTIONS), DEFAULT_TEST_OPTIONS);
+      const { artifacts } = toArtifacts(
+        parseFile('app/models/task.ts', input, DEFAULT_TEST_OPTIONS),
+        DEFAULT_TEST_OPTIONS
+      );
       const extension = artifacts.find((a) => a.type === 'resource-extension');
       expect(extension?.code).toMatchInlineSnapshot(`
         "import Model, { attr } from '@ember-data/model';
@@ -1252,17 +1288,15 @@ export default class Task extends Model {
 
         export type Priority = 'low' | 'medium' | 'high';
 
-        import type { Task } from 'test-app/data/resources/task.schema';
+        import type { TaskTrait } from 'test-app/data/resources/task.schema';
 
-        export interface TaskExtension extends Task {}
+        export interface TaskExtension extends TaskTrait {}
 
         export class TaskExtension {
           get config(): Config {
               return { enabled: true, threshold: 100 };
             }
-        }
-
-        export type TaskExtensionSignature = typeof TaskExtension;"
+        }"
       `);
     });
   });

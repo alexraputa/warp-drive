@@ -195,6 +195,47 @@ exports[`model-to-schema transform (artifacts) > TypeScript type artifacts > use
 export default UnknownTypesModelSchema;"
 `;
 
+exports[`model-to-schema transform (artifacts) > basic functionality > handles Typescript model with mixins > schema with mixins 1`] = `
+"import type { Type } from '@ember-data/core-types/symbols';
+import type { FileableTrait } from '../traits/fileable.schema';
+import type { TimestampableTrait } from '../traits/timestampable.schema';
+import type { DocumentExtension } from 'test-app/data/resources/document.ext';
+const DocumentSchema = {
+  'type': 'document',
+  'legacy': true,
+  'identity': {
+    'kind': '@id',
+    'name': 'id'
+  },
+  'fields': [
+    {
+      'kind': 'attribute',
+      'name': 'title',
+      'type': 'string'
+    },
+    {
+      'kind': 'attribute',
+      'name': 'content',
+      'type': 'string'
+    }
+  ],
+  'traits': [
+    'fileable',
+    'timestampable'
+  ]
+} as const;
+
+export default DocumentSchema;
+
+export interface DocumentTrait {
+  readonly [Type]: 'document';
+  readonly title: string | null;
+  readonly content: string | null;
+}
+
+export interface Document extends DocumentTrait, DocumentExtension, FileableTrait, TimestampableTrait {}"
+`;
+
 exports[`model-to-schema transform (artifacts) > basic functionality > handles complex field options correctly > complex field options 1`] = `
 "const ComplexModelSchema = {
   'type': 'complex-model',
@@ -279,9 +320,9 @@ exports[`model-to-schema transform (artifacts) > basic functionality > preserves
 "import Model, { attr } from '@ember-data/model';
 import { service } from '@ember/service';
 
-import type { TypedModel } from 'test-app/data/resources/typed-model.schema';
+import type { TypedModelTrait } from 'test-app/data/resources/typed-model.schema';
 
-export interface TypedModelExtension extends TypedModel {}
+export interface TypedModelExtension extends TypedModelTrait {}
 
 export class TypedModelExtension {
   @service declare router: RouterService
@@ -295,9 +336,7 @@ export class TypedModelExtension {
   get computedValue(): string {
   		return \`Processed: \${this.name}\`;
   	}
-}
-
-export type TypedModelExtensionSignature = typeof TypedModelExtension;"
+}"
 `;
 
 exports[`model-to-schema transform (artifacts) > basic functionality > produces schema and extension artifacts for basic model > artifact metadata 1`] = `
