@@ -5,6 +5,7 @@ import { click, rerender } from '@ember/test-helpers';
 import { Fetch, RequestManager } from '@warp-drive/core';
 import type { CacheHandler, Future, NextFn } from '@warp-drive/core/request';
 import type { RequestContext, StructuredDataDocument } from '@warp-drive/core/types/request';
+import type { CollectionResourceDataDocument } from '@warp-drive/core/types/spec/document';
 import type { RenderingTestContext } from '@warp-drive/diagnostic/ember';
 import { module, setupRenderingTest, test as _test } from '@warp-drive/diagnostic/ember';
 import {
@@ -29,12 +30,18 @@ function test(name: string, callback: DiagnosticTest): void {
 }
 
 type UserResource = {
-  data: {
-    id: string;
-    type: 'user';
-    attributes: {
-      name: string;
-    };
+  id: string;
+  type: 'user';
+  attributes: {
+    name: string;
+  };
+};
+
+type PaginatedUserResource = CollectionResourceDataDocument<UserResource> & {
+  meta?: {
+    currentPage?: number;
+    page?: number;
+    totalPages?: number;
   };
 };
 
@@ -69,7 +76,7 @@ class SimpleCacheHandler implements CacheHandler {
   }
 }
 
-const users = [
+const users: UserResource[] = [
   {
     id: '1',
     type: 'user',
@@ -173,7 +180,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       },
     }));
 
-    const request = this.manager.request<UserResource>({ url, method: 'GET' });
+    const request = this.manager.request<PaginatedUserResource>({ url, method: 'GET' });
     const paginationState = getPaginationState(request);
     const paginationLinks = getPaginationLinks(paginationState);
 
@@ -199,7 +206,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
             {{/if}}
 
             {{#each pagination.pages as |page|}}
-              {{#each page.value.data as |user|}}
+              {{#each page.data as |user|}}
                 <span data-test-user-name>{{user.attributes.name}}<br />Count: {{countFor user}}</span>
               {{/each}}
             {{/each}}
@@ -219,7 +226,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
     let data;
 
     assert.equal(counter, 1);
-    assert.equal(this.element.querySelector('[data-test-pending]').textContent?.trim(), 'PendingCount: 1');
+    assert.dom('[data-test-pending]').hasText('PendingCount: 1');
     assert.true(paginationState.isLoading, 'Initially in loading state');
     assert.false(paginationState.isSuccess, 'Initially not in success state');
     assert.false(paginationState.isError, 'Initially not in error state');
@@ -230,6 +237,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
 
     await request;
     await rerender();
+
     data = Array.from(paginationState.data);
     assert.equal(Array.from(paginationState.pages).length, 3, '3 pages');
     assert.equal(data.length, 1, '1 loaded record');
@@ -241,7 +249,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 2);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Leo EuclidesCount: 2');
+    assert.dom('[data-test-user-name]').hasText('Leo EuclidesCount: 2');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 1, '1 user rendered');
 
     await click('[data-test-load-prev]');
@@ -256,7 +264,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 4);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Chris ThoburnCount: 4');
+    assert.dom('[data-test-user-name]').hasText('Chris ThoburnCount: 4');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 2, '2 users rendered');
 
     await click('[data-test-load-next]');
@@ -271,10 +279,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 6);
-    assert.equal(
-      this.element.querySelector('[data-test-user-name]:nth-of-type(3)').textContent.trim(),
-      'Mehul ChaudhariCount: 6'
-    );
+    assert.dom('[data-test-user-name]:nth-of-type(3)').hasText('Mehul ChaudhariCount: 6');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 3, '3 users rendered');
   });
 
@@ -376,7 +381,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       },
     }));
 
-    const request = this.manager.request<UserResource>({ url: urls[1], method: 'GET' });
+    const request = this.manager.request<PaginatedUserResource>({ url: urls[1], method: 'GET' });
     const paginationState = getPaginationState(request);
     const paginationLinks = getPaginationLinks(paginationState);
 
@@ -423,7 +428,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
     );
 
     assert.equal(counter, 1);
-    assert.equal(this.element.querySelector('[data-test-pending]').textContent?.trim(), 'PendingCount: 1');
+    assert.dom('[data-test-pending]').hasText('PendingCount: 1');
     assert.true(paginationState.isLoading, 'Initially in loading state');
     assert.false(paginationState.isSuccess, 'Initially not in success state');
     assert.false(paginationState.isError, 'Initially not in error state');
@@ -449,7 +454,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 2);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Leo EuclidesCount: 2');
+    assert.dom('[data-test-user-name]').hasText('Leo EuclidesCount: 2');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 1, '1 user rendered');
 
     await click('[data-test-load-page="1"]');
@@ -465,7 +470,8 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 4);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Chris ThoburnCount: 4');
+
+    assert.dom('[data-test-user-name]').hasText('Chris ThoburnCount: 4');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 1, '1 user rendered');
 
     await click('[data-test-load-page="6"]');
@@ -480,7 +486,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 6);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Mia SinekCount: 6');
+    assert.dom('[data-test-user-name]').hasText('Mia SinekCount: 6');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 1, '1 user rendered');
 
     await click('[data-test-load-page="5"]');
@@ -495,7 +501,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 8);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Jane PortmanCount: 8');
+    assert.dom('[data-test-user-name]').hasText('Jane PortmanCount: 8');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 1, '1 user rendered');
 
     await click('[data-test-load-page="4"]');
@@ -510,7 +516,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 10);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Benedikt DeickeCount: 10');
+    assert.dom('[data-test-user-name]').hasText('Benedikt DeickeCount: 10');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 1, '1 user rendered');
 
     await click('[data-test-load-page="3"]');
@@ -525,7 +531,7 @@ module<LocalTestContext>('Integration | <Paginate />', function (hooks) {
       'Link names'
     );
     assert.equal(counter, 12);
-    assert.equal(this.element.querySelector('[data-test-user-name]').textContent.trim(), 'Mehul ChaudhariCount: 12');
+    assert.dom('[data-test-user-name]').hasText('Mehul ChaudhariCount: 12');
     assert.equal(this.element.querySelectorAll('[data-test-user-name]').length, 1, '1 user rendered');
   });
 });
