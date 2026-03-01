@@ -1,4 +1,4 @@
-import type { HooksCallback, ModuleInfo, TestContext, TestInfo } from '../-types';
+import type { Diagnostic as AssertLike, HooksCallback, ModuleInfo, TestContext, TestInfo } from '../-types';
 import type { ModuleReport, TestReport } from '../-types/report';
 import { getChain } from '../-utils';
 import { TEST_CONTEXT } from '../helpers/-dom/helper-hooks';
@@ -45,6 +45,7 @@ export async function runTest<TC extends TestContext>(
   };
   testReport.start = instrument() && performance.mark(`test:${test.module.moduleName} > ${test.name}:start`);
   const Assert = new Diagnostic(DelegatingReporter, Config, test, testReport);
+  const compatAssert = Assert as unknown as AssertLike;
   const testContext = {
     [PublicTestInfo]: {
       id: test.id,
@@ -71,7 +72,7 @@ export async function runTest<TC extends TestContext>(
 
   for (const hook of beforeChain) {
     try {
-      await hook.call(testContext, Assert);
+      await hook.call(testContext, compatAssert);
     } catch (err) {
       Assert.pushResult({
         message: `Unexpected Test Failure in beforeEach: ${(err as Error).message}`,
@@ -87,7 +88,7 @@ export async function runTest<TC extends TestContext>(
   }
 
   try {
-    const promise = test.cb.call(testContext, Assert);
+    const promise = test.cb.call(testContext, compatAssert);
 
     if (promise instanceof Promise && Config.testTimeoutMs > 0) {
       await cancellable(promise, Config.testTimeoutMs);
@@ -108,7 +109,7 @@ export async function runTest<TC extends TestContext>(
   } finally {
     for (const hook of afterChain) {
       try {
-        await hook.call(testContext, Assert);
+        await hook.call(testContext, compatAssert);
       } catch (e) {
         Assert.pushResult({
           message: `Unexpected Test Failure in afterEach: ${(e as Error).message}`,
