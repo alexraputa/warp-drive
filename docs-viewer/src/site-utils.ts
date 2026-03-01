@@ -1,6 +1,6 @@
-import path from 'path';
-import { globSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import fm from 'front-matter';
+import { globSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import path from 'path';
 
 const DefaultOpenGroups: string[] = [];
 const AlwaysOpenGroups: string[] = [];
@@ -438,7 +438,7 @@ export async function postProcessApiDocs() {
   const apiDocumentation = `${ApiDocumentation}\n\n## Main Packages\n\n${MainPackages.join('\n')}\n\n## Framework Packages\n\n${FrameworkPackages.join('\n')}\n\n## Legacy Packages\n\n${OldPackages.join('\n')}\n\n`;
 
   // copy the rest of the files
-  const files = globSync('**/*.md', { cwd: dir, nodir: true });
+  const files = globSync('**/*.md', { cwd: dir });
   for (const file of files) {
     if (file === 'index.md') {
       // Generate a custom index.md file
