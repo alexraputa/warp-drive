@@ -1,14 +1,13 @@
-import type { RequestManager, Store } from '../index';
-import type { StructuredErrorDocument } from '../types/request';
-import { DISPOSE } from './request-subscription.ts';
-import { getPaginationLinks, PaginationLinks, type PaginationLink } from './pagination-links.ts';
-import { PaginationState } from './pagination-state.ts';
+import type { RequestManager, Store } from '../index.ts';
 import { memoized } from './-private.ts';
+import { getPaginationLinks, type PaginationLink, type PaginationLinks } from './pagination-links.ts';
+import type { PaginationState } from './pagination-state.ts';
+import { DISPOSE } from './request-subscription.ts';
 
 type ContentFeatures = {
-  loadNext?: () => Promise<void>;
-  loadPrev?: () => Promise<void>;
-  loadPage?: (url: string) => Promise<void>;
+  loadNext: () => Promise<void>;
+  loadPrev: () => Promise<void>;
+  loadPage: (url: string) => Promise<void>;
 };
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
@@ -18,10 +17,11 @@ export interface PaginationLinksSubscription<RT, E> {
    * unmounts.
    */
   [DISPOSE](): void;
+  store: Store | RequestManager;
 }
 
 export interface PaginationLinksSubscriptionArgs<RT, E> {
-  pages: PaginationState<RT, StructuredErrorDocument<E>>;
+  pages: PaginationState<RT, E>;
 }
 
 /**
@@ -32,8 +32,6 @@ export interface PaginationLinksSubscriptionArgs<RT, E> {
 export class PaginationLinksSubscription<RT, E> {
   /** @internal */
   declare private isDestroyed: boolean;
-  /** @internal */
-  declare private _subscribedTo: object | null;
   /** @internal */
   declare private _args: PaginationLinksSubscriptionArgs<RT, E>;
   /** @internal */
@@ -70,7 +68,7 @@ export class PaginationLinksSubscription<RT, E> {
    * Loads a specific page by its URL.
    */
   loadPage = async (url: string): Promise<void> => {
-    let { paginationState } = this.paginationLinks;
+    const { paginationState } = this.paginationLinks;
     const page = paginationState.getPageState(url);
     paginationState.activatePage(page);
     if (!page.isLoaded) {
@@ -88,11 +86,11 @@ export class PaginationLinksSubscription<RT, E> {
       loadPrev: this.loadPrev,
       loadNext: this.loadNext,
       loadPage: this.loadPage,
-    } as ContentFeatures;
+    };
   }
 
   @memoized
-  get paginationLinks(): Readonly<PaginationLinks<RT, StructuredErrorDocument<E>>> {
+  get paginationLinks(): Readonly<PaginationLinks<RT, E>> {
     return getPaginationLinks<RT, E>(this._args.pages);
   }
 

@@ -1,21 +1,23 @@
 import { assert } from '@warp-drive/core/build-config/macros';
-import { memoized } from './reactivity/signal';
-import { StructuredErrorDocument } from '../types/request.ts';
-import { type PaginationState } from './pagination-state.ts';
 
-const PaginationLinksCache = new WeakMap<PaginationState, PaginationLinks>();
+import type { PaginationState } from './pagination-state.ts';
+import { memoized } from './reactivity/signal.ts';
+
+const PaginationLinksCache = new WeakMap<object, PaginationLinks>();
 
 export class RealPaginationLink {
   readonly isReal = true as const;
 
   readonly url: string;
   readonly index: number;
+  readonly text: string;
   distanceFromActiveIndex: number;
   isCurrent: boolean;
 
   constructor(url: string, index: number, isCurrent: boolean, distanceFromActiveIndex: number) {
     this.url = url;
     this.index = index;
+    this.text = `${index}`;
     this.isCurrent = isCurrent;
     this.distanceFromActiveIndex = distanceFromActiveIndex;
   }
@@ -71,11 +73,11 @@ function getPaginationLink(
 export type PaginationLink = RealPaginationLink | PlaceholderPaginationLink;
 
 export class PaginationLinks<RT = unknown, E = unknown> {
-  declare paginationState: PaginationState<RT, StructuredErrorDocument<E>>;
+  declare paginationState: PaginationState<RT, E>;
 
   private _links: PaginationLink[] = [];
 
-  constructor(paginationState: PaginationState<RT, StructuredErrorDocument<E>>) {
+  constructor(paginationState: PaginationState<RT, E>) {
     this.paginationState = paginationState;
   }
 
@@ -90,12 +92,25 @@ export class PaginationLinks<RT = unknown, E = unknown> {
     }
 
     const { totalPages } = state;
+    if (totalPages < 1) {
+      return this._links;
+    }
+
     const { pageNumber, selfLink, firstLink, lastLink, prevLink, nextLink } = activePage;
 
-    const links = [];
+    const links: PaginationLink[] = [];
     const existingLinks = this._links ?? [];
 
-    let prevPageLink = null;
+    let prevPageLink: PaginationLink | null = null;
+
+    const pushOrMerge = (currPageLink: PaginationLink) => {
+      if (!prevPageLink || prevPageLink.isReal || currPageLink.isReal) {
+        prevPageLink = currPageLink;
+        links.push(currPageLink);
+        return;
+      }
+      prevPageLink._mergeRange(currPageLink.indexRange, pageNumber);
+    };
 
     for (let index = 1; index <= totalPages; index++) {
       const existingRealLink =
@@ -104,66 +119,36 @@ export class PaginationLinks<RT = unknown, E = unknown> {
       // First page
       if (firstLink && index === 1) {
         const currPageLink = getPaginationLink(existingRealLink, index, pageNumber, firstLink);
-        if (!prevPageLink || prevPageLink.isReal || currPageLink.isReal) {
-          prevPageLink = currPageLink;
-          links.push(currPageLink);
-          continue;
-        }
-        prevPageLink._mergeRange(currPageLink.indexRange, pageNumber);
+        pushOrMerge(currPageLink);
         continue;
       }
       // Previous page
       if (prevLink && index === pageNumber - 1) {
         const currPageLink = getPaginationLink(existingRealLink, index, pageNumber, prevLink);
-        if (!prevPageLink || prevPageLink.isReal || currPageLink.isReal) {
-          prevPageLink = currPageLink;
-          links.push(currPageLink);
-          continue;
-        }
-        prevPageLink._mergeRange(currPageLink.indexRange, pageNumber);
+        pushOrMerge(currPageLink);
         continue;
       }
       // Current Page
       if (index === pageNumber) {
         const currPageLink = getPaginationLink(existingRealLink, index, pageNumber, selfLink);
-        if (!prevPageLink || prevPageLink.isReal || currPageLink.isReal) {
-          prevPageLink = currPageLink;
-          links.push(currPageLink);
-          continue;
-        }
-        prevPageLink._mergeRange(currPageLink.indexRange, pageNumber);
+        pushOrMerge(currPageLink);
         continue;
       }
       // Next Page
       if (nextLink && index === pageNumber + 1) {
         const currPageLink = getPaginationLink(existingRealLink, index, pageNumber, nextLink);
-        if (!prevPageLink || prevPageLink.isReal || currPageLink.isReal) {
-          prevPageLink = currPageLink;
-          links.push(currPageLink);
-          continue;
-        }
-        prevPageLink._mergeRange(currPageLink.indexRange, pageNumber);
+        pushOrMerge(currPageLink);
         continue;
       }
       // Last page
       if (lastLink && index === totalPages) {
         const currPageLink = getPaginationLink(existingRealLink, index, pageNumber, lastLink);
-        if (!prevPageLink || prevPageLink.isReal || currPageLink.isReal) {
-          prevPageLink = currPageLink;
-          links.push(currPageLink);
-          continue;
-        }
-        prevPageLink._mergeRange(currPageLink.indexRange, pageNumber);
+        pushOrMerge(currPageLink);
         continue;
       }
       // Placeholder
       const currPageLink = getPaginationLink(existingRealLink, index, pageNumber, null);
-      if (!prevPageLink || prevPageLink.isReal || currPageLink.isReal) {
-        prevPageLink = currPageLink;
-        links.push(currPageLink);
-        continue;
-      }
-      prevPageLink._mergeRange(currPageLink.indexRange, pageNumber);
+      pushOrMerge(currPageLink);
     }
 
     return (this._links = links);
@@ -171,14 +156,15 @@ export class PaginationLinks<RT = unknown, E = unknown> {
 }
 
 export function getPaginationLinks<RT, E>(
-  state: PaginationState<RT, StructuredErrorDocument<E>>
-): Readonly<PaginationLinks<RT, StructuredErrorDocument<E>>> {
-  let links = PaginationLinksCache.get(state);
+  state: PaginationState<RT, E>
+): Readonly<PaginationLinks<RT, E>> {
+  const key = state;
+  let links = PaginationLinksCache.get(key) as PaginationLinks<RT, E> | undefined;
 
   if (!links) {
-    links = new PaginationLinks<RT, E>(state);
-    PaginationLinksCache.set(state, links);
+    links = new PaginationLinks(state);
+    PaginationLinksCache.set(key, links as PaginationLinks);
   }
 
-  return links as Readonly<PaginationLinks<RT, StructuredErrorDocument<E>>>;
+  return links;
 }
