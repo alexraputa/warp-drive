@@ -1,31 +1,22 @@
-import type { RequestManager, Store } from '../index';
-import type { Future } from '../request';
-import type { StructuredErrorDocument } from '../types/request';
-import { createRequestSubscription, DISPOSE, RequestSubscription, SubscriptionArgs } from './request-subscription.ts';
-import { getPaginationState, PaginationState } from './pagination-state.ts';
+import type { RequestManager, Store } from '../index.ts';
+import type { Future } from '../request.ts';
 import { memoized } from './-private.ts';
+import type { PaginationState } from './pagination-state.ts';
+import { getPaginationState } from './pagination-state.ts';
+import {
+  type ContentFeatures as RequestContentFeatures,
+  createRequestSubscription,
+  DISPOSE,
+  type RecoveryFeatures,
+  type RequestSubscription,
+  type SubscriptionArgs,
+} from './request-subscription.ts';
 
-interface ErrorFeatures {
-  isHidden: boolean;
-  isOnline: boolean;
-  retry: () => Promise<void>;
+export interface PaginationContentFeatures<RT> extends RequestContentFeatures<RT> {
+  loadNext: () => Promise<void>;
+  loadPrev: () => Promise<void>;
+  loadPage: (url: string) => Promise<void>;
 }
-
-type ContentFeatures<RT> = {
-  // Initial Request
-  isOnline: boolean;
-  isHidden: boolean;
-  isRefreshing: boolean;
-  refresh: () => Promise<void>;
-  reload: () => Promise<void>;
-  abort?: () => void;
-  latestRequest?: Future<RT>;
-
-  // Pagination
-  loadNext?: () => Promise<void>;
-  loadPrev?: () => Promise<void>;
-  loadPage?: (url: string) => Promise<void>;
-};
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export interface PaginationSubscription<RT, E> {
@@ -34,9 +25,10 @@ export interface PaginationSubscription<RT, E> {
    * unmounts.
    */
   [DISPOSE](): void;
+  store: Store | RequestManager;
 }
 
-export interface PaginationSubscriptionArgs<RT, E> extends SubscriptionArgs<RT, E> {}
+export type PaginationSubscriptionArgs<RT, E> = SubscriptionArgs<RT, E>;
 
 /**
  * A reactive class
@@ -46,8 +38,6 @@ export interface PaginationSubscriptionArgs<RT, E> extends SubscriptionArgs<RT, 
 export class PaginationSubscription<RT, E> {
   /** @internal */
   declare private isDestroyed: boolean;
-  /** @internal */
-  declare private _subscribedTo: object | null;
   /** @internal */
   declare private _args: PaginationSubscriptionArgs<RT, E>;
   /** @internal */
@@ -103,7 +93,7 @@ export class PaginationSubscription<RT, E> {
    * Loads a specific page by its URL.
    */
   loadPage = async (url: string): Promise<void> => {
-    let { paginationState } = this;
+    const paginationState = this.paginationState;
     const page = paginationState.getPageState(url);
     paginationState.activatePage(page);
     if (!page.isLoaded) {
@@ -116,7 +106,7 @@ export class PaginationSubscription<RT, E> {
    * Error features to yield to the error slot of a component
    */
   @memoized
-  get errorFeatures(): ErrorFeatures {
+  get errorFeatures(): RecoveryFeatures {
     return {
       isHidden: this._requestSubscription.isHidden,
       isOnline: this._requestSubscription.isOnline,
@@ -128,9 +118,9 @@ export class PaginationSubscription<RT, E> {
    * Content features to yield to the content slot of a component
    */
   @memoized
-  get contentFeatures(): ContentFeatures<RT> {
+  get contentFeatures(): PaginationContentFeatures<RT> {
     const contentFeatures = this._requestSubscription.contentFeatures;
-    const feat: ContentFeatures<RT> = {
+    const feat: PaginationContentFeatures<RT> = {
       ...contentFeatures,
       loadPrev: this.loadPrev,
       loadNext: this.loadNext,
@@ -151,7 +141,7 @@ export class PaginationSubscription<RT, E> {
    */
   @memoized
   get _requestSubscription(): RequestSubscription<RT, E> {
-    return createRequestSubscription<RT, E>(this.store, this._args);
+    return createRequestSubscription(this.store, this._args);
   }
 
   @memoized
@@ -160,7 +150,7 @@ export class PaginationSubscription<RT, E> {
   }
 
   @memoized
-  get paginationState(): PaginationState<RT, StructuredErrorDocument<E>> {
+  get paginationState(): PaginationState<RT, E> {
     return getPaginationState<RT, E>(this.request);
   }
 }
@@ -172,17 +162,17 @@ export function createPaginationSubscription<RT, E>(
   return new PaginationSubscription(store, args);
 }
 
-interface PrivatePaginationSubscription {
+interface PrivatePaginationSubscription<RT, E> {
   isDestroyed: boolean;
-  _requestSubscription: RequestSubscription<unknown, unknown>;
+  _requestSubscription: RequestSubscription<RT, E>;
 }
 
-function upgradeSubscription(sub: unknown): PrivatePaginationSubscription {
-  return sub as PrivatePaginationSubscription;
+function upgradeSubscription<RT, E>(sub: unknown): PrivatePaginationSubscription<RT, E> {
+  return sub as PrivatePaginationSubscription<RT, E>;
 }
 
 function _DISPOSE<RT, E>(this: PaginationSubscription<RT, E>) {
-  const self = upgradeSubscription(this);
+  const self = upgradeSubscription<RT, E>(this);
   self.isDestroyed = true;
-  self._requestSubscription?.[DISPOSE]?.();
+  self._requestSubscription[DISPOSE]();
 }
