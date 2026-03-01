@@ -1,7 +1,8 @@
 import { existsSync, mkdirSync, writeFileSync } from 'fs';
 import { basename, dirname, join, resolve } from 'path';
 
-import { InstanciatedLogger, logger } from '../../../utils/logger.js';
+import type { InstanciatedLogger } from '../../../utils/logger.js';
+import { logger } from '../../../utils/logger.js';
 import type { SkippedFile, TransformerResult } from '../codemod.js';
 import { Codemod } from '../codemod.js';
 import type { FinalOptions, MigrateOptions, TransformOptions } from '../config.js';
