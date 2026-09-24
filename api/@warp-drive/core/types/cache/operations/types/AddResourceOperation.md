@@ -1,0 +1,62 @@
+---
+url: >-
+  https://canary.warp-drive.io/api/@warp-drive/core/types/cache/operations/types/AddResourceOperation.md
+---
+
+# &#x20;AddResourceOperation
+
+```ts
+interface AddResourceOperation extends Op {
+  op: "add";
+  record: PersistedResourceKey;
+  value: ExistingResourceObject;
+}
+```
+
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:87](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L87)
+
+Adds a resource to the cache.
+
+## Extends
+
+* [`Op`](Op.md)
+
+## Properties
+
+### op
+
+```ts
+op: "add";
+```
+
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:88](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L88)
+
+The name of the [operation](Op.md)
+
+#### Overrides
+
+[`Op`](Op.md).[`op`](Op.md#op)
+
+***
+
+### record
+
+```ts
+record: PersistedResourceKey;
+```
+
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:92](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L92)
+
+The cache key for the resource
+
+***
+
+### value
+
+```ts
+value: ExistingResourceObject;
+```
+
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:96](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L96)
+
+The data for the resource
