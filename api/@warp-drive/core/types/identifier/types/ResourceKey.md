@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/identifier/types/ResourceKey.md
+description: >-
+  Stable object with a unique `lid` plus `type` and `id` that uniquely
+  references one resource's data in the cache, loaded or not.
 ---
 
 # &#x20;ResourceKey\<T *extends* `string` = `string`>
@@ -11,7 +14,7 @@ type ResourceKey<T extends string = string> =
 | NewResourceKey<T>;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/identifier.ts:134](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/identifier.ts#L134)
+Defined in: [warp-drive-packages/core/src/types/identifier.ts:156](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/identifier.ts#L156)
 
 A referentially stable object with a unique string (lid) that can be used
 as a reference to data in the cache.

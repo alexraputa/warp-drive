@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/reactivity.md
+description: >-
+  Understand how WarpDrive uses signals as side-signals or gates to notify
+  consumers of cache changes while letting you plug in your own or your
+  framework's signals implementation.
 ---
 
 # Reactivity

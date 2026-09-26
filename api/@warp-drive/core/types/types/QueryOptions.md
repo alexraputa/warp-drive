@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/types/QueryOptions.md
+description: >-
+  Legacy options for `store.query` and `store.queryRecord`, of which only
+  `adapterOptions` is used, passed to the adapter rather than the server.
 ---
 
 # &#x20;QueryOptions
@@ -8,7 +11,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/core/types/types/QueryOptions.
 type QueryOptions = { [K in string | "adapterOptions"]?: K extends "adapterOptions" ? Record<string, unknown> : unknown };
 ```
 
-Defined in: [warp-drive-packages/core/src/store/-types/q/store.ts:67](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/store/-types/q/store.ts#L67)
+Defined in: [warp-drive-packages/core/src/store/-types/q/store.ts:76](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/store/-types/q/store.ts#L76)
 
 Options for `store.query()` and `store.queryRecord()`. Unlike
 [LegacyResourceQuery](LegacyResourceQuery.md), these options are not sent to the server;

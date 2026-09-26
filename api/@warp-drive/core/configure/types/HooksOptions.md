@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/configure/types/HooksOptions.md
+description: >-
+  The options passed to the `setupSignals` callback, including the well-known
+  key WarpDrive uses for an array's contents signal.
 ---
 
 # &#x20;HooksOptions
@@ -11,7 +14,7 @@ interface HooksOptions {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/signals/reactivity/configure.ts:133](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/signals/reactivity/configure.ts#L133)
+Defined in: [warp-drive-packages/core/src/signals/reactivity/configure.ts:137](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/signals/reactivity/configure.ts#L137)
 
 Contains information a [SignalHooks](SignalHooks.md) implementation may want
 to use, such as the specialized key used for the signal
@@ -35,7 +38,7 @@ wellknown: {
 };
 ```
 
-Defined in: [warp-drive-packages/core/src/signals/reactivity/configure.ts:139](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/signals/reactivity/configure.ts#L139)
+Defined in: [warp-drive-packages/core/src/signals/reactivity/configure.ts:143](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/signals/reactivity/configure.ts#L143)
 
 A list of specialized symbols/strings
 used by WarpDrive to encapsulate key

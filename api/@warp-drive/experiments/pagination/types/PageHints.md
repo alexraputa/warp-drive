@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/pagination/types/PageHints.md
+description: >-
+  Experimental: a function you pass to `<Paginate />` that reads `currentPage`
+  and `totalPages` from a loaded document when they are not in the default
+  `meta` locations.
 ---
 
 &#x20;
@@ -11,7 +15,7 @@ url: >-
 interface PageHints {}
 ```
 
-Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:121](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L121)
+Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:125](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L125)
 
 A hint function for extracting the `currentPage` and `totalPages` from a loaded
 document, for when the response does not expose these values through the
@@ -34,7 +38,7 @@ PageHints(document: ReactiveDocument<unknown>): {
 };
 ```
 
-Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:122](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L122)
+Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:126](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L126)
 
 A hint function for extracting the `currentPage` and `totalPages` from a loaded
 document, for when the response does not expose these values through the

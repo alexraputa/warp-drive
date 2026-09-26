@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/storage/functions/SessionResource.md
+description: >-
+  Experimental class decorator that turns a class into a reactive resource whose
+  fields persist in sessionStorage.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 function SessionResource(id: string | KeyFn): ClassDecorator;
 ```
 
-Defined in: [warp-drive-packages/experiments/src/storage/storage-resource.ts:47](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/experiments/src/storage/storage-resource.ts#L47)
+Defined in: [warp-drive-packages/experiments/src/storage/storage-resource.ts:53](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/experiments/src/storage/storage-resource.ts#L53)
 
 Decorator which transforms a class into a StorageResource
 persisted in sessionStorage.

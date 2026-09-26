@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/model-fragments/types/WithFragment.md
+description: >-
+  Legacy type for a reactive object migrated from a `ModelFragments` fragment,
+  adding the `EmberObject` and `Fragment` APIs to it.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 type WithFragment<T> = T & WithEmberObject<T> & Fragment;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/model-fragments/index.ts:9](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/model-fragments/index.ts#L9)
+Defined in: [warp-drive-packages/legacy/src/model-fragments/index.ts:12](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/model-fragments/index.ts#L12)
 
 Adds the classic `EmberObject` API (via [WithEmberObject](../../compat/extensions/types/WithEmberObject.md)) and the
 [Fragment](../classes/Fragment.md) API to the type of a migrated single-fragment resource.

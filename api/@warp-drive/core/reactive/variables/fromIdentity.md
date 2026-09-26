@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/reactive/variables/fromIdentity.md
+description: >-
+  The `@identity` derivation, which reads a record's `id`, `lid`, `type`, or
+  whole resource key for use in derived fields.
 ---
 
 # &#x20;fromIdentity
@@ -9,7 +12,7 @@ url: >-
 const fromIdentity: FromIdentityDerivation;
 ```
 
-Defined in: [warp-drive-packages/core/src/reactive/-private/schema.ts:481](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/reactive/-private/schema.ts#L481)
+Defined in: [warp-drive-packages/core/src/reactive/-private/schema.ts:494](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/reactive/-private/schema.ts#L494)
 
 A derivation that computes its value from the
 record's identity.

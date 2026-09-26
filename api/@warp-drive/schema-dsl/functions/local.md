@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/functions/local.md
+description: >-
+  Property decorator that compiles to a local field, instance-only state that is
+  never read from or written to the cache or sent to the server.
 ---
 
 # &#x20;local()
@@ -15,7 +18,7 @@ function local(options: LocalOptions): (target: object, key: string) => void;
 function local(target: object, key: string): void;
 ```
 
-Defined in: [fields/local.ts:54](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/local.ts#L54)
+Defined in: [fields/local.ts:57](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/local.ts#L57)
 
 **`Decorator`**
 
@@ -67,7 +70,7 @@ export class User {
 function local(options: LocalOptions): (target: object, key: string) => void;
 ```
 
-Defined in: [fields/local.ts:55](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/local.ts#L55)
+Defined in: [fields/local.ts:58](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/local.ts#L58)
 
 **`Decorator`**
 

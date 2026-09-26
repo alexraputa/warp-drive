@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/configuration/advanced.md
+description: >-
+  Build a Store class by hand, adding RequestManager, SchemaService,
+  JSONAPICache, instantiateRecord, and DefaultCachePolicy step by step, with
+  Ember Model and migration variants.
 ---
 
 # Advanced Store Configuration

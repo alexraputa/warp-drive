@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/requests/handlers-advanced.md
+description: >-
+  Write Handler objects that use RequestContext, setStream, setResponse, and
+  next to retry errors, handle aborts, and curry streams down the chain; draft
+  page.
 ---
 
 `manager.request` returns a `Future`, which allows access to limited information about the request while it is still pending and fulfills with the final state when the request completes and the response has been read.

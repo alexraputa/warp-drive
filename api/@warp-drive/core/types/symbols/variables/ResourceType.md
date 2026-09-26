@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/symbols/variables/ResourceType.md
+description: >-
+  Alias of the `Type` symbol that a record type can declare to tell WarpDrive
+  APIs its resource type for better type inference.
 ---
 
 # &#x20;ResourceType
@@ -9,7 +12,7 @@ url: >-
 const ResourceType: "___(unique) Symbol($type)" = Type;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/symbols.ts:66](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/symbols.ts#L66)
+Defined in: [warp-drive-packages/core/src/types/symbols.ts:77](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/symbols.ts#L77)
 
 Symbol for the type of a resource.
 

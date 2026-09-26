@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/legacy/model-fragments.md
+description: >-
+  Legacy helpers for migrating ember-data-model-fragments to WarpDrive schemas,
+  including `withLegacy`, `withFragmentDefaults` and the `Fragment` and
+  `FragmentArray` extensions.
 ---
 
 &#x20;

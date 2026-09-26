@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/cache/change/types/Change.md
+description: >-
+  One upsert or removal of a resource or document recorded by the cache, with an
+  optional patch, as returned by `cache.diff`.
 ---
 
 # &#x20;Change
@@ -15,7 +18,7 @@ interface Change {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/change.ts:18](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/change.ts#L18)
+Defined in: [warp-drive-packages/core/src/types/cache/change.ts:25](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/change.ts#L25)
 
 Describes a single mutation to a resource or document that occurred
 in the cache, as returned by [Cache.diff](../../types/Cache.md#diff).
@@ -40,7 +43,7 @@ identifier:
   | ResourceKey;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/change.ts:22](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/change.ts#L22)
+Defined in: [warp-drive-packages/core/src/types/cache/change.ts:29](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/change.ts#L29)
 
 the [ResourceKey](../../../identifier/types/ResourceKey.md) or [RequestKey](../../../identifier/types/RequestKey.md) of the entity that changed
 
@@ -52,7 +55,7 @@ the [ResourceKey](../../../identifier/types/ResourceKey.md) or [RequestKey](../.
 op: "upsert" | "remove";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/change.ts:27](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/change.ts#L27)
+Defined in: [warp-drive-packages/core/src/types/cache/change.ts:34](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/change.ts#L34)
 
 the type of change that occurred. If `'upsert'`, [patch](#patch)
 will be present with the data to merge into the cache for the entity.
@@ -65,7 +68,7 @@ will be present with the data to merge into the cache for the entity.
 optional patch?: unknown;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/change.ts:39](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/change.ts#L39)
+Defined in: [warp-drive-packages/core/src/types/cache/change.ts:46](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/change.ts#L46)
 
 When [op](#op) is `'upsert'`, the data to merge into the
 cache for the entity.

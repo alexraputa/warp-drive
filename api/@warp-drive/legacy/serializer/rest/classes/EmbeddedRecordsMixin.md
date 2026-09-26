@@ -1,13 +1,17 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/serializer/rest/classes/EmbeddedRecordsMixin.md
+description: >-
+  Legacy serializer mixin that extracts and serializes related records embedded
+  in a payload instead of referenced by id, configured per relationship via
+  `attrs`. EmbeddedRecordsMixin
 ---
 
 &#x20;
 
 # &#x20;EmbeddedRecordsMixin
 
-Defined in: [warp-drive-packages/legacy/src/serializer/-private/embedded-records-mixin.ts:102](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/serializer/-private/embedded-records-mixin.ts#L102)
+Defined in: [warp-drive-packages/legacy/src/serializer/-private/embedded-records-mixin.ts:104](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/serializer/-private/embedded-records-mixin.ts#L104)
 
 ## Using Embedded Records
 
@@ -94,5 +98,3 @@ instances must have an `id` property to be used with Ember Data.
 **When customizing a serializer it is important to grok what the customizations
 are. Please read the docs for the methods this mixin provides, in case you need
 to modify it to fit your specific needs.**
-
-EmbeddedRecordsMixin

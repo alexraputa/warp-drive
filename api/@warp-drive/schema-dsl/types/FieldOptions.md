@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/types/FieldOptions.md
+description: >-
+  Options for the `@field` decorator that set the compiled field's
+  transformation `type` and `sourceKey`.
 ---
 
 # &#x20;FieldOptions
@@ -11,7 +14,7 @@ interface FieldOptions {
 }
 ```
 
-Defined in: [fields/field.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/field.ts#L11)
+Defined in: [fields/field.ts:12](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/field.ts#L12)
 
 Options accepted by the [field](../functions/field.md) decorator.
 
@@ -23,7 +26,7 @@ Options accepted by the [field](../functions/field.md) decorator.
 optional sourceKey?: string;
 ```
 
-Defined in: [fields/field.ts:25](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/field.ts#L25)
+Defined in: [fields/field.ts:26](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/field.ts#L26)
 
 The name of the field as returned by the API, if it differs from the
 decorated property's name. Compiles onto the field's `sourceKey`.
@@ -36,6 +39,6 @@ decorated property's name. Compiles onto the field's `sourceKey`.
 optional type?: string;
 ```
 
-Defined in: [fields/field.ts:17](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/field.ts#L17)
+Defined in: [fields/field.ts:18](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/field.ts#L18)
 
 The name of a [Transformation](../../core/types/schema/concepts/types/Transformation.md) to compile onto the field's `type`.

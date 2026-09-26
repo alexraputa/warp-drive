@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/rfcs/0002-warp-drive-build-plugin.md
+description: >-
+  Proposes a framework-agnostic `@warp-drive/core/build-plugin` bundler plugin
+  that replaces the babel and @embroider/macros build configuration for
+  WarpDrive.
 ---
 
 # A Framework-Agnostic Build Plugin for WarpDrive&#x20;

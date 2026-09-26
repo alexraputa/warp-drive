@@ -15,6 +15,25 @@ or behavior, it needs an RFC before implementation begins — see
 [The RFC Process](/guides/contributing/rfc-process.md) for the full discussion-and-consensus
 workflow leading up to drafting.
 
+### Keep deprecations in their own RFC, separate from the feature that replaces them
+
+When a new feature makes existing public API or behavior obsolete, the feature and the
+deprecation of what it replaces belong in **two separate RFCs**, not one combined proposal. The
+feature RFC comes first and stands on its own. The deprecation is a distinct RFC that follows,
+and deprecates the old behavior only once the replacement has shipped and reached the Recommended
+stage — the point at which we're confident the successor is the right one to steer people toward.
+
+Combining them couples two decisions the team needs to make independently: whether the new API is
+right, and whether (and when) the old one should go. It also forces the deprecation's timeline to
+track the feature's before either is settled, and tends to bloat the feature RFC with flag ids and
+migration mechanics that distract from the design under review.
+
+So: keep the feature RFC to the feature. It's fine — often helpful — to note in its "Detailed
+design" ecosystem section that a follow-on deprecation is expected, but put the deprecation's flag
+id, `since`/`until` versions, and migration path in its own RFC. See
+[`0005-deprecate-legacy-packages.md`](/rfcs/0005-deprecate-legacy-packages.md) for the shape a
+deprecation RFC takes.
+
 ## Drafting
 
 WarpDrive-specific RFCs live in [`rfcs/`](/rfcs/index.md) in this repository, which is the
@@ -30,11 +49,18 @@ of any `emberjs/rfcs` number:
    overwritten and can desync the two copies. Don't start `title` with "WarpDrive" — the sync bot
    adds that prefix automatically for the `emberjs/rfcs` copy and its PR title, so a local title
    that already has it would end up doubled there.
-3. Open a PR labeled `:label: rfc` (see
+3. Review the draft for terseness and conciseness before opening the PR, and again after every
+   edit to it. Reviewers, and later implementers, read an RFC to learn what the public behavior
+   will be and why; anything else in it costs them time and can drift from the implementation
+   that ships. Omit internal implementation details unless they affect observable public
+   behavior, and where they do, describe the effect in brief rather than the mechanism. Keep
+   historical exposition minimal: enough to motivate the change, not a chronicle of how the
+   current behavior came to be.
+4. Open a PR labeled `:label: rfc` (see
    [Pull Request Labeling](/guides/contributing/submitting-prs.md#pull-request-labeling) for the
    PR mechanics). That label also triggers a docs-site PR preview so reviewers can read the
    rendered RFC, not just the raw markdown diff.
-4. Iterate on the PR like any other design discussion. Once there is team consensus to move
+5. Iterate on the PR like any other design discussion. Once there is team consensus to move
    forward, merging the PR is what publishes the RFC — see the next section for what that
    triggers.
 

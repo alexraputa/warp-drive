@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/requests/handlers-builtin.md
+description: >-
+  Learn when to reach for a Handler, how to compose and type handlers, and which
+  handlers WarpDrive ships built in; this page is a draft outline.
 ---
 
 ## What Is A Handler

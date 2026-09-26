@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/json-api/request.md
+description: >-
+  Legacy alias re-exporting request builders from
+  `@warp-drive/utilities/json-api` that produce fetch options with stable
+  JSON:API URLs for `store.request`.
 ---
 
 This package provides utilities for working with [JSON:API](https://jsonapi.org) APIs with [*Ember***Data**](https://github.com/warp-drive-data/warp-drive/).

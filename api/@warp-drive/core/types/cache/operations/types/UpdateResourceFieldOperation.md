@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/cache/operations/types/UpdateResourceFieldOperation.md
+description: >-
+  Cache operation passed to `cache.patch` that replaces the remote value of a
+  single field on a persisted resource.
 ---
 
 # &#x20;UpdateResourceFieldOperation
@@ -14,7 +17,7 @@ interface UpdateResourceFieldOperation extends Op {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:115](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L115)
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:135](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/operations.ts#L135)
 
 Replaces the state of a field with a new state
 
@@ -30,7 +33,7 @@ Replaces the state of a field with a new state
 field: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:124](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L124)
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:144](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/operations.ts#L144)
 
 The name of the field to update
 
@@ -42,7 +45,7 @@ The name of the field to update
 op: "update";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:116](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L116)
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:136](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/operations.ts#L136)
 
 The name of the [operation](Op.md)
 
@@ -58,7 +61,7 @@ The name of the [operation](Op.md)
 record: PersistedResourceKey;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:120](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L120)
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:140](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/operations.ts#L140)
 
 The cache key for the resource
 
@@ -70,6 +73,6 @@ The cache key for the resource
 value: Value;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:128](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/operations.ts#L128)
+Defined in: [warp-drive-packages/core/src/types/cache/operations.ts:148](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/operations.ts#L148)
 
 The new value for the field

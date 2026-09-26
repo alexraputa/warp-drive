@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/request/types/StructuredErrorDocument.md
+description: >-
+  The Error a request's `Future` rejects with when the request fails, carrying
+  the `request`, `response`, `error`, and any `content` received.
 ---
 
 # &#x20;StructuredErrorDocument\<T = `unknown`>
@@ -21,7 +24,7 @@ interface StructuredErrorDocument<T = unknown> extends Error {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:473](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L473)
+Defined in: [warp-drive-packages/core/src/types/request.ts:531](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L531)
 
 When a [Future](../../../request/types/Future.md) rejects, it throws either an [Error](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Error)
 an [AggregateError](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/AggregateError) or a [DOMException](https://developer.mozilla.org/docs/Web/API/DOMException) that maintains
@@ -49,7 +52,7 @@ the error will be a [FetchError](FetchError.md)
 optional cause?: unknown;
 ```
 
-Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es2022.error.d.ts:24](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es2022.error.d.ts#L24)
+Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es2022.error.d.ts:24](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es2022.error.d.ts#L24)
 
 #### Inherited from
 
@@ -65,7 +68,7 @@ Error.cause
 optional content?: T;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:493](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L493)
+Defined in: [warp-drive-packages/core/src/types/request.ts:551](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L551)
 
 the processed content of the response, if any was received before the failure
 
@@ -77,7 +80,7 @@ the processed content of the response, if any was received before the failure
 error: string | object;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:489](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L489)
+Defined in: [warp-drive-packages/core/src/types/request.ts:547](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L547)
 
 the error that caused the request to fail
 
@@ -89,7 +92,7 @@ the error that caused the request to fail
 message: string;
 ```
 
-Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es5.d.ts:1075](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es5.d.ts#L1075)
+Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es5.d.ts:1075](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es5.d.ts#L1075)
 
 #### Inherited from
 
@@ -105,7 +108,7 @@ Error.message
 name: string;
 ```
 
-Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es5.d.ts:1074](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es5.d.ts#L1074)
+Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es5.d.ts:1074](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es5.d.ts#L1074)
 
 #### Inherited from
 
@@ -121,7 +124,7 @@ Error.name
 request: ImmutableRequestInfo;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:481](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L481)
+Defined in: [warp-drive-packages/core/src/types/request.ts:539](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L539)
 
 #### See
 
@@ -138,7 +141,7 @@ response:
   | null;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:485](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L485)
+Defined in: [warp-drive-packages/core/src/types/request.ts:543](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L543)
 
 the response set by the handler chain, if any
 
@@ -150,7 +153,7 @@ the response set by the handler chain, if any
 optional stack?: string;
 ```
 
-Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es5.d.ts:1076](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es5.d.ts#L1076)
+Defined in: [node\_modules/.pnpm/typescript@6.0.3/node\_modules/typescript/lib/lib.es5.d.ts:1076](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/typescript@6.0.3/node_modules/typescript/lib/lib.es5.d.ts#L1076)
 
 #### Inherited from
 

@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/string/variables/dasherize.md
+description: >-
+  Converts camelCase, underscored, or spaced strings to dasherized form, such as
+  `innerHTML` to `inner-html`.
 ---
 
 # &#x20;dasherize&#x20;
@@ -9,7 +12,7 @@ url: >-
 const dasherize: (str: string) => string = internalDasherize;
 ```
 
-Defined in: [-private/string/transform.ts:40](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/string/transform.ts#L40)
+Defined in: [-private/string/transform.ts:41](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/string/transform.ts#L41)
 
 Replaces underscores, spaces, or camelCase with dashes.
 

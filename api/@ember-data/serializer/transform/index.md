@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/serializer/transform.md
+description: >-
+  Legacy alias that re-exports the base `Transform` and the boolean, string,
+  number, and date attribute transforms from
+  `@warp-drive/legacy/serializer/transform`.
 ---
 
 Legacy alias of [@warp-drive/legacy/serializer/transform](../../../@warp-drive/legacy/serializer/transform/index.md).

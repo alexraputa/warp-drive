@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/cookbook/auth-handlers.md
+description: >-
+  Write a request `Handler` that adds JWT bearer tokens or CSRF tokens to
+  outgoing requests, including an Ember class-based handler with injected
+  services.
 ---
+
 # Auth Handler
 
 ## In This Guide

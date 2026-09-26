@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/holodeck/mock/types/Scaffold.md
+description: >-
+  Full description of a mocked request, its request body to match, and its
+  response status, headers, and body, as sent to the Holodeck server to record a
+  fixture.
 ---
 
 # &#x20;Scaffold
@@ -19,7 +23,7 @@ interface Scaffold {
 }
 ```
 
-Defined in: [mock.ts:6](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L6)
+Defined in: [mock.ts:14](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L14)
 
 ## Properties
 
@@ -32,7 +36,7 @@ body:
   | null;
 ```
 
-Defined in: [mock.ts:10](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L10)
+Defined in: [mock.ts:18](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L18)
 
 ***
 
@@ -42,7 +46,7 @@ Defined in: [mock.ts:10](https://github.com/alexraputa/warp-drive/blob/42b515069
 headers: Record<string, string>;
 ```
 
-Defined in: [mock.ts:9](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L9)
+Defined in: [mock.ts:17](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L17)
 
 ***
 
@@ -52,7 +56,7 @@ Defined in: [mock.ts:9](https://github.com/alexraputa/warp-drive/blob/42b515069d
 method: string;
 ```
 
-Defined in: [mock.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L11)
+Defined in: [mock.ts:19](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L19)
 
 ***
 
@@ -62,7 +66,7 @@ Defined in: [mock.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069
 response: Record<string, unknown>;
 ```
 
-Defined in: [mock.ts:13](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L13)
+Defined in: [mock.ts:21](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L21)
 
 ***
 
@@ -72,7 +76,7 @@ Defined in: [mock.ts:13](https://github.com/alexraputa/warp-drive/blob/42b515069
 status: number;
 ```
 
-Defined in: [mock.ts:7](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L7)
+Defined in: [mock.ts:15](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L15)
 
 ***
 
@@ -82,7 +86,7 @@ Defined in: [mock.ts:7](https://github.com/alexraputa/warp-drive/blob/42b515069d
 optional statusText?: string;
 ```
 
-Defined in: [mock.ts:8](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L8)
+Defined in: [mock.ts:16](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L16)
 
 ***
 
@@ -92,4 +96,4 @@ Defined in: [mock.ts:8](https://github.com/alexraputa/warp-drive/blob/42b515069d
 url: string;
 ```
 
-Defined in: [mock.ts:12](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L12)
+Defined in: [mock.ts:20](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L20)

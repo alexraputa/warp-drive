@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core-types/cache/relationship.md
+description: >-
+  Legacy alias re-exporting `@warp-drive/core/types/cache/relationship`, the
+  cache-side to-one and to-many relationship state types; new code should import
+  from there.
 ---
 
 Legacy alias of [@warp-drive/core/types/cache/relationship](../../../core/types/cache/relationship/index.md).

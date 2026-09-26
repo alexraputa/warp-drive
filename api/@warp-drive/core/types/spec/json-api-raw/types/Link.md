@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/spec/json-api-raw/types/Link.md
+description: >-
+  A {json:api} link value, either a plain URI-reference string or an object with
+  `href` and optional `meta`.
 ---
 
 # &#x20;Link
@@ -9,7 +12,7 @@ url: >-
 type Link = string | LinkObject;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:41](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L41)
+Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:54](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L54)
 
 A link is either a plain URI-reference string or a [LinkObject](LinkObject.md)
 carrying additional meta information.

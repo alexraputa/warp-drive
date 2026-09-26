@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/storage/functions/param.md
+description: >-
+  Experimental decorator that marks a storage resource field as a URL query
+  parameter, recording how to serialize it for a router integration.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 function param(config: ParamConfig): PropertyDecorator;
 ```
 
-Defined in: [warp-drive-packages/experiments/src/storage/query-params.ts:112](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/experiments/src/storage/query-params.ts#L112)
+Defined in: [warp-drive-packages/experiments/src/storage/query-params.ts:121](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/experiments/src/storage/query-params.ts#L121)
 
 Decorator which marks a field as a query parameter.
 

@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/types/HashOptions.md
+description: >-
+  Options for the `@hash` decorator that name the registered hash function used
+  to compute an object schema's identity.
 ---
 
 # &#x20;HashOptions
@@ -10,7 +13,7 @@ interface HashOptions {
 }
 ```
 
-Defined in: [fields/hash.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/hash.ts#L11)
+Defined in: [fields/hash.ts:13](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/hash.ts#L13)
 
 Options accepted by the [hash](../functions/hash.md) decorator.
 
@@ -22,7 +25,7 @@ Options accepted by the [hash](../functions/hash.md) decorator.
 type: string;
 ```
 
-Defined in: [fields/hash.ts:18](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/hash.ts#L18)
+Defined in: [fields/hash.ts:20](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/hash.ts#L20)
 
 The name of a [HashFn](../../core/types/schema/concepts/types/HashFn.md) registered with the schema service, used
 to compute this field's value from the object's cache data.

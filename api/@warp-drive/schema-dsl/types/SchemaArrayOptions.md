@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/schema-dsl/types/SchemaArrayOptions.md
+description: >-
+  Options for the `@schemaArray` decorator that choose the element object
+  schema, polymorphic type resolution, element identity key, and default value.
 ---
 
 # &#x20;SchemaArrayOptions
@@ -16,7 +19,7 @@ interface SchemaArrayOptions {
 }
 ```
 
-Defined in: [fields/schema-array.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L11)
+Defined in: [fields/schema-array.ts:13](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L13)
 
 Options accepted by the [schemaArray](../functions/schemaArray.md) decorator.
 
@@ -28,7 +31,7 @@ Options accepted by the [schemaArray](../functions/schemaArray.md) decorator.
 optional defaultValue?: boolean;
 ```
 
-Defined in: [fields/schema-array.ts:88](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L88)
+Defined in: [fields/schema-array.ts:90](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L90)
 
 If true, a missing cache value becomes `[]` instead of `null`.
 Compiles onto the [SchemaArrayField](../../core/types/schema/fields/types/SchemaArrayField.md)'s `options.defaultValue`.
@@ -41,7 +44,7 @@ Compiles onto the [SchemaArrayField](../../core/types/schema/fields/types/Schema
 optional key?: string;
 ```
 
-Defined in: [fields/schema-array.ts:80](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L80)
+Defined in: [fields/schema-array.ts:82](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L82)
 
 How the array decides that a cache object is the same schema-object
 it already instantiated. Compiles onto the
@@ -61,7 +64,7 @@ it already instantiated. Compiles onto the
 optional polymorphic?: boolean;
 ```
 
-Defined in: [fields/schema-array.ts:50](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L50)
+Defined in: [fields/schema-array.ts:52](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L52)
 
 Whether each element may be a different object-schema type.
 Compiles onto the [SchemaArrayField](../../core/types/schema/fields/types/SchemaArrayField.md)'s `options.polymorphic`.
@@ -80,7 +83,7 @@ when `typeField` is `'@hash'`.
 optional sourceKey?: string;
 ```
 
-Defined in: [fields/schema-array.ts:36](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L36)
+Defined in: [fields/schema-array.ts:38](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L38)
 
 The name of the field as returned by the API, if it differs from the
 decorated property's name. Compiles onto the
@@ -94,7 +97,7 @@ decorated property's name. Compiles onto the
 optional type?: string | null;
 ```
 
-Defined in: [fields/schema-array.ts:27](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L27)
+Defined in: [fields/schema-array.ts:29](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L29)
 
 If the field is not polymorphic, the `type` of the [ObjectSchema](../functions/ObjectSchema.md)
 that describes each element.
@@ -116,7 +119,7 @@ Compiles onto the [SchemaArrayField](../../core/types/schema/fields/types/Schema
 optional typeField?: string;
 ```
 
-Defined in: [fields/schema-array.ts:65](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L65)
+Defined in: [fields/schema-array.ts:67](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L67)
 
 When `polymorphic` is true, the key on each raw element that holds
 the object-schema type, or `'@hash'` to compute it.

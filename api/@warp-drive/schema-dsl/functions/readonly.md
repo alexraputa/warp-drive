@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/functions/readonly.md
+description: >-
+  Reserved property decorator for marking a field read-only in future generated
+  types; currently a no-op with no effect on the compiled schema.
 ---
 
 # &#x20;readonly()&#x20;
@@ -8,7 +11,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/functions/readonly.
 function readonly(target: object, key: string): void;
 ```
 
-Defined in: [fields/readonly.ts:12](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/readonly.ts#L12)
+Defined in: [fields/readonly.ts:14](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/readonly.ts#L14)
 
 **`Decorator`**
 

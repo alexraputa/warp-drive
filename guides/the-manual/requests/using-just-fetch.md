@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/requests/using-just-fetch.md
+description: >-
+  Use a standalone RequestManager with the Fetch handler and no Store, register
+  Handler objects with use, and read the Future and StructuredDocument it
+  returns; draft page.
 ---
 
 # Using "Just Fetch"

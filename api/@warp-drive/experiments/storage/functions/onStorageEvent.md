@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/storage/functions/onStorageEvent.md
+description: >-
+  Experimental helper that subscribes to storage changes from both native
+  `StorageEvent`s and `CacheStorage` notifications, returning an unsubscribe
+  function.
 ---
 
 &#x20;
@@ -11,7 +15,7 @@ url: >-
 function onStorageEvent(listener: (event: EffectStorageEvent) => void): () => void;
 ```
 
-Defined in: [warp-drive-packages/experiments/src/storage/storage.ts:128](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/experiments/src/storage/storage.ts#L128)
+Defined in: [warp-drive-packages/experiments/src/storage/storage.ts:140](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/experiments/src/storage/storage.ts#L140)
 
 Subscribes to storage-change events, whether they originate from the
 native Storage API (a `StorageEvent`, fired cross-tab) or from

@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/build-config.md
+description: >-
+  Build-time configuration for WarpDrive: `setConfig` and its babel plugin for
+  deprecations, features, debug logging, and polyfill settings.
 ---
 
 This module provides a build-plugin that enables configuration of deprecations,

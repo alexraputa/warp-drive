@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/model/migration-support.md
+description: >-
+  Legacy helpers (`withDefaults`, `registerDerivations`,
+  `DelegatingSchemaService`, `WithLegacy`) for migrating from
+  `@ember-data/model` to schema-driven records in LegacyMode.
 ---
 
 This module provides support for migrating away from @ember-data/model

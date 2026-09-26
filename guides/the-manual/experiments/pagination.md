@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/experiments/pagination.md
+description: >-
+  Paginate a collection with the experimental `getPaginationState` primitives
+  and the `<Paginate />` and `<EachLink />` Ember components in paged or
+  infinite mode.
 ---
 
 # Pagination

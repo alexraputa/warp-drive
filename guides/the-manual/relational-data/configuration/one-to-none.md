@@ -1,7 +1,12 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/the-manual/relational-data/configuration/one-to-none.md
+description: >-
+  Define a unidirectional one-to-none belongsTo relationship with inverse null
+  and learn how WarpDrive tracks its implicit inverse, via Model, JSON schema,
+  or LegacyMode.
 ---
+
 # One To None Relationships
 
 Pretend we're building a social network for trail runners 🏃🏃🏾‍♀️, and a TrailRunner (maybe [@runspired](https://github.com/runspired)) can have a favorite Trail to run on . While the TrailRunner has a favorite trail, the trail has no concept of a TrailRunner.

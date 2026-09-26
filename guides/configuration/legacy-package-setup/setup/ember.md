@@ -1,7 +1,12 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/configuration/legacy-package-setup/setup/ember.md
+description: >-
+  Configure a legacy Ember app to import @warp-drive/ember/install, drop
+  @ember-data/tracking, and add LegacyNetworkHandler plus adapterFor and
+  serializerFor hooks to the store.
 ---
+
 # Ember.js
 
 ## Configure Reactivity

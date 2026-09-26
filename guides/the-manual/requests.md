@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/requests.md
+description: >-
+  Start here to make requests with store.request, the <Request /> component, and
+  getRequestState, then set RequestInfo options and chain handlers in a
+  RequestManager.
 ---
 
 # Making Requests

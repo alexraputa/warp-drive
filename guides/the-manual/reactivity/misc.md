@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/reactivity/misc.md
+description: >-
+  Learn how WarpDrive exposes cached documents, resources, and fields reactively
+  through PolarisMode or LegacyMode records, with pluggable signals so Ember or
+  React can integrate.
 ---
 
 In addition to request and cache management, WarpDrive provides a reactive access

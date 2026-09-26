@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/caching.md
+description: >-
+  Understand how the CacheHandler resolves a RequestKey, applies CachePolicy for
+  staleness, and stores responses, resources, fields, and relationships by
+  replace or upsert.
 ---
 
 # Caching

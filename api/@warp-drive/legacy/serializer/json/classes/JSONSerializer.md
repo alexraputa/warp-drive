@@ -1,13 +1,16 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/serializer/json/classes/JSONSerializer.md
+description: >-
+  Legacy serializer for plain JSON payloads that don't follow the JSON:API spec,
+  normalizing them into JSON:API documents for the store. JSONSerializer
 ---
 
 &#x20;
 
 # &#x20;JSONSerializer
 
-Defined in: [warp-drive-packages/legacy/src/serializer/json.ts:105](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/serializer/json.ts#L105)
+Defined in: [warp-drive-packages/legacy/src/serializer/json.ts:113](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/serializer/json.ts#L113)
 
 :::danger
 ⚠️ **This is LEGACY documentation** for a feature that is no longer encouraged to be used.
@@ -77,5 +80,3 @@ The `JSONSerializer` normalization process follows these steps:
 5. `extractId` | `extractAttributes` | `extractRelationships`
    * `normalize` delegates to these methods to
      turn the record payload into the JSON API format.
-
-JSONSerializer

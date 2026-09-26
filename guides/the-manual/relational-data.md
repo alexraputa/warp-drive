@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/relational-data.md
+description: >-
+  Start here to configure relationships in WarpDrive; links each cardinality
+  page from one-to-none through many-to-many plus the inverses, LinksMode, and
+  polymorphism guides.
 ---
 
 # Relationships Guide

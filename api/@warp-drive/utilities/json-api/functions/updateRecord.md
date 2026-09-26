@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/json-api/functions/updateRecord.md
+description: >-
+  Builds a JSON:API `PUT` (or `PATCH`) request for saving an existing record;
+  the app must set the request body itself.
 ---
 
 # &#x20;updateRecord()
@@ -30,7 +33,7 @@ function updateRecord<T extends TypedRecordInstance, RT extends TypedRecordInsta
 }): UpdateRequestOptions<ReactiveDataDocument<RT, M, E>, T>;
 ```
 
-Defined in: [-private/json-api/save-record.ts:255](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/save-record.ts#L255)
+Defined in: [-private/json-api/save-record.ts:259](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/save-record.ts#L259)
 
 :::warning ⚠️ **These Mutation Builders DO NOT Set The Necessary Request Body**
 While this may come as a surprise, the app providing the body ensures that only
@@ -129,7 +132,7 @@ function updateRecord(record: unknown, options?: ConstrainedRequestOptions & {
 }): UpdateRequestOptions;
 ```
 
-Defined in: [-private/json-api/save-record.ts:264](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/save-record.ts#L264)
+Defined in: [-private/json-api/save-record.ts:268](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/save-record.ts#L268)
 
 :::warning ⚠️ **These Mutation Builders DO NOT Set The Necessary Request Body**
 While this may come as a surprise, the app providing the body ensures that only

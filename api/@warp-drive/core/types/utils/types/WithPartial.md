@@ -1,6 +1,7 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/utils/types/WithPartial.md
+description: Utility type that makes only the named properties of an object type optional.
 ---
 
 # &#x20;WithPartial\<T, K *extends* keyof `T`>
@@ -9,7 +10,7 @@ url: >-
 type WithPartial<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/utils.ts:10](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/utils.ts#L10)
+Defined in: [warp-drive-packages/core/src/types/utils.ts:17](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/utils.ts#L17)
 
 Makes the properties named in `K` optional on `T`, leaving the rest as-is.
 

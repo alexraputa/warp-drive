@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/adapter/error/variables/UnauthorizedError.md
+description: >-
+  Legacy adapter error constructor for an HTTP 401 response, signaling that
+  authorization is required and failed or was not provided.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 UnauthorizedError: AdapterRequestErrorConstructor<UnauthorizedError>;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:346](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/error.ts#L346)
+Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:378](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/error.ts#L378)
 
 A `UnauthorizedError` equates to an HTTP `401 Unauthorized` response
 status. It is used by an adapter to signal that a request to the external

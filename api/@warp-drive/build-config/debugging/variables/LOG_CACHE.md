@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/debugging/variables/LOG_CACHE.md
+description: >-
+  Debug logging flag that logs cache updates to both local and remote state; it
+  replaces `LOG_PAYLOADS`, `LOG_OPERATIONS`, and `LOG_MUTATIONS`.
 ---
 
 # &#x20;LOG\_CACHE&#x20;
@@ -9,7 +12,7 @@ url: >-
 const LOG_CACHE: boolean = false;
 ```
 
-Defined in: [debugging.ts:21](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/debugging.ts#L21)
+Defined in: [debugging.ts:25](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/debugging.ts#L25)
 
 log cache updates for both local
 and remote state. Note in some older versions

@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/configuration.md
+description: >-
+  Set up WarpDrive's babel build plugin with compatWith and create a store with
+  useRecommendedStore or useLegacyStore, the two steps required before making
+  any request.
 ---
 
 ::: warning 💡 Looking for the [Legacy Package Setup Guide?](./legacy-package-setup/setup/universal)

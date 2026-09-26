@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/typescript.md
+description: >-
+  Start here to opt in to WarpDrive's alpha-stage TypeScript types, then follow
+  the installation, configuration, brands, model typing, and includes typing
+  pages in order.
 ---
 
 # 💚 TypeScript Guide

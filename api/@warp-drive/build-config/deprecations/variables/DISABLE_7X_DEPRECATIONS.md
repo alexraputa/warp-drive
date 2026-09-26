@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations/variables/DISABLE_7X_DEPRECATIONS.md
+description: >-
+  Opt-in flag: set it to `false` to make deprecations backported from 6.x print
+  and become resolvable; by default they stay silent and unresolvable.
 ---
 
 # &#x20;DISABLE\_7X\_DEPRECATIONS&#x20;
@@ -9,7 +12,7 @@ url: >-
 const DISABLE_7X_DEPRECATIONS: boolean = true;
 ```
 
-Defined in: [deprecations.ts:543](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/deprecations.ts#L543)
+Defined in: [deprecations.ts:571](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/deprecations.ts#L571)
 
 This is a special flag that can be used to opt-in early to receiving deprecations introduced in 6.x
 which have had their infra backported to 5.x versions of ***Warp*Drive**.

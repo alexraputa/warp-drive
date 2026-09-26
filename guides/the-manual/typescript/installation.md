@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/typescript/installation.md
+description: >-
+  Install WarpDrive's native types with `npx warp-drive retrofit types@canary`
+  or by hand, replacing DefinitelyTyped @types packages with typed releases or
+  -types packages.
 ---
+
 # Installation
 
 WarpDrive now provides a cli that will handle installation and configuration for you

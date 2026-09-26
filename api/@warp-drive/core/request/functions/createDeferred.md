@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/request/functions/createDeferred.md
+description: >-
+  Creates a promise together with its `resolve` and `reject` callbacks so it can
+  be handed out before it is settled.
 ---
 
 # &#x20;createDeferred()
@@ -9,7 +12,7 @@ url: >-
 function createDeferred<T>(): Deferred<T>;
 ```
 
-Defined in: [warp-drive-packages/core/src/request/-private/future.ts:19](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/request/-private/future.ts#L19)
+Defined in: [warp-drive-packages/core/src/request/-private/future.ts:21](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/request/-private/future.ts#L21)
 
 Create a [Deferred](../types/Deferred.md): a promise along with the `resolve`/`reject`
 callbacks that settle it, so the promise can be handed out before the

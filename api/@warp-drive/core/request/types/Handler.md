@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/request/types/Handler.md
+description: >-
+  An object with a `request` method that a RequestManager calls to fulfill a
+  request, either itself or by calling `next` to pass it along.
 ---
 
 # &#x20;Handler
@@ -14,7 +17,7 @@ interface Handler {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/request/-private/types.ts:249](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/request/-private/types.ts#L249)
+Defined in: [warp-drive-packages/core/src/request/-private/types.ts:259](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/request/-private/types.ts#L259)
 
 Requests are fulfilled by handlers. A handler receives the request context
 as well as a `next` function with which to pass along a request to the next
@@ -134,7 +137,7 @@ request<T = unknown>(context: RequestContext, next: NextFn<T>):
 | Future<T>;
 ```
 
-Defined in: [warp-drive-packages/core/src/request/-private/types.ts:257](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/request/-private/types.ts#L257)
+Defined in: [warp-drive-packages/core/src/request/-private/types.ts:267](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/request/-private/types.ts#L267)
 
 Method to implement to handle requests. Receives the request
 context and a nextFn to call to pass-along the request to

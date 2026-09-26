@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/contributing/ROADMAP.md
+description: >-
+  Check which Polaris edition goals WarpDrive has shipped or still has open,
+  what is planned beyond Polaris, and which features and deprecations land in
+  each 5.x release.
 ---
 
 # WarpDrive Roadmap

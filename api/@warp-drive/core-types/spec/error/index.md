@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core-types/spec/error.md
+description: >-
+  Legacy alias re-exporting `@warp-drive/core/types/spec/error`, the {json:api}
+  error object type; new code should import from there.
 ---
 
 Legacy alias of [@warp-drive/core/types/spec/error](../../../core/types/spec/error/index.md).

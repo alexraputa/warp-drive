@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/model-fragments/functions/withFragmentDefaults.md
+description: >-
+  Legacy ModelFragments migration helper that builds a `schema-object` field for
+  a single `fragment:` type with the `ember-object` and `fragment` extensions.
 ---
 
 &#x20;
@@ -18,7 +21,7 @@ function withFragmentDefaults<FragmentType extends string, FragmentName extends 
 };
 ```
 
-Defined in: [warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-defaults.ts:9](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-defaults.ts#L9)
+Defined in: [warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-defaults.ts:11](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-defaults.ts#L11)
 
 Used as a helper to setup the relevant parts of a fragment schema
 and add extensions etc.

@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/requests/builders-advanced.md
+description: >-
+  Structure builders around API patterns or domain logic, compose them, and use
+  builder and type utilities, including with tRPC or GraphQL; this page is a
+  draft outline.
 ---
 
 ### Builders That Follow General API Patterns

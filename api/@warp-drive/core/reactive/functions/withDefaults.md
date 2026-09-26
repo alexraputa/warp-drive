@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/reactive/functions/withDefaults.md
+description: >-
+  Adds the default `id` identity plus `$key`, `$type`, and `constructor` derived
+  fields to a PolarisMode resource schema.
 ---
 
 # &#x20;withDefaults()
@@ -9,7 +12,7 @@ url: >-
 function withDefaults(schema: WithPartial<PolarisResourceSchema, "identity">): PolarisResourceSchema;
 ```
 
-Defined in: [warp-drive-packages/core/src/reactive/-private/schema.ts:435](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/reactive/-private/schema.ts#L435)
+Defined in: [warp-drive-packages/core/src/reactive/-private/schema.ts:446](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/reactive/-private/schema.ts#L446)
 
 Utility for constructing a ResourceSchema with the recommended
 fields for the PolarisMode experience.

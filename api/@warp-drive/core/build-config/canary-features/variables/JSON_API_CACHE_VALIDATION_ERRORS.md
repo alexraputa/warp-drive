@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/build-config/canary-features/variables/JSON_API_CACHE_VALIDATION_ERRORS.md
+description: >-
+  Canary feature flag that makes the JSON:API cache validate payloads given to
+  `cache.put` against registered schemas and the JSON:API spec.
 ---
 
 # &#x20;JSON\_API\_CACHE\_VALIDATION\_ERRORS&#x20;
@@ -9,7 +12,7 @@ url: >-
 const JSON_API_CACHE_VALIDATION_ERRORS: boolean | null;
 ```
 
-Defined in: [node\_modules/.pnpm/@warp-d\_25f56f2729dd79700790d78740333f27/node\_modules/@warp-drive/build-config/dist/canary-features-uADmGk0K.d.ts:139](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/@warp-d_25f56f2729dd79700790d78740333f27/node_modules/@warp-drive/build-config/dist/canary-features-uADmGk0K.d.ts#L139)
+Defined in: [node\_modules/.pnpm/@warp-d\_25f56f2729dd79700790d78740333f27/node\_modules/@warp-drive/build-config/dist/canary-features-DUg2wrs0.d.ts:143](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/@warp-d_25f56f2729dd79700790d78740333f27/node_modules/@warp-drive/build-config/dist/canary-features-DUg2wrs0.d.ts#L143)
 
 This upcoming feature adds a validation step to payloads received
 by the JSONAPICache implementation.

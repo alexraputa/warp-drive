@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/reactive/functions/createRequestSubscription.md
+description: >-
+  Creates a reactive subscription to a request or query that tracks its state
+  and handles autorefresh, retry, and refresh.
 ---
 
 # &#x20;createRequestSubscription()
@@ -11,7 +14,7 @@ function createRequestSubscription<RT, E>(store:
 | RequestManager, args: SubscriptionArgs<RT, E>): RequestSubscription<RT, E>;
 ```
 
-Defined in: [warp-drive-packages/core/src/signals/request-subscription.ts:826](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/signals/request-subscription.ts#L826)
+Defined in: [warp-drive-packages/core/src/signals/request-subscription.ts:848](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/signals/request-subscription.ts#L848)
 
 Creates a [RequestSubscription](../types/RequestSubscription.md), the reactive class powering the
 `<Request />` component's autorefresh, retry, and refresh behaviors.

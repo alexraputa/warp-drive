@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/eslint-plugin-warp-drive/rules/no-create-record-rerender/variables/export=.md
+description: >-
+  ESLint rule object that reports `store.createRecord` calls in getters,
+  constructors, class properties, and component lifecycle hooks.
 ---
 
 # &#x20;export=
@@ -9,4 +12,4 @@ url: >-
 export=: RuleModule;
 ```
 
-Defined in: [rules/no-create-record-rerender.js:25](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/eslint-plugin-warp-drive/src/rules/no-create-record-rerender.js#L25)
+Defined in: [rules/no-create-record-rerender.js:32](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/eslint-plugin-warp-drive/src/rules/no-create-record-rerender.js#L32)

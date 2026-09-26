@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/request.md
+description: >-
+  Types for requests and responses: `RequestInfo`, the request shapes builders
+  return, cache options, the handler context and the documents a request's
+  `Future` settles with.
 ---
 
 ## Variables

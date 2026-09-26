@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/active-record/request.md
+description: >-
+  Legacy alias that re-exports the ActiveRecord-style request builders
+  (`findRecord`, `query`, `createRecord`, `updateRecord`, `deleteRecord`) from
+  `@warp-drive/utilities/active-record`.
 ---
 
 Legacy alias of [@warp-drive/utilities/active-record](../../../@warp-drive/utilities/active-record/index.md).

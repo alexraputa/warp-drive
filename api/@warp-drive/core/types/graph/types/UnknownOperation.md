@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/graph/types/UnknownOperation.md
+description: >-
+  Placeholder Graph operation, with `op: 'never'`, for a relationship whose
+  to-one or to-many kind is not yet known.
 ---
 
 # &#x20;UnknownOperation
@@ -13,7 +16,7 @@ interface UnknownOperation {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:70](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L70)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:86](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L86)
 
 A placeholder operation for a relationship whose kind (`to-one` vs
 `to-many`) is not yet known to the Graph.
@@ -26,7 +29,7 @@ A placeholder operation for a relationship whose kind (`to-one` vs
 field: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:82](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L82)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:98](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L98)
 
 The name of the relationship
 
@@ -38,7 +41,7 @@ The name of the relationship
 op: "never";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:74](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L74)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:90](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L90)
 
 The name of the operation
 
@@ -50,6 +53,6 @@ The name of the operation
 record: ResourceKey;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:78](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L78)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:94](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L94)
 
 The cache key for the resource whose relationship is affected

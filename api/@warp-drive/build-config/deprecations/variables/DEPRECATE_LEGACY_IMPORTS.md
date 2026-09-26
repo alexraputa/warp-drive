@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations/variables/DEPRECATE_LEGACY_IMPORTS.md
+description: >-
+  Deprecation flag for importing from the legacy `ember-data/*` paths instead of
+  `@ember-data/*`, except `ember-data/store`.
 ---
 
 # &#x20;DEPRECATE\_LEGACY\_IMPORTS&#x20;
@@ -9,7 +12,7 @@ url: >-
 const DEPRECATE_LEGACY_IMPORTS: boolean = true;
 ```
 
-Defined in: [deprecations.ts:203](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/deprecations.ts#L203)
+Defined in: [deprecations.ts:213](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/deprecations.ts#L213)
 
 Deprecates when importing from `ember-data/*` instead of `@ember-data/*`
 in order to prepare for the eventual removal of the legacy `ember-data/*`

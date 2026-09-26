@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/contributing/rfc-process.md
+description: >-
+  Propose a WarpDrive feature or deprecation: discuss it on Discord, draft from
+  rfcs/0000-template.md, open a PR labeled `:label: rfc`, and shepherd it
+  through emberjs/rfcs.
 ---
 
 ### Requesting Features or Deprecations

@@ -6,7 +6,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/legacy/classes/ConfiguredStore
 
 # &#x20;ConfiguredStore\<T *extends* { `cache`: `Cache`; }>
 
-Defined in: [warp-drive-packages/legacy/src/index.ts:159](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/index.ts#L159)
+Defined in: [warp-drive-packages/legacy/src/index.ts:170](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/index.ts#L170)
 
 ## Extends
 
@@ -34,7 +34,7 @@ Defined in: [warp-drive-packages/legacy/src/index.ts:159](https://github.com/ale
 createCache(capabilities: CacheCapabilitiesManager$1): T["cache"];
 ```
 
-Defined in: [warp-drive-packages/legacy/src/index.ts:168](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/index.ts#L168)
+Defined in: [warp-drive-packages/legacy/src/index.ts:179](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/index.ts#L179)
 
 Instantiation hook allowing applications or addons to configure the store
 to utilize a custom Cache implementation.

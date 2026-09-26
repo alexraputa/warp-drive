@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/model/functions/buildSchema.md
+description: >-
+  Legacy factory for a schema service that reads resource schemas from an app's
+  `Model` classes, returned from the store's `createSchemaService` hook.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 function buildSchema(store: Store$1): SchemaService;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/model/-private/schema-provider.ts:274](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/model/-private/schema-provider.ts#L274)
+Defined in: [warp-drive-packages/legacy/src/model/-private/schema-provider.ts:276](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/model/-private/schema-provider.ts#L276)
 
 The `createSchemaService` implementation for use with `Model`. Pass
 the result of this to your store's `createSchemaService` method when

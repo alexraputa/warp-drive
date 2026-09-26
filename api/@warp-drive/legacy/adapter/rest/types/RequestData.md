@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/adapter/rest/types/RequestData.md
+description: >-
+  The url and HTTP method of a legacy `RESTAdapter` request, used to build error
+  messages when that request fails.
 ---
 
 &#x20;
@@ -15,7 +18,7 @@ type RequestData = {
 };
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:101](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/rest.ts#L101)
+Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:118](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/rest.ts#L118)
 
 A minimal description of an in-flight request, used for building
 error messages when a request fails.
@@ -34,7 +37,7 @@ error messages when a request fails.
 method: HTTPMethod;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:109](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/rest.ts#L109)
+Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:126](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/rest.ts#L126)
 
 the HTTP method that was used
 
@@ -46,6 +49,6 @@ the HTTP method that was used
 url: string;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:105](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/rest.ts#L105)
+Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:122](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/rest.ts#L122)
 
 the url that was requested

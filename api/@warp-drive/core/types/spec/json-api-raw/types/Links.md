@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/spec/json-api-raw/types/Links.md
+description: >-
+  The `links` member of a {json:api} resource, relationship, or document, with
+  optional `self` and `related` links.
 ---
 
 # &#x20;Links
@@ -12,7 +15,7 @@ interface Links {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:48](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L48)
+Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:64](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L64)
 
 The `links` member of a {json:api} resource or document.
 
@@ -30,7 +33,7 @@ The `links` member of a {json:api} resource or document.
 optional related?: Link | null;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:52](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L52)
+Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:68](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L68)
 
 a link for retrieving the related resource(s)
 
@@ -42,6 +45,6 @@ a link for retrieving the related resource(s)
 optional self?: Link | null;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:56](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L56)
+Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:72](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L72)
 
 a link for retrieving the resource or document itself

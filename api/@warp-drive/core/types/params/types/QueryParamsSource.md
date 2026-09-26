@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/params/types/QueryParamsSource.md
+description: >-
+  Query params to serialize into a request URL: a dictionary of serializable
+  values with optional `include`, or a `URLSearchParams`.
 ---
 
 # &#x20;QueryParamsSource
@@ -13,7 +16,7 @@ type QueryParamsSource =
   | URLSearchParams;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/params.ts:38](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/params.ts#L38)
+Defined in: [warp-drive-packages/core/src/types/params.ts:54](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/params.ts#L54)
 
 The query parameters to serialize for a request: either a
 dictionary of [Serializable](Serializable.md) values (with an optional

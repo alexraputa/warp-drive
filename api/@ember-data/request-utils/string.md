@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/request-utils/string.md
+description: >-
+  Re-exports LRU-cached string inflection and case helpers (`pluralize`,
+  `singularize`, `camelize`, `dasherize`, and others) from
+  `@warp-drive/utilities/string`.
 ---
 
 String utilties for transforming and inflecting strings useful for

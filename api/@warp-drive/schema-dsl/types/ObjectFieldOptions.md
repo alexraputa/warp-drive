@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/schema-dsl/types/ObjectFieldOptions.md
+description: >-
+  Options for the `@object` decorator that set the compiled object field's
+  `sourceKey` and the transformation applied to the whole object.
 ---
 
 # &#x20;ObjectFieldOptions
@@ -12,7 +15,7 @@ interface ObjectFieldOptions {
 }
 ```
 
-Defined in: [fields/object.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/object.ts#L11)
+Defined in: [fields/object.ts:13](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/object.ts#L13)
 
 Options accepted by the [object](../functions/object.md) decorator.
 
@@ -24,7 +27,7 @@ Options accepted by the [object](../functions/object.md) decorator.
 optional sourceKey?: string;
 ```
 
-Defined in: [fields/object.ts:19](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/object.ts#L19)
+Defined in: [fields/object.ts:21](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/object.ts#L21)
 
 The name of the field as returned by the API, if it differs from the
 decorated property's name. Compiles onto the [ObjectField](../../core/types/schema/fields/types/ObjectField.md)'s
@@ -38,7 +41,7 @@ decorated property's name. Compiles onto the [ObjectField](../../core/types/sche
 optional type?: string;
 ```
 
-Defined in: [fields/object.ts:28](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/object.ts#L28)
+Defined in: [fields/object.ts:30](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/object.ts#L30)
 
 The name of a [Transformation](../../core/types/schema/concepts/types/Transformation.md) to pass the entire object through
 before displaying or serializing it. Compiles onto the

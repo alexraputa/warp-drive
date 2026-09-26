@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/model-fragments/variables/FragmentArrayExtension.md
+description: >-
+  Legacy schema extension named `fragment-array` that adds the `FragmentArray`
+  API to reactive arrays migrated from `ModelFragments`.
 ---
 
 &#x20;
@@ -15,7 +18,7 @@ const FragmentArrayExtension: {
 };
 ```
 
-Defined in: [warp-drive-packages/legacy/src/model-fragments/extensions/fragment-array.ts:95](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/model-fragments/extensions/fragment-array.ts#L95)
+Defined in: [warp-drive-packages/legacy/src/model-fragments/extensions/fragment-array.ts:101](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/model-fragments/extensions/fragment-array.ts#L101)
 
 A schema extension that adds the [FragmentArray](../classes/FragmentArray.md) API to migrated
 `ModelFragments` array resources.

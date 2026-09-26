@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/schema/fields/types/PolarisModeFieldSchema.md
+description: >-
+  Union of every field schema allowed on a PolarisMode resource schema, with
+  relationships limited to their LinksMode forms.
 ---
 
 # &#x20;PolarisModeFieldSchema
@@ -19,7 +22,7 @@ type PolarisModeFieldSchema =
   | LinksModeHasManyField;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2101](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2101)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2152](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2152)
 
 A union of all possible PolarisMode field schemas.
 

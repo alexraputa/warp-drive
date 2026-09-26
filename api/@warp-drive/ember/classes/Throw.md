@@ -1,10 +1,13 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/ember/classes/Throw.md
+description: >-
+  Component that throws its `@error` argument when rendered, for templates that
+  should fail if they reach that point.
 ---
 
 # &#x20;Throw\<T>
 
-Defined in: [warp-drive-packages/ember/dist/index.d.ts:325](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/ember/dist/index.d.ts#L325)
+Defined in: [warp-drive-packages/ember/dist/index.d.ts:329](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/ember/dist/index.d.ts#L329)
 
 The `<Throw />` component is used to throw an error in a template.
 
@@ -35,7 +38,7 @@ new Throw<T>(owner: Owner, args: {
 }): Throw<T>;
 ```
 
-Defined in: [warp-drive-packages/ember/dist/index.d.ts:326](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/ember/dist/index.d.ts#L326)
+Defined in: [warp-drive-packages/ember/dist/index.d.ts:330](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/ember/dist/index.d.ts#L330)
 
 #### Parameters
 

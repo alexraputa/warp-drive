@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/mutations/mutations.md
+description: >-
+  Placeholder for the Mutating State how-to on changing records and
+  relationships through the Store; still under construction, with no content
+  yet.
 ---
+
 # Mutations
 
 :::caution **Pardon Our Stardust!**

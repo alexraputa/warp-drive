@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/json-api/functions/serializePatch.md
+description: >-
+  Serializes only a resource's changed attributes and relationships from the
+  cache into a JSON:API-style `{ data }` patch.
 ---
 
 # &#x20;serializePatch()
@@ -11,7 +14,7 @@ function serializePatch(cache: Cache, identifier: ResourceKey): {
 };
 ```
 
-Defined in: [-private/json-api/serialize.ts:157](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/serialize.ts#L157)
+Defined in: [-private/json-api/serialize.ts:161](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/serialize.ts#L161)
 
 :::warning ⚠️ **This util often won't produce the necessary body for a {json:api} request**
 

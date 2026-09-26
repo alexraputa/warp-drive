@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/string/functions/singularize.md
+description: >-
+  Returns the singular form of an English word using the registered inflection
+  rules, with cached results.
 ---
 
 # &#x20;singularize()&#x20;
@@ -9,7 +12,7 @@ url: >-
 function singularize(word: string): string;
 ```
 
-Defined in: [-private/string/inflect.ts:133](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/string/inflect.ts#L133)
+Defined in: [-private/string/inflect.ts:142](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/string/inflect.ts#L142)
 
 Singularizes a word.
 

@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/spec/document.md
+description: >-
+  Types for the raw {json:api} documents the cache stores and returns for a
+  request: meta-only, single-resource, collection and error documents.
 ---
 
 ## Types

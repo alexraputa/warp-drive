@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/react/functions/Request.md
+description: >-
+  Component that renders idle, loading, error, cancelled, or content states for
+  a request as it progresses, with retry and refresh support.
 ---
 
 # &#x20;Request()
@@ -8,7 +11,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/react/functions/Request.md
 function Request<RT, E>($props: RequestProps<RT, E>): Element;
 ```
 
-Defined in: [-private/request.tsx:180](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/react/src/-private/request.tsx#L180)
+Defined in: [-private/request.tsx:182](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/react/src/-private/request.tsx#L182)
 
 The `<Request />` component is a powerful tool for managing data fetching and
 state in your React application. It provides a declarative approach to reactive

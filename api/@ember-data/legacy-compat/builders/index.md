@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/legacy-compat/builders.md
+description: >-
+  Deprecated request builders (`findAll`, `findRecord`, `query`, `queryRecord`,
+  `saveRecord`) that move store method calls onto `store.request` while keeping
+  adapter behavior.
 ---
 
 &#x20;

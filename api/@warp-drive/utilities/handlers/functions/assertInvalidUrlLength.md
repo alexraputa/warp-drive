@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/handlers/functions/assertInvalidUrlLength.md
+description: >-
+  Dev-mode assertion that throws when a URL is longer than `MAX_URL_LENGTH`,
+  suggesting a `POST` or `QUERY` request instead.
 ---
 
 # &#x20;assertInvalidUrlLength()
@@ -9,7 +12,7 @@ url: >-
 function assertInvalidUrlLength(url: string | undefined): void;
 ```
 
-Defined in: [-private/handlers/utils.ts:77](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/handlers/utils.ts#L77)
+Defined in: [-private/handlers/utils.ts:85](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/handlers/utils.ts#L85)
 
 This assertion takes a URL and throws an error if the URL is longer than the maximum URL length.
 

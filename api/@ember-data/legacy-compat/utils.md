@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/legacy-compat/utils.md
+description: >-
+  Deprecated helpers for normalizing and checking resource types and IDs
+  (`formattedType`, `formattedId`, `expectId`, `isEquivType`, `isEquivId`) and
+  configuring mismatch reporting.
 ---
 
 &#x20;

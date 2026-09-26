@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/symbols/variables/RequestSignature.md
+description: >-
+  Type-only symbol key that request builders set on the request they return so
+  `store.request()` can infer the response type.
 ---
 
 # &#x20;RequestSignature
@@ -9,7 +12,7 @@ url: >-
 const RequestSignature: "___(unique) Symbol(RequestSignature)";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/symbols.ts:92](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/symbols.ts#L92)
+Defined in: [warp-drive-packages/core/src/types/symbols.ts:107](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/symbols.ts#L107)
 
 Symbol for use by builders to indicate the return type
 generic to use for store.request()

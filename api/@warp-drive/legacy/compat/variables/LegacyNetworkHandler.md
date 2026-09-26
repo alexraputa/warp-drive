@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/compat/variables/LegacyNetworkHandler.md
+description: >-
+  Legacy `RequestManager` handler that fulfills find, query, create, update, and
+  delete operations through the store's adapters and serializers, passing other
+  requests along.
 ---
 
 &#x20;
@@ -11,7 +15,7 @@ url: >-
 const LegacyNetworkHandler: Handler;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/compat/legacy-network-handler/legacy-network-handler.ts:57](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/compat/legacy-network-handler/legacy-network-handler.ts#L57)
+Defined in: [warp-drive-packages/legacy/src/compat/legacy-network-handler/legacy-network-handler.ts:60](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/compat/legacy-network-handler/legacy-network-handler.ts#L60)
 
 A Handler that fulfills legacy `findRecord`/`findAll`/`query`/
 `queryRecord`/`findBelongsTo`/`findHasMany`/`createRecord`/`updateRecord`/

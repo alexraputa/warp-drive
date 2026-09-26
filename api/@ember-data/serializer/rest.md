@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/serializer/rest.md
+description: >-
+  Legacy alias that re-exports `RESTSerializer` and `EmbeddedRecordsMixin` from
+  `@warp-drive/legacy/serializer/rest` so `@ember-data/serializer/rest` imports
+  keep working.
 ---
 
 Legacy alias of [@warp-drive/legacy/serializer/rest](../../../@warp-drive/legacy/serializer/rest/index.md).

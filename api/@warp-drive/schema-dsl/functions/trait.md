@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/functions/trait.md
+description: >-
+  Class decorator that records which traits a schema-dsl resource or trait
+  composes, compiling their names into its `traits` array without merging their
+  fields.
 ---
 
 # &#x20;trait()&#x20;
@@ -8,7 +12,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/functions/trait.md
 function trait(..._traits: AnyConstructor[]): (target: AnyConstructor) => void;
 ```
 
-Defined in: [entities/compose-trait.ts:46](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/entities/compose-trait.ts#L46)
+Defined in: [entities/compose-trait.ts:48](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/entities/compose-trait.ts#L48)
 
 **`Class Decorator`**
 

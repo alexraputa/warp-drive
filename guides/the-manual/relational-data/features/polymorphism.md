@@ -1,7 +1,12 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/the-manual/relational-data/features/polymorphism.md
+description: >-
+  Define open or closed polymorphic relationships using the polymorphic,
+  inverse, and as field options on Model or schema, and handle
+  abstract-to-concrete type upgrades on fetch.
 ---
+
 # Relationship Polymorphism
 
 Polymorphic relationships are relationships where the value can be more than one

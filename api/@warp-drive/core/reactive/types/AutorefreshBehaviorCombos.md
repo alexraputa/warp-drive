@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/reactive/types/AutorefreshBehaviorCombos.md
+description: >-
+  The accepted values for a request subscription's `autorefresh` option: a
+  boolean or a comma-separated mix of `online`, `interval`, and `invalid`.
 ---
 
 # &#x20;AutorefreshBehaviorCombos
@@ -13,7 +16,7 @@ type AutorefreshBehaviorCombos =
   | `${AutorefreshBehaviorType},${AutorefreshBehaviorType},${AutorefreshBehaviorType}`;
 ```
 
-Defined in: [warp-drive-packages/core/src/signals/request-subscription.ts:35](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/signals/request-subscription.ts#L35)
+Defined in: [warp-drive-packages/core/src/signals/request-subscription.ts:41](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/signals/request-subscription.ts#L41)
 
 The value accepted by [SubscriptionArgs.autorefresh](SubscriptionArgs.md#autorefresh): either a
 boolean, a single [AutorefreshBehaviorType](AutorefreshBehaviorType.md), or a comma-separated

@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/rfcs.md
+description: >-
+  Find WarpDrive's RFCs, learn how their numbering maps to emberjs/rfcs, and
+  start a new RFC by copying the 0000-template.md file.
 ---
 
 # WarpDrive RFCs

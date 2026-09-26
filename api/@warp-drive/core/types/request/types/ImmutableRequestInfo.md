@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/request/types/ImmutableRequestInfo.md
+description: >-
+  Read-only form of a request as handlers receive it, with frozen headers, data,
+  options, and cache options and no `controller`.
 ---
 
 # &#x20;ImmutableRequestInfo\<RT = `unknown`>
@@ -15,7 +18,7 @@ type ImmutableRequestInfo<RT = unknown> = Readonly<Omit<RequestInfo<RT>, "contro
 };
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:701](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L701)
+Defined in: [warp-drive-packages/core/src/types/request.ts:768](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L768)
 
 Immutable version of [RequestInfo](RequestInfo.md). This is what is passed to handlers.
 

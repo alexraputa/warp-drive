@@ -1,7 +1,11 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/the-manual/cookbook/incremental-adoption-guide.md
+description: >-
+  Move an existing 4.12 EmberData app still on adapters and serializers onto
+  RequestManager, LegacyNetworkHandler, and request builders one step at a time.
 ---
+
 # Incremental adoption guide for existing projects
 
 * ⮐ [Cookbook](./index.md)

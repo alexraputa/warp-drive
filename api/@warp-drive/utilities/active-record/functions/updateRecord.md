@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/active-record/functions/updateRecord.md
+description: >-
+  Builds a `PUT` (or `PATCH`) request that saves changes to an existing record,
+  using ActiveRecord-style URLs.
 ---
 
 # &#x20;updateRecord()
@@ -30,7 +33,7 @@ function updateRecord<T extends TypedRecordInstance, RT extends TypedRecordInsta
 }): UpdateRequestOptions<ReactiveDataDocument<RT, M, E>, T>;
 ```
 
-Defined in: [-private/active-record/save-record.ts:218](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/active-record/save-record.ts#L218)
+Defined in: [-private/active-record/save-record.ts:221](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/active-record/save-record.ts#L221)
 
 Builds request options to update existing record for resources,
 configured for the url, method and header expectations of most ActiveRecord APIs.
@@ -115,7 +118,7 @@ function updateRecord(record: unknown, options?: ConstrainedRequestOptions & {
 }): UpdateRequestOptions;
 ```
 
-Defined in: [-private/active-record/save-record.ts:227](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/active-record/save-record.ts#L227)
+Defined in: [-private/active-record/save-record.ts:230](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/active-record/save-record.ts#L230)
 
 Builds request options to update existing record for resources,
 configured for the url, method and header expectations of most ActiveRecord APIs.

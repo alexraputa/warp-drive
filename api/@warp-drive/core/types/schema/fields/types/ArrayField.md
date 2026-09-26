@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/schema/fields/types/ArrayField.md
+description: >-
+  Field schema of kind `array` for an array of primitive values, each optionally
+  passed through a registered transformation.
 ---
 
 # &#x20;ArrayField
@@ -15,7 +18,7 @@ interface ArrayField {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:687](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L687)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:716](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L716)
 
 Represents a field whose value is an array
 of primitive values.
@@ -31,7 +34,7 @@ values, use 'schema-array' instead.
 kind: "array";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:693](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L693)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:722](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L722)
 
 The kind of field this is.
 
@@ -43,7 +46,7 @@ The kind of field this is.
 name: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:700](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L700)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:729](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L729)
 
 The name of the field.
 
@@ -58,7 +61,7 @@ optional options?: {
 };
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:743](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L743)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:772](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L772)
 
 Options to pass to the transform, if any
 
@@ -96,7 +99,7 @@ such as Ember's "ArrayLike" and FragmentArray from ember-data-model-fragments
 optional sourceKey?: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:724](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L724)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:753](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L753)
 
 The name of the field as returned by the API
 and inserted into the [Cache](../../../cache/types/Cache.md) if it differs
@@ -127,7 +130,7 @@ This option is only needed when the value differs from name.
 optional type?: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:733](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L733)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:762](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L762)
 
 The name of a transform to pass each item
 in the array through before displaying or

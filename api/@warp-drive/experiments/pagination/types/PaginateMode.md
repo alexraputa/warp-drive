@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/pagination/types/PaginateMode.md
+description: >-
+  Experimental: the `@mode` value of `<Paginate />`, either `'paged'` for a
+  single-page view or `'infinite'` for an accumulated view, which selects the
+  yielded pagination API.
 ---
 
 &#x20;
@@ -11,7 +15,7 @@ url: >-
 type PaginateMode = "paged" | "infinite";
 ```
 
-Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:210](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L210)
+Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:224](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L224)
 
 The two navigation surfaces a `<Paginate />` component can drive. Selecting
 one (via the component's `@mode` arg) narrows the yielded state so the two

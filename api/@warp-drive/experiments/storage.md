@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/experiments/storage.md
+description: >-
+  Experimental reactive wrappers over localStorage, sessionStorage and the Cache
+  API, with decorators such as `LocalResource` and `param` that bind class
+  fields to storage or query params.
 ---
 
 &#x20;

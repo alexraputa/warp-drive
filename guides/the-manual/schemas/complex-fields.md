@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/schemas/complex-fields.md
+description: >-
+  Embed nested objects and lists inside a resource with `schema-object` and
+  `schema-array` fields backed by an identity-less ObjectSchema, keeping every
+  nested value reactive.
 ---
+
 # Complex Fields
 
 Complex Fields let you model nested or repeated structures inside a resource. They are useful when a resource contains structured data that is not itself a top-level resource.\

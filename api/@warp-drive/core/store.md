@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/store.md
+description: >-
+  The `DefaultCachePolicy` and `parseCacheControl` for expiring cached requests,
+  plus the `NotificationManager` type for subscribing to cache change
+  notifications.
 ---
 
 ## Classes

@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/request/types/CreateRequestOptions.md
+description: >-
+  Shape of the `POST` request object that `createRecord` builders return for
+  `store.request`, identifying the new resource being saved.
 ---
 
 # &#x20;CreateRequestOptions\<RT = `unknown`, T = `unknown`>
@@ -21,7 +24,7 @@ type CreateRequestOptions<RT = unknown, T = unknown> = {
 };
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:321](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L321)
+Defined in: [warp-drive-packages/core/src/types/request.ts:355](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L355)
 
 The request shape produced by the `createRecord` request builders, for
 use with [Store.request](../../../classes/Store.md#request).
@@ -47,7 +50,7 @@ optional body?:
   | FormData;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:341](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L341)
+Defined in: [warp-drive-packages/core/src/types/request.ts:375](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L375)
 
 the body to send with the request
 
@@ -61,7 +64,7 @@ data: {
 };
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:345](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L345)
+Defined in: [warp-drive-packages/core/src/types/request.ts:379](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L379)
 
 data for handlers to convert into the request body
 
@@ -81,7 +84,7 @@ the resource being created
 headers: Headers;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:333](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L333)
+Defined in: [warp-drive-packages/core/src/types/request.ts:367](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L367)
 
 the headers to send with the request
 
@@ -93,7 +96,7 @@ the headers to send with the request
 method: "POST";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:329](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L329)
+Defined in: [warp-drive-packages/core/src/types/request.ts:363](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L363)
 
 the HTTP method to use
 
@@ -105,7 +108,7 @@ the HTTP method to use
 op: "createRecord";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:337](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L337)
+Defined in: [warp-drive-packages/core/src/types/request.ts:371](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L371)
 
 the name of the request operation
 
@@ -117,7 +120,7 @@ the name of the request operation
 records: [ResourceIdentifierObject<TypeFromInstanceOrString<T>>];
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:354](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L354)
+Defined in: [warp-drive-packages/core/src/types/request.ts:388](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L388)
 
 the resource being created
 
@@ -129,6 +132,6 @@ the resource being created
 url: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:325](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L325)
+Defined in: [warp-drive-packages/core/src/types/request.ts:359](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L359)
 
 the url to request

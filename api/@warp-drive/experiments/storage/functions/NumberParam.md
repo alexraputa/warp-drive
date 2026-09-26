@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/storage/functions/NumberParam.md
+description: >-
+  Experimental helper that creates a query-param config serializing numbers,
+  optionally to a fixed precision, with an optional default value.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 function NumberParam(precision?: number, getDefault?: (instance: any) => number | undefined): ParamConfig;
 ```
 
-Defined in: [warp-drive-packages/experiments/src/storage/query-params.ts:65](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/experiments/src/storage/query-params.ts#L65)
+Defined in: [warp-drive-packages/experiments/src/storage/query-params.ts:72](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/experiments/src/storage/query-params.ts#L72)
 
 Creates a [ParamConfig](../types/ParamConfig.md) for numeric fields with default value checking.
 

@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/json-api/functions/serializeResources.md
+description: >-
+  Copies the cached state of one or more resources into a JSON:API-style `{ data
+  }` object, a starting point for request bodies.
 ---
 
 # &#x20;serializeResources()
@@ -22,7 +25,7 @@ function serializeResources(cache: Cache, identifiers: ResourceKey): {
 };
 ```
 
-Defined in: [-private/json-api/serialize.ts:40](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/serialize.ts#L40)
+Defined in: [-private/json-api/serialize.ts:42](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/serialize.ts#L42)
 
 :::warning ⚠️ **This util often won't produce the necessary body for a {json:api} request**
 
@@ -67,7 +70,7 @@ function serializeResources(cache: Cache, identifiers: ResourceKey[]): {
 };
 ```
 
-Defined in: [-private/json-api/serialize.ts:49](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/serialize.ts#L49)
+Defined in: [-private/json-api/serialize.ts:51](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/serialize.ts#L51)
 
 :::warning ⚠️ **This util often won't produce the necessary body for a {json:api} request**
 

@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/types/IdOptions.md
+description: >-
+  Options for the `@id` decorator that set the compiled identity field's
+  `sourceKey`.
 ---
 
 # &#x20;IdOptions
@@ -10,7 +13,7 @@ interface IdOptions {
 }
 ```
 
-Defined in: [fields/id.ts:10](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/id.ts#L10)
+Defined in: [fields/id.ts:11](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/id.ts#L11)
 
 Options accepted by the [id](../functions/id.md) decorator.
 
@@ -22,7 +25,7 @@ Options accepted by the [id](../functions/id.md) decorator.
 optional sourceKey?: string;
 ```
 
-Defined in: [fields/id.ts:18](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/id.ts#L18)
+Defined in: [fields/id.ts:19](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/id.ts#L19)
 
 The name of the identity field as returned by the API, if it differs
 from the decorated property's name. Compiles onto the

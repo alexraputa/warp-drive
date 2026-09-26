@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/holodeck/mock/functions/GET.md
+description: >-
+  Mocks a GET request to a url on the Holodeck server, returning a generated
+  response with a default 200 status.
 ---
 
 # &#x20;GET()
@@ -15,7 +18,7 @@ function GET(
 ): Promise<void>;
 ```
 
-Defined in: [mock.ts:59](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L59)
+Defined in: [mock.ts:74](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L74)
 
 Sets up Mocking for a GET request on the mock server
 for the supplied url.

@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/functions/useLegacyStore.md
+description: >-
+  Creates a `Store` class preconfigured for legacy apps, with `Model` schema
+  support, request handlers, cache, and optional adapter, serializer, and
+  fragment support.
 ---
 
 &#x20;
@@ -19,7 +23,7 @@ function useLegacyStore<T extends Cache>(options: LegacyModelAndNetworkAndReques
 function useLegacyStore<T extends Cache>(options: LegacyModelStoreSetupOptions<T>, StoreKlass?: typeof Store$1): typeof ConfiguredStore;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/index.ts:285](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/index.ts#L285)
+Defined in: [warp-drive-packages/legacy/src/index.ts:299](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/index.ts#L299)
 
 Use the legacy store with the given options.
 
@@ -160,7 +164,7 @@ explicitly, so a handler relying on it should treat it as optional (as
 function useLegacyStore<T extends Cache>(options: LegacyModelAndNetworkStoreSetupOptions<T>, StoreKlass?: typeof Store$1): typeof ConfiguredStore;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/index.ts:289](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/index.ts#L289)
+Defined in: [warp-drive-packages/legacy/src/index.ts:303](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/index.ts#L303)
 
 Use the legacy store with the given options.
 
@@ -301,7 +305,7 @@ explicitly, so a handler relying on it should treat it as optional (as
 function useLegacyStore<T extends Cache>(options: LegacyModelAndNetworkAndRequestStoreSetupOptions<T>, StoreKlass?: typeof Store$1): typeof ConfiguredStore;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/index.ts:293](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/index.ts#L293)
+Defined in: [warp-drive-packages/legacy/src/index.ts:307](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/index.ts#L307)
 
 Use the legacy store with the given options.
 

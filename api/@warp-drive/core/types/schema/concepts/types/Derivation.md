@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/schema/concepts/types/Derivation.md
+description: >-
+  A registered function that computes a memoized, read-only field value from a
+  record's other fields, backing `derived` fields.
 ---
 
 # &#x20;Derivation\<R = `unknown`, T = `unknown`, FM *extends* [`ObjectValue`](../../../json/raw/types/ObjectValue.md) | `null` = [`ObjectValue`](../../../json/raw/types/ObjectValue.md) | `null`>
@@ -11,7 +14,7 @@ type Derivation<R = unknown, T = unknown, FM extends ObjectValue | null = Object
 } & (record: R, options: FM, prop: string) => T;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/concepts.ts:55](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/concepts.ts#L55)
+Defined in: [warp-drive-packages/core/src/types/schema/concepts.ts:67](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/concepts.ts#L67)
 
 A Derivation computes a read-only field value from other fields
 (and options) on a record.

@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/utilities/json-api.md
+description: >-
+  Request builders and cache serializers for JSON:API servers, with dasherized
+  plural URLs and configurable `Accept` headers.
 ---
 
 This module provides utilities for working with [{json:api}](https://jsonapi.org) APIs with ***Warp*Drive**

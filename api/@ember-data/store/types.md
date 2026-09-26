@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/store/types.md
+description: >-
+  Legacy alias that re-exports the store public types (schema service, finder
+  options, model schema, and more) from `@warp-drive/core/types`.
 ---
 
 Legacy alias of [@warp-drive/core/types](../../../@warp-drive/core/types/index.md).

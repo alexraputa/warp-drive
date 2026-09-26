@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/legacy/compat/utils.md
+description: >-
+  Legacy helpers that normalize, compare, and report mismatched resource ids and
+  types while migrating to stricter formats.
 ---
 
 &#x20;

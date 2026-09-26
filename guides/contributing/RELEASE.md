@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/contributing/RELEASE.md
+description: >-
+  Perform a WarpDrive release from the GitHub Actions workflow: order the lts,
+  release, beta, and canary channels, then polish the GitHub release notes and
+  announce it.
 ---
 
 # Release

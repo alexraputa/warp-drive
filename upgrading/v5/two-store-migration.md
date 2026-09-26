@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/upgrading/v5/two-store-migration.md
+description: >-
+  Run a second WarpDrive store built from the -mirror packages beside your
+  existing 4.x store so parts of an app can adopt 5.x incrementally, with the
+  tradeoffs to expect.
 ---
+
 # Migrating Between Versions Using The Two Store Approach
 
 &#x20;  authored 2023-06-10

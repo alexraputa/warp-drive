@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/derivations/variables/concat.md
+description: >-
+  Derivation registered as `concat` that joins a record's listed `fields` into
+  one string with an optional `separator`.
 ---
 
 # &#x20;concat
@@ -9,7 +12,7 @@ url: >-
 const concat: ConcatDerivation;
 ```
 
-Defined in: [derivations.ts:30](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/derivations.ts#L30)
+Defined in: [derivations.ts:37](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/derivations.ts#L37)
 
 A derivation for use by ReactiveResource that joins the given fields
 with the optional separator (or '' if no separator is provided).

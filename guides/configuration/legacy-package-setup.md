@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/configuration/legacy-package-setup.md
+description: >-
+  Install the pre-unification @ember-data/* and @warp-drive/* packages with
+  exact pinned versions, for apps still on the legacy multi-package setup rather
+  than @warp-drive/core.
 ---
 
 ::: tip Boilerplate Sucks 👎🏽

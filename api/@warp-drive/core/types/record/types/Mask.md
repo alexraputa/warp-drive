@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/record/types/Mask.md
+description: >-
+  Type utility that builds a preview type from `T` by replacing selected fields
+  with narrower subset types from `K`, resolving to `never` where a field is not
+  compatible.
 ---
 
 # &#x20;Mask\<K *extends* `object`, T *extends* `K`>
@@ -8,7 +12,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/core/types/record/types/Mask.m
 type Mask<K extends object, T extends K> = { [P in keyof T]: P extends keyof K ? T[P] extends K[P] ? K[P] : never : T[P] };
 ```
 
-Defined in: [warp-drive-packages/core/src/types/record.ts:304](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/record.ts#L304)
+Defined in: [warp-drive-packages/core/src/types/record.ts:327](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/record.ts#L327)
 
 A utility that takes two types, K and T, and produces a new type that is a "mask" of T based on K.
 

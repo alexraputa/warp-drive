@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/model/functions/teardownRecord.md
+description: >-
+  Legacy store hook that destroys a `Model` instance when the store releases its
+  record.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 function teardownRecord(record: Model): void;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/model/-private/hooks.ts:56](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/model/-private/hooks.ts#L56)
+Defined in: [warp-drive-packages/legacy/src/model/-private/hooks.ts:59](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/model/-private/hooks.ts#L59)
 
 The `teardownRecord` hook implementation for use with `Model`. Pass this
 to your store's `teardownRecord` method when configuring the store to

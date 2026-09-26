@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/request/variables/EnableHydration.md
+description: >-
+  Symbol flag on a request that makes the CacheHandler return reactive records
+  instead of raw cache documents; `store.request` sets it automatically.
 ---
 
 # &#x20;EnableHydration
@@ -9,7 +12,7 @@ url: >-
 const EnableHydration: "___(unique) Symbol(EnableHydration)";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/request.ts:33](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/request.ts#L33)
+Defined in: [warp-drive-packages/core/src/types/request.ts:45](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/request.ts#L45)
 
 A [RequestInfo](../types/RequestInfo.md) flag which, when set, signals to the store's
 `instantiateRecord` hook that the resolved content should be hydrated

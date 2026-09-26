@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/json-api/functions/postQuery.md
+description: >-
+  Builds a JSON:API `POST` request that sends a query as the JSON body, cached
+  under a key built from the query params.
 ---
 
 # &#x20;postQuery()
@@ -36,7 +39,7 @@ function postQuery<T, M extends
 ): PostQueryRequestOptions<ReactiveDataDocument<T[], M, E>>;
 ```
 
-Defined in: [-private/json-api/query.ts:153](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/query.ts#L153)
+Defined in: [-private/json-api/query.ts:156](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/query.ts#L156)
 
 Builds request options to query for resources, usually by a primary
 type, configured for the url and header expectations of most JSON:API APIs.
@@ -128,7 +131,7 @@ function postQuery(
 ): PostQueryRequestOptions;
 ```
 
-Defined in: [-private/json-api/query.ts:158](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/query.ts#L158)
+Defined in: [-private/json-api/query.ts:161](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/query.ts#L161)
 
 Builds request options to query for resources, usually by a primary
 type, configured for the url and header expectations of most JSON:API APIs.

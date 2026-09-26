@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/spec/document/types/ResourceMetaDocument.md
+description: >-
+  A raw {json:api} document carrying only `meta` and optional `links`, as
+  returned by a request and inserted into the cache.
 ---
 
 # &#x20;ResourceMetaDocument
@@ -15,7 +18,7 @@ interface ResourceMetaDocument {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/document.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/document.ts#L11)
+Defined in: [warp-drive-packages/core/src/types/spec/document.ts:20](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/document.ts#L20)
 
 This type represents a raw {json:api} document for a meta-only
 document returned by a request intended to be inserted into the cache.
@@ -28,7 +31,7 @@ document returned by a request intended to be inserted into the cache.
 optional lid?: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/document.ts:15](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/document.ts#L15)
+Defined in: [warp-drive-packages/core/src/types/spec/document.ts:24](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/document.ts#L24)
 
 the url or cache-key associated with the structured document
 
@@ -42,7 +45,7 @@ optional links?:
   | PaginationLinks;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/document.ts:23](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/document.ts#L23)
+Defined in: [warp-drive-packages/core/src/types/spec/document.ts:32](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/document.ts#L32)
 
 links related to the document
 
@@ -54,6 +57,6 @@ links related to the document
 meta: ObjectValue;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/document.ts:19](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/document.ts#L19)
+Defined in: [warp-drive-packages/core/src/types/spec/document.ts:28](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/document.ts#L28)
 
 meta information about the document

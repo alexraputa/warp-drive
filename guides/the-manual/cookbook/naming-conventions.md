@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/cookbook/naming-conventions.md
+description: >-
+  Decide whether resource types should be singular or plural and dasherized or
+  snake_case, and see what consistency across the API, store calls, and models
+  requires.
 ---
+
 # Model Name: singular or plural? What to choose? Why is that?
 
 * ⮐ [Cookbook](./index.md)

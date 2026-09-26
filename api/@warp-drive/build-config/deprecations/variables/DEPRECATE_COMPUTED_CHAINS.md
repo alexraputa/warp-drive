@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations/variables/DEPRECATE_COMPUTED_CHAINS.md
+description: >-
+  Planned deprecation flag, with no deprecation ID yet, guarding support for
+  observer and computed chains on WarpDrive record arrays and ManyArrays.
 ---
 
 # &#x20;DEPRECATE\_COMPUTED\_CHAINS&#x20;
@@ -9,7 +12,7 @@ url: >-
 const DEPRECATE_COMPUTED_CHAINS: boolean = true;
 ```
 
-Defined in: [deprecations.ts:129](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/deprecations.ts#L129)
+Defined in: [deprecations.ts:133](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/deprecations.ts#L133)
 
 This is a planned deprecation which will trigger when observer or computed
 chains are used to watch for changes on any WarpDrive LiveArray, CollectionRecordArray,

@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/schema/fields/types/ObjectSchema.md
+description: >-
+  Schema describing an embedded object that has no identity of its own, used by
+  `schema-object` and `schema-array` fields.
 ---
 
 # &#x20;ObjectSchema
@@ -14,7 +17,7 @@ interface ObjectSchema {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2359](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2359)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2422](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2422)
 
 Represents a schema for an object that is not
 a primary resource (has no unique identity of its own).
@@ -29,7 +32,7 @@ ObjectSchemas may not currently contain relationships.
 fields: ObjectFieldSchema[];
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2393](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2393)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2456](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2456)
 
 The fields that make up the shape of the object
 
@@ -41,7 +44,7 @@ The fields that make up the shape of the object
 identity: HashField | null;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2369](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2369)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2432](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2432)
 
 Either a HashField from which to calculate an identity or null
 
@@ -57,7 +60,7 @@ when an identity is needed.
 optional objectExtensions?: string[];
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2408](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2408)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2471](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2471)
 
 ::: warning ⚠️ Dangerous Feature Ahead
 :::
@@ -79,7 +82,7 @@ like custom getters, computeds, and methods
 type: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2386](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2386)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2449](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2449)
 
 The name of the schema
 

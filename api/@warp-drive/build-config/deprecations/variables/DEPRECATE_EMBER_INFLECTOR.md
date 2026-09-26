@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations/variables/DEPRECATE_EMBER_INFLECTOR.md
+description: >-
+  Deprecation flag for using ember-inflector for pluralization and
+  singularization instead of the `@ember-data/request-utils/string` utilities.
 ---
 
 # &#x20;DEPRECATE\_EMBER\_INFLECTOR&#x20;
@@ -9,7 +12,7 @@ url: >-
 const DEPRECATE_EMBER_INFLECTOR: boolean = true;
 ```
 
-Defined in: [deprecations.ts:475](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/deprecations.ts#L475)
+Defined in: [deprecations.ts:497](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/deprecations.ts#L497)
 
 Deprecates the use of ember-inflector for pluralization and singularization in favor
 of the `@ember-data/request-utils` package.

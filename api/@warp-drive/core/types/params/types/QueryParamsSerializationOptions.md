@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/params/types/QueryParamsSerializationOptions.md
+description: >-
+  Options for query-string serialization, choosing how arrays are encoded:
+  bracket, indices, repeat, or comma.
 ---
 
 # &#x20;QueryParamsSerializationOptions
@@ -11,7 +14,7 @@ type QueryParamsSerializationOptions = {
 };
 ```
 
-Defined in: [warp-drive-packages/core/src/types/params.ts:20](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/params.ts#L20)
+Defined in: [warp-drive-packages/core/src/types/params.ts:33](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/params.ts#L33)
 
 Options for controlling how [QueryParamsSource](QueryParamsSource.md) values are
 serialized into a URL query string.
@@ -24,7 +27,7 @@ serialized into a URL query string.
 optional arrayFormat?: "bracket" | "indices" | "repeat" | "comma";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/params.ts:29](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/params.ts#L29)
+Defined in: [warp-drive-packages/core/src/types/params.ts:42](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/params.ts#L42)
 
 How array values should be serialized:
 

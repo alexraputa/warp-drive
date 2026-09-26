@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/installation.md
+description: >-
+  Install @warp-drive/core and @warp-drive/json-api with exact pinned versions,
+  then add the reactivity package and install import for Ember, React, or TC39
+  Signals.
 ---
 
 :::warning **🚧 Pardon Our Stardust!**

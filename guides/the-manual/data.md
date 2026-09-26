@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/data.md
+description: >-
+  Learn the four data representations (API, wire, cache, presentation) WarpDrive
+  asks you to align and why JSON:API is the recommended wire and cache format.
 ---
 
 ## Data

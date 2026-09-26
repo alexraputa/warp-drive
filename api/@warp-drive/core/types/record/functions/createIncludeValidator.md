@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/record/functions/createIncludeValidator.md
+description: >-
+  Returns a function that type-checks a comma-separated `include` string against
+  the valid relationship paths of a record type and returns it unchanged.
 ---
 
 # &#x20;createIncludeValidator()
@@ -9,7 +12,7 @@ url: >-
 function createIncludeValidator<T extends TypedRecordInstance>(): <U>(includes: _StringSatisfiesIncludes<U, Exclude<_ExtractUnion<3, T, true, NONE, NONE, 1>, NONE>>) => U;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/record.ts:225](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/record.ts#L225)
+Defined in: [warp-drive-packages/core/src/types/record.ts:245](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/record.ts#L245)
 
 Creates a runtime validator function for comma-separated `include` strings,
 ensuring at compile time that only valid paths for `T` (per [Includes](../types/Includes.md))

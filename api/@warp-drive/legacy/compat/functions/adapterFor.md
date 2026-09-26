@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/compat/functions/adapterFor.md
+description: >-
+  Legacy store method that returns the cached adapter for a model type, falling
+  back to the `application` adapter.
 ---
 
 &#x20;
@@ -24,7 +27,7 @@ function adapterFor(
 function adapterFor(this: Store$1, modelName: string): MinimumAdapterInterface;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/compat.ts:99](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/compat.ts#L99)
+Defined in: [warp-drive-packages/legacy/src/compat.ts:111](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/compat.ts#L111)
 
 Returns an instance of the adapter for a given type. For
 example, `adapterFor('person')` will return an instance of
@@ -60,7 +63,7 @@ function adapterFor(
   | undefined;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/compat.ts:100](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/compat.ts#L100)
+Defined in: [warp-drive-packages/legacy/src/compat.ts:112](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/compat.ts#L112)
 
 Returns an instance of the adapter for a given type. For
 example, `adapterFor('person')` will return an instance of

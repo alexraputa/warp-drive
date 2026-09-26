@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/schemas/dsl.md
+description: >-
+  Author resource, object, and trait schemas as TypeScript classes with
+  `@Resource`, `@Object`, `@Trait`, and field decorators that compile to JSON
+  schemas (draft reference).
 ---
 
 # Schema DSL

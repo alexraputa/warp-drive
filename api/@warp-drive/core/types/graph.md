@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/graph.md
+description: >-
+  Types for the operations that update a relationship's remote (persisted) or
+  local (uncommitted) state in the relationship Graph.
 ---
 
 ## Types

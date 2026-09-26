@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/spec/json-api-raw/types/ResourceIdentifier.md
+description: >-
+  A reference to a resource by its WarpDrive-assigned `lid` alone, accepted by
+  the cache once the resource's identity is known.
 ---
 
 # &#x20;ResourceIdentifier
@@ -11,7 +14,7 @@ interface ResourceIdentifier {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:169](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L169)
+Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:191](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L191)
 
 A minimal reference to a resource by its [lid](#lid) alone.
 
@@ -27,6 +30,6 @@ once a resource's identity is already known to the cache.
 lid: string;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:173](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L173)
+Defined in: [warp-drive-packages/core/src/types/spec/json-api-raw.ts:195](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/spec/json-api-raw.ts#L195)
 
 the local identifier WarpDrive has assigned to the resource

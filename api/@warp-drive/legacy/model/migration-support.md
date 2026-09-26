@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/legacy/model/migration-support.md
+description: >-
+  Legacy helpers for migrating from `Model` to `ReactiveResource`: LegacyMode
+  schema defaults, derivations, types, and a schema service that serves both at
+  once.
 ---
 
 &#x20;

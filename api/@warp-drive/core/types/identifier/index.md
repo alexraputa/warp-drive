@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/identifier.md
+description: >-
+  Types for the stable keys that reference cached data, `ResourceKey` for
+  resources and `RequestKey` for request documents, plus their deprecated
+  identifier aliases.
 ---
 
 ## Types

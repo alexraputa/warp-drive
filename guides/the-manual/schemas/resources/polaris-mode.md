@@ -1,7 +1,12 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/the-manual/schemas/resources/polaris-mode.md
+description: >-
+  Decide whether to try preview PolarisMode by weighing its immutable records
+  and explicit editing against its current relationship and state-property
+  limitations.
 ---
+
 # PolarisMode (preview)
 
 :::tip 💡 **PolarisMode is not yet recommended**

@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/adapter/error/variables/ConflictError.md
+description: >-
+  Legacy adapter error constructor for an HTTP 409 response, signaling that the
+  request conflicts with existing server state, such as a duplicate
+  client-generated id.
 ---
 
 &#x20;
@@ -11,7 +15,7 @@ url: >-
 ConflictError: AdapterRequestErrorConstructor<ConflictError>;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:465](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/error.ts#L465)
+Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:512](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/error.ts#L512)
 
 A `ConflictError` equates to an HTTP `409 Conflict` response status.
 It is used by an adapter to indicate that the request could not be

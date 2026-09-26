@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/build-config/deprecations/variables/DEPRECATE_NON_STRICT_TYPES.md
+description: >-
+  Deprecation flag for resource `type` values that are not non-empty, singular,
+  dasherized strings; set it to `false` once resolved to strip that support.
 ---
 
 # &#x20;DEPRECATE\_NON\_STRICT\_TYPES&#x20;
@@ -9,7 +12,7 @@ url: >-
 const DEPRECATE_NON_STRICT_TYPES: boolean;
 ```
 
-Defined in: [node\_modules/.pnpm/@warp-d\_25f56f2729dd79700790d78740333f27/node\_modules/@warp-drive/build-config/dist/deprecations.d.ts:160](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/@warp-d_25f56f2729dd79700790d78740333f27/node_modules/@warp-drive/build-config/dist/deprecations.d.ts#L160)
+Defined in: [node\_modules/.pnpm/@warp-d\_25f56f2729dd79700790d78740333f27/node\_modules/@warp-drive/build-config/dist/deprecations.d.ts:166](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/@warp-d_25f56f2729dd79700790d78740333f27/node_modules/@warp-drive/build-config/dist/deprecations.d.ts#L166)
 
 Currently, ***Warp*Drive** expects that the `type` property associated with
 a resource follows several conventions.

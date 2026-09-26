@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/the-manual/experiments/storage-resources.md
+description: >-
+  Persist reactive class fields to localStorage or sessionStorage with the
+  experimental `LocalResource`, `SessionResource`, `field`, `effect`, and
+  `param` decorators.
 ---
 
 # Storage Resources

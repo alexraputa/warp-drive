@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/cache/aliases/types/ResourceBlob.md
+description: >-
+  Opaque raw resource data whose format the Cache defines and from which the
+  CacheKeyManager can derive a `ResourceKey`.
 ---
 
 # &#x20;ResourceBlob
@@ -9,7 +12,7 @@ url: >-
 type ResourceBlob = unknown;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/aliases.ts:20](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/aliases.ts#L20)
+Defined in: [warp-drive-packages/core/src/types/cache/aliases.ts:28](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/aliases.ts#L28)
 
 The `ResourceBlob` is an opaque type that must satisfy two constraints.
 

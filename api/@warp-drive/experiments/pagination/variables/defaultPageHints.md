@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/pagination/variables/defaultPageHints.md
+description: >-
+  Experimental: the fallback page-hints function, reading `meta.page` or
+  `meta.currentPage` and `meta.totalPages` from a document, with `0` meaning
+  unknown.
 ---
 
 &#x20;
@@ -11,7 +15,7 @@ url: >-
 const defaultPageHints: PageHints;
 ```
 
-Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:135](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L135)
+Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:141](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L141)
 
 The default [PageHints](../types/PageHints.md). Reads `currentPage`/`page` and `totalPages` from the
 document `meta`, matching the behavior used before `pageHints` was configurable.

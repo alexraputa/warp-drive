@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/upgrading.md
+description: >-
+  Find the permanent, versioned upgrade guides for each WarpDrive major,
+  starting with the 4.x to 5.x guide, plus where deprecation guides currently
+  live.
 ---
 
 # Upgrading ***Warp*Drive**

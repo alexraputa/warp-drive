@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/schema-dsl/types/ResourceOptions.md
+description: >-
+  Options for the `Resource` class decorator that select legacy-mode compilation
+  and name the primary key property when no property uses `@id`.
 ---
 
 # &#x20;ResourceOptions
@@ -12,7 +15,7 @@ interface ResourceOptions {
 }
 ```
 
-Defined in: [entities/resource.ts:17](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/entities/resource.ts#L17)
+Defined in: [entities/resource.ts:19](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/entities/resource.ts#L19)
 
 Options accepted by the [Resource](../functions/Resource.md) decorator.
 
@@ -24,7 +27,7 @@ Options accepted by the [Resource](../functions/Resource.md) decorator.
 optional identityField?: string;
 ```
 
-Defined in: [entities/resource.ts:39](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/entities/resource.ts#L39)
+Defined in: [entities/resource.ts:41](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/entities/resource.ts#L41)
 
 The name of the property that serves as this resource's primary key,
 used only when no property on the class is decorated with [id](../functions/id.md).
@@ -41,7 +44,7 @@ omitted (and no [id](../functions/id.md) is present), the identity defaults to
 optional legacy?: boolean;
 ```
 
-Defined in: [entities/resource.ts:27](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/entities/resource.ts#L27)
+Defined in: [entities/resource.ts:29](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/entities/resource.ts#L29)
 
 Compiles the class to a [LegacyResourceSchema](../../core/types/schema/fields/types/LegacyResourceSchema.md) for use with
 `@warp-drive/legacy/model` instead of a [PolarisResourceSchema](../../core/types/schema/fields/types/PolarisResourceSchema.md).

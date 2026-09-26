@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/linting.md
+description: >-
+  Install eslint-plugin-warp-drive and enable its recommended, template, and
+  React flat configs, including the ember-eslint-parser setup that Glimmer
+  template rules need.
 ---
+
 # Linting
 
 Install the ESLint plugin `eslint-plugin-warp-drive`

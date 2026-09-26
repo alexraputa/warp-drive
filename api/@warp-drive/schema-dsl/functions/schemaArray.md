@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/schema-dsl/functions/schemaArray.md
+description: >-
+  Property decorator that compiles to a schema-array field, an inline array of
+  embedded objects whose shape is defined by an object schema.
 ---
 
 # &#x20;schemaArray()&#x20;
@@ -9,7 +12,7 @@ url: >-
 function schemaArray(options: SchemaArrayOptions): (target: object, key: string) => void;
 ```
 
-Defined in: [fields/schema-array.ts:132](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L132)
+Defined in: [fields/schema-array.ts:136](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/schema-array.ts#L136)
 
 **`Decorator`**
 

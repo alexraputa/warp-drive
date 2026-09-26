@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/holodeck/mock/functions/HEAD.md
+description: >-
+  Mocks a HEAD request to a url on the Holodeck server, returning a generated
+  response with a default 200 status.
 ---
 
 # &#x20;HEAD()
@@ -15,7 +18,7 @@ function HEAD(
 ): Promise<void>;
 ```
 
-Defined in: [mock.ts:298](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/packages/holodeck/src/mock.ts#L298)
+Defined in: [mock.ts:326](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/packages/holodeck/src/mock.ts#L326)
 
 Sets up Mocking for a HEAD request on the mock server
 for the supplied url.

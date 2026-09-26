@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/compat/extensions/types/WithArrayLike.md
+description: >-
+  Legacy type that adds Ember array methods such as `mapBy` and `firstObject` to
+  a reactive array type using `EmberArrayLikeExtension`.
 ---
 
 &#x20;
@@ -17,7 +20,7 @@ type WithArrayLike<T> = T extends infer U[] ? U & Omit<typeof EmberArrayLikeFeat
 };
 ```
 
-Defined in: [warp-drive-packages/legacy/src/compat/extensions.ts:387](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/compat/extensions.ts#L387)
+Defined in: [warp-drive-packages/legacy/src/compat/extensions.ts:410](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/compat/extensions.ts#L410)
 
 Adds Ember's classic array-like API (as registered by [EmberArrayLikeExtension](../variables/EmberArrayLikeExtension.md))
 to the type of a reactive array resource.

@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/adapter/json-api.md
+description: >-
+  Legacy alias that re-exports `JSONAPIAdapter` from
+  `@warp-drive/legacy/adapter/json-api` so `@ember-data/adapter/json-api`
+  imports keep working.
 ---
 
 Legacy alias of [@warp-drive/legacy/adapter/json-api](../../../@warp-drive/legacy/adapter/json-api/index.md).

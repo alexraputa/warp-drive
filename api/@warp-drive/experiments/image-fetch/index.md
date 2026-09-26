@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/experiments/image-fetch.md
+description: >-
+  Experimental main-thread client for loading images through an `ImageWorker`
+  running in a SharedWorker.
 ---
 
 &#x20;

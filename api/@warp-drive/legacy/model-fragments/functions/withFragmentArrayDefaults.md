@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/model-fragments/functions/withFragmentArrayDefaults.md
+description: >-
+  Legacy ModelFragments migration helper that builds a `schema-array` field of
+  `fragment:` items, defaulting to an empty array, with Ember and fragment-array
+  extensions.
 ---
 
 &#x20;
@@ -19,7 +23,7 @@ function withFragmentArrayDefaults<FragmentArrayType extends string, FragmentArr
 };
 ```
 
-Defined in: [warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-array-defaults.ts:11](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-array-defaults.ts#L11)
+Defined in: [warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-array-defaults.ts:13](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/model-fragments/utilities/with-fragment-array-defaults.ts#L13)
 
 Used as a helper to setup the relevant parts of a fragment-array
 schema and add extensions etc.

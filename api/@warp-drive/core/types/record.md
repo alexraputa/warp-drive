@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/record.md
+description: >-
+  Types for records that declare their resource type via the `[Type]` symbol,
+  including `TypedRecordInstance`, `Includes`, `Mask` and the
+  `createIncludeValidator` helper.
 ---
 
 ## Functions

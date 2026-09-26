@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/legacy/compat/extensions.md
+description: >-
+  Legacy schema extensions that give reactive objects and arrays the classic
+  `EmberObject` and Ember array APIs, such as `get`, `set` and `mapBy`, plus
+  matching types.
 ---
 
 &#x20;

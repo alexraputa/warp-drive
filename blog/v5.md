@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/blog/v5.md
+description: >-
+  Browse the WarpDrive 5.x blog posts, starting with the 5.10 announcement of
+  the permanent Upgrading and Blog sections on warp-drive.io.
 ---
 
 # ***Warp*Drive** 5.x

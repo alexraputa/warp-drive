@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/caching/key-terms.md
+description: >-
+  Learn the difference between StructuredDocument, ResourceDocument, and
+  ReactiveDocument, and what ResourceType, ResourceKey, ResourceSchema, and
+  Collection mean.
 ---
+
 # Key Terminology
 
 The hardest part about learning a new tool or technology is often building a correct

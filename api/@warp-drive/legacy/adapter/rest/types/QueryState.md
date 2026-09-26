@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/adapter/rest/types/QueryState.md
+description: >-
+  Query params the legacy `RESTAdapter.buildQuery` adds to `findRecord` and
+  `findAll` URLs, such as the `include` paths to sideload.
 ---
 
 &#x20;
@@ -14,7 +17,7 @@ type QueryState = {
 };
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:50](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/rest.ts#L50)
+Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:58](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/rest.ts#L58)
 
 The query params built by [buildQuery](../classes/RESTAdapter.md#buildquery) for a
 `findAll`/`findRecord` request.
@@ -27,7 +30,7 @@ The query params built by [buildQuery](../classes/RESTAdapter.md#buildquery) for
 optional include?: unknown;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:54](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/rest.ts#L54)
+Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:62](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/rest.ts#L62)
 
 the relationship paths to sideload
 
@@ -39,6 +42,6 @@ the relationship paths to sideload
 optional since?: unknown;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:58](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/rest.ts#L58)
+Defined in: [warp-drive-packages/legacy/src/adapter/rest.ts:66](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/rest.ts#L66)
 
 a value used to request only records updated since the given value

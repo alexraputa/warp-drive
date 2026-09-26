@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/schema/fields/functions/isResourceSchema.md
+description: >-
+  Type guard that returns true when a schema is a resource schema, meaning its
+  identity field is of kind `@id`.
 ---
 
 # &#x20;isResourceSchema()
@@ -11,7 +14,7 @@ function isResourceSchema(schema:
   | ResourceSchema): schema is ResourceSchema;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2539](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2539)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2617](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2617)
 
 A type utility to narrow a schema to a ResourceSchema
 

@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/request.md
+description: >-
+  Request-layer types such as `Future`, `Handler` and `Context`, plus
+  `withResponseType` and `withReactiveResponse` for typing the response a
+  request resolves with.
 ---
 
 ## Variables

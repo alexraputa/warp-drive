@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/experiments/pagination/functions/createPaginationSubscription.md
+description: >-
+  Experimental: creates the subscription that manages a `<Paginate />`
+  component's initial request lifecycle and pagination state, for managing that
+  lifecycle yourself.
 ---
 
 &#x20;
@@ -11,7 +15,7 @@ url: >-
 function createPaginationSubscription<RT, E>(store: Store$1 | RequestManager, args: PaginationSubscriptionArgs<RT, E>): PaginationSubscription<RT, E>;
 ```
 
-Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:938](https://github.com/warp-drive-data/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L938)
+Defined in: [node\_modules/.pnpm/@warp-d\_5e1563e0e582c8365bb74466d3761d6d/node\_modules/@warp-drive/core/dist/signals/-leaked.d.ts:1016](https://github.com/warp-drive-data/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/node_modules/.pnpm/@warp-d_5e1563e0e582c8365bb74466d3761d6d/node_modules/@warp-drive/core/dist/signals/-leaked.d.ts#L1016)
 
 Creates the [PaginationSubscription](../types/PaginationSubscription.md) a `<Paginate />` component uses to
 manage its request lifecycle and pagination state. Pass the result back into

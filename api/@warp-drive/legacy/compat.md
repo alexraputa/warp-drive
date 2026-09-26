@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/legacy/compat.md
+description: >-
+  Legacy store support for adapters and serializers: the `LegacyNetworkHandler`
+  plus store methods such as `adapterFor`, `serializerFor`, `normalize` and
+  `pushPayload`.
 ---
 
 &#x20;

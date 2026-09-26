@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/string/functions/setMaxLRUCacheSize.md
+description: >-
+  Sets how many results the `camelize`, `underscore`, `capitalize`, and
+  `dasherize` caches each keep (default 10,000).
 ---
 
 # &#x20;setMaxLRUCacheSize()&#x20;
@@ -9,7 +12,7 @@ url: >-
 function setMaxLRUCacheSize(size: number): void;
 ```
 
-Defined in: [-private/string/transform.ts:110](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/string/transform.ts#L110)
+Defined in: [-private/string/transform.ts:117](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/string/transform.ts#L117)
 
 Sets the maximum size of the LRUCache for all string transformation functions.
 The default size is 10,000.

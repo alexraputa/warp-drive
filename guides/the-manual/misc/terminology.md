@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/misc/terminology.md
+description: >-
+  Look up the meaning of resource, resource type, abstract versus concrete type,
+  and relationship terms such as inverse, reflexive, circular, and polymorphic.
 ---
 
 # Terminology

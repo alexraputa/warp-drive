@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/adapter/error/variables/AbortError.md
+description: >-
+  Legacy adapter error constructor for signaling that a request to the API was
+  aborted before a response arrived.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 AbortError: AdapterRequestErrorConstructor<AbortError>;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:307](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/error.ts#L307)
+Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:334](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/error.ts#L334)
 
 An `AbortError` is used by an adapter to signal that a request to the
 external API was aborted. For example, this can occur if the user

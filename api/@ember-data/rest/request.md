@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@ember-data/rest/request.md
+description: >-
+  Legacy alias re-exporting request builders from `@warp-drive/utilities/rest`
+  that produce fetch options with * stable, camelCase pluralized REST URLs. *
 ---
 
 This package provides utilities for working with **REST**ful APIs with [*Ember***Data**](https://github.com/warp-drive-data/warp-drive/).

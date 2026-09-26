@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/adapter/error/variables/ServerError.md
+description: >-
+  Legacy adapter error constructor for an HTTP 500 response, signaling that the
+  API failed internally and an immediate retry is unlikely to succeed.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 ServerError: AdapterRequestErrorConstructor<ServerError>;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:503](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/error.ts#L503)
+Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:555](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/error.ts#L555)
 
 A `ServerError` equates to an HTTP `500 Internal Server Error` response
 status. It is used by the adapter to indicate that a request has failed

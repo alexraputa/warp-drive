@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/misc.md
+description: >-
+  Find WarpDrive guides that do not yet have a permanent section, such as
+  LinksMode and terminology, before they are moved into the main manual.
 ---
 
 # Miscellaneous

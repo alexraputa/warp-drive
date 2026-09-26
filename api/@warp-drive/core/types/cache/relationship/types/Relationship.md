@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/cache/relationship/types/Relationship.md
+description: >-
+  Cache-side state of a to-one or to-many relationship, with related resources
+  as `ResourceKey`s, as returned by `cache.getRelationship`.
 ---
 
 # &#x20;Relationship\<T = [`ResourceKey`](../../../identifier/types/ResourceKey.md)>
@@ -11,7 +14,7 @@ type Relationship<T = ResourceKey> =
 | CollectionRelationship<T>;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/cache/relationship.ts:72](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/cache/relationship.ts#L72)
+Defined in: [warp-drive-packages/core/src/types/cache/relationship.ts:85](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/cache/relationship.ts#L85)
 
 The stable-cache-key form of a relationship, whether `to-one` or `to-many`.
 

@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations/variables/DEPRECATE_NON_UNIQUE_PAYLOADS.md
+description: >-
+  Deprecation flag for hasMany relationship payloads containing duplicate
+  identifiers, which were silently de-duped and will instead error.
 ---
 
 # &#x20;DEPRECATE\_NON\_UNIQUE\_PAYLOADS&#x20;
@@ -9,7 +12,7 @@ url: >-
 const DEPRECATE_NON_UNIQUE_PAYLOADS: boolean = true;
 ```
 
-Defined in: [deprecations.ts:245](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/deprecations.ts#L245)
+Defined in: [deprecations.ts:257](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/deprecations.ts#L257)
 
 Deprecates when the data for a hasMany relationship contains
 duplicate identifiers.

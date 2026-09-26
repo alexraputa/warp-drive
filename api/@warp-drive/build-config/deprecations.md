@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations.md
+description: >-
+  Deprecation flags for WarpDrive and how to strip the code behind resolved
+  deprecations at build time, by `compatWith` version or by individual flag.
 ---
 
 # Deprecations

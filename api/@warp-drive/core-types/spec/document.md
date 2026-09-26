@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core-types/spec/document.md
+description: >-
+  Legacy alias re-exporting `@warp-drive/core/types/spec/document`, the types
+  for raw {json:api} response documents; new code should import from there.
 ---
 
 Legacy alias of [@warp-drive/core/types/spec/document](../../../core/types/spec/document/index.md).

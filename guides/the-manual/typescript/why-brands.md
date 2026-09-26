@@ -1,6 +1,10 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/typescript/why-brands.md
+description: >-
+  Understand why WarpDrive brands classes with a `Type` symbol and passes them
+  as generics to `findRecord` instead of using type registries or class tokens.
 ---
+
 # WarpDrive's Types Strategy
 
 If you previously used the EmberData types provided by DefinitelyTyped, one MASSIVE

@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/NotifyKeys.md
+description: >-
+  A set of field names passed to `notify` or `notifyChange` to report many
+  `attributes` or `relationships` changes in one call.
 ---
 
 # &#x20;NotifyKeys&#x20;
@@ -8,7 +11,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/core/types/NotifyKeys.md
 type NotifyKeys = Set<string>;
 ```
 
-Defined in: [warp-drive-packages/core/src/store/-private/managers/notification-manager.ts:43](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/store/-private/managers/notification-manager.ts#L43)
+Defined in: [warp-drive-packages/core/src/store/-private/managers/notification-manager.ts:54](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/store/-private/managers/notification-manager.ts#L54)
 
 The shape accepted by NotificationManager.notify and
 CacheCapabilitiesManager.notifyChange for delivering many keys for

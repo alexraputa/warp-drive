@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core-types/record.md
+description: >-
+  Legacy alias re-exporting `@warp-drive/core/types/record`, the type utilities
+  for typed records and include paths; new code should import from there.
 ---
 
 Legacy alias of [@warp-drive/core/types/record](../../core/types/record/index.md).

@@ -1,7 +1,12 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/the-manual/schemas/resources/legacy-mode.md
+description: >-
+  Emulate Model with ReactiveResource in LegacyMode using `attribute`,
+  `belongsTo`, and `hasMany` fields, `registerDerivations` from
+  `@warp-drive/legacy`, and `WithLegacy` types.
 ---
+
 # LegacyMode (recommended)
 
 :::tip 💡 **Using LegacyMode is Our Current Recommendation for Most Apps**

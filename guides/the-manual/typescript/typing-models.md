@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/typescript/typing-models.md
+description: >-
+  Brand legacy Model classes and Transforms with the `Type` symbol and add
+  generics to `attr`, `belongsTo`, and `hasMany` so relationships and store
+  calls infer types.
 ---
+
 # Typing Models & Transforms
 
 ## Type

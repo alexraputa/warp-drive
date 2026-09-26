@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/model-fragments/variables/modelFor.md
+description: >-
+  Legacy `store.modelFor` fallback that returns a schema-backed `ShimModelClass`
+  for a type when ModelFragments support is on and no `Model` class exists.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 const modelFor: typeof fragmentsModelFor = fragmentsModelFor;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/model-fragments/hooks/model-for.ts:140](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/model-fragments/hooks/model-for.ts#L140)
+Defined in: [warp-drive-packages/legacy/src/model-fragments/hooks/model-for.ts:142](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/model-fragments/hooks/model-for.ts#L142)
 
 The `modelFor` fallback used to construct a `ShimModelClass` schema for a
 type when ModelFragments support is enabled and no real `Model` subclass

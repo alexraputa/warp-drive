@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/request/functions/withReactiveResponse.md
+description: >-
+  Types a request object so its response resolves as a `ReactiveDataDocument` of
+  the given data and meta types; no runtime effect.
 ---
 
 # &#x20;withReactiveResponse()
@@ -11,7 +14,7 @@ function withReactiveResponse<T, M extends ObjectValue | undefined = ObjectValue
 };
 ```
 
-Defined in: [warp-drive-packages/core/src/request.ts:74](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/request.ts#L74)
+Defined in: [warp-drive-packages/core/src/request.ts:84](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/request.ts#L84)
 
 Brands the supplied object with the supplied response type
 wrapped in [ReactiveDataDocument](../../reactive/types/ReactiveDataDocument.md). This is a convenience for

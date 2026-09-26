@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/json-api/functions/setBuildURLConfig.md
+description: >-
+  Sets the JSON:API extensions and profiles sent in the `Accept` header, plus
+  the global URL host and namespace.
 ---
 
 # &#x20;setBuildURLConfig()
@@ -9,7 +12,7 @@ url: >-
 function setBuildURLConfig(config: JSONAPIConfig): void;
 ```
 
-Defined in: [-private/json-api/-utils.ts:61](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/json-api/-utils.ts#L61)
+Defined in: [-private/json-api/-utils.ts:63](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/json-api/-utils.ts#L63)
 
 Allows setting extensions and profiles to be used in the `Accept` header.
 

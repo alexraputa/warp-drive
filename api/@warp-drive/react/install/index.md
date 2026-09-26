@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/react/install.md
+description: >-
+  Side-effect import that configures WarpDrive to use Signal polyfill based
+  reactivity so its data updates re-render React components.
 ---
 
 ```ts [src/app.ts]

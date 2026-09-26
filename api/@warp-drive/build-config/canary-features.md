@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/build-config/canary-features.md
+description: >-
+  Build-time feature flags that gate unreleased WarpDrive features, which can be
+  activated only in canary development builds via `setConfig` or an env var.
 ---
 
 # Canary Features&#x20;

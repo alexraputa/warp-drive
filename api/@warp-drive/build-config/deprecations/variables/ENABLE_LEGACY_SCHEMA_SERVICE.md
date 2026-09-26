@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations/variables/ENABLE_LEGACY_SCHEMA_SERVICE.md
+description: >-
+  Deprecation flag that keeps the legacy schema service APIs, such as
+  `registerSchemaDefinitionService`, enabled while warning when they are used.
 ---
 
 # &#x20;ENABLE\_LEGACY\_SCHEMA\_SERVICE&#x20;
@@ -9,7 +12,7 @@ url: >-
 const ENABLE_LEGACY_SCHEMA_SERVICE: boolean = true;
 ```
 
-Defined in: [deprecations.ts:443](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/deprecations.ts#L443)
+Defined in: [deprecations.ts:463](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/deprecations.ts#L463)
 
 When the flag is `true` (default), the legacy schema
 service features will be enabled on the store and

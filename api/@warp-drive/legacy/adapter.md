@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/legacy/adapter.md
+description: >-
+  Legacy adapter layer through which the store fetches and saves data from an
+  API, superseded by `RequestManager` handlers.
 ---
 
 &#x20;

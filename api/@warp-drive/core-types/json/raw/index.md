@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core-types/json/raw.md
+description: >-
+  Legacy alias re-exporting `@warp-drive/core/types/json/raw`, the types
+  describing JSON-serializable values; new code should import from there.
 ---
 
 Legacy alias of [@warp-drive/core/types/json/raw](../../../core/types/json/raw/index.md).

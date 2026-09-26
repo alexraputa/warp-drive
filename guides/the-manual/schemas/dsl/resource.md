@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/schemas/dsl/resource.md
+description: >-
+  Define a resource schema as a class with `@Resource`, `@field`, and `@id`,
+  wire the `@warp-drive/schema-dsl` Vite plugin, and register the compiled
+  output with the store (draft).
 ---
 
 # Defining Resources

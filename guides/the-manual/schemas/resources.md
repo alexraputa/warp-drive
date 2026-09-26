@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/schemas/resources.md
+description: >-
+  Create a top-level ResourceSchema with `withDefaults`, choose `field`,
+  `resource`, `collection`, or `schema-object` kinds, register it, and pick
+  LegacyMode or PolarisMode.
 ---
 
 # ResourceSchemas

@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/reactive/functions/getPromiseState.md
+description: >-
+  Returns a cached, reactive state object tracking whether a promise is pending,
+  fulfilled, or rejected, for use in JS or templates.
 ---
 
 # &#x20;getPromiseState()
@@ -11,7 +14,7 @@ function getPromiseState<T = unknown, E = unknown>(promise:
 | Awaitable<T, E>): Readonly<PromiseState<T, E>>;
 ```
 
-Defined in: [warp-drive-packages/core/src/signals/promise-state.ts:358](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/signals/promise-state.ts#L358)
+Defined in: [warp-drive-packages/core/src/signals/promise-state.ts:369](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/signals/promise-state.ts#L369)
 
 Returns a reactive state-machine for the provided promise or awaitable.
 

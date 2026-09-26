@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/graph/types/DeleteRecordOperation.md
+description: >-
+  Graph operation signaling that a resource was deleted so it is removed from
+  every relationship that references it.
 ---
 
 # &#x20;DeleteRecordOperation
@@ -13,7 +16,7 @@ interface DeleteRecordOperation {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:51](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L51)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:64](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L64)
 
 Signals to the Graph that a resource has been deleted, so that
 it can be removed from any relationships that reference it.
@@ -26,7 +29,7 @@ it can be removed from any relationships that reference it.
 isNew: boolean;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:63](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L63)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:76](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L76)
 
 Whether the resource was a client-created resource that had not yet been persisted
 
@@ -38,7 +41,7 @@ Whether the resource was a client-created resource that had not yet been persist
 op: "deleteRecord";
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:55](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L55)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:68](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L68)
 
 The name of the operation
 
@@ -50,6 +53,6 @@ The name of the operation
 record: ResourceKey;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/graph.ts:59](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/graph.ts#L59)
+Defined in: [warp-drive-packages/core/src/types/graph.ts:72](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/graph.ts#L72)
 
 The cache key for the resource that was deleted

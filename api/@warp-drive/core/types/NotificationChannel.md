@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/core/types/NotificationChannel.md
+description: >-
+  Scopes an `attributes` or `relationships` notification to a resource's local
+  (editable) or remote (persisted) view so only matching subscribers hear it.
 ---
 
 # &#x20;NotificationChannel
@@ -8,7 +11,7 @@ url: https://canary.warp-drive.io/api/@warp-drive/core/types/NotificationChannel
 type NotificationChannel = "local" | "remote";
 ```
 
-Defined in: [warp-drive-packages/core/src/store/-private/managers/notification-manager.ts:78](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/store/-private/managers/notification-manager.ts#L78)
+Defined in: [warp-drive-packages/core/src/store/-private/managers/notification-manager.ts:91](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/store/-private/managers/notification-manager.ts#L91)
 
 A change to a resource's `attributes` or `relationships` can be relevant to
 a "local" view of the resource (its mutable/editable state), a "remote" view

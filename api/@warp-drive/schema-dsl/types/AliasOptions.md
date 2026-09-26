@@ -1,5 +1,8 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/schema-dsl/types/AliasOptions.md
+description: >-
+  Options for the `@alias` decorator that identify the existing field (its kind,
+  name, transformation type, and sourceKey) the alias points to.
 ---
 
 # &#x20;AliasOptions
@@ -13,7 +16,7 @@ interface AliasOptions {
 }
 ```
 
-Defined in: [fields/alias.ts:12](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/alias.ts#L12)
+Defined in: [fields/alias.ts:14](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/alias.ts#L14)
 
 Options accepted by the [alias](../functions/alias.md) decorator, describing the field
 being aliased.
@@ -26,7 +29,7 @@ being aliased.
 kind: string;
 ```
 
-Defined in: [fields/alias.ts:19](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/alias.ts#L19)
+Defined in: [fields/alias.ts:21](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/alias.ts#L21)
 
 The `kind` of the field being aliased, e.g. `'field'`, `'object'`, or
 `'array'`.
@@ -39,7 +42,7 @@ The `kind` of the field being aliased, e.g. `'field'`, `'object'`, or
 name: string;
 ```
 
-Defined in: [fields/alias.ts:26](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/alias.ts#L26)
+Defined in: [fields/alias.ts:28](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/alias.ts#L28)
 
 The `name` of the field being aliased.
 
@@ -51,7 +54,7 @@ The `name` of the field being aliased.
 optional sourceKey?: string;
 ```
 
-Defined in: [fields/alias.ts:40](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/alias.ts#L40)
+Defined in: [fields/alias.ts:42](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/alias.ts#L42)
 
 The `sourceKey` of the field being aliased, if it differs from `name`.
 
@@ -63,6 +66,6 @@ The `sourceKey` of the field being aliased, if it differs from `name`.
 optional type?: string;
 ```
 
-Defined in: [fields/alias.ts:33](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/schema-dsl/src/fields/alias.ts#L33)
+Defined in: [fields/alias.ts:35](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/schema-dsl/src/fields/alias.ts#L35)
 
 The name of a [Transformation](../../core/types/schema/concepts/types/Transformation.md) associated with the aliased field.

@@ -1,6 +1,10 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/configuration/legacy-package-setup/setup/universal.md
+description: >-
+  Configure the legacy multi-package setup with setConfig in ember-cli-build,
+  unstable-preview-types in tsconfig, and a hand-built Store using
+  RequestManager and JSONAPICache.
 ---
 
 ::: tip Boilerplate Sucks 👎🏽

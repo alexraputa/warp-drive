@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/build-config/debugging.md
+description: >-
+  Flags for turning on WarpDrive debug logging per area, such as cache,
+  requests, and notifications; use it via
+  `@warp-drive/core/build-config/debugging`.
 ---
 
 While build-config is its own package, it should always be

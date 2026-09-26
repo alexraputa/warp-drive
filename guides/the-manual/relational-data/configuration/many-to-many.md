@@ -1,7 +1,12 @@
 ---
 url: >-
   https://canary.warp-drive.io/guides/the-manual/relational-data/configuration/many-to-many.md
+description: >-
+  Define a bidirectional many-to-many hasMany relationship with a managed
+  inverse, or split it into two many-to-none collections, via Model, JSON
+  schema, or LegacyMode withDefaults.
 ---
+
 # Many To Many Relationships
 
 Imagine our social network for trail runners 🏃🏃🏾‍♀️ allows runners to connect with friends, other trail runners!

@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/store/functions/parseCacheControl.md
+description: >-
+  Parses a `Cache-Control` header string into a `CacheControlValue` object,
+  caching results per header string.
 ---
 
 # &#x20;parseCacheControl()
@@ -9,7 +12,7 @@ url: >-
 function parseCacheControl(header: string): CacheControlValue;
 ```
 
-Defined in: [warp-drive-packages/core/src/store/-private/default-cache-policy.ts:127](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/store/-private/default-cache-policy.ts#L127)
+Defined in: [warp-drive-packages/core/src/store/-private/default-cache-policy.ts:132](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/store/-private/default-cache-policy.ts#L132)
 
 Parses a string Cache-Control header value into an object with the following structure:
 

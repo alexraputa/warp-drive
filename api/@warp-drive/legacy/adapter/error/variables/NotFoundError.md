@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/adapter/error/variables/NotFoundError.md
+description: >-
+  Legacy adapter error constructor for an HTTP 404 response, signaling that the
+  requested resource does not exist on the API.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 NotFoundError: AdapterRequestErrorConstructor<NotFoundError>;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:424](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/adapter/error.ts#L424)
+Defined in: [warp-drive-packages/legacy/src/adapter/error.ts:466](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/adapter/error.ts#L466)
 
 A `NotFoundError` equates to an HTTP `404 Not Found` response status.
 It is used by an adapter to signal that a request to the external API

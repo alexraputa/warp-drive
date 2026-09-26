@@ -1,6 +1,11 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/experiments.md
+description: >-
+  Browse WarpDrive's experimental, pre-RFC features that may change or be
+  removed, currently Storage Resources and Pagination, and pick which one to
+  read next.
 ---
+
 # Experiments
 
 ::: danger

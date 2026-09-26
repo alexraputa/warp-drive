@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/legacy/compat/utils/functions/isEquivType.md
+description: >-
+  Legacy migration helper that reports whether two resource types match after
+  normalization, so `'posts'` and `'post'` are equivalent.
 ---
 
 &#x20;
@@ -11,7 +14,7 @@ url: >-
 function isEquivType(expected: string, actual: string): boolean;
 ```
 
-Defined in: [warp-drive-packages/legacy/src/compat/utils.ts:210](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/legacy/src/compat/utils.ts#L210)
+Defined in: [warp-drive-packages/legacy/src/compat/utils.ts:226](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/legacy/src/compat/utils.ts#L226)
 
 Compares two types for strict equality, converting them to
 the format expected by the WarpDrive Cache to ensure

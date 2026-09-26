@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/schema/fields/types/LegacyField.md
+description: >-
+  Union of the legacy attribute, belongsTo, and hasMany field schemas, including
+  the LinksMode relationship variants.
 ---
 
 # &#x20;LegacyField
@@ -14,7 +17,7 @@ type LegacyField =
   | LinksModeHasManyField;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2567](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/schema/fields.ts#L2567)
+Defined in: [warp-drive-packages/core/src/types/schema/fields.ts:2649](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/schema/fields.ts#L2649)
 
 A union of all field schemas considered "legacy", i.e. those historically
 associated with `@warp-drive/legacy/model`'s Attribute, BelongsTo and

@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/reactivity/derivation.md
+description: >-
+  Replace tracked loading, error, and value properties with getPromiseState and
+  the Await component so a component stores a promise and derives pending,
+  error, and success state.
 ---
 
 # Async as Reactive State

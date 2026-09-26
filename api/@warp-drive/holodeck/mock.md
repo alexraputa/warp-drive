@@ -1,5 +1,9 @@
 ---
 url: https://canary.warp-drive.io/api/@warp-drive/holodeck/mock.md
+description: >-
+  Helpers `GET`, `POST`, `PUT`, `PATCH`, `DELETE` and `HEAD` that register a
+  mocked request and its response with the Holodeck test server, plus the
+  scaffold types they accept.
 ---
 
 ## Functions

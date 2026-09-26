@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/utilities/string/functions/loadIrregular.md
+description: >-
+  Registers a list of singular and plural word pairs that `pluralize` and
+  `singularize` map directly.
 ---
 
 # &#x20;loadIrregular()&#x20;
@@ -9,7 +12,7 @@ url: >-
 function loadIrregular(irregularPairs: [string, string][]): void;
 ```
 
-Defined in: [-private/string/inflect.ts:72](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/utilities/src/-private/string/inflect.ts#L72)
+Defined in: [-private/string/inflect.ts:77](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/utilities/src/-private/string/inflect.ts#L77)
 
 Marks a list of word pairs as irregular. Irregular words have unique
 pluralization and singularization rules.

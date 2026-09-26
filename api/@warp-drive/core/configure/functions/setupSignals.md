@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/configure/functions/setupSignals.md
+description: >-
+  Registers the signal hooks WarpDrive uses for reactivity, built by a callback
+  that receives `HooksOptions`.
 ---
 
 # &#x20;setupSignals()
@@ -9,7 +12,7 @@ url: >-
 function setupSignals<T>(buildConfig: (options: HooksOptions) => SignalHooks<T>): void;
 ```
 
-Defined in: [warp-drive-packages/core/src/signals/reactivity/configure.ts:164](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/signals/reactivity/configure.ts#L164)
+Defined in: [warp-drive-packages/core/src/signals/reactivity/configure.ts:170](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/signals/reactivity/configure.ts#L170)
 
 Configures the signals implementation to use. Supports multiple
 implementations simultaneously.

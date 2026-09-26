@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/build-config/deprecations/variables/ENABLE_LEGACY_REQUEST_METHODS.md
+description: >-
+  Deprecation flag for store request methods like `findRecord`, `query`, and
+  `saveRecord` that bypass `store.request()`; `false` strips them.
 ---
 
 # &#x20;ENABLE\_LEGACY\_REQUEST\_METHODS&#x20;
@@ -9,7 +12,7 @@ url: >-
 const ENABLE_LEGACY_REQUEST_METHODS: boolean = true;
 ```
 
-Defined in: [deprecations.ts:527](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/build-config/src/deprecations.ts#L527)
+Defined in: [deprecations.ts:553](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/build-config/src/deprecations.ts#L553)
 
 Deprecates all the methods that lead to making requests that don't directly
 use `store.request()` or `manager.request()`.

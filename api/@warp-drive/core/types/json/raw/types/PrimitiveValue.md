@@ -1,6 +1,9 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/json/raw/types/PrimitiveValue.md
+description: >-
+  A JSON primitive (string, number, boolean, or `null`), the scalar case of the
+  JSON `Value` type.
 ---
 
 # &#x20;PrimitiveValue
@@ -9,6 +12,6 @@ url: >-
 type PrimitiveValue = string | number | boolean | null;
 ```
 
-Defined in: [warp-drive-packages/core/src/types/json/raw.ts:6](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/json/raw.ts#L6)
+Defined in: [warp-drive-packages/core/src/types/json/raw.ts:12](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/json/raw.ts#L12)
 
 A JSON primitive: a string, number, boolean, or `null`.

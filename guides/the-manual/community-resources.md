@@ -1,6 +1,10 @@
 ---
 url: https://canary.warp-drive.io/guides/the-manual/community-resources.md
+description: >-
+  Find conference talks, blog posts, and podcasts about WarpDrive and EmberData
+  from 2019 onward, and learn how to add your own to the list via PR.
 ---
+
 # Community Resources
 
 Wrote a blog post? Gave a talk? Published a book? Went on a podcast? Something else fellow explorers might need? We love it all!

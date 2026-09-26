@@ -1,6 +1,7 @@
 ---
 url: >-
   https://canary.warp-drive.io/api/@warp-drive/core/types/json/raw/types/ObjectValue.md
+description: A plain JSON object whose property values are all JSON values.
 ---
 
 # &#x20;ObjectValue
@@ -11,7 +12,7 @@ interface ObjectValue {
 }
 ```
 
-Defined in: [warp-drive-packages/core/src/types/json/raw.ts:13](https://github.com/alexraputa/warp-drive/blob/42b515069d07a4a417d09cfee36cdce56c92f754/warp-drive-packages/core/src/types/json/raw.ts#L13)
+Defined in: [warp-drive-packages/core/src/types/json/raw.ts:20](https://github.com/alexraputa/warp-drive/blob/0491c8693bd1f37a23e5f2c61ac79e025249c535/warp-drive-packages/core/src/types/json/raw.ts#L20)
 
 A plain JSON object, whose values are themselves valid [Value](Value.md)s.
 
