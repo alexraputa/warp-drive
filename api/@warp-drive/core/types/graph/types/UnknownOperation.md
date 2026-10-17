@@ -1,0 +1,58 @@
+---
+url: >-
+  https://canary.warp-drive.io/api/@warp-drive/core/types/graph/types/UnknownOperation.md
+description: >-
+  Placeholder Graph operation, with `op: 'never'`, for a relationship whose
+  to-one or to-many kind is not yet known.
+---
+
+# &#x20;UnknownOperation
+
+```ts
+interface UnknownOperation {
+  field: string;
+  op: "never";
+  record: ResourceKey;
+}
+```
+
+Defined in: [warp-drive-packages/core/src/types/graph.ts:86](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/core/src/types/graph.ts#L86)
+
+A placeholder operation for a relationship whose kind (`to-one` vs
+`to-many`) is not yet known to the Graph.
+
+## Properties
+
+### field
+
+```ts
+field: string;
+```
+
+Defined in: [warp-drive-packages/core/src/types/graph.ts:98](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/core/src/types/graph.ts#L98)
+
+The name of the relationship
+
+***
+
+### op
+
+```ts
+op: "never";
+```
+
+Defined in: [warp-drive-packages/core/src/types/graph.ts:90](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/core/src/types/graph.ts#L90)
+
+The name of the operation
+
+***
+
+### record
+
+```ts
+record: ResourceKey;
+```
+
+Defined in: [warp-drive-packages/core/src/types/graph.ts:94](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/core/src/types/graph.ts#L94)
+
+The cache key for the resource whose relationship is affected
