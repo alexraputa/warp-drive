@@ -1,0 +1,18 @@
+---
+url: https://canary.warp-drive.io/api/@warp-drive/react/variables/WatcherContext.md
+description: >-
+  React context holding the signal watcher that the nearest `ReactiveContext`
+  uses to track which WarpDrive signals its children read.
+---
+
+# &#x20;WatcherContext
+
+```ts
+const WatcherContext: Context<
+  | {
+  watcher: Signal.subtle.Watcher;
+}
+| null>;
+```
+
+Defined in: [-private/reactive-context.tsx:156](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/react/src/-private/reactive-context.tsx#L156)

@@ -1,0 +1,30 @@
+---
+url: >-
+  https://canary.warp-drive.io/api/@warp-drive/experiments/storage/functions/configureSessionStorage.md
+description: >-
+  Experimental function that sets fallback and quota-handling options for the
+  reactive sessionStorage singleton before its first use.
+---
+
+&#x20;
+
+# &#x20;configureSessionStorage()
+
+```ts
+function configureSessionStorage(options: ReactiveStorageOptions): void;
+```
+
+Defined in: [warp-drive-packages/experiments/src/storage/storage.ts:87](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/experiments/src/storage/storage.ts#L87)
+
+Configure options for the sessionStorage singleton.
+Must be called before getSessionStorage() is first invoked.
+
+## Parameters
+
+### options
+
+[`ReactiveStorageOptions`](../types/ReactiveStorageOptions.md)
+
+## Returns
+
+`void`
