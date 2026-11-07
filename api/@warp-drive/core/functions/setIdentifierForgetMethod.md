@@ -1,0 +1,36 @@
+---
+url: >-
+  https://canary.warp-drive.io/api/@warp-drive/core/functions/setIdentifierForgetMethod.md
+description: >-
+  Registers a callback run when the store releases a resource key, for cleaning
+  up your own lookup tables.
+---
+
+# &#x20;setIdentifierForgetMethod()
+
+```ts
+function setIdentifierForgetMethod(method: ForgetMethod | null): void;
+```
+
+Defined in: [warp-drive-packages/core/src/store/-private/managers/cache-key-manager.ts:321](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/core/src/store/-private/managers/cache-key-manager.ts#L321)
+
+Configure a callback for when the identifier cache is going to release an identifier.
+
+This configuration MUST occur prior to the store instance being created.
+
+```js
+import { setIdentifierForgetMethod } from '@warp-drive/core';
+```
+
+Takes method which can expect to receive an existing `Identifier` that should be eliminated
+from any secondary lookup tables or caches that the user has populated for it.
+
+## Parameters
+
+### method
+
+`ForgetMethod` | `null`
+
+## Returns
+
+`void`
