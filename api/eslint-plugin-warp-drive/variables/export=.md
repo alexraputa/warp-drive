@@ -1,0 +1,46 @@
+---
+url: https://canary.warp-drive.io/api/eslint-plugin-warp-drive/variables/export=.md
+---
+
+# &#x20;export=
+
+```ts
+export=: {
+  meta: {
+     name: string;
+     version: string;
+  };
+  rules: any;
+};
+```
+
+Defined in: [index.js:12](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/packages/eslint-plugin-warp-drive/src/index.js#L12)
+
+## Type Declaration
+
+### meta
+
+```ts
+meta: {
+  name: string;
+  version: string;
+};
+```
+
+#### meta.name
+
+```ts
+name: string = pkg.name;
+```
+
+#### meta.version
+
+```ts
+version: string = pkg.version;
+```
+
+### rules
+
+```ts
+rules: any;
+```

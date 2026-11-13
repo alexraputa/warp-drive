@@ -1,0 +1,24 @@
+---
+url: >-
+  https://canary.warp-drive.io/api/@warp-drive/experiments/storage/functions/input.md
+---
+
+&#x20;
+
+# &#x20;input()
+
+```ts
+function input(type: "number" | "boolean" | "float"): PropertyDecorator;
+```
+
+Defined in: [warp-drive-packages/experiments/src/storage/storage-resource.ts:133](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/experiments/src/storage/storage-resource.ts#L133)
+
+## Parameters
+
+### type
+
+`"number"` | `"boolean"` | `"float"`
+
+## Returns
+
+`PropertyDecorator`

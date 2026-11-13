@@ -1,0 +1,25 @@
+---
+url: >-
+  https://canary.warp-drive.io/api/@warp-drive/experiments/storage/functions/getLocalStorage.md
+description: >-
+  Experimental function that returns the shared reactive wrapper around
+  localStorage, creating it on first call.
+---
+
+&#x20;
+
+# &#x20;getLocalStorage()
+
+```ts
+function getLocalStorage(): ReactiveStorage;
+```
+
+Defined in: [warp-drive-packages/experiments/src/storage/storage.ts:43](https://github.com/alexraputa/warp-drive/blob/b66aef3184105620cb042e7c2b988b1e3164b5da/warp-drive-packages/experiments/src/storage/storage.ts#L43)
+
+Retrieves the singleton instance of the LocalStorage service.
+
+If the instance does not already exist, it is created.
+
+## Returns
+
+[`ReactiveStorage`](../types/ReactiveStorage.md)
